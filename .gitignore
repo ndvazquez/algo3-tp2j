@@ -1,4 +1,5 @@
 *.sw*
+.idea/
 build/
 libs/
 tmp/

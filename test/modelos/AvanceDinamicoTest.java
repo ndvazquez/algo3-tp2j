@@ -77,7 +77,7 @@ public class AvanceDinamicoTest {
 
 	/*** Tests dados 7 - 10 ***/
 	@Test
-	public void test04JugadorCaeEnAvanceDinamicoTirando7AvanzaSuCantidadDeEfectivoModuloLaTirada() {
+	public void test06JugadorCaeEnAvanceDinamicoTirando7AvanzaSuCantidadDeEfectivoModuloLaTirada() {
 		Jugador jugador = new Jugador(); // plata inicial 100000
 		jugador.setUltimaTirada(7);
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
@@ -90,7 +90,7 @@ public class AvanceDinamicoTest {
 	}
 
 	@Test
-	public void test04JugadorCaeEnAvanceDinamicoTirando8AvanzaSuCantidadDeEfectivoModuloLaTirada() {
+	public void test07JugadorCaeEnAvanceDinamicoTirando8AvanzaSuCantidadDeEfectivoModuloLaTirada() {
 		Jugador jugador = new Jugador(); // plata inicial 100000
 		jugador.setUltimaTirada(8);
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
@@ -103,7 +103,7 @@ public class AvanceDinamicoTest {
 	}
 
 	@Test
-	public void test04JugadorCaeEnAvanceDinamicoTirando9AvanzaSuCantidadDeEfectivoModuloLaTirada() {
+	public void test08JugadorCaeEnAvanceDinamicoTirando9AvanzaSuCantidadDeEfectivoModuloLaTirada() {
 		Jugador jugador = new Jugador(); // plata inicial 100000
 		jugador.setUltimaTirada(9);
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
@@ -116,7 +116,7 @@ public class AvanceDinamicoTest {
 	}
 
 	@Test
-	public void test04JugadorCaeEnAvanceDinamicoTirando10AvanzaSuCantidadDeEfectivoModuloLaTirada() {
+	public void test09JugadorCaeEnAvanceDinamicoTirando10AvanzaSuCantidadDeEfectivoModuloLaTirada() {
 		Jugador jugador = new Jugador(); // plata inicial 100000
 		jugador.setUltimaTirada(10);
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
@@ -130,7 +130,7 @@ public class AvanceDinamicoTest {
 
 	/*** Tests dados 11 -12 ***/
 	@Test
-	public void test04JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedades() {
+	public void test10JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedades() {
 		Jugador jugador = new Jugador(); // propiedades = 0
 		jugador.setUltimaTirada(11);
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
@@ -143,7 +143,7 @@ public class AvanceDinamicoTest {
 	}
 
 	@Test
-	public void test04JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedades() {
+	public void test11JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedades() {
 		Jugador jugador = new Jugador(); // propiedades = 0
 		jugador.setUltimaTirada(12);
 		AvanceDinamico avanceDinamico = new AvanceDinamico();

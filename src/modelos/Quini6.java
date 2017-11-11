@@ -2,10 +2,15 @@ package modelos;
 
 import java.util.HashMap;
 
-public class Quini6 {
+public class Quini6 implements Casillero{
     /* Diccionario de jugadores, se utiliza para contar las visitas a la casilla */
-    private HashMap<Jugador, Integer> jugadoresRecibidos = new HashMap<>();
+    private HashMap<Jugador, Integer> jugadoresRecibidos;
 
+    public Quini6(){
+        this.jugadoresRecibidos = new HashMap<>();
+    }
+
+    @Override
     public void recibirJugador(Jugador jugador){
         /* Si el jugador ya visitó la casilla se suma 1 a las visitas, en caso contrario se inicializan en 1 */
         jugadoresRecibidos.put(
@@ -16,4 +21,5 @@ public class Quini6 {
 
         else if(jugadoresRecibidos.get(jugador) == 2) {jugador.incrementarCapital(30000);}
     }
+
 }

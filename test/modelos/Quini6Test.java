@@ -13,7 +13,9 @@ public class Quini6Test{
 
         quini6.recibirJugador(jugadorPrueba);
 
-        Assert.assertEquals(jugadorPrueba.getCapital(),150000 );
+        int capitalJugador = jugadorPrueba.getCapital();
+
+        Assert.assertEquals(capitalJugador, 150000);
     }
 
     @Test
@@ -24,7 +26,9 @@ public class Quini6Test{
 
         for(int i = 0; i < 2; i++){ quini6.recibirJugador(jugadorPrueba); }
 
-        Assert.assertEquals(jugadorPrueba.getCapital(), 180000);
+        int capitalJugador = jugadorPrueba.getCapital();
+
+        Assert.assertEquals(capitalJugador, 180000);
     }
 
     @Test
@@ -35,6 +39,8 @@ public class Quini6Test{
 
         for(int i = 0; i < 5; i++){ quini6.recibirJugador(jugadorPrueba); }
 
-        Assert.assertEquals(jugadorPrueba.getCapital(), 180000);
+        int capitalJugador = jugadorPrueba.getCapital();
+
+        Assert.assertEquals(capitalJugador, 180000);
     }
 }

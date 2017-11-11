@@ -1,11 +1,8 @@
 
-package test.modelos;
+package modelos;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import modelos.AvanceDinamico;
-import modelos.Jugador;
 
 public class AvanceDinamicoTest {
 

@@ -1,7 +1,6 @@
 package modelos;
 
 import java.util.ArrayList;
-import Carcel;
 
 public class Jugador {
 

@@ -59,7 +59,7 @@ public class Jugador {
     	this.posicion = posicion;
     }
 
-	public void adquerirTerreno(Propiedad propiedad) {
+	public void adquerirPropiedad(Propiedad propiedad) {
 		this.propiedades.add(propiedad);
 	}
 

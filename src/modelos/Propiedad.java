@@ -5,7 +5,7 @@ public class Propiedad implements Casillero {
 	private Jugador propietario;
 	
 	public void recibirJugador(Jugador jugador) {
-		jugador.adquerirTerreno(this);
+		jugador.adquerirPropiedad(this);
 		this.propietario = jugador;
 	}
 	

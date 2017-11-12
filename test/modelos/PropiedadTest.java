@@ -16,8 +16,6 @@ public class PropiedadTest {
 		propiedad.recibirJugador(jugadorPrueba);
 		
 		Assert.assertEquals(propiedad.getPropietario(), jugadorPrueba);
-
-		Assert.assertEquals(jugadorPrueba.getCantidadPropiedades(), 1);
 	}
 
 }

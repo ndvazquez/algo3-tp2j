@@ -52,14 +52,14 @@ public class Jugador {
     }
     
     public boolean puedeMoverse() {
-    	return this.posicion == Carcel.POSICION ? false : true;
+    	return this.posicion != Carcel.POSICION;
     }
     
-    public void actualizarPosicion(Integer posicion) {
-    	this.posicion = posicion;
+    public void irALaCarcel() {
+    	this.posicion = Carcel.POSICION;
     }
 
-	public void adquerirPropiedad(Propiedad propiedad) {
+	public void comprarPropiedad(Propiedad propiedad) {
 		this.propiedades.add(propiedad);
 	}
 

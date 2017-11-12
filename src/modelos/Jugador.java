@@ -1,6 +1,7 @@
 package modelos;
 
 import java.util.ArrayList;
+import Carcel;
 
 public class Jugador {
 
@@ -50,5 +51,17 @@ public class Jugador {
     public Integer getCantidadPropiedades() {
         return this.propiedades.size();
     }
+    
+    public boolean puedeMoverse() {
+    	return this.posicion == Carcel.POSICION ? false : true;
+    }
+    
+    public void actualizarPosicion(Integer posicion) {
+    	this.posicion = posicion;
+    }
+
+	public void adquerirTerreno(Propiedad propiedad) {
+		this.propiedades.add(propiedad);
+	}
 
 }

@@ -7,6 +7,8 @@ import org.junit.Test;
 
 public class CarcelTest {
 	
+	/* Tests correspondientes a la entrega del 16/11 */
+	
 	@Test
 	public void testJugadorCaeEnCarcelYNoPuedeEjecutarAccionesNiMoverseDuranteElPrimerTurno() {
 		
@@ -61,6 +63,24 @@ public class CarcelTest {
 	/* Tests Complementarios */
 	
 	@Test
+	public void testJugadorEncarceladoQuedaHabilitadoLuegoDeCuatroTurnos() {
+		
+		Jugador jugador = new Jugador();
+		
+		Carcel carcel = new Carcel();
+		
+		jugador.caerEnCasillero(carcel);
+		
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		
+		Assert.assertTrue(jugador.puedeEjecutarAcciones());
+		Assert.assertTrue(jugador.puedeMoverse());
+	}
+	
+	@Test
 	public void testPagarFianzaResta45000PesosAlCapitalDelJugador() {
 		
 		Jugador jugador = new Jugador();
@@ -87,11 +107,13 @@ public class CarcelTest {
 	}
 	
 	@Test
-	public void testPagarFianzaNoHaceNadaSiElJugadorNoPuedeEjecutarAcciones() {
+	public void testPagarFianzaNoHaceNadaSiElJugadorNoEsperoNingunTurnoEnLaCarcel() {
 		
 		Jugador jugador = new Jugador();
 		
-		jugador.setPuedeEjecutarAcciones(false);
+		Carcel carcel = new Carcel();
+		
+		jugador.caerEnCasillero(carcel);
 		
 		jugador.pagarFianza();
 		

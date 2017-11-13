@@ -14,22 +14,18 @@ public class Jugador {
 
     private Integer capital;
 
-	private boolean puedeEjecutarAcciones;
-
-	private boolean puedeMoverse;
-
-	private int turnosEnCarcel;
+	private Integer turnosEnCarcel;
 
 	private boolean enCarcel;
+
+	private Estado estado;
 
     public Jugador() {
         this.posicion = 0;
         this.ultimaTirada = 0;
-        //this.capital = 100000;
         this.capital = new Integer(100000);
-        this.puedeEjecutarAcciones = true;
-        this.puedeMoverse = true;
-        this.turnosEnCarcel = 0;
+        this.estado = new Habilitado();
+        this.turnosEnCarcel = new Integer(0);
         this.enCarcel = false;
         this.propiedades = new ArrayList<Casillero>();
     }
@@ -71,25 +67,20 @@ public class Jugador {
 	}
 
 	public boolean puedeEjecutarAcciones() {
-		return this.puedeEjecutarAcciones;
+		return estado.puedeEjecutarAcciones();
 	}
 
 	public boolean puedeMoverse() {
-		return this.puedeMoverse;
+		return estado.puedeMoverse();
 	}
 
 	public void pagarFianza() {
 		
-		if(this.puedeEjecutarAcciones && this.capital >= 45000) {
+		if(this.puedeEjecutarAcciones() && this.capital >= 45000) {
 			this.capital -= FIANZA;
 			
-			this.puedeMoverse = true;
+			this.estado = new Habilitado();
 		}
-	}
-
-	public void setPuedeEjecutarAcciones(boolean valor) {
-		this.puedeEjecutarAcciones = valor;
-		
 	}
 
 	public void iniciarTurno() {
@@ -98,21 +89,18 @@ public class Jugador {
 			this.turnosEnCarcel++;
 		}
 		
-		if(this.turnosEnCarcel > 1) {
-			this.puedeEjecutarAcciones = true;
+		if(this.turnosEnCarcel == 2) {
+			this.estado = new EncarceladoYEsperoUnTurno();
 		}
 		
+		if(this.turnosEnCarcel == 4) {
+			this.estado = new Habilitado();
+		}
 	}
 
 	public void encarcelar() {
 		this.enCarcel = true;
-		this.puedeEjecutarAcciones = false;
-		this.puedeMoverse = false;
-		
+		this.estado = new Encarcelado();
 	}
 	
-	
-	
-	
-
 }

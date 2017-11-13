@@ -22,7 +22,7 @@ public class PoliciaTest {
 	}
 
 	@Test
-	public void tets02JugadorCaeEnPoliciaYNoSePuedeMover() {
+	public void test02JugadorCaeEnPoliciaYNoSePuedeMover() {
  	
 		Carcel carcel = new Carcel();
 		Policia policia = new Policia(carcel);

@@ -121,5 +121,94 @@ public class CarcelTest {
 		
 		assertEquals(0, capitalFinal.compareTo(jugador.getCapital()));
 	}
+	
+	@Test
+	public void testPagarFianzaLiberaAlJugadorQueSalioDeLaCarcelEsperandoCuatroTurnos() {
+		
+		Jugador jugador = new Jugador();
+		
+		Carcel carcel = new Carcel();
+		
+		jugador.caerEnCasillero(carcel);
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();				//Luego de esto jugador queda libre
+		
+		jugador.caerEnCasillero(carcel);
+		
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		jugador.pagarFianza();
+		
+		Assert.assertTrue(jugador.puedeEjecutarAcciones());
+		Assert.assertTrue(jugador.puedeMoverse());
+		
+	}
+	
+	@Test
+	public void testEsperarCuatroTurnosLiberaJugadorQueSalioDeLaCarcelPagandoFianza() {
+		
+		Jugador jugador = new Jugador();
+		
+		Carcel carcel = new Carcel();
+		
+		jugador.caerEnCasillero(carcel);
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		
+		jugador.pagarFianza();
+		
+		jugador.caerEnCasillero(carcel);
+		
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		
+		Assert.assertTrue(jugador.puedeEjecutarAcciones());
+		Assert.assertTrue(jugador.puedeMoverse());
+	}
+	
+	@Test
+	public void testJugadorSaleDeLaCarcelEsperandoCuatroTurnosPasanDosTurnosYPuedeMoverse() {
+		
+		Jugador jugador = new Jugador();
+		
+		Carcel carcel = new Carcel();
+		
+		jugador.caerEnCasillero(carcel);
+		
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();				// Luego de esto jugador queda libre
+		
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		
+		Assert.assertTrue(jugador.puedeMoverse());
+		
+	}
+	
+	@Test
+	public void testJugadorSaleDeLaCarcelPagandoFianzaPasanDosTurnosYPuedeMoverse() {
+	
+		Jugador jugador = new Jugador();
+		
+		Carcel carcel = new Carcel();
+		
+		jugador.caerEnCasillero(carcel);	
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		
+		jugador.pagarFianza();
+		
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
+		
+		Assert.assertTrue(jugador.puedeMoverse());
+	
+	}
 
 }

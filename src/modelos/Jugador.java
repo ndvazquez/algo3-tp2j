@@ -80,6 +80,8 @@ public class Jugador {
 			this.capital -= FIANZA;
 			
 			this.estado = new Habilitado();
+			this.turnosEnCarcel = 0;
+			this.enCarcel = false;
 		}
 	}
 
@@ -95,6 +97,8 @@ public class Jugador {
 		
 		if(this.turnosEnCarcel == 4) {
 			this.estado = new Habilitado();
+			this.turnosEnCarcel = 0;
+			this.enCarcel = false;
 		}
 	}
 

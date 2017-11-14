@@ -127,7 +127,7 @@ public class AvanceDinamicoTest {
 
 	/*** Tests dados 11 -12 ***/
 	@Test
-	public void test10JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedades() {
+	public void test10JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedadesSinPropiedades() {
 		Jugador jugador = new Jugador(); // propiedades = 0
 		jugador.setUltimaTirada(11);
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
@@ -140,7 +140,36 @@ public class AvanceDinamicoTest {
 	}
 
 	@Test
-	public void test11JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedades() {
+	public void test11JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedadesConPropiedades() {
+		Jugador jugador = new Jugador(); 
+		jugador.comprarPropiedad(new Propiedad());
+		jugador.setUltimaTirada(11);
+		AvanceDinamico avanceDinamico = new AvanceDinamico();
+
+		int indiceActual = jugador.getPosicion();
+		avanceDinamico.recibirJugador(jugador);
+		int indiceFinal = jugador.getPosicion();
+
+		Assert.assertEquals(indiceActual + (11 - 1), indiceFinal);
+	}
+	
+	@Test
+	public void test12JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedadesConPropiedadesMayorA11() {
+		Jugador jugador = new Jugador(); 
+		for (int i=0; i<20; i++)
+			jugador.comprarPropiedad(new Propiedad());
+		jugador.setUltimaTirada(11);
+		AvanceDinamico avanceDinamico = new AvanceDinamico();
+
+		int indiceActual = jugador.getPosicion();
+		avanceDinamico.recibirJugador(jugador);
+		int indiceFinal = jugador.getPosicion();
+
+		Assert.assertEquals(indiceActual + (11 - 20), indiceFinal);
+	}
+	
+	@Test
+	public void test13JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedades() {
 		Jugador jugador = new Jugador(); // propiedades = 0
 		jugador.setUltimaTirada(12);
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
@@ -150,5 +179,34 @@ public class AvanceDinamicoTest {
 		int indiceFinal = jugador.getPosicion();
 
 		Assert.assertEquals(indiceActual + (12 - 0), indiceFinal);
+	}
+	
+	@Test
+	public void test14JugadorCaeEnAvanceDinamicoTirando12Avanza11MenosSuCantidadDePropiedadesConPropiedades() {
+		Jugador jugador = new Jugador(); 
+		jugador.comprarPropiedad(new Propiedad());
+		jugador.setUltimaTirada(12);
+		AvanceDinamico avanceDinamico = new AvanceDinamico();
+
+		int indiceActual = jugador.getPosicion();
+		avanceDinamico.recibirJugador(jugador);
+		int indiceFinal = jugador.getPosicion();
+
+		Assert.assertEquals(indiceActual + (12 - 1), indiceFinal);
+	}
+	
+	@Test
+	public void test15JugadorCaeEnAvanceDinamicoTirando12Avanza11MenosSuCantidadDePropiedadesConPropiedadesMayorA12() {
+		Jugador jugador = new Jugador(); 
+		for (int i=0; i<20; i++)
+			jugador.comprarPropiedad(new Propiedad());
+		jugador.setUltimaTirada(12);
+		AvanceDinamico avanceDinamico = new AvanceDinamico();
+
+		int indiceActual = jugador.getPosicion();
+		avanceDinamico.recibirJugador(jugador);
+		int indiceFinal = jugador.getPosicion();
+
+		Assert.assertEquals(indiceActual + (12 - 20), indiceFinal);
 	}
 }

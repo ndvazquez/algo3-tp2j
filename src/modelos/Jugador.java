@@ -50,5 +50,17 @@ public class Jugador {
     public Integer getCantidadPropiedades() {
         return this.propiedades.size();
     }
+    
+    public boolean puedeMoverse() {
+    	return this.posicion != Carcel.POSICION;
+    }
+    
+    public void irALaCarcel() {
+    	this.posicion = Carcel.POSICION;
+    }
+
+	public void comprarPropiedad(Propiedad propiedad) {
+		this.propiedades.add(propiedad);
+	}
 
 }

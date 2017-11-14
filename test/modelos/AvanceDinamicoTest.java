@@ -169,7 +169,7 @@ public class AvanceDinamicoTest {
 	}
 	
 	@Test
-	public void test13JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedades() {
+	public void test13JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedadesSinPropiedades() {
 		Jugador jugador = new Jugador(); // propiedades = 0
 		jugador.setUltimaTirada(12);
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
@@ -182,7 +182,7 @@ public class AvanceDinamicoTest {
 	}
 	
 	@Test
-	public void test14JugadorCaeEnAvanceDinamicoTirando12Avanza11MenosSuCantidadDePropiedadesConPropiedades() {
+	public void test14JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedadesConPropiedades() {
 		Jugador jugador = new Jugador(); 
 		jugador.comprarPropiedad(new Propiedad());
 		jugador.setUltimaTirada(12);
@@ -196,7 +196,7 @@ public class AvanceDinamicoTest {
 	}
 	
 	@Test
-	public void test15JugadorCaeEnAvanceDinamicoTirando12Avanza11MenosSuCantidadDePropiedadesConPropiedadesMayorA12() {
+	public void test15JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedadesConPropiedadesMayorA12() {
 		Jugador jugador = new Jugador(); 
 		for (int i=0; i<20; i++)
 			jugador.comprarPropiedad(new Propiedad());

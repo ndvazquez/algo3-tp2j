@@ -10,7 +10,7 @@ public class Jugador {
 
     private Integer posicion;
 
-    private ArrayList<Casillero> propiedades;
+    private ArrayList<Propiedad> propiedades;
 
     private Integer capital;
 
@@ -19,9 +19,9 @@ public class Jugador {
     public Jugador() {
         this.posicion = 0;
         this.ultimaTirada = 0;
-        this.capital = new Integer(100000);
         this.estado = new Habilitado();
-        this.propiedades = new ArrayList<Casillero>();
+        this.capital = 100000;
+        this.propiedades = new ArrayList<Propiedad>();
     }
 
     public void incrementarCapital(Integer aumento) {
@@ -40,6 +40,9 @@ public class Jugador {
         this.posicion -= casilleros;
     }
 
+    public void setPosicion(Integer nuevaPosicion){
+        this.posicion = nuevaPosicion;
+    }
     public Integer getPosicion() {
         return this.posicion;
     }
@@ -55,6 +58,10 @@ public class Jugador {
     public Integer getCantidadPropiedades() {
         return this.propiedades.size();
     }
+
+	public void comprarPropiedad(Propiedad propiedad) {
+		this.propiedades.add(propiedad);
+	}
 
 	public void caerEnCasillero(Casillero casillero) {
 		casillero.recibirJugador(this);

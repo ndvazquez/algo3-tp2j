@@ -4,7 +4,7 @@ public class AvanceDinamico implements Casillero {
 
     @Override
     public void recibirJugador(Jugador jugador) {
-        Integer movimientos = null;
+        Integer movimientos;
 
         Integer ultimaTirada = jugador.getUltimaTirada();
         if (ultimaTirada <= 6) {

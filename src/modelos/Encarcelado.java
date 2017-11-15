@@ -11,12 +11,10 @@ public class Encarcelado implements Estado {
 	}
 
 	public boolean puedeMoverse() {
-		
 		return false;
 	}
 
 	public boolean puedeEjecutarAcciones() {
-		
 		return this.turnosEnCarcel > 1;
 	}
 
@@ -30,7 +28,6 @@ public class Encarcelado implements Estado {
 		if(this.turnosEnCarcel == 4) {
 			jugador.habilitar();
 		}
-		
 	}
 
 }

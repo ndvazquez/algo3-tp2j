@@ -28,7 +28,8 @@ public class HabilitadoTest {
 
 		habilitado.iniciarTurno();
 
-		Assert.assertTrue(true);
+		Assert.assertTrue(habilitado.puedeEjecutarAcciones());
+		Assert.assertTrue(habilitado.puedeMoverse());
 	}
 
 }

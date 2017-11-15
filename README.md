@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/ndvazquez/algo3-tp2j.svg?token=5yxYEqtupHRKE4zpUYTe&branch=master)](https://travis-ci.com/ndvazquez/algo3-tp2j)
 # Trabajo Práctico 2: AlgoPoly
 
 Este repositorio corresponde al TP2 grupal de la materia Algoritmos y Programación III.

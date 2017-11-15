@@ -8,7 +8,7 @@ public class Jugador {
 
     private Integer posicion;
 
-    private ArrayList<Casillero> propiedades;
+    private ArrayList<Propiedad> propiedades;
 
     private Integer capital;
 
@@ -16,7 +16,7 @@ public class Jugador {
         this.posicion = 0;
         this.ultimaTirada = 0;
         this.capital = 100000;
-        this.propiedades = new ArrayList<Casillero>();
+        this.propiedades = new ArrayList<Propiedad>();
     }
 
     public void incrementarCapital(Integer aumento) {

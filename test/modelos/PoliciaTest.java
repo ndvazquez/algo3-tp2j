@@ -3,10 +3,6 @@ package modelos;
 import org.junit.Assert;
 import org.junit.Test;
 
-import modelos.Carcel;
-import modelos.Jugador;
-import modelos.Policia;
-
 public class PoliciaTest {
 	
 	@Test
@@ -19,6 +15,7 @@ public class PoliciaTest {
 		policia.recibirJugador(jugadorPrueba);
 
 		Assert.assertEquals(jugadorPrueba.getPosicion(), Carcel.POSICION);
+		Assert.assertFalse(jugadorPrueba.puedeMoverse());
 	}
 
 	@Test

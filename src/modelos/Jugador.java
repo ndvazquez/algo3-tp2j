@@ -3,6 +3,8 @@ package modelos;
 import java.util.ArrayList;
 
 public class Jugador {
+	
+	private static final Integer FIANZA = 45000;
 
     private Integer ultimaTirada;
 
@@ -12,9 +14,12 @@ public class Jugador {
 
     private Integer capital;
 
+	private Estado estado;
+
     public Jugador() {
         this.posicion = 0;
         this.ultimaTirada = 0;
+        this.estado = new Habilitado();
         this.capital = 100000;
         this.propiedades = new ArrayList<Propiedad>();
     }
@@ -35,6 +40,9 @@ public class Jugador {
         this.posicion -= casilleros;
     }
 
+    public void setPosicion(Integer nuevaPosicion){
+        this.posicion = nuevaPosicion;
+    }
     public Integer getPosicion() {
         return this.posicion;
     }
@@ -50,17 +58,42 @@ public class Jugador {
     public Integer getCantidadPropiedades() {
         return this.propiedades.size();
     }
-    
-    public boolean puedeMoverse() {
-    	return this.posicion != Carcel.POSICION;
-    }
-    
-    public void irALaCarcel() {
-    	this.posicion = Carcel.POSICION;
-    }
 
 	public void comprarPropiedad(Propiedad propiedad) {
 		this.propiedades.add(propiedad);
 	}
 
+	public void caerEnCasillero(Casillero casillero) {
+		casillero.recibirJugador(this);
+	}
+
+	public boolean puedeEjecutarAcciones() {
+		return estado.puedeEjecutarAcciones();
+	}
+
+	public boolean puedeMoverse() {
+		return estado.puedeMoverse();
+	}
+
+	public void iniciarTurno() {
+		this.estado.iniciarTurno();
+	}
+
+	public void encarcelar() {
+		this.estado = new Encarcelado(this);
+	}
+
+	public void habilitar() {
+		this.estado = new Habilitado();
+	}
+	
+	public void pagarFianza() {
+		
+		if(this.puedeEjecutarAcciones() && this.capital >= 45000) {
+			
+			this.capital -= FIANZA;
+			this.estado = new Habilitado();
+		}
+	}
+	
 }

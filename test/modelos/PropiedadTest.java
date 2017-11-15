@@ -1,9 +1,7 @@
 package modelos;
 
-import org.junit.Test;
 import org.junit.Assert;
-import modelos.Jugador;
-import modelos.Propiedad;
+import org.junit.Test;
 
 public class PropiedadTest {
 	

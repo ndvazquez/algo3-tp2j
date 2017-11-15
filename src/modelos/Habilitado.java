@@ -12,4 +12,9 @@ public class Habilitado implements Estado {
 
 		return true;
 	}
+
+	@Override
+	public void iniciarTurno() {
+
+	}
 }

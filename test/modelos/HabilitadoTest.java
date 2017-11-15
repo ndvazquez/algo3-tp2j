@@ -6,7 +6,7 @@ import org.junit.Test;
 public class HabilitadoTest {
 	
 	@Test
-	public void testPuedeMoverseEsTrueEnEstadoHabilitado() {
+	public void test01PuedeMoverseEsTrueEnEstadoHabilitado() {
 		
 		Habilitado habilitado = new Habilitado();
 		
@@ -14,11 +14,21 @@ public class HabilitadoTest {
 	}
 	
 	@Test
-	public void testPuedeEjecutarAccionesEsTrueEnEstadoHabilitado() {
+	public void test02PuedeEjecutarAccionesEsTrueEnEstadoHabilitado() {
 		
 		Habilitado habilitado = new Habilitado();
 		
 		Assert.assertTrue(habilitado.puedeEjecutarAcciones());
+	}
+	
+	@Test
+	public void test03IniciarTurnoNoTieneEfectoEnEstadoHabilitado() {
+		
+		Habilitado habilitado = new Habilitado();
+		
+		habilitado.iniciarTurno();
+		
+		Assert.assertTrue(true);
 	}
 	
 }

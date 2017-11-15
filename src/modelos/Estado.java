@@ -6,4 +6,6 @@ public interface Estado {
 	
 	public boolean puedeEjecutarAcciones();
 
+	public void iniciarTurno();
+
 }

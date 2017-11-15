@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Jugador {
 	
-	private final Integer FIANZA = 45000;
+	private static final Integer FIANZA = 45000;
 
     private Integer ultimaTirada;
 

@@ -2,11 +2,12 @@ package modelos;
 
 public class Habilitado implements Estado {
 
-	
+    @Override
 	public boolean puedeMoverse() {
 		return true;
 	}
 
+	@Override
 	public boolean puedeEjecutarAcciones() {
 		return true;
 	}

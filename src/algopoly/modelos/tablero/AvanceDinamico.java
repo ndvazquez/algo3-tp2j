@@ -1,6 +1,8 @@
-package modelos;
+package algopoly.modelos.tablero;
 
-public class RetrocesoDinamico implements Casillero {
+import algopoly.modelos.jugador.Jugador;
+
+public class AvanceDinamico implements Casillero {
 
     @Override
     public void recibirJugador(Jugador jugador) {
@@ -8,13 +10,14 @@ public class RetrocesoDinamico implements Casillero {
 
         Integer ultimaTirada = jugador.getUltimaTirada();
         if (ultimaTirada <= 6) {
-            movimientos = ultimaTirada - jugador.getCantidadPropiedades();
+            movimientos = ultimaTirada - 2;
         } else if (ultimaTirada <= 10) {
             movimientos = jugador.getCapital() % ultimaTirada;
         } else {
-            movimientos = ultimaTirada - 2;
+            movimientos = ultimaTirada - jugador.getCantidadPropiedades();
         }
 
-        jugador.retroceder(movimientos);
+        jugador.avanzar(movimientos);
     }
+
 }

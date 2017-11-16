@@ -1,4 +1,4 @@
-package modelos;
+package algopoly.modelos.jugador;
 
 public interface Estado {
 	

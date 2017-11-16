@@ -1,4 +1,7 @@
-package modelos;
+package algopoly.modelos.jugador;
+
+import algopoly.modelos.tablero.Casillero;
+import algopoly.modelos.tablero.Propiedad;
 
 import java.util.ArrayList;
 
@@ -43,6 +46,7 @@ public class Jugador {
     public void setPosicion(Integer nuevaPosicion){
         this.posicion = nuevaPosicion;
     }
+
     public Integer getPosicion() {
         return this.posicion;
     }

@@ -1,4 +1,6 @@
-package modelos;
+package algopoly.modelos.tablero;
+
+import algopoly.modelos.jugador.Jugador;
 
 import java.util.HashMap;
 

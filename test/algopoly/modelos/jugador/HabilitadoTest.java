@@ -1,4 +1,4 @@
-package modelos;
+package algopoly.modelos.jugador;
 
 import org.junit.Assert;
 import org.junit.Test;

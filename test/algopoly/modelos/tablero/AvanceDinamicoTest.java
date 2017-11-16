@@ -1,6 +1,7 @@
 
-package modelos;
+package algopoly.modelos.tablero;
 
+import algopoly.modelos.jugador.Jugador;
 import org.junit.Assert;
 import org.junit.Test;
 

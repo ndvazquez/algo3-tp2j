@@ -68,7 +68,6 @@ public class Jugador {
             this.capital -= propiedad.getPrecio();
             this.propiedades.add(propiedad);
         }
-
 	}
 
 	public void caerEnCasillero(Casillero casillero) {

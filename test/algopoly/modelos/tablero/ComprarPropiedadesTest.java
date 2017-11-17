@@ -1,6 +1,7 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,8 +9,10 @@ public class ComprarPropiedadesTest {
 
     @Test
     public void test01UnJugadorCompraBuenosAiresZonaSurYSuCapitalSeReduce(){
+        PropiedadFactory propiedadFactory = new PropiedadFactory();
+        Region regionBuenosAires = new Region();
         Jugador jugadorPrueba = new Jugador(); // capital inicial = 100000
-        BuenosAiresZonaSur buenosAiresZonaSur = new BuenosAiresZonaSur(); // valor = 20000
+        Propiedad buenosAiresZonaSur = propiedadFactory.crearPropiedadRegional(20000, regionBuenosAires); // valor = 20000
 
         jugadorPrueba.comprarPropiedad(buenosAiresZonaSur);
 
@@ -21,8 +24,10 @@ public class ComprarPropiedadesTest {
 
     @Test
     public void test02UnJugadorCompraBuenosAiresZonaNorteYSuCapitalSeReduce(){
+        Region regionBuenosAires = new Region();
+        PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugadorPrueba = new Jugador(); // capital inicial = 100000
-        BuenosAiresZonaNorte buenosAiresZonaNorte = new BuenosAiresZonaNorte(); // valor = 25000
+        Propiedad buenosAiresZonaNorte = propiedadFactory.crearPropiedadRegional(25000, regionBuenosAires); // valor = 25000
 
         jugadorPrueba.comprarPropiedad(buenosAiresZonaNorte);
 
@@ -34,8 +39,10 @@ public class ComprarPropiedadesTest {
 
     @Test
     public void test03UnJugadorCompraCordobaSurYSuCapitalSeReduce(){
+        Region regionCordoba = new Region();
+        PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugadorPrueba = new Jugador(); // capital inicial = 100000
-        CordobaSur cordobaSur = new CordobaSur(); // valor = 18000
+        Propiedad cordobaSur = propiedadFactory.crearPropiedadRegional(18000, regionCordoba); // valor = 18000
 
         jugadorPrueba.comprarPropiedad(cordobaSur);
 
@@ -47,8 +54,10 @@ public class ComprarPropiedadesTest {
 
     @Test
     public void test04UnJugadorCompraCordobaNorteYSuCapitalSeReduce(){
+        Region regionCordoba = new Region();
+        PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugadorPrueba = new Jugador(); // capital inicial = 100000
-        CordobaNorte cordobaNorte = new CordobaNorte(); // valor = 20000
+        Propiedad cordobaNorte = propiedadFactory.crearPropiedadRegional(20000, regionCordoba); // valor = 20000
 
         jugadorPrueba.comprarPropiedad(cordobaNorte);
 
@@ -59,8 +68,9 @@ public class ComprarPropiedadesTest {
 
     @Test
     public void test05UnJugadorCompraSantaFeYSuCapitalSeReduce(){
+        PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugadorPrueba = new Jugador(); // capital inicial = 100000
-        SantaFe santaFe = new SantaFe(); // valor = 15000
+        Propiedad santaFe = propiedadFactory.crearPropiedadSimple(15000); // valor = 15000
 
         jugadorPrueba.comprarPropiedad(santaFe);
 
@@ -71,8 +81,10 @@ public class ComprarPropiedadesTest {
 
     @Test
     public void test06UnJugadorCompraSaltaNorteYSuCapitalSeReduce(){
+        Region regionSalta = new Region();
+        PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugadorPrueba = new Jugador(); // capital inicial = 100000
-        SaltaNorte saltaNorte = new SaltaNorte(); // valor = 23000
+        Propiedad saltaNorte = propiedadFactory.crearPropiedadRegional(23000, regionSalta); // valor = 23000
 
         jugadorPrueba.comprarPropiedad(saltaNorte);
 
@@ -83,8 +95,10 @@ public class ComprarPropiedadesTest {
 
     @Test
     public void test07UnJugadorCompraSaltaSurYSuCapitalSeReduce(){
+        Region regionSalta = new Region();
+        PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugadorPrueba = new Jugador(); // capital inicial = 100000
-        SaltaSur saltaSur = new SaltaSur(); // valor = 23000
+        Propiedad saltaSur = propiedadFactory.crearPropiedadRegional(23000, regionSalta); // valor = 23000
 
         jugadorPrueba.comprarPropiedad(saltaSur);
 
@@ -95,8 +109,9 @@ public class ComprarPropiedadesTest {
 
     @Test
     public void test08UnJugadorCompraNeuquenYSuCapitalSeReduce(){
+        PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugadorPrueba = new Jugador(); // capital inicial = 100000
-        Neuquen neuquen = new Neuquen(); // valor = 17000
+        Propiedad neuquen = propiedadFactory.crearPropiedadSimple(17000); // valor = 17000
 
         jugadorPrueba.comprarPropiedad(neuquen);
 
@@ -107,8 +122,9 @@ public class ComprarPropiedadesTest {
 
     @Test
     public void test09UnJugadorCompraTucumanYSuCapitalSeReduce(){
+        PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugadorPrueba = new Jugador(); // capital inicial = 100000
-        Tucuman tucuman = new Tucuman(); // valor = 25000
+        Propiedad tucuman = propiedadFactory.crearPropiedadSimple(25000); // valor = 25000
 
         jugadorPrueba.comprarPropiedad(tucuman);
 

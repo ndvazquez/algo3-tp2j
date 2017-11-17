@@ -16,7 +16,7 @@ public class Quini6Test {
 
         int capitalJugador = jugadorPrueba.getCapital();
 
-        Assert.assertEquals(capitalJugador, 150000);
+        Assert.assertEquals(150000, capitalJugador);
     }
 
     @Test

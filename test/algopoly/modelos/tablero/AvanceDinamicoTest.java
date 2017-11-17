@@ -144,7 +144,7 @@ public class AvanceDinamicoTest {
 	@Test
 	public void test11JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedadesConPropiedades() {
 		Jugador jugador = new Jugador();
-		jugador.comprarPropiedad(Mockito.mock(Propiedad.class));
+		jugador.comprarPropiedad(Mockito.mock(PropiedadSimple.class));
 		jugador.setUltimaTirada(11);
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
@@ -159,7 +159,7 @@ public class AvanceDinamicoTest {
 	public void test12JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedadesConPropiedadesMayorA11() {
 		Jugador jugador = new Jugador();
 		for (int i=0; i<20; i++)
-			jugador.comprarPropiedad(Mockito.mock(Propiedad.class));
+			jugador.comprarPropiedad(Mockito.mock(PropiedadSimple.class));
 		jugador.setUltimaTirada(11);
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
@@ -186,7 +186,7 @@ public class AvanceDinamicoTest {
 	@Test
 	public void test14JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedadesConPropiedades() {
 		Jugador jugador = new Jugador();
-		jugador.comprarPropiedad(Mockito.mock(Propiedad.class));
+		jugador.comprarPropiedad(Mockito.mock(PropiedadSimple.class));
 		jugador.setUltimaTirada(12);
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
@@ -201,7 +201,7 @@ public class AvanceDinamicoTest {
 	public void test15JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedadesConPropiedadesMayorA12() {
 		Jugador jugador = new Jugador();
 		for (int i=0; i<20; i++)
-			jugador.comprarPropiedad(Mockito.mock(Propiedad.class));
+			jugador.comprarPropiedad(Mockito.mock(PropiedadSimple.class));
 		jugador.setUltimaTirada(12);
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 

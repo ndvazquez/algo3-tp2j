@@ -2,26 +2,10 @@ package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
 
-public abstract class Propiedad implements Casillero {
-	
-	private Jugador propietario;
+public interface Propiedad {
 
-	private Integer precio;
+    Jugador getPropietario();
 
-	public Propiedad(Integer precio){
-		this.precio = precio;
-	}
+    Integer getPrecio();
 
-	public void recibirJugador(Jugador jugador) {
-		jugador.comprarPropiedad(this);
-		this.propietario = jugador;
-	}
-	
-	public Jugador getPropietario() {
-		return this.propietario;
-	}
-
-	public Integer getPrecio(){
-		return this.precio;
-	}
 }

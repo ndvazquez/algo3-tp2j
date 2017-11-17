@@ -9,7 +9,11 @@ public class Jugador {
 	
 	private static final Integer FIANZA = 45000;
 
-    private Integer ultimaTirada;
+	public static final double RADIO = 20;
+
+    private Dado dado1;
+    
+    private Dado dado2;
 
     private Integer posicion;
 
@@ -21,7 +25,8 @@ public class Jugador {
 
     public Jugador() {
         this.posicion = 0;
-        this.ultimaTirada = 0;
+        this.dado1 = new Dado();
+        this.dado2 = new Dado();
         this.estado = new Habilitado();
         this.capital = 100000;
         this.propiedades = new ArrayList<Propiedad>();
@@ -32,7 +37,7 @@ public class Jugador {
     }
 
     public Integer getUltimaTirada() {
-        return this.ultimaTirada;
+        return this.dado1.getUltimaTirada() + this.dado2.getUltimaTirada();
     }
 
     public void avanzar(Integer casilleros) {
@@ -46,13 +51,8 @@ public class Jugador {
     public void setPosicion(Integer nuevaPosicion){
         this.posicion = nuevaPosicion;
     }
-
     public Integer getPosicion() {
         return this.posicion;
-    }
-
-    public void setUltimaTirada(Integer ultimaTirada) {
-        this.ultimaTirada = ultimaTirada;
     }
 
     public Integer getCapital() {
@@ -81,6 +81,8 @@ public class Jugador {
 
 	public void iniciarTurno() {
 		this.estado.iniciarTurno();
+		
+		this.avanzar(this.tirar());
 	}
 
 	public void encarcelar() {
@@ -99,5 +101,11 @@ public class Jugador {
 			this.estado = new Habilitado();
 		}
 	}
-	
+
+	public Integer tirar() {
+		Integer valor1 = this.dado1.tirar();
+		Integer valor2 = this.dado2.tirar();
+		return valor1 + valor2;
+	}
+
 }

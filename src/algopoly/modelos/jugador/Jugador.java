@@ -1,13 +1,16 @@
 package algopoly.modelos.jugador;
 
+import algopoly.modelos.tablero.Casa;
 import algopoly.modelos.tablero.Casillero;
 import algopoly.modelos.tablero.Propiedad;
+import algopoly.modelos.tablero.PropiedadRegional;
 
 import java.util.ArrayList;
 
 public class Jugador {
 	
 	private static final Integer FIANZA = 45000;
+	public static final Integer CAPITAL_INICIAL = 100000;
 
     private Integer ultimaTirada;
 
@@ -23,7 +26,7 @@ public class Jugador {
         this.posicion = 0;
         this.ultimaTirada = 0;
         this.estado = new Habilitado();
-        this.capital = 100000;
+        this.capital = CAPITAL_INICIAL;
         this.propiedades = new ArrayList<Propiedad>();
     }
 
@@ -64,6 +67,7 @@ public class Jugador {
     }
 
 	public void comprarPropiedad(Propiedad propiedad) {
+		this.capital -= propiedad.getPrecio();
 		this.propiedades.add(propiedad);
 	}
 
@@ -98,6 +102,22 @@ public class Jugador {
 			this.capital -= FIANZA;
 			this.estado = new Habilitado();
 		}
+	}
+
+	public void comprarConstruccion(Propiedad propiedad) {
+		this.capital -= propiedad.getPrecioCasa();
+		propiedad.construir();
+		
+	}
+
+	public void pagarAlquiler(Jugador jugadorQueCobra, Propiedad propiedad) {
+		Integer precioAlquiler = propiedad.getPrecioAlquiler();
+		this.capital -= precioAlquiler;
+		jugadorQueCobra.cobrarAlquiler(precioAlquiler);
+	}
+
+	private void cobrarAlquiler(Integer precioAlquiler) {
+		this.capital += precioAlquiler;
 	}
 	
 }

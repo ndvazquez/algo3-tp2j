@@ -1,17 +1,20 @@
 package algopoly.modelos.tablero;
 
+import algopoly.modelos.excepciones.PropiedadSinJugadorError;
 import algopoly.modelos.jugador.Jugador;
 
-public class Propiedad implements Casillero {
+public interface Propiedad {
 	
-	private Jugador propietario;
+	Jugador getPropietario() throws PropiedadSinJugadorError;
 	
-	public void recibirJugador(Jugador jugador) {
-		jugador.comprarPropiedad(this);
-		this.propietario = jugador;
-	}
+	Integer getPrecio();
+
+	Integer getPrecioCasa();
 	
-	public Jugador getPropietario() {
-		return this.propietario;
-	}
+	Integer getPrecioHotel();
+
+	void construir();
+
+	Integer getPrecioAlquiler();
+
 }

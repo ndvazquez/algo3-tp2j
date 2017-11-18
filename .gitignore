@@ -10,3 +10,4 @@ bin/
 build.xml.old
 *.jar
 bin/
+/.metadata/

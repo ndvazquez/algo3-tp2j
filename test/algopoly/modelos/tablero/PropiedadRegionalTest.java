@@ -7,6 +7,21 @@ import org.junit.Test;
 public class PropiedadRegionalTest {
 	
 	@Test
+    public void test01UnJugadorCaeEnUnaPropiedadRegionalYSeVuelvePropietario(){
+        Region region = new Region(Region.ZONASUR);
+        Jugador jugadorPrueba = new Jugador();
+        PropiedadRegional propiedadSimple = new PropiedadRegional(0, region);
+
+
+        propiedadSimple.recibirJugador(jugadorPrueba);
+
+        int cantidadPropiedades = jugadorPrueba.getCantidadPropiedades();
+
+        Assert.assertEquals(cantidadPropiedades, 1);
+        Assert.assertEquals(propiedadSimple.getPropietario(), jugadorPrueba);
+    }
+	
+	@Test
 	public void test02JugadorPoseePropiedadRegionalYConstruyeUnaCasa() {
 		
 		Jugador jugadorPrueba = new Jugador();

@@ -5,22 +5,17 @@ import java.util.HashMap;
 import algopoly.modelos.excepciones.PropiedadSinJugadorError;
 import algopoly.modelos.jugador.Jugador;
 
-public class PropiedadRegional implements Casillero, Propiedad {
+public class PropiedadRegional extends PropiedadSimple implements Casillero, Propiedad {
 
     private Jugador propietario;
-
-    private Integer precio;
-
     private Region region;
-    
+    private Integer precio;
     private Integer precioCasa;
-    
     private Integer precioHotel;
-    
     private Construccion construccion;
 
     public PropiedadRegional(Integer precio, Region region, Integer precioCasa, Integer precioHotel){
-        this.precio = precio;
+    	this.precio = precio;
         this.region = region;
         this.precioCasa = precioCasa;
         this.precioHotel = precioHotel;

@@ -1,11 +1,10 @@
 package algopoly.modelos.tablero;
 
-import algopoly.modelos.excepciones.PropiedadSinJugadorError;
 import algopoly.modelos.jugador.Jugador;
 
 public interface Propiedad {
 	
-	Jugador getPropietario() throws PropiedadSinJugadorError;
+	Jugador getPropietario();
 	
 	Integer getPrecio();
 

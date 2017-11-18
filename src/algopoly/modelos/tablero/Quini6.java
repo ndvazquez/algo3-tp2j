@@ -9,17 +9,16 @@ import java.util.Queue;
 
 public class Quini6 implements Casillero {
 
-    private HashMap<Jugador, Queue<Ticket>> jugadores;
+    private HashMap<Jugador, Queue<Ticket>> premios;
+    
     private Ticket ticketNoPremio;
 
-    public Quini6() {
-        this.jugadores = new HashMap<>();
-        this.ticketNoPremio = new Ticket(0);
-    }
+    public Quini6(ArrayList<Jugador> jugadores) {
+        this.premios = new HashMap<>();
 
-    @Override
-    public void recibirJugador(Jugador jugador){
-        if(!jugadores.containsKey(jugador)) {
+        this.ticketNoPremio = new Ticket(0);
+
+        for (Jugador jugador: jugadores) {
             Queue<Ticket> tickets = new LinkedList<>();
             Ticket ticketPrimerPremio = new Ticket(50000);
             Ticket ticketSegundoPremio = new Ticket(30000);
@@ -27,10 +26,15 @@ public class Quini6 implements Casillero {
             tickets.add(ticketPrimerPremio);
             tickets.add(ticketSegundoPremio);
 
-            jugadores.put(jugador, tickets);
+            premios.put(jugador, tickets);
         }
-        int premio = jugadores.get(jugador).remove().getPremio();
-        jugadores.get(jugador).add(ticketNoPremio);
+    }
+
+    @Override
+    public void recibirJugador(Jugador jugador){
+        int premio = premios.get(jugador).remove().getPremio();
+
+        premios.get(jugador).add(ticketNoPremio);
 
         jugador.incrementarCapital(premio);
     }

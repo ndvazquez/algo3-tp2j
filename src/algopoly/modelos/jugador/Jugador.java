@@ -79,8 +79,6 @@ public class Jugador {
 
 	public void iniciarTurno() {
 		this.estado.iniciarTurno();
-		
-		this.avanzar(this.tirar());
 	}
 
 	public void encarcelar() {

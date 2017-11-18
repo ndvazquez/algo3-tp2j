@@ -11,7 +11,7 @@ public class PropiedadSimpleTest {
 	public void test01jugadorCaeEnUnaPropiedadSimpleYSeConvierteEnPropietario() {
 
 		Jugador jugadorPrueba = new Jugador();
-		PropiedadSimple propiedadSimple = new PropiedadSimple(0);
+		PropiedadSimple propiedadSimple = new PropiedadSimple(0, 0, 0);
 
 
 		propiedadSimple.recibirJugador(jugadorPrueba);

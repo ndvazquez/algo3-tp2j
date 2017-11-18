@@ -5,7 +5,7 @@ import java.util.HashMap;
 import algopoly.modelos.excepciones.PropiedadSinJugadorError;
 import algopoly.modelos.jugador.Jugador;
 
-public class PropiedadRegional extends PropiedadSimple implements Casillero, Propiedad {
+public class PropiedadRegional implements Casillero, Propiedad {
 
     private Jugador propietario;
     private Region region;

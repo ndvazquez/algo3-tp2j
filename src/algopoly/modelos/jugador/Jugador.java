@@ -9,8 +9,6 @@ public class Jugador {
 	
 	private static final Integer FIANZA = 45000;
 
-	public static final double RADIO = 20;
-
     private Dado dado1;
     
     private Dado dado2;

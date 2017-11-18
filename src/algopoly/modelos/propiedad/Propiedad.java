@@ -1,4 +1,4 @@
-package algopoly.modelos.tablero;
+package algopoly.modelos.propiedad;
 
 import algopoly.modelos.jugador.Jugador;
 
@@ -9,10 +9,8 @@ public interface Propiedad {
 	Integer getPrecio();
 
 	Integer getPrecioCasa();
-	
-	Integer getPrecioHotel();
 
-	void construir();
+	boolean construir();
 
 	Integer getPrecioAlquiler();
 

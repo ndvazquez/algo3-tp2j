@@ -1,6 +1,10 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.propiedad.Cte;
+import algopoly.modelos.propiedad.PropiedadRegional;
+import algopoly.modelos.propiedad.Region;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -62,6 +66,8 @@ public class PropiedadRegionalTest {
 		
 		int capital = jugador2.getCapital();
 
-		Assert.assertEquals(98000, capital);
+		Assert.assertEquals(100000, capital);
 	}
+	
+	
 }

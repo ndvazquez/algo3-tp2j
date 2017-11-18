@@ -1,6 +1,9 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.propiedad.Propiedad;
+import algopoly.modelos.propiedad.PropiedadFactory;
+import algopoly.modelos.propiedad.Region;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,7 +22,6 @@ public class ComprarPropiedadesTest {
         int capitalFinal = jugadorPrueba.getCapital();
 
         Assert.assertEquals(80000, capitalFinal);
-
     }
 
     @Test
@@ -70,7 +72,7 @@ public class ComprarPropiedadesTest {
     public void test05UnJugadorCompraSantaFeYSuCapitalSeReduce(){
         PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugadorPrueba = new Jugador(); // capital inicial = 100000
-        Propiedad santaFe = propiedadFactory.crearPropiedadSimple(15000, 0, 0); // valor = 15000
+        Propiedad santaFe = propiedadFactory.crearPropiedadSimple(15000, 0); // valor = 15000
 
         jugadorPrueba.comprarPropiedad(santaFe);
 
@@ -111,7 +113,7 @@ public class ComprarPropiedadesTest {
     public void test08UnJugadorCompraNeuquenYSuCapitalSeReduce(){
         PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugadorPrueba = new Jugador(); // capital inicial = 100000
-        Propiedad neuquen = propiedadFactory.crearPropiedadSimple(17000, 0, 0); // valor = 17000
+        Propiedad neuquen = propiedadFactory.crearPropiedadSimple(17000, 0); // valor = 17000
 
         jugadorPrueba.comprarPropiedad(neuquen);
 
@@ -124,7 +126,7 @@ public class ComprarPropiedadesTest {
     public void test09UnJugadorCompraTucumanYSuCapitalSeReduce(){
         PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugadorPrueba = new Jugador(); // capital inicial = 100000
-        Propiedad tucuman = propiedadFactory.crearPropiedadSimple(25000, 0, 0); // valor = 25000
+        Propiedad tucuman = propiedadFactory.crearPropiedadSimple(25000, 0); // valor = 25000
 
         jugadorPrueba.comprarPropiedad(tucuman);
 

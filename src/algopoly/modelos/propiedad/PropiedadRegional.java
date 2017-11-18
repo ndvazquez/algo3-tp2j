@@ -1,9 +1,10 @@
-package algopoly.modelos.tablero;
+package algopoly.modelos.propiedad;
 
 import java.util.HashMap;
 
 import algopoly.modelos.excepciones.PropiedadSinJugadorError;
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.tablero.Casillero;
 
 public class PropiedadRegional implements Casillero, Propiedad {
 
@@ -12,31 +13,24 @@ public class PropiedadRegional implements Casillero, Propiedad {
     private Integer precio;
     private Integer precioCasa;
     private Integer precioHotel;
-    private Construccion construccion;
+    private EstadoPropiedad estado;
 
     public PropiedadRegional(Integer precio, Region region, Integer precioCasa, Integer precioHotel){
     	this.precio = precio;
         this.region = region;
         this.precioCasa = precioCasa;
         this.precioHotel = precioHotel;
+        this.estado = new SinPropietario();
     }
     
     @Override
     public void recibirJugador(Jugador jugador) {
-    	Jugador jugadorPrueba;
-    	try {
-    		// Si ya fue comprada
-    		jugadorPrueba = this.getPropietario();
-    		if ( jugadorPrueba == null ) {
-    			throw new PropiedadSinJugadorError();
-    		}
-    		jugador.pagarAlquiler(jugadorPrueba, this);
-    	} 
-    	catch (PropiedadSinJugadorError excep) {
-    		// Si no fue comprada
+    	if ( this.estado.tienePropietario() ) {
+    		jugador.pagarAlquiler(this.getPropietario(), this);
+    	} else {
     		jugador.comprarPropiedad(this);
             this.propietario = jugador;
-            this.construccion = new NoConstruccion();
+            this.estado = new ConPropietario();
     	}
     }
 
@@ -54,8 +48,7 @@ public class PropiedadRegional implements Casillero, Propiedad {
     public Integer getPrecioCasa() {
     	return this.precioCasa;
     }
-    
-    @Override
+ 
     public Integer getPrecioHotel() {
     	return this.precioHotel;
     }
@@ -63,11 +56,12 @@ public class PropiedadRegional implements Casillero, Propiedad {
     @Override 
     public Integer getPrecioAlquiler() {
     	// obtener alquiler segun construccion
-    	return Cte.BSAS_SUR_ALQUILER_SIMPLE;
+    	return 0;
     }
     
     @Override
-    public void construir() {
-    	this.construccion = new Casa();
+    public boolean construir() {
+    	// cambiar el estado de propietario.cantidad de construcciones a +1
+    	return false;
     }
 }

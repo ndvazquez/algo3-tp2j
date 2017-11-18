@@ -1,6 +1,7 @@
-package algopoly.modelos.tablero;
+package algopoly.modelos.propiedad;
 
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.tablero.Casillero;
 
 public class PropiedadSimple implements Casillero, Propiedad {
 	
@@ -10,20 +11,23 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	
 	private Integer precioCasa;
 	
-	private Integer precioHotel;
-	
-	private Construccion construccion;
+	private EstadoPropiedad estado;
 
-	public PropiedadSimple(Integer precio, Integer precioCasa, Integer precioHotel){
+	public PropiedadSimple(Integer precio, Integer precioCasa){
 		this.precio = precio;
 		this.precioCasa = precioCasa;
-		this.precioHotel = precioHotel;
+		this.estado = new SinPropietario();
 	}
 
 	@Override
 	public void recibirJugador(Jugador jugador) {
-		jugador.comprarPropiedad(this);
-		this.propietario = jugador;
+		if ( this.estado.tienePropietario() ) {
+    		jugador.pagarAlquiler(this.getPropietario(), this);
+    	} else {
+    		jugador.comprarPropiedad(this);
+            this.propietario = jugador;
+            this.estado = new ConPropietario();
+    	}
 	}
 
 	@Override
@@ -42,19 +46,17 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	}
 
 	@Override
-	public Integer getPrecioHotel() {
-		return this.precioHotel;
-	}
-
-	@Override
-	public void construir() {
-		this.construccion = new Casa();
+	public boolean construir() {
+		if (this.estado.puedeConstruir() ) {
+			this.estado.adicionarConstruccion();
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public Integer getPrecioAlquiler() {
-		return Cte.BSAS_SUR_ALQUILER_1CASA;
+		return 0;
 	}
-
 
 }

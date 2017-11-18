@@ -1,4 +1,4 @@
-package algopoly.modelos.tablero;
+package algopoly.modelos.propiedad;
 
 public class Region {
 

@@ -45,19 +45,15 @@ public class VistaTablero {
         	else 
         		offset = sur;
     		canvas.getGraphicsContext2D().setFill(color);
-	        canvas.getGraphicsContext2D().fillOval(posicion.getX() + offset, posicion.getY() + 250, jugador.RADIO, jugador.RADIO);
+	        canvas.getGraphicsContext2D().fillOval(posicion.getX() + offset, posicion.getY() + 250, Jugador.RADIO, Jugador.RADIO);
         } else {
         	if (direccion.equals(Direccion.oeste()))
         		offset = oeste;
         	else 
         		offset = este;
 	        canvas.getGraphicsContext2D().setFill(color);
-	        canvas.getGraphicsContext2D().fillOval(posicion.getX() + 250, posicion.getY() + offset, jugador.RADIO, jugador.RADIO);
+	        canvas.getGraphicsContext2D().fillOval(posicion.getX() + 250, posicion.getY() + offset, Jugador.RADIO, Jugador.RADIO);
         }
-    	
-    	/*Integer ultimaTirada = tablero.jugadorAcutal().getUltimaTirada();
-    	if (ultimaTirada != 0)
-    		canvas.getGraphicsContext2D().drawImage(Dado.getImage(ultimaTirada), 250,250);*/
 	}
 
 	public void clean() {

@@ -26,6 +26,7 @@ public class ContenedorPrincipal extends BorderPane {
 	VistaTablero vistaTablero;
 	Canvas canvasCentral;
 	VBox contenedorCentral;
+	VistaDados vistaDados;
 
 	public ContenedorPrincipal(Stage stage, Tablero tablero) {
 		this.setMenu(stage);
@@ -36,12 +37,15 @@ public class ContenedorPrincipal extends BorderPane {
 
 	private void setBotonera(Tablero tablero) {
 
+		Canvas canvasDados = new Canvas(50,50);
+		vistaDados = new VistaDados(tablero, canvasDados);
+		
 		Button botonMover = new Button();
 		botonMover.setText("Proximo turno");
-		BotonMoverHandler moveButtonHandler = new BotonMoverHandler(vistaTablero, tablero);
+		BotonMoverHandler moveButtonHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados);
 		botonMover.setOnAction(moveButtonHandler);
-
-		VBox contenedorVertical = new VBox(botonMover);
+		
+		VBox contenedorVertical = new VBox(botonMover, canvasDados);
 		contenedorVertical.setSpacing(10);
 		contenedorVertical.setPadding(new Insets(15));
 

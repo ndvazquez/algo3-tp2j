@@ -13,45 +13,75 @@ public class Tablero {
 	private ArrayList<Direccion> direcciones;
 	private ArrayList<Posicion> posiciones;
 	private Integer turnoActual;
-	
+
 	public Tablero() {
 		jugadores = new ArrayList<Jugador>();
 		jugadores.add(new Jugador());
 		jugadores.add(new Jugador());
 		jugadores.add(new Jugador());
-		
+
 		turnoActual = (new Random().nextInt(3));
-		
-		casilleros = new ArrayList<Casillero>();
-		casilleros.add(new Quini6());
-		Carcel carcel = new Carcel();
-		casilleros.add(carcel);
-		casilleros.add(new AvanceDinamico());
-		casilleros.add(new Policia(carcel));
-		casilleros.add(new RetrocesoDinamico());
-		
+
+		this.armarCasilleros();
 		this.armarListaDirecciones();
 		this.armarListaPosiciones();
 	}
-	
+
+	private void armarCasilleros() {
+		Carcel carcel = new Carcel();
+
+		Servicios serviciosTrenSubte = new Servicios();
+		Compania tren = new Compania(38000, 450, 800, serviciosTrenSubte);
+		Compania subte = new Compania(40000, 600, 1100, serviciosTrenSubte);
+		serviciosTrenSubte.agregarParDeCompanias(tren, subte);
+
+		Servicios serviciosEdesurAysa = new Servicios();
+		Compania edesur = new Compania(35000, 500, 1000, serviciosEdesurAysa);
+		Compania aysa = new Compania(30000, 300, 500, serviciosEdesurAysa);
+		serviciosEdesurAysa.agregarParDeCompanias(edesur, aysa);
+
+		casilleros = new ArrayList<Casillero>();
+		// salida
+		casilleros.add(new Quini6());
+		// bsassur
+		casilleros.add(edesur);
+		// bsasnorte
+		casilleros.add(carcel);
+		// cordoba
+		casilleros.add(new AvanceDinamico());
+		casilleros.add(subte);
+		// cordoba
+		// impuesto
+		// santafe
+		casilleros.add(aysa);
+		// salta
+		// salta
+		casilleros.add(new Policia(carcel));
+		casilleros.add(tren);
+		// neuquen
+		casilleros.add(new RetrocesoDinamico());
+		// tucuman1
+	}
+
 	public void moverJugador(Jugador jugador) {
-		
+
 	}
-	
+
 	public void ganador() {
-		
+
 	}
-	
+
 	public Jugador jugadorAcutal() {
 		return this.jugadores.get(this.turnoActual);
 	}
-	
+
 	public void proximoTurno() {
 		this.turnoActual = (this.turnoActual + 1) % 3;
 		Jugador jugador = this.jugadorAcutal();
 		jugador.iniciarTurno();
-		//Casillero casilleroActual = casilleros.get(jugador.getPosicion() % this.casilleros.size());
-		//casilleroActual.recibirJugador(jugador);
+		// Casillero casilleroActual = casilleros.get(jugador.getPosicion() %
+		// this.casilleros.size());
+		// casilleroActual.recibirJugador(jugador);
 	}
 
 	public List<Jugador> getJugadores() {

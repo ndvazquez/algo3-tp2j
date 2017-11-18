@@ -47,6 +47,6 @@ public class PropiedadRegionalTest {
 		
 		int capital = jugador2.getCapital();
 
-		Assert.assertEquals(97000, capital);
+		Assert.assertEquals(98000, capital);
 	}
 }

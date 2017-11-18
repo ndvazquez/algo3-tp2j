@@ -62,7 +62,10 @@ public class Jugador {
     }
 
 	public void comprarPropiedad(Propiedad propiedad) {
-		this.propiedades.add(propiedad);
+        if(this.capital - propiedad.getPrecio() > 0){
+            this.capital -= propiedad.getPrecio();
+            this.propiedades.add(propiedad);
+        }
 	}
 
 	public void caerEnCasillero(Casillero casillero) {

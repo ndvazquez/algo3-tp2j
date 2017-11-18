@@ -2,28 +2,41 @@ package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Quini6 implements Casillero {
-    /* Diccionario de jugadores, se utiliza para contar las visitas a la casilla */
-    private HashMap<Jugador, Integer> jugadoresRecibidos;
 
-    public Quini6() {
-        this.jugadoresRecibidos = new HashMap<>();
+    private HashMap<Jugador, Queue<Ticket>> premios;
+    
+    private Ticket ticketNoPremio;
+
+    public Quini6(ArrayList<Jugador> jugadores) {
+        this.premios = new HashMap<>();
+
+        this.ticketNoPremio = new Ticket(0);
+
+        for (Jugador jugador: jugadores) {
+            Queue<Ticket> tickets = new LinkedList<>();
+            Ticket ticketPrimerPremio = new Ticket(50000);
+            Ticket ticketSegundoPremio = new Ticket(30000);
+
+            tickets.add(ticketPrimerPremio);
+            tickets.add(ticketSegundoPremio);
+
+            premios.put(jugador, tickets);
+        }
     }
 
     @Override
-    public void recibirJugador(Jugador jugador) {
-        /* Si el jugador ya visitó la casilla se suma 1 a las visitas, en caso contrario se inicializan en 1 */
-        jugadoresRecibidos.put(
-                jugador, jugadoresRecibidos.containsKey(jugador) ? jugadoresRecibidos.get(jugador) + 1 : 1
-        );
+    public void recibirJugador(Jugador jugador){
+        int premio = premios.get(jugador).remove().getPremio();
 
-        if (jugadoresRecibidos.get(jugador) == 1) {
-            jugador.incrementarCapital(50000);
-        } else if (jugadoresRecibidos.get(jugador) == 2) {
-            jugador.incrementarCapital(30000);
-        }
+        premios.get(jugador).add(ticketNoPremio);
+
+        jugador.incrementarCapital(premio);
     }
 
 }

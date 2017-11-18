@@ -2,6 +2,8 @@ package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
 
+import org.mockito.Mockito;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -172,11 +174,12 @@ public class AvanceDinamicoTest {
 
 	@Test
 	public void test11JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedadesConPropiedades() {
-		Jugador jugador = new Jugador(); 
-		jugador.comprarPropiedad(new Propiedad());
+		Jugador jugador = new Jugador();
+		jugador.comprarPropiedad(Mockito.mock(PropiedadSimple.class));
 		Integer valor = jugador.tirar();
-		while (!valor.equals(11))
+		while (!valor.equals(11)) {
 			valor = jugador.tirar();
+		}
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
 		int indiceActual = jugador.getPosicion();
@@ -185,15 +188,18 @@ public class AvanceDinamicoTest {
 
 		Assert.assertEquals(indiceActual + (11 - 1), indiceFinal);
 	}
-	
+
 	@Test
 	public void test12JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedadesConPropiedadesMayorA11() {
-		Jugador jugador = new Jugador(); 
-		for (int i=0; i<20; i++)
-			jugador.comprarPropiedad(new Propiedad());
+
+		Jugador jugador = new Jugador();
+		for (int i=0; i<20; i++) {
+			jugador.comprarPropiedad(Mockito.mock(PropiedadSimple.class));
+		}
 		Integer valor = jugador.tirar();
-		while (!valor.equals(11))
+		while (!valor.equals(11)) {
 			valor = jugador.tirar();
+		}
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
 		int indiceActual = jugador.getPosicion();
@@ -202,13 +208,14 @@ public class AvanceDinamicoTest {
 
 		Assert.assertEquals(indiceActual + (11 - 20), indiceFinal);
 	}
-	
+
 	@Test
 	public void test13JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedadesSinPropiedades() {
 		Jugador jugador = new Jugador(); // propiedades = 0
 		Integer valor = jugador.tirar();
-		while (!valor.equals(12))
+		while (!valor.equals(12)) {
 			valor = jugador.tirar();
+		}
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
 		int indiceActual = jugador.getPosicion();
@@ -217,14 +224,15 @@ public class AvanceDinamicoTest {
 
 		Assert.assertEquals(indiceActual + (12 - 0), indiceFinal);
 	}
-	
+
 	@Test
 	public void test14JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedadesConPropiedades() {
-		Jugador jugador = new Jugador(); 
-		jugador.comprarPropiedad(new Propiedad());
+		Jugador jugador = new Jugador();
+		jugador.comprarPropiedad(Mockito.mock(PropiedadSimple.class));
 		Integer valor = jugador.tirar();
-		while (!valor.equals(12))
+		while (!valor.equals(12)) {
 			valor = jugador.tirar();
+		}
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
 		int indiceActual = jugador.getPosicion();
@@ -233,21 +241,22 @@ public class AvanceDinamicoTest {
 
 		Assert.assertEquals(indiceActual + (12 - 1), indiceFinal);
 	}
-	
+
 	@Test
 	public void test15JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedadesConPropiedadesMayorA12() {
-		Jugador jugador = new Jugador(); 
-		for (int i=0; i<20; i++)
-			jugador.comprarPropiedad(new Propiedad());
+		Jugador jugador = new Jugador();
+		for (int i=0; i<20; i++){
+			jugador.comprarPropiedad(Mockito.mock(PropiedadSimple.class));
+		}
 		Integer valor = jugador.tirar();
 		while (!valor.equals(12))
 			valor = jugador.tirar();
+
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
 		int indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
 		int indiceFinal = jugador.getPosicion();
-
 		Assert.assertEquals(indiceActual + (12 - 20), indiceFinal);
 	}
 }

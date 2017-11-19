@@ -6,9 +6,4 @@ public class SinPropietario implements EstadoPropiedad {
 	public boolean tienePropietario() {
 		return false;
 	}
-
-	@Override
-	public boolean puedeConstruir() {
-		return false;
-	}
 }

@@ -12,5 +12,5 @@ public interface Propiedad {
 
 	Integer getPrecioAlquiler();
 
-	boolean construir();
+	void construir();
 }

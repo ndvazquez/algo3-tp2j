@@ -3,7 +3,7 @@ package algopoly.modelos.propiedad;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public enum Terreno {
+public enum Provincia {
 	// nombre (precio,[Casa,Hotel],[alqSim,alq1Casa,alq2Casa,Hotel])
 	
 	BSAS_SUR (20000, new Integer[]{5000,8000}, new Integer[]{2000,3000,3500,5000}),
@@ -28,14 +28,22 @@ public enum Terreno {
 	private final ArrayList<Integer> construccion;
 	private final ArrayList<Integer> alquiler;
 	
-	Terreno(Integer precio, Integer[] construccion, Integer[] alquiler) {
+	Provincia(Integer precio, Integer[] construccion, Integer[] alquiler) {
 		this.precio = precio;
 		this.construccion = new ArrayList<>(Arrays.asList(construccion));
 		this.alquiler = new ArrayList<>(Arrays.asList(alquiler));
 	}
 	
-	Integer precio() {
+	public Integer precio() {
 		return precio;
+	}
+	
+	public ArrayList<Integer> construcciones() {
+		return this.construccion;
+	}
+	
+	public ArrayList<Integer> alquileres() {
+		return this.alquiler;
 	}
 	
 	Integer precioConstruccion(Integer tipoConstruccion) {

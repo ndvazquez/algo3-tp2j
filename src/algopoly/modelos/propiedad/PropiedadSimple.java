@@ -1,5 +1,7 @@
 package algopoly.modelos.propiedad;
 
+import java.util.ArrayList;
+
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Casillero;
 
@@ -12,13 +14,22 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	private Integer precioCasa;
 	
 	private EstadoPropiedad estado;
+	
+	private Integer cantidadEdificios;
 
-	private Integer alquiler;
+	private ArrayList<Integer> alquiler;
+
+	public PropiedadSimple(Integer precio, ArrayList<Integer> construcciones, ArrayList<Integer> alquileres) {
+		this.precio = precio;
+		this.precioCasa = construcciones.get(0);
+		this.alquiler = alquileres;
+		this.estado = new SinPropietario();
+		this.cantidadEdificios = 0;
+	}
 
 	public PropiedadSimple(Integer precio, Integer precioCasa){
 		this.precio = precio;
 		this.precioCasa = precioCasa;
-		this.estado = new SinPropietario();
 	}
 
 	@Override
@@ -49,16 +60,16 @@ public class PropiedadSimple implements Casillero, Propiedad {
 
 	@Override
 	public Integer getPrecioAlquiler() {
-		return this.alquiler;
+		return this.alquiler.get(this.cantidadEdificios);
 	}
 	
-	public boolean construir() {
+	public void construir() {
 		
-		// verificar jugador puede comprar
-		if (this.estado.puedeConstruir()) {
-			this.propietario.comprarCasa(this);
-			return true;
+		if (this.cantidadEdificios < 1) {
+			if ( this.propietario.puedeComprar(this.getPrecioCasa())) { 
+				this.propietario.comprar(this.getPrecioCasa());
+				this.cantidadEdificios = 1;
+			}
 		}
-		return false;
 	}
 }

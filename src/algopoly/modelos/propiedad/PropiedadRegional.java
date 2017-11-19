@@ -57,7 +57,6 @@ public class PropiedadRegional implements Casillero, Propiedad {
     }
 
 	@Override
-	public boolean construir() {
-		return false;
+	public void construir() {
 	}
 }

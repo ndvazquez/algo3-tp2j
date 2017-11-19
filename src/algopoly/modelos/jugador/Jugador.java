@@ -116,13 +116,19 @@ public class Jugador {
 
 	public void comprarHotel(Propiedad propiedad) {
 		// si prop es reg y tiene 2 casas
-		this.capital -= propiedad.getPrecioCasa();
+		this.capital -= propiedad.getPrecio();
 	}
 	
 	public void pagarAlquiler(Jugador jugadorQueCobra, Propiedad propiedad) {
 		Integer precioAlquiler = propiedad.getPrecioAlquiler();
 		this.capital -= precioAlquiler;
 		jugadorQueCobra.incrementarCapital(precioAlquiler);
+	}
+
+	public boolean puedeComprar(Integer valor) {
+		// capital no tiene que quedar en saldo negatirvo
+		// return this.getCapital() - valor < 0;
+		return false;
 	}
 	
 }

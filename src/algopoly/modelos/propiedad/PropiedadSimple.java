@@ -51,12 +51,12 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	public Integer getPrecioAlquiler() {
 		return this.alquiler;
 	}
-
+	
 	public boolean construir() {
+		
+		// verificar jugador puede comprar
 		if (this.estado.puedeConstruir()) {
 			this.propietario.comprarCasa(this);
-			this.estado.setCantidadConstrucciones();
-			this.alquiler = 0; // obtener el valor alquiler con casa
 			return true;
 		}
 		return false;

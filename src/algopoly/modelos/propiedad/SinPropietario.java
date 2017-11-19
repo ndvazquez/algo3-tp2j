@@ -11,14 +11,4 @@ public class SinPropietario implements EstadoPropiedad {
 	public boolean puedeConstruir() {
 		return false;
 	}
-
-	@Override
-	public Integer getCantidadConstrucciones() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setCantidadConstrucciones() {
-	}
 }

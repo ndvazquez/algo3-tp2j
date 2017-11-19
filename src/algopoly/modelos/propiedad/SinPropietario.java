@@ -13,6 +13,12 @@ public class SinPropietario implements EstadoPropiedad {
 	}
 
 	@Override
-	public void adicionarConstruccion() {
+	public Integer getCantidadConstrucciones() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setCantidadConstrucciones() {
 	}
 }

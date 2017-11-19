@@ -1,8 +1,5 @@
 package algopoly.modelos.propiedad;
 
-import java.util.HashMap;
-
-import algopoly.modelos.excepciones.PropiedadSinJugadorError;
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Casillero;
 
@@ -58,10 +55,9 @@ public class PropiedadRegional implements Casillero, Propiedad {
     	// obtener alquiler segun construccion
     	return 0;
     }
-    
-    @Override
-    public boolean construir() {
-    	// cambiar el estado de propietario.cantidad de construcciones a +1
-    	return false;
-    }
+
+	@Override
+	public boolean construir() {
+		return false;
+	}
 }

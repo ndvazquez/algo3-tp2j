@@ -1,7 +1,7 @@
 package algopoly.modelos.propiedad;
 
 public final class Cte {
-	
+
 	// Buenos Aires Sur
 	public static final Integer BSAS_SUR = 20000;
 	public static final Integer BSAS_SUR_CASA = 5000;

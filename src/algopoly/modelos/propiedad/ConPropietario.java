@@ -19,9 +19,13 @@ public class ConPropietario implements EstadoPropiedad {
 		return false;
 	}
 
-	public void adicionarConstruccion() {
-		this.cantConstrucciones += 1;
-		
+	@Override
+	public Integer getCantidadConstrucciones() {
+		return this.cantConstrucciones;
 	}
 
+	@Override
+	public void setCantidadConstrucciones() {
+		this.cantConstrucciones += 1;
+	}
 }

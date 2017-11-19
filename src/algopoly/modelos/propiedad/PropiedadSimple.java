@@ -13,6 +13,8 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	
 	private EstadoPropiedad estado;
 
+	private Integer alquiler;
+
 	public PropiedadSimple(Integer precio, Integer precioCasa){
 		this.precio = precio;
 		this.precioCasa = precioCasa;
@@ -46,17 +48,17 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	}
 
 	@Override
+	public Integer getPrecioAlquiler() {
+		return this.alquiler;
+	}
+
 	public boolean construir() {
-		if (this.estado.puedeConstruir() ) {
-			this.estado.adicionarConstruccion();
+		if (this.estado.puedeConstruir()) {
+			this.propietario.comprarCasa(this);
+			this.estado.setCantidadConstrucciones();
+			this.alquiler = 0; // obtener el valor alquiler con casa
 			return true;
 		}
 		return false;
 	}
-
-	@Override
-	public Integer getPrecioAlquiler() {
-		return 0;
-	}
-
 }

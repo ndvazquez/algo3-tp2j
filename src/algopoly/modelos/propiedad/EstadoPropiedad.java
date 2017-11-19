@@ -6,6 +6,7 @@ public interface EstadoPropiedad {
 
 	boolean puedeConstruir();
 
-	void adicionarConstruccion();
+	Integer getCantidadConstrucciones();
 
+	void setCantidadConstrucciones();
 }

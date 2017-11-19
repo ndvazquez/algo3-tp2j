@@ -11,3 +11,4 @@ build.xml.old
 *.jar
 bin/
 /.metadata/
+.externalToolBuilders/

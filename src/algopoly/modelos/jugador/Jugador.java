@@ -1,7 +1,6 @@
 package algopoly.modelos.jugador;
 
 import algopoly.modelos.propiedad.Propiedad;
-import algopoly.modelos.propiedad.PropiedadRegional;
 import algopoly.modelos.tablero.Casillero;
 
 import java.util.ArrayList;
@@ -109,10 +108,15 @@ public class Jugador {
 		return valor1 + valor2;
 	}
 
-	public void comprarConstruccion(Propiedad propiedad) {
+	public void comprarCasa(Propiedad propiedad) {
+		if (propiedad.construir()) {
+			this.capital -= propiedad.getPrecioCasa();
+		}
+	}
+
+	public void comprarHotel(Propiedad propiedad) {
+		// si prop es reg y tiene 2 casas
 		this.capital -= propiedad.getPrecioCasa();
-		propiedad.construir();
-		
 	}
 	
 	public void pagarAlquiler(Jugador jugadorQueCobra, Propiedad propiedad) {

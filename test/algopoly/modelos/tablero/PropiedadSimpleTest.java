@@ -32,7 +32,7 @@ public class PropiedadSimpleTest {
 
 		neuquen.recibirJugador(jugadorPrueba);
 
-		jugadorPrueba.comprarConstruccion(neuquen);
+		jugadorPrueba.comprarCasa(neuquen);
 
 		int capital = jugadorPrueba.getCapital();
 
@@ -53,8 +53,8 @@ public class PropiedadSimpleTest {
 		int capital1 = jugador1.getCapital();
 		int capital2 = jugador2.getCapital();
 
-		Assert.assertEquals(83000 , capital1); // +1800 = 84800
-		Assert.assertEquals(100000 , capital2); // -1800 = 98200
+		Assert.assertEquals(84800 , capital1); // +1800
+		Assert.assertEquals(98200 , capital2); // -1800
 	}
 	
 	@Test
@@ -64,7 +64,7 @@ public class PropiedadSimpleTest {
 		PropiedadSimple neuquen = new PropiedadSimple(Cte.NEUQUEN, Cte.NEUQUEN_CASA);
 
 		neuquen.recibirJugador(jugador1);
-		jugador1.comprarConstruccion(neuquen);
+		jugador1.comprarCasa(neuquen);
 
 		Jugador jugador2 = new Jugador();
 		neuquen.recibirJugador(jugador2);
@@ -72,21 +72,23 @@ public class PropiedadSimpleTest {
 		int capital1 = jugador1.getCapital();
 		int capital2 = jugador2.getCapital();
 
-		Assert.assertEquals(78200 , capital1); // +4800 = 82000
-		Assert.assertEquals(100000 , capital2); // -4800 = 96200
+		Assert.assertEquals(82000 , capital1); // +4800
+		Assert.assertEquals(96200 , capital2); // -4800
 	}
 	
 	@Test
 	public void test05jugadorNoPuedeComprarMasDeUnaConstruccion() {
 		
-		Jugador jugador = new Jugador();
-		PropiedadSimple propiedadSimple = new PropiedadSimple(0, 0);
+		Jugador jugadorPrueba = new Jugador();
+		PropiedadSimple neuquen = new PropiedadSimple(Cte.NEUQUEN, Cte.NEUQUEN_CASA);
 
-		propiedadSimple.recibirJugador(jugador);
+		neuquen.recibirJugador(jugadorPrueba);
+		jugadorPrueba.comprarCasa(neuquen);
+		jugadorPrueba.comprarCasa(neuquen);
 		
-		propiedadSimple.construir(); // 1 casa
+		int capital = jugadorPrueba.getCapital();
 		
-		Assert.assertFalse(propiedadSimple.construir()); // no puede construir 2 veces
+		Assert.assertEquals(78200, capital);
 	}
 	
 	

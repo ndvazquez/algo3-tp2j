@@ -10,8 +10,7 @@ public interface Propiedad {
 
 	Integer getPrecioCasa();
 
-	boolean construir();
-
 	Integer getPrecioAlquiler();
 
+	boolean construir();
 }

@@ -1,71 +1,76 @@
 package algopoly.modelos.jugador;
 
 import algopoly.modelos.tablero.Casillero;
+import algopoly.modelos.tablero.Compania;
 import algopoly.modelos.tablero.Propiedad;
 
 import java.util.ArrayList;
 
 public class Jugador {
-	
+
 	private static final Integer FIANZA = 45000;
 
-    private Dado dado1;
-    
-    private Dado dado2;
+	private Dado dado1;
 
-    private Integer posicion;
+	private Dado dado2;
 
-    private ArrayList<Propiedad> propiedades;
+	private Integer posicion;
 
-    private Integer capital;
+	private ArrayList<Propiedad> propiedades;
+
+	private Integer capital;
 
 	private Estado estado;
 
-    public Jugador() {
-        this.posicion = 0;
-        this.dado1 = new Dado();
-        this.dado2 = new Dado();
-        this.estado = new Habilitado();
-        this.capital = 100000;
-        this.propiedades = new ArrayList<Propiedad>();
-    }
+	private ArrayList<Compania> companias;
 
-    public void incrementarCapital(Integer aumento) {
-        this.capital += aumento;
-    }
+	public Jugador() {
+		this.capital = 100000;
+		this.posicion = 0;
+		this.dado1 = new Dado();
+		this.dado2 = new Dado();
+		this.estado = new Habilitado();
+		this.propiedades = new ArrayList<Propiedad>();
+		this.companias = new ArrayList<Compania>();
+	}
 
-    public Integer getUltimaTirada() {
-        return this.dado1.getUltimaTirada() + this.dado2.getUltimaTirada();
-    }
+	public void incrementarCapital(Integer aumento) {
+		this.capital += aumento;
+	}
 
-    public void avanzar(Integer casilleros) {
-        this.posicion += casilleros;
-    }
+	public Integer getUltimaTirada() {
+		return this.dado1.getUltimaTirada() + this.dado2.getUltimaTirada();
+	}
 
-    public void retroceder(Integer casilleros) {
-        this.posicion -= casilleros;
-    }
+	public void avanzar(Integer casilleros) {
+		this.posicion += casilleros;
+	}
 
-    public void setPosicion(Integer nuevaPosicion){
-        this.posicion = nuevaPosicion;
-    }
-    public Integer getPosicion() {
-        return this.posicion;
-    }
+	public void retroceder(Integer casilleros) {
+		this.posicion -= casilleros;
+	}
 
-    public Integer getCapital() {
-        return this.capital;
-    }
+	public void setPosicion(Integer nuevaPosicion) {
+		this.posicion = nuevaPosicion;
+	}
 
-    public Integer getCantidadPropiedades() {
-        return this.propiedades.size();
-    }
+	public Integer getPosicion() {
+		return this.posicion;
+	}
+
+	public Integer getCapital() {
+		return this.capital;
+	}
+
+	public Integer getCantidadPropiedades() {
+		return this.propiedades.size();
+	}
 
 	public void comprarPropiedad(Propiedad propiedad) {
-        if(this.capital - propiedad.getPrecio() > 0){
-            this.capital -= propiedad.getPrecio();
-            this.propiedades.add(propiedad);
-        }
+		if (this.capital - propiedad.getPrecio() > 0) {
+			this.capital -= propiedad.getPrecio();
+			this.propiedades.add(propiedad);
+		}
 	}
 
 	public void caerEnCasillero(Casillero casillero) {
@@ -91,11 +96,9 @@ public class Jugador {
 	public void habilitar() {
 		this.estado = new Habilitado();
 	}
-	
+
 	public void pagarFianza() {
-		
-		if(this.puedeEjecutarAcciones() && this.capital >= 45000) {
-			
+		if (this.puedeEjecutarAcciones() && this.capital >= 45000) {
 			this.capital -= FIANZA;
 			this.estado = new Habilitado();
 		}
@@ -105,6 +108,10 @@ public class Jugador {
 		Integer valor1 = this.dado1.tirar();
 		Integer valor2 = this.dado2.tirar();
 		return valor1 + valor2;
+	}
+
+	public void comprarCompania(Compania compania) {
+		this.companias.add(compania);
 	}
 
 }

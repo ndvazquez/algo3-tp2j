@@ -13,4 +13,6 @@ public interface Propiedad {
 	Integer getPrecioAlquiler();
 
 	void construir();
+
+	void setPropietario(Jugador jugador);
 }

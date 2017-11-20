@@ -1,9 +1,22 @@
 package algopoly.modelos.propiedad;
 
+import algopoly.modelos.jugador.Jugador;
+
 public class SinPropietario implements EstadoPropiedad {
-	
+
+	private Propiedad propiedad;
+
+	public SinPropietario(Propiedad propiedad) {
+		this.propiedad = propiedad;
+	}
+
 	@Override
-	public boolean tienePropietario() {
-		return false;
+	public void comprarPropiedad(Jugador jugador) {
+		jugador.comprarPropiedad(this.propiedad);
+		this.propiedad.setPropietario(jugador);
+	}
+
+	@Override
+	public void pagarAlquiler(Jugador jugador) {
 	}
 }

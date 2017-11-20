@@ -1,7 +1,5 @@
 package algopoly.modelos.propiedad;
 
-import java.util.ArrayList;
-
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Casillero;
 
@@ -9,45 +7,33 @@ public class PropiedadRegional implements Casillero, Propiedad {
 
     private Jugador propietario;
     
-    private Region region;
-    
-    private Integer precio;
-    
-    private Integer precioCasa;
-    
-    private Integer precioHotel;
+    private Provincia provinciaComplemento;
     
     private EstadoPropiedad estado;
 
-	private ArrayList<Edificio> edificios;
+    private Edificio edificio;
 	
 	private Integer cantidadEdificios;
 
+	private Provincia provincia;
+	
     public PropiedadRegional(Integer precio, Region region, Integer precioCasa, Integer precioHotel){
-    	this.precio = precio;
-        this.region = region;
-        this.precioCasa = precioCasa;
-        this.precioHotel = precioHotel;
-        this.estado = new SinPropietario();
+        this.estado = new SinPropietario(this);
     }
-    
-    public PropiedadRegional(Integer precio, Region region, ArrayList<Edificio> edificios){
-    	this.precio = precio;
-        this.region = region;
-        this.edificios = edificios;
-        this.estado = new SinPropietario();
+
+    public PropiedadRegional(Provincia provincia, Provincia provinciaComplemento){
+    	this.provincia = provincia;
+    	this.provinciaComplemento = provinciaComplemento;
+        this.estado = new SinPropietario(this);
         this.cantidadEdificios = 0;
     }
-    
+
     @Override
     public void recibirJugador(Jugador jugador) {
-    	if ( this.estado.tienePropietario() ) {
-    		jugador.pagarAlquiler(this.getPropietario(), this);
-    	} else {
-    		jugador.comprarPropiedad(this);
-            this.propietario = jugador;
-            this.estado = new ConPropietario();
-    	}
+
+    	this.estado.comprarPropiedad(jugador);
+		
+		this.estado.pagarAlquiler(jugador);
     }
 
     @Override
@@ -57,19 +43,17 @@ public class PropiedadRegional implements Casillero, Propiedad {
 
     @Override
     public Integer getPrecio(){
-        return this.precio;
+        return this.provincia.precio();
     }
-    
+
     @Override
     public Integer getPrecioEdificio() {
-    	Edificio edificio = this.edificios.get(this.cantidadEdificios + 1);
-    	return edificio.getPrecio();
+    	return this.edificio.getPrecio();
     }
 
     @Override 
     public Integer getPrecioAlquiler() {
-    	Edificio edificio = this.edificios.get(this.cantidadEdificios);
-    	return edificio.getAlquiler();
+    	return this.edificio.getAlquiler();
     }
 
 	@Override
@@ -79,5 +63,12 @@ public class PropiedadRegional implements Casillero, Propiedad {
 		// if 2 casas --> hotel else no puede construir hotel
 		// if puede comprar
 		// no mas de 2 casas o 1 hotel
+	}
+
+	@Override
+	public void setPropietario(Jugador jugador) {
+		this.propietario = jugador;
+		this.estado = new ConPropietario(this);
+		this.edificio = this.provincia.vacio();
 	}
 }

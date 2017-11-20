@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class PropiedadFactory {
 
-    public PropiedadSimple crearPropiedadSimple(Integer precio, ArrayList<Edificio> edificios){
-        return new PropiedadSimple(precio, edificios);
+    public PropiedadSimple crearPropiedadSimple(Provincia provincia){
+        return new PropiedadSimple(provincia);
     }
 
     public PropiedadRegional crearPropiedadRegional(Integer precio, Region region, Integer precioCasa, Integer precioHotel){

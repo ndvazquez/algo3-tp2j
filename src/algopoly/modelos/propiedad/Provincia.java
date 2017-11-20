@@ -1,8 +1,5 @@
 package algopoly.modelos.propiedad;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public enum Provincia {
 	// nombre (precio,[Casa,Hotel],[alqSim,alq1Casa,alq2Casa,Hotel])
 	
@@ -25,38 +22,35 @@ public enum Provincia {
 	TUCUMAN (25000, new Integer[]{0, 7000}, new Integer[]{2500,4500});
 	
 	private final Integer precio;
-	private final ArrayList<Edificio> edificios;
+
+	private final Integer[] precioEdificio;
+	
+	private final Integer[] alquiler;
 	
 	Provincia(Integer precio, Integer[] precioEdificio, Integer[] alquiler) {
 		this.precio = precio;
-		int len = precioEdificio.length;
-		this.edificios = new ArrayList<>();
-		
-		for (int i = 0; i < len; i++) {
-			if ( i == 0 ) {
-				Vacio vacio = new Vacio(precioEdificio[i], alquiler[i]);
-				edificios.add(vacio);
-			}
-			else if ( i == 1 ) {
-				Casa casa1 = new Casa(precioEdificio[i], alquiler[i]);
-				edificios.add(casa1);
-			}
-			else if ( i == 2 ) {
-				Casa casa2 = new Casa(precioEdificio[i], alquiler[i]);
-				edificios.add(casa2);
-			}
-			else if ( i == 3 ) {
-				Hotel hotel = new Hotel(precioEdificio[i], alquiler[i]);
-				edificios.add(hotel);
-			}
-		}
+		this.precioEdificio = precioEdificio;
+		this.alquiler = alquiler;
 	}
-	
+
 	public Integer precio() {
 		return precio;
 	}
-	
-	public ArrayList<Edificio> getEdificios() {
-		return this.edificios;
+
+	public Vacio vacio() {
+		return new Vacio(precioEdificio[0], alquiler[0]);
 	}
+
+	public Casa unaCasa() {
+		return new Casa(precioEdificio[1], alquiler[1]);
+	}
+
+	public Casa dosCasa() {
+		return new Casa(precioEdificio[2], alquiler[2]);
+	}
+
+	public Hotel hotel() {
+		return new Hotel(precioEdificio[3], alquiler[3]);
+	}
+	
 }

@@ -1,6 +1,10 @@
 package algopoly.modelos.propiedad;
 
+import algopoly.modelos.jugador.Jugador;
+
 public interface EstadoPropiedad {
 
-	boolean tienePropietario();
+	void comprarPropiedad(Jugador jugador);
+
+	void pagarAlquiler(Jugador jugador);
 }

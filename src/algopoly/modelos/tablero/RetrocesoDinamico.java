@@ -1,22 +1,31 @@
 package algopoly.modelos.tablero;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
+
 import algopoly.modelos.jugador.Jugador;
 
 public class RetrocesoDinamico implements Casillero {
-
-    @Override
+	
+	private Map<Integer, Function<Jugador, Integer>> funciones;
+	
+	public RetrocesoDinamico() {
+		funciones = new HashMap<Integer, Function<Jugador, Integer>>();
+		for (int i = 1; i <= 6; i++) {
+			funciones.put(i, j -> j.getUltimaTirada() - j.getCantidadPropiedades());
+		}
+		for (int i = 7; i <= 10; i++) {
+			funciones.put(i, j -> j.getCapital() % j.getUltimaTirada());
+		}
+		for (int i = 11; i <= 12; i++) {
+			funciones.put(i, j -> j.getUltimaTirada() - 2);
+		}
+	}
+	
+	@Override
     public void recibirJugador(Jugador jugador) {
-        Integer movimientos;
-
-        Integer ultimaTirada = jugador.getUltimaTirada();
-        if (ultimaTirada <= 6) {
-            movimientos = ultimaTirada - jugador.getCantidadPropiedades();
-        } else if (ultimaTirada <= 10) {
-            movimientos = jugador.getCapital() % ultimaTirada;
-        } else {
-            movimientos = ultimaTirada - 2;
-        }
-
-        jugador.retroceder(movimientos);
+        jugador.mover(this.funciones.get(jugador.getUltimaTirada()).apply(jugador));
     }
+
 }

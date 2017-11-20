@@ -1,16 +1,27 @@
 package algopoly.modelos.propiedad;
 
+import java.util.ArrayList;
+
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Casillero;
 
 public class PropiedadRegional implements Casillero, Propiedad {
 
     private Jugador propietario;
+    
     private Region region;
+    
     private Integer precio;
+    
     private Integer precioCasa;
+    
     private Integer precioHotel;
+    
     private EstadoPropiedad estado;
+
+	private ArrayList<Edificio> edificios;
+	
+	private Integer cantidadEdificios;
 
     public PropiedadRegional(Integer precio, Region region, Integer precioCasa, Integer precioHotel){
     	this.precio = precio;
@@ -18,6 +29,14 @@ public class PropiedadRegional implements Casillero, Propiedad {
         this.precioCasa = precioCasa;
         this.precioHotel = precioHotel;
         this.estado = new SinPropietario();
+    }
+    
+    public PropiedadRegional(Integer precio, Region region, ArrayList<Edificio> edificios){
+    	this.precio = precio;
+        this.region = region;
+        this.edificios = edificios;
+        this.estado = new SinPropietario();
+        this.cantidadEdificios = 0;
     }
     
     @Override
@@ -42,21 +61,23 @@ public class PropiedadRegional implements Casillero, Propiedad {
     }
     
     @Override
-    public Integer getPrecioCasa() {
-    	return this.precioCasa;
+    public Integer getPrecioEdificio() {
+    	Edificio edificio = this.edificios.get(this.cantidadEdificios + 1);
+    	return edificio.getPrecio();
     }
- 
-    public Integer getPrecioHotel() {
-    	return this.precioHotel;
-    }
-    
+
     @Override 
     public Integer getPrecioAlquiler() {
-    	// obtener alquiler segun construccion
-    	return 0;
+    	Edificio edificio = this.edificios.get(this.cantidadEdificios);
+    	return edificio.getAlquiler();
     }
 
 	@Override
 	public void construir() {
+		
+		// if region
+		// if 2 casas --> hotel else no puede construir hotel
+		// if puede comprar
+		// no mas de 2 casas o 1 hotel
 	}
 }

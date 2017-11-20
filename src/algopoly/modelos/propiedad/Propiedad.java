@@ -8,7 +8,7 @@ public interface Propiedad {
 	
 	Integer getPrecio();
 
-	Integer getPrecioCasa();
+	Integer getPrecioEdificio();
 
 	Integer getPrecioAlquiler();
 

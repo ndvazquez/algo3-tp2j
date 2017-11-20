@@ -1,10 +1,9 @@
 package algopoly.modelos.propiedad;
 
-public interface Edificacion {
-	
+public interface Edificio {
+
 	Integer getPrecio();
 	
 	Integer getAlquiler();
-	
-	void edificar();
+
 }

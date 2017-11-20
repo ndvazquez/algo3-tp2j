@@ -16,7 +16,7 @@ public class PropiedadSimpleTest {
 
 		Jugador jugadorPrueba = new Jugador();
 		Provincia neuquen = Provincia.NEUQUEN;
-		PropiedadSimple propiedad = new PropiedadSimple(neuquen.precio(), neuquen.construcciones(), neuquen.alquileres());
+		PropiedadSimple propiedad = new PropiedadSimple(neuquen.precio(), neuquen.getEdificios());
 
 		propiedad.recibirJugador(jugadorPrueba);
 
@@ -31,7 +31,7 @@ public class PropiedadSimpleTest {
 
 		Jugador jugadorPrueba = new Jugador();
 		Provincia neuquen = Provincia.NEUQUEN;
-		PropiedadSimple propiedad = new PropiedadSimple(neuquen.precio(), neuquen.construcciones(), neuquen.alquileres());
+		PropiedadSimple propiedad = new PropiedadSimple(neuquen.precio(), neuquen.getEdificios());
 
 		propiedad.recibirJugador(jugadorPrueba);
 		
@@ -45,7 +45,7 @@ public class PropiedadSimpleTest {
 		
 		Jugador jugadorPrueba = new Jugador();
 		Provincia neuquen = Provincia.NEUQUEN;
-		PropiedadSimple propiedad = new PropiedadSimple(neuquen.precio(), neuquen.construcciones(), neuquen.alquileres());
+		PropiedadSimple propiedad = new PropiedadSimple(neuquen.precio(), neuquen.getEdificios());
 
 		propiedad.recibirJugador(jugadorPrueba);
 
@@ -61,7 +61,7 @@ public class PropiedadSimpleTest {
 		
 		Jugador jugador1 = new Jugador();
 		Provincia neuquen = Provincia.NEUQUEN;
-		PropiedadSimple propiedad = new PropiedadSimple(neuquen.precio(), neuquen.construcciones(), neuquen.alquileres());
+		PropiedadSimple propiedad = new PropiedadSimple(neuquen.precio(), neuquen.getEdificios());
 
 		propiedad.recibirJugador(jugador1);
 
@@ -79,7 +79,7 @@ public class PropiedadSimpleTest {
 	public void test05jugadorCaeEnNeuquenDeOtroJugadorConCasaYPagaAlquieler() {
 		Jugador jugador1 = new Jugador();
 		Provincia neuquen = Provincia.NEUQUEN;
-		PropiedadSimple propiedad = new PropiedadSimple(neuquen.precio(), neuquen.construcciones(), neuquen.alquileres());
+		PropiedadSimple propiedad = new PropiedadSimple(neuquen.precio(), neuquen.getEdificios());
 
 		propiedad.recibirJugador(jugador1);
 		propiedad.construir();
@@ -99,7 +99,7 @@ public class PropiedadSimpleTest {
 		
 		Jugador jugadorPrueba = new Jugador();
 		Provincia neuquen = Provincia.NEUQUEN;
-		PropiedadSimple propiedad = new PropiedadSimple(neuquen.precio(), neuquen.construcciones(), neuquen.alquileres());
+		PropiedadSimple propiedad = new PropiedadSimple(neuquen.precio(), neuquen.getEdificios());
 
 		propiedad.recibirJugador(jugadorPrueba);
 		propiedad.construir();

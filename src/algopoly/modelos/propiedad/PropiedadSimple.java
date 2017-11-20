@@ -11,25 +11,21 @@ public class PropiedadSimple implements Casillero, Propiedad {
 
 	private Integer precio;
 	
-	private Integer precioCasa;
-	
 	private EstadoPropiedad estado;
 	
 	private Integer cantidadEdificios;
+	
+	private ArrayList<Edificio> edificios;
 
-	private ArrayList<Integer> alquiler;
-
-	public PropiedadSimple(Integer precio, ArrayList<Integer> construcciones, ArrayList<Integer> alquileres) {
+	public PropiedadSimple(Integer precio, ArrayList<Edificio> edificios) {
 		this.precio = precio;
-		this.precioCasa = construcciones.get(0);
-		this.alquiler = alquileres;
 		this.estado = new SinPropietario();
+		this.edificios = edificios;
 		this.cantidadEdificios = 0;
 	}
 
 	public PropiedadSimple(Integer precio, Integer precioCasa){
 		this.precio = precio;
-		this.precioCasa = precioCasa;
 	}
 
 	@Override
@@ -54,22 +50,23 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	}
 
 	@Override
-	public Integer getPrecioCasa() {
-		return this.precioCasa;
+	public Integer getPrecioEdificio() {
+		Edificio edificio = this.edificios.get(this.cantidadEdificios + 1);
+		return edificio.getPrecio();
 	}
 
 	@Override
 	public Integer getPrecioAlquiler() {
-		return this.alquiler.get(this.cantidadEdificios);
+		Edificio edificio = this.edificios.get(this.cantidadEdificios);
+		return edificio.getAlquiler();
 	}
 	
 	public void construir() {
 		
 		if (this.cantidadEdificios < 1) {
-			if ( this.propietario.puedeComprar(this.getPrecioCasa())) { 
-				this.propietario.comprar(this.getPrecioCasa());
-				this.cantidadEdificios = 1;
-			}
+			Integer precio = this.getPrecioEdificio();
+			if ( this.propietario.comprar(precio) )
+				this.cantidadEdificios += 1;
 		}
 	}
 }

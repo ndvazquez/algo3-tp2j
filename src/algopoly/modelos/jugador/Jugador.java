@@ -1,6 +1,5 @@
 package algopoly.modelos.jugador;
 
-import algopoly.modelos.propiedad.Edificacion;
 import algopoly.modelos.propiedad.Propiedad;
 import algopoly.modelos.tablero.Casillero;
 
@@ -109,9 +108,12 @@ public class Jugador {
 		return valor1 + valor2;
 	}
 
-	public void comprar(Integer valor) {
-		if ( this.puedeComprar(valor) )
+	public boolean comprar(Integer valor) {
+		if ( this.getCapital() - valor >= 0 ) {
 			this.capital -= valor;
+			return true;
+		}
+		return false;
 	}
 	
 	public void pagarAlquiler(Jugador jugadorQueCobra, Propiedad propiedad) {
@@ -120,8 +122,5 @@ public class Jugador {
 		jugadorQueCobra.incrementarCapital(precioAlquiler);
 	}
 
-	public boolean puedeComprar(Integer valor) {
-		return (this.getCapital() - valor) >= 0;
-	}
 	
 }

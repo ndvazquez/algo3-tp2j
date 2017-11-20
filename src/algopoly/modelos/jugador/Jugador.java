@@ -5,6 +5,7 @@ import algopoly.modelos.tablero.Compania;
 import algopoly.modelos.tablero.Propiedad;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Jugador {
 
@@ -42,6 +43,13 @@ public class Jugador {
 
 	public Integer getUltimaTirada() {
 		return this.dado1.getUltimaTirada() + this.dado2.getUltimaTirada();
+	}
+	
+	public Collection<Dado> getUltimaTiradaEnDados() {
+		Collection<Dado> dados = new ArrayList<Dado>();
+		dados.add(dado1);
+		dados.add(dado2);
+		return dados;
 	}
 
 	public void mover(Integer casilleros) {

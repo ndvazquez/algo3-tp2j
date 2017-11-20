@@ -36,26 +36,26 @@ public class Tablero {
 		Compania aysa = new Compania(30000, 300, 500, serviciosEdesurAysa);
 
 		casilleros = new ArrayList<Casillero>();
-		casilleros.add(new PropiedadSimple(10));	// salida
+		casilleros.add(new PropiedadSimple(10)); // salida
 		casilleros.add(new Quini6(this.jugadores));
 		casilleros.add(new PropiedadSimple(10));// bsassur
 		casilleros.add(edesur);
 		casilleros.add(new PropiedadSimple(10));// bsasnorte
 		casilleros.add(carcel);
-		casilleros.add(new PropiedadSimple(10));		// cordoba
+		casilleros.add(new PropiedadSimple(10)); // cordoba
 		casilleros.add(new AvanceDinamico());
 		casilleros.add(subte);
-		casilleros.add(new PropiedadSimple(10));		// cordoba
-		casilleros.add(new PropiedadSimple(10));		// impuesto
-		casilleros.add(new PropiedadSimple(10));		// santafe
+		casilleros.add(new PropiedadSimple(10)); // cordoba
+		casilleros.add(new PropiedadSimple(10)); // impuesto
+		casilleros.add(new PropiedadSimple(10)); // santafe
 		casilleros.add(aysa);
-		casilleros.add(new PropiedadSimple(10));		// salta
+		casilleros.add(new PropiedadSimple(10)); // salta
 		casilleros.add(new PropiedadSimple(10));// salta
 		casilleros.add(new Policia(carcel));
 		casilleros.add(tren);
 		casilleros.add(new PropiedadSimple(10));// neuquen
 		casilleros.add(new RetrocesoDinamico());
-		casilleros.add(new PropiedadSimple(10));		// tucuman1
+		casilleros.add(new PropiedadSimple(10)); // tucuman1
 	}
 
 	public void ganador() {
@@ -70,12 +70,13 @@ public class Tablero {
 		this.turnoActual = (this.turnoActual + 1) % 3;
 		Jugador jugador = this.jugadorAcutal();
 		jugador.iniciarTurno();
+
 		Casillero casilleroActual = casilleros.get(Posicion.getIndice(jugador.getPosicion()));
 		casilleroActual.recibirJugador(jugador);
-		
+
 		// esto por ahi es mejor que vaya en otro lado
-		if (casilleroActual.getClass().equals(AvanceDinamico.class) ||
-				casilleroActual.getClass().equals(RetrocesoDinamico.class)) {
+		if (casilleroActual.getClass().equals(AvanceDinamico.class)
+				|| casilleroActual.getClass().equals(RetrocesoDinamico.class)) {
 			casilleroActual = casilleros.get(Posicion.getIndice(jugador.getPosicion()));
 			casilleroActual.recibirJugador(jugador);
 		}
@@ -86,4 +87,3 @@ public class Tablero {
 	}
 
 }
-

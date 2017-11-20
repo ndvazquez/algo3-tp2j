@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
@@ -37,7 +38,7 @@ public class ContenedorPrincipal extends BorderPane {
 
 	private void setBotonera(Tablero tablero) {
 
-		Canvas canvasDados = new Canvas(50,50);
+		Canvas canvasDados = new Canvas(100,200);
 		vistaDados = new VistaDados(tablero, canvasDados);
 		
 		Button botonMover = new Button();
@@ -46,9 +47,10 @@ public class ContenedorPrincipal extends BorderPane {
 		botonMover.setOnAction(moveButtonHandler);
 		
 		VBox contenedorVertical = new VBox(botonMover, canvasDados);
-		contenedorVertical.setSpacing(10);
+		contenedorVertical.setSpacing(100);
 		contenedorVertical.setPadding(new Insets(15));
-
+		contenedorVertical.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+		
 		this.setLeft(contenedorVertical);
 
 	}

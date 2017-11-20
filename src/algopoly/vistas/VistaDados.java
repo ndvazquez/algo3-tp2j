@@ -2,9 +2,12 @@ package algopoly.vistas;
 
 
 import javafx.scene.canvas.Canvas;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+
+import java.util.Collection;
+
+import algopoly.modelos.jugador.Dado;
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Tablero;
 
@@ -25,16 +28,22 @@ public class VistaDados {
     private void dibujarFormas() {
         this.clean();
         Jugador jugador = this.tablero.jugadorAcutal();
-        canvas.getGraphicsContext2D().setFill(Color.FUCHSIA);
-        canvas.getGraphicsContext2D().setFont(Font.font("verdana", FontWeight.BOLD, 20));
-        canvas.getGraphicsContext2D().fillText(jugador.getUltimaTirada().toString(), 25,25);
-        // reemplazar por imagenes luego
+        
+        int y = 5;
+        Collection<Dado> dados = jugador.getUltimaTiradaEnDados();
+        for (Dado dado : dados) {
+        	String imgPath = "file:src/algopoly/vistas/imagenes/dado" + dado.getUltimaTirada().toString() + ".jpg";
+        	canvas.getGraphicsContext2D().drawImage(new Image(imgPath,90,90,true,true), 5, y);
+        	y = y + 100;
+        }
+        
+        
     }
 
    
 	public void clean() {
-        canvas.getGraphicsContext2D().setFill(Color.BLACK);
-        canvas.getGraphicsContext2D().fillRect(0,0,50,50);
+        canvas.getGraphicsContext2D().setFill(Color.TRANSPARENT);
+        canvas.getGraphicsContext2D().fillRoundRect(0, 0, 100, 200, 10, 10);
     }
 
     public void update() {

@@ -110,5 +110,9 @@ public class Posicion {
 		posiciones.add(RETROCESO_DINAMICO);
 		posiciones.add(TUCUMAN);
 	}
+	
+	public static Integer getIndice(Posicion pos) {
+		return posiciones.lastIndexOf(pos);
+	}
 
 }

@@ -25,7 +25,7 @@ public class RetrocesoDinamico implements Casillero {
 	
 	@Override
     public void recibirJugador(Jugador jugador) {
-        jugador.retroceder(this.funciones.get(jugador.getUltimaTirada()).apply(jugador));
+        jugador.mover(this.funciones.get(jugador.getUltimaTirada()).apply(jugador));
     }
 
 }

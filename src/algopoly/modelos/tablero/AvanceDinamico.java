@@ -25,7 +25,7 @@ public class AvanceDinamico implements Casillero {
 	
 	@Override
     public void recibirJugador(Jugador jugador) {
-        jugador.avanzar(this.funciones.get(jugador.getUltimaTirada()).apply(jugador));
+        jugador.mover(this.funciones.get(jugador.getUltimaTirada()).apply(jugador));
     }
 
 }

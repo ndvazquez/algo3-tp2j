@@ -14,7 +14,7 @@ public class Jugador {
 
 	private Dado dado2;
 
-	private Integer posicion;
+	private Posicion posicion;
 
 	private ArrayList<Propiedad> propiedades;
 
@@ -26,7 +26,7 @@ public class Jugador {
 
 	public Jugador() {
 		this.capital = 100000;
-		this.posicion = 0;
+		this.posicion = Posicion.SALIDA;
 		this.dado1 = new Dado();
 		this.dado2 = new Dado();
 		this.estado = new Habilitado();
@@ -42,19 +42,21 @@ public class Jugador {
 		return this.dado1.getUltimaTirada() + this.dado2.getUltimaTirada();
 	}
 
-	public void avanzar(Integer casilleros) {
-		this.posicion += casilleros;
+	public void mover(Integer casilleros) {
+		for (int i = 0; i < casilleros; i++) { // si avanza entra aca
+			this.posicion = Posicion.getPosicionSiguiente(this.posicion);
+		}
+		
+		for (int i = casilleros; i < 0; i++) { // si retrocede entra aca
+			this.posicion = Posicion.getPosicionAnterior(this.posicion);
+		}
 	}
 
-	public void retroceder(Integer casilleros) {
-		this.posicion -= casilleros;
-	}
-
-	public void setPosicion(Integer nuevaPosicion) {
+	public void setPosicion(Posicion nuevaPosicion) {
 		this.posicion = nuevaPosicion;
 	}
 
-	public Integer getPosicion() {
+	public Posicion getPosicion() {
 		return this.posicion;
 	}
 

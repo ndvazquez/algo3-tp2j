@@ -1,7 +1,5 @@
 package algopoly.modelos.propiedad;
 
-import java.util.ArrayList;
-
 public class PropiedadFactory {
 
     public PropiedadSimple crearPropiedadSimple(Provincia provincia){

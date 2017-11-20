@@ -7,6 +7,7 @@ public class Hotel implements Edificio {
 	
 	public Hotel(Integer precio, Integer alquiler) {
 		this.alquiler = alquiler;
+		this.precio = precio;
 	}
 	
 	@Override

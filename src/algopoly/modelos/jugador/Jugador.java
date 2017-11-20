@@ -1,6 +1,7 @@
 package algopoly.modelos.jugador;
 
 import algopoly.modelos.propiedad.Propiedad;
+import algopoly.modelos.propiedad.Provincia;
 import algopoly.modelos.tablero.Casillero;
 
 import java.util.ArrayList;
@@ -108,19 +109,29 @@ public class Jugador {
 		return valor1 + valor2;
 	}
 
-	public boolean comprar(Integer valor) {
-		if ( this.getCapital() - valor >= 0 ) {
-			this.capital -= valor;
-			return true;
-		}
-		return false;
-	}
-	
 	public void pagarAlquiler(Jugador jugadorQueCobra, Propiedad propiedad) {
 		Integer precioAlquiler = propiedad.getPrecioAlquiler();
 		this.capital -= precioAlquiler;
 		jugadorQueCobra.incrementarCapital(precioAlquiler);
 	}
 
+	public void comprarCasa(Propiedad propiedad) {
+		propiedad.construirCasa();
+	}
 	
+	public void comprarHotel(Propiedad propiedad) {
+		propiedad.construirHotel();
+	}
+	
+	public Propiedad getPropiedad(Provincia provincia) {
+	
+		int len = this.propiedades.size();
+		
+		for ( int i = 0; i < len;) {
+			Propiedad propiedad = this.propiedades.get(i);
+			if ( propiedad.esEstaProvincia(provincia) );
+				return propiedad;
+		}
+		return null;
+	}
 }

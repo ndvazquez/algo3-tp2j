@@ -22,6 +22,7 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	}
 
 	public PropiedadSimple(Integer precio, Integer precioCasa){
+		// constructor descartado
 	}
 
 	@Override
@@ -40,7 +41,7 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	@Override
 	public void setPropietario(Jugador jugador) {
 		this.propietario = jugador;
-		this.estado = new ConPropietario(this);
+		this.estado = new RegionCompleta(this);
 		this.edificio = this.provincia.vacio();
 	}
 	
@@ -50,24 +51,38 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	}
 
 	@Override
-	public Integer getPrecioEdificio() {
-		return edificio.getPrecio();
-	}
-
-	@Override
 	public Integer getPrecioAlquiler() {
 		return edificio.getAlquiler();
 	}
-
-	public void construir() {
-
+	
+	@Override
+	public void construir(Edificio edificio) {
+    	this.edificio = edificio;
+		this.cantidadEdificios += 1;
+    }
+	
+	public void construirCasa() {
 		if (this.cantidadEdificios < 1) {
-
-			Edificio edificio = this.provincia.unaCasa();
-			if ( this.propietario.comprar(edificio.getPrecio()) ) {
-				this.cantidadEdificios += 1;
-				this.edificio = edificio;
-			}
+			this.estado.construirCasa();
 		}
+	}
+
+	@Override
+	public boolean esEstaProvincia(Provincia estaOtraProvincia) {
+		return this.provincia == estaOtraProvincia;
+	}
+
+	@Override
+	public Integer cantidadEdificios() {
+		return this.cantidadEdificios;
+	}
+
+	@Override
+	public Provincia getProvincia() {
+		return this.provincia;
+	}
+
+	@Override
+	public void construirHotel() {
 	}
 }

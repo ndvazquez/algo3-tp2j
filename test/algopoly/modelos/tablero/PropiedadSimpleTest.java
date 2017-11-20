@@ -46,7 +46,7 @@ public class PropiedadSimpleTest {
 
 		propiedad.recibirJugador(jugadorPrueba);
 
-		propiedad.construir();
+		propiedad.construirCasa();
 
 		int capital = jugadorPrueba.getCapital();
 
@@ -77,7 +77,7 @@ public class PropiedadSimpleTest {
 		PropiedadSimple propiedad = new PropiedadSimple(Provincia.NEUQUEN);
 
 		propiedad.recibirJugador(jugador1);
-		propiedad.construir();
+		propiedad.construirCasa();
 
 		Jugador jugador2 = new Jugador();
 		propiedad.recibirJugador(jugador2);
@@ -96,8 +96,8 @@ public class PropiedadSimpleTest {
 		PropiedadSimple propiedad = new PropiedadSimple(Provincia.NEUQUEN);
 
 		propiedad.recibirJugador(jugadorPrueba);
-		propiedad.construir();
-		propiedad.construir(); // -0
+		propiedad.construirCasa();
+		propiedad.construirCasa(); // -0
 		
 		int capital = jugadorPrueba.getCapital();
 		

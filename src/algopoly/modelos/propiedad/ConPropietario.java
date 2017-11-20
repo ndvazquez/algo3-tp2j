@@ -19,4 +19,12 @@ public class ConPropietario implements EstadoPropiedad {
 		if ( this.propiedad.getPropietario() != jugador)
 			jugador.pagarAlquiler(this.propiedad.getPropietario(), this.propiedad);
 	}
+
+	@Override
+	public void construirCasa() {
+	}
+
+	@Override
+	public void contruirHotel() {
+	}
 }

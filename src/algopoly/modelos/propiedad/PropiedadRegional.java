@@ -40,35 +40,60 @@ public class PropiedadRegional implements Casillero, Propiedad {
     public Jugador getPropietario() {
         return this.propietario;
     }
+    
+    @Override
+	public void setPropietario(Jugador jugador) {
+		this.estado = new ConPropietario(this);
+		this.edificio = this.provincia.vacio();
+		this.propietario = jugador;
+	}
 
     @Override
     public Integer getPrecio(){
         return this.provincia.precio();
     }
 
-    @Override
-    public Integer getPrecioEdificio() {
-    	return this.edificio.getPrecio();
-    }
-
     @Override 
     public Integer getPrecioAlquiler() {
     	return this.edificio.getAlquiler();
     }
+    
+    @Override
+    public Provincia getProvincia() {
+    	return this.provincia;
+    }
 
-	@Override
-	public void construir() {
+    public boolean esEstaProvincia(Provincia estaProvincia) {
+    	return this.provincia == estaProvincia;
+    }
+    
+    public void construir(Edificio edificio) {
+    	this.edificio = edificio;
+		this.cantidadEdificios += 1;
+    }
+    
+    public boolean estaCompleta() {
+    	return this.propietario.getPropiedad(this.provinciaComplemento) != null;
+    }
+	public void construirCasa() {
 		
-		// if region
-		// if 2 casas --> hotel else no puede construir hotel
-		// if puede comprar
-		// no mas de 2 casas o 1 hotel
+		//alqo aca esta andando mal
+		if ( this.estaCompleta() && this.cantidadEdificios < 2) {
+			this.estado = new RegionCompleta(this);
+			this.estado.construirCasa();
+		}
+	}
+	
+	public void construirHotel() {
+		
+		Propiedad propiedadComplemento = this.propietario.getPropiedad(provinciaComplemento);
+		
+		if ( this.estaCompleta() && this.cantidadEdificios == 2 && propiedadComplemento.cantidadEdificios() == 2 )
+			this.estado.contruirHotel();
 	}
 
 	@Override
-	public void setPropietario(Jugador jugador) {
-		this.propietario = jugador;
-		this.estado = new ConPropietario(this);
-		this.edificio = this.provincia.vacio();
+	public Integer cantidadEdificios() {
+		return this.cantidadEdificios;
 	}
 }

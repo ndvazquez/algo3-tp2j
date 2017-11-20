@@ -1,5 +1,7 @@
 package algopoly.modelos.propiedad;
 
+import java.util.ArrayList;
+
 public enum Provincia {
 	// nombre (precio,[Casa,Hotel],[alqSim,alq1Casa,alq2Casa,Hotel])
 	
@@ -22,35 +24,35 @@ public enum Provincia {
 	TUCUMAN (25000, new Integer[]{0, 7000}, new Integer[]{2500,4500});
 	
 	private final Integer precio;
-
-	private final Integer[] precioEdificio;
 	
-	private final Integer[] alquiler;
+	private final ArrayList<Edificio> edificios;
 	
 	Provincia(Integer precio, Integer[] precioEdificio, Integer[] alquiler) {
 		this.precio = precio;
-		this.precioEdificio = precioEdificio;
-		this.alquiler = alquiler;
+		this.edificios = new ArrayList<>();
+	
+		this.edificios.add( new Vacio(precioEdificio[0], alquiler[0]) );
+		this.edificios.add( new Casa(precioEdificio[1], alquiler[1]) );
+		if ( alquiler.length > 2) {
+			this.edificios.add( new Casa(precioEdificio[2], alquiler[2]) );
+			this.edificios.add( new Hotel(precioEdificio[3], alquiler[3]) );
+		}
 	}
 
 	public Integer precio() {
 		return precio;
 	}
 
-	public Vacio vacio() {
-		return new Vacio(precioEdificio[0], alquiler[0]);
+	public Edificio vacio() {
+		return this.edificios.get(0);
 	}
 
-	public Casa unaCasa() {
-		return new Casa(precioEdificio[1], alquiler[1]);
+	public Edificio hotel() {
+		return this.edificios().get(3);
 	}
-
-	public Casa dosCasa() {
-		return new Casa(precioEdificio[2], alquiler[2]);
-	}
-
-	public Hotel hotel() {
-		return new Hotel(precioEdificio[3], alquiler[3]);
+	
+	public ArrayList<Edificio> edificios()  {
+		return this.edificios;
 	}
 	
 }

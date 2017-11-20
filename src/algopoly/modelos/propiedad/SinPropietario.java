@@ -19,4 +19,12 @@ public class SinPropietario implements EstadoPropiedad {
 	@Override
 	public void pagarAlquiler(Jugador jugador) {
 	}
+
+	@Override
+	public void construirCasa() {
+	}
+
+	@Override
+	public void contruirHotel() {
+	}
 }

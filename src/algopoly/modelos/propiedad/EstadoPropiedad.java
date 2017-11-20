@@ -7,4 +7,8 @@ public interface EstadoPropiedad {
 	void comprarPropiedad(Jugador jugador);
 
 	void pagarAlquiler(Jugador jugador);
+
+	void construirCasa();
+	
+	void contruirHotel();
 }

@@ -8,11 +8,19 @@ public interface Propiedad {
 	
 	Integer getPrecio();
 
-	Integer getPrecioEdificio();
-
 	Integer getPrecioAlquiler();
 
-	void construir();
-
 	void setPropietario(Jugador jugador);
+
+	boolean esEstaProvincia(Provincia provincia);
+
+	Integer cantidadEdificios();
+
+	Provincia getProvincia();
+
+	void construir(Edificio edificio);
+
+	void construirCasa();
+
+	void construirHotel();
 }

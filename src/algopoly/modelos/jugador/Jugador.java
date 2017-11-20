@@ -127,9 +127,9 @@ public class Jugador {
 	
 		int len = this.propiedades.size();
 		
-		for ( int i = 0; i < len;) {
+		for ( int i = 0; i < len; i++) {
 			Propiedad propiedad = this.propiedades.get(i);
-			if ( propiedad.esEstaProvincia(provincia) );
+			if ( propiedad.esEstaProvincia(provincia) )
 				return propiedad;
 		}
 		return null;

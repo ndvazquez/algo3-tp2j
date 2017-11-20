@@ -64,7 +64,7 @@ public class PropiedadRegional implements Casillero, Propiedad {
     }
 
     public boolean esEstaProvincia(Provincia estaProvincia) {
-    	return this.provincia == estaProvincia;
+    	return this.provincia.name().equals(estaProvincia.name());
     }
     
     public void construir(Edificio edificio) {
@@ -77,7 +77,6 @@ public class PropiedadRegional implements Casillero, Propiedad {
     }
 	public void construirCasa() {
 		
-		//alqo aca esta andando mal
 		if ( this.estaCompleta() && this.cantidadEdificios < 2) {
 			this.estado = new RegionCompleta(this);
 			this.estado.construirCasa();

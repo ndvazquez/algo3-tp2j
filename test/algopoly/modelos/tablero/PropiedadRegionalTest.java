@@ -3,7 +3,6 @@ package algopoly.modelos.tablero;
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.propiedad.PropiedadRegional;
 import algopoly.modelos.propiedad.Provincia;
-import algopoly.modelos.propiedad.Region;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,7 +11,6 @@ public class PropiedadRegionalTest {
 
 	@Test
 	public void test01UnJugadorCaeEnUnaPropiedadRegionalYSeVuelvePropietario(){
-        Region region = new Region();
         Jugador jugadorPrueba = new Jugador();
         PropiedadRegional propiedadSimple = new PropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE);
 
@@ -108,9 +106,8 @@ public class PropiedadRegionalTest {
 		int capital = jugadorPrueba.getCapital();
 		int cant = propiedad1.cantidadEdificios();
 
-		//Assert.assertEquals(80000, capital); 
-		
-		//Assert.assertEquals(0, cant);
+		Assert.assertEquals(0, cant);
+		Assert.assertEquals(80000, capital);
 	}
 	
 	@Test
@@ -146,6 +143,9 @@ public class PropiedadRegionalTest {
 
 		int capital1 = jugador1.getCapital();
 		int capital2 = jugador2.getCapital();
+		int cant = propiedad1.cantidadEdificios();
+
+		Assert.assertEquals(1, cant);
 
 		Assert.assertEquals(53000, capital1);
 		Assert.assertEquals(97000, capital2);
@@ -169,6 +169,9 @@ public class PropiedadRegionalTest {
 
 		int capital1 = jugador1.getCapital();
 		int capital2 = jugador2.getCapital();
+		int cant = propiedad1.cantidadEdificios();
+
+		Assert.assertEquals(2, cant);
 
 		Assert.assertEquals(48500, capital1);
 		Assert.assertEquals(96500, capital2);
@@ -191,12 +194,18 @@ public class PropiedadRegionalTest {
 		propiedad2.construirCasa();
 		propiedad2.construirCasa();
 		
+		int cant1 = propiedad1.cantidadEdificios();
+		int cant2 = propiedad2.cantidadEdificios();
+		
 		propiedad1.construirHotel();
 		
 		propiedad1.recibirJugador(jugador2);
 
 		int capital1 = jugador1.getCapital();
 		int capital2 = jugador2.getCapital();
+
+		Assert.assertEquals(2, cant1);
+		Assert.assertEquals(2, cant2);
 
 		Assert.assertEquals(31000, capital1);
 		Assert.assertEquals(95000, capital2);

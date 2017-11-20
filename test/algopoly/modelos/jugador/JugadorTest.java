@@ -3,8 +3,8 @@ package algopoly.modelos.jugador;
 import org.junit.Assert;
 import org.junit.Test;
 
-import algopoly.modelos.propiedad.PropiedadSimple;
-import algopoly.modelos.propiedad.Provincia;
+import algopoly.modelos.tablero.propiedad.PropiedadSimple;
+import algopoly.modelos.tablero.propiedad.Provincia;
 
 
 public class JugadorTest {

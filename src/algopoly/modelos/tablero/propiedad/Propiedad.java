@@ -1,4 +1,4 @@
-package algopoly.modelos.propiedad;
+package algopoly.modelos.tablero.propiedad;
 
 import algopoly.modelos.jugador.Jugador;
 

@@ -1,8 +1,8 @@
 package algopoly.modelos.jugador;
 
-import algopoly.modelos.propiedad.Propiedad;
-import algopoly.modelos.propiedad.Provincia;
 import algopoly.modelos.tablero.Casillero;
+import algopoly.modelos.tablero.propiedad.Propiedad;
+import algopoly.modelos.tablero.propiedad.Provincia;
 
 import java.util.ArrayList;
 
@@ -133,5 +133,9 @@ public class Jugador {
 				return propiedad;
 		}
 		return null;
+	}
+	
+	public boolean esEsteJugador(Jugador jugador) {
+		return this.equals(jugador);
 	}
 }

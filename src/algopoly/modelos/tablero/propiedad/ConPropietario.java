@@ -1,4 +1,4 @@
-package algopoly.modelos.propiedad;
+package algopoly.modelos.tablero.propiedad;
 
 import algopoly.modelos.jugador.Jugador;
 
@@ -16,7 +16,8 @@ public class ConPropietario implements EstadoPropiedad {
 
 	@Override
 	public void pagarAlquiler(Jugador jugador) {
-		if ( this.propiedad.getPropietario() != jugador)
+
+		if ( ! this.propiedad.getPropietario().esEsteJugador(jugador) )
 			jugador.pagarAlquiler(this.propiedad.getPropietario(), this.propiedad);
 	}
 

@@ -1,4 +1,4 @@
-package algopoly.modelos.propiedad;
+package algopoly.modelos.tablero.propiedad;
 
 public class PropiedadFactory {
 
@@ -10,7 +10,4 @@ public class PropiedadFactory {
         return new PropiedadRegional(precio, region, precioCasa, precioHotel);
     }
 
-	public Propiedad crearPropiedadSimple(Integer precio, Integer precio2) {
-		return new PropiedadSimple(precio, precio2);
-	}
 }

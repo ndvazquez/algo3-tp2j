@@ -1,12 +1,13 @@
-package algopoly.modelos.propiedad;
+package algopoly.modelos.tablero.propiedad;
 
-public class Vacio implements Edificio {
+public class Hotel implements Edificio {
 	
 	private Integer alquiler;
 	private Integer precio;
 	
-	public Vacio(Integer precio, Integer alquiler) {
+	public Hotel(Integer precio, Integer alquiler) {
 		this.alquiler = alquiler;
+		this.precio = precio;
 	}
 	
 	@Override

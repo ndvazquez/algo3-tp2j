@@ -1,8 +1,8 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
-import algopoly.modelos.propiedad.PropiedadSimple;
-import algopoly.modelos.propiedad.Provincia;
+import algopoly.modelos.tablero.propiedad.PropiedadSimple;
+import algopoly.modelos.tablero.propiedad.Provincia;
 
 import org.junit.Assert;
 import org.junit.Test;

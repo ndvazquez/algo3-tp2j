@@ -1,4 +1,4 @@
-package algopoly.modelos.propiedad;
+package algopoly.modelos.tablero.propiedad;
 
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Casillero;
@@ -19,10 +19,6 @@ public class PropiedadSimple implements Casillero, Propiedad {
 		this.provincia = provincia;
 		this.estado = new SinPropietario(this);
 		this.cantidadEdificios = 0;
-	}
-
-	public PropiedadSimple(Integer precio, Integer precioCasa){
-		// constructor descartado
 	}
 
 	@Override
@@ -68,8 +64,8 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	}
 
 	@Override
-	public boolean esEstaProvincia(Provincia estaOtraProvincia) {
-		return this.provincia == estaOtraProvincia;
+	public boolean esEstaProvincia(Provincia estaProvincia) {
+		return this.provincia.name().equals(estaProvincia.name());
 	}
 
 	@Override

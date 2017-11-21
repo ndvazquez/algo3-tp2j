@@ -1,6 +1,7 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.jugador.Posicion;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,11 +17,12 @@ public class RetrocesoDinamicoTest {
 			valor = jugadorPrueba.tirar();
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
-        int indiceActual = jugadorPrueba.getPosicion();
+        Posicion indiceActual = jugadorPrueba.getPosicion();
         retrocesoDinamico.recibirJugador(jugadorPrueba);
-        int indiceFinal = jugadorPrueba.getPosicion();
+        Posicion indiceFinal = jugadorPrueba.getPosicion();
 
-        Assert.assertEquals(indiceActual - (2 - 0), indiceFinal);
+        int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+        Assert.assertEquals(diferencia, 2 - 0);
     }
 
     @Test
@@ -31,11 +33,12 @@ public class RetrocesoDinamicoTest {
 			valor = jugadorPrueba.tirar();
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
-        int indiceActual = jugadorPrueba.getPosicion();
+        Posicion indiceActual = jugadorPrueba.getPosicion();
         retrocesoDinamico.recibirJugador(jugadorPrueba);
-        int indiceFinal = jugadorPrueba.getPosicion();
+        Posicion indiceFinal = jugadorPrueba.getPosicion();
 
-        Assert.assertEquals(indiceActual - (3 - 0), indiceFinal);
+        int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+        Assert.assertEquals(diferencia, 3 - 0);
     }
 
     @Test
@@ -46,11 +49,12 @@ public class RetrocesoDinamicoTest {
 			valor = jugadorPrueba.tirar();
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
-        int indiceActual = jugadorPrueba.getPosicion();
+        Posicion indiceActual = jugadorPrueba.getPosicion();
         retrocesoDinamico.recibirJugador(jugadorPrueba);
-        int indiceFinal = jugadorPrueba.getPosicion();
+        Posicion indiceFinal = jugadorPrueba.getPosicion();
 
-        Assert.assertEquals(indiceActual - (4 - 0), indiceFinal);
+        int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+        Assert.assertEquals(diferencia, 4 - 0);
     }
 
     @Test
@@ -61,11 +65,12 @@ public class RetrocesoDinamicoTest {
 			valor = jugadorPrueba.tirar();
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
-        int indiceActual = jugadorPrueba.getPosicion();
+        Posicion indiceActual = jugadorPrueba.getPosicion();
         retrocesoDinamico.recibirJugador(jugadorPrueba);
-        int indiceFinal = jugadorPrueba.getPosicion();
+        Posicion indiceFinal = jugadorPrueba.getPosicion();
 
-        Assert.assertEquals(indiceActual - (5 - 0), indiceFinal);
+        int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+        Assert.assertEquals(diferencia, 5 - 0);
     }
 
     @Test
@@ -76,11 +81,12 @@ public class RetrocesoDinamicoTest {
 			valor = jugadorPrueba.tirar();
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
-        int indiceActual = jugadorPrueba.getPosicion();
+        Posicion indiceActual = jugadorPrueba.getPosicion();
         retrocesoDinamico.recibirJugador(jugadorPrueba);
-        int indiceFinal = jugadorPrueba.getPosicion();
+        Posicion indiceFinal = jugadorPrueba.getPosicion();
 
-        Assert.assertEquals(indiceActual - (6 - 0), indiceFinal);
+        int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+        Assert.assertEquals(diferencia, 6 - 0);
     }
 
     /*** Tests dados 7 - 10 ***/
@@ -92,11 +98,12 @@ public class RetrocesoDinamicoTest {
 			valor = jugadorPrueba.tirar();
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
-        int indiceActual = jugadorPrueba.getPosicion();
+        Posicion indiceActual = jugadorPrueba.getPosicion();
         retrocesoDinamico.recibirJugador(jugadorPrueba);
-        int indiceFinal = jugadorPrueba.getPosicion();
+        Posicion indiceFinal = jugadorPrueba.getPosicion();
 
-        Assert.assertEquals(indiceActual - 100000 % 7, indiceFinal);
+        int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+        Assert.assertEquals(diferencia, 100000 % 7);
     }
 
     @Test
@@ -107,11 +114,12 @@ public class RetrocesoDinamicoTest {
 			valor = jugadorPrueba.tirar();
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
-        int indiceActual = jugadorPrueba.getPosicion();
+        Posicion indiceActual = jugadorPrueba.getPosicion();
         retrocesoDinamico.recibirJugador(jugadorPrueba);
-        int indiceFinal = jugadorPrueba.getPosicion();
+        Posicion indiceFinal = jugadorPrueba.getPosicion();
 
-        Assert.assertEquals(indiceActual - 100000 % 8, indiceFinal);
+        int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+        Assert.assertEquals(diferencia, 100000 % 8);
     }
 
 
@@ -123,11 +131,12 @@ public class RetrocesoDinamicoTest {
 			valor = jugadorPrueba.tirar();
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
-        int indiceActual = jugadorPrueba.getPosicion();
+        Posicion indiceActual = jugadorPrueba.getPosicion();
         retrocesoDinamico.recibirJugador(jugadorPrueba);
-        int indiceFinal = jugadorPrueba.getPosicion();
+        Posicion indiceFinal = jugadorPrueba.getPosicion();
 
-        Assert.assertEquals(indiceActual - 100000 % 9, indiceFinal);
+        int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+        Assert.assertEquals(diferencia, 100000 % 9);
     }
 
     @Test
@@ -138,11 +147,12 @@ public class RetrocesoDinamicoTest {
 			valor = jugadorPrueba.tirar();
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
-        int indiceActual = jugadorPrueba.getPosicion();
+        Posicion indiceActual = jugadorPrueba.getPosicion();
         retrocesoDinamico.recibirJugador(jugadorPrueba);
-        int indiceFinal = jugadorPrueba.getPosicion();
+        Posicion indiceFinal = jugadorPrueba.getPosicion();
 
-        Assert.assertEquals(indiceActual - 100000 % 10, indiceFinal);
+        int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+        Assert.assertEquals(diferencia, 100000 % 10);
     }
 
     /*** Tests dados 11 - 12 ***/
@@ -154,11 +164,12 @@ public class RetrocesoDinamicoTest {
 			valor = jugadorPrueba.tirar();
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
-        int indiceActual = jugadorPrueba.getPosicion();
+        Posicion indiceActual = jugadorPrueba.getPosicion();
         retrocesoDinamico.recibirJugador(jugadorPrueba);
-        int indiceFinal = jugadorPrueba.getPosicion();
+        Posicion indiceFinal = jugadorPrueba.getPosicion();
 
-        Assert.assertEquals(indiceActual - (11 - 2), indiceFinal);
+        int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+        Assert.assertEquals(diferencia, 11 - 2);
     }
 
     @Test
@@ -169,10 +180,11 @@ public class RetrocesoDinamicoTest {
 			valor = jugadorPrueba.tirar();
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
-        int indiceActual = jugadorPrueba.getPosicion();
+        Posicion indiceActual = jugadorPrueba.getPosicion();
         retrocesoDinamico.recibirJugador(jugadorPrueba);
-        int indiceFinal = jugadorPrueba.getPosicion();
+        Posicion indiceFinal = jugadorPrueba.getPosicion();
 
-        Assert.assertEquals(indiceActual - (12 - 2), indiceFinal);
+        int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+        Assert.assertEquals(diferencia, 12 - 2);
     }
 }

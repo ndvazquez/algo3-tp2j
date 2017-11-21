@@ -1,5 +1,6 @@
 package algopoly.modelos.tablero;
 
+import algopoly.modelos.excepciones.JugadorSinPlataException;
 import algopoly.modelos.jugador.Jugador;
 import org.junit.Assert;
 import org.junit.Test;
@@ -37,7 +38,7 @@ public class CarcelTest {
 		Assert.assertTrue(jugador.puedeMoverse());
 	}
 
-	@Test
+	@Test(expected = JugadorSinPlataException.class)
 	public void test03JugadorCaeEnCarcelYNoPuedePagarFianzaPorFaltaDeFondosLuegoNoPuedeMoverse() {
 		
 		Jugador jugador = new Jugador();
@@ -48,10 +49,8 @@ public class CarcelTest {
 		jugador.iniciarTurno();
 		jugador.iniciarTurno();
 		
-		jugador.incrementarCapital(-60000);
+		jugador.pagar(60000);
 		jugador.pagarFianza();
-		
-		Assert.assertFalse(jugador.puedeMoverse());
 	}
 	
 	/* Tests Complementarios */
@@ -93,7 +92,7 @@ public class CarcelTest {
 		
 		jugador.caerEnCasillero(carcel);
 		
-		jugador.incrementarCapital(-60000);
+		jugador.pagar(60000);
 		jugador.pagarFianza();
 		
 		Assert.assertEquals(capitalFinal.intValue(), jugador.getCapital().intValue());

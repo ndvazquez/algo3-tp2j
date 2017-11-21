@@ -1,6 +1,7 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.jugador.Posicion;
 import algopoly.modelos.tablero.propiedad.PropiedadSimple;
 
 import org.mockito.Mockito;
@@ -21,11 +22,12 @@ public class AvanceDinamicoTest {
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
+		Posicion indiceFinal = jugador.getPosicion();
 
-		Assert.assertEquals(indiceActual + (2 - 2), indiceFinal);
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, 2-2);
 	}
 
 	@Test
@@ -36,11 +38,12 @@ public class AvanceDinamicoTest {
 			valor = jugador.tirar();
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
+		Posicion indiceFinal = jugador.getPosicion();
 
-		Assert.assertEquals(indiceActual + (3 - 2), indiceFinal);
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, 3-2);
 	}
 
 	@Test
@@ -52,11 +55,12 @@ public class AvanceDinamicoTest {
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
-
-		Assert.assertEquals(indiceActual + (4 - 2), indiceFinal);
+		Posicion indiceFinal = jugador.getPosicion();
+		
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, 4 - 2);
 	}
 
 	@Test
@@ -68,11 +72,12 @@ public class AvanceDinamicoTest {
 
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
+		Posicion indiceFinal = jugador.getPosicion();
 
-		Assert.assertEquals(indiceActual + (5 - 2), indiceFinal);
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, 5 - 2);
 	}
 
 	@Test
@@ -84,11 +89,12 @@ public class AvanceDinamicoTest {
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
+		Posicion indiceFinal = jugador.getPosicion();
 
-		Assert.assertEquals(indiceActual + (6 - 2), indiceFinal);
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, 6 - 2);
 	}
 
 	/*** Tests dados 7 - 10 ***/
@@ -101,11 +107,12 @@ public class AvanceDinamicoTest {
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
+		Posicion indiceFinal = jugador.getPosicion();
 
-		Assert.assertEquals(indiceActual + (100000 % 7), indiceFinal);
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, 100000 % 7);
 	}
 
 	@Test
@@ -117,11 +124,12 @@ public class AvanceDinamicoTest {
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
+		Posicion indiceFinal = jugador.getPosicion();
 
-		Assert.assertEquals(indiceActual + (100000 % 8), indiceFinal);
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, 100000 % 8);
 	}
 
 	@Test
@@ -133,11 +141,12 @@ public class AvanceDinamicoTest {
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
+		Posicion indiceFinal = jugador.getPosicion();
 
-		Assert.assertEquals(indiceActual + (100000 % 9), indiceFinal);
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, 100000 % 9);
 	}
 
 	@Test
@@ -149,11 +158,12 @@ public class AvanceDinamicoTest {
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
+		Posicion indiceFinal = jugador.getPosicion();
 
-		Assert.assertEquals(indiceActual + (100000 % 10), indiceFinal);
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, 100000 % 10);
 	}
 
 	/*** Tests dados 11 -12 ***/
@@ -166,11 +176,12 @@ public class AvanceDinamicoTest {
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
+		Posicion indiceFinal = jugador.getPosicion();
 
-		Assert.assertEquals(indiceActual + (11 - 0), indiceFinal);
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, 11 - 0);
 	}
 
 	@Test
@@ -183,11 +194,12 @@ public class AvanceDinamicoTest {
 		}
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
+		Posicion indiceFinal = jugador.getPosicion();
 
-		Assert.assertEquals(indiceActual + (11 - 1), indiceFinal);
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, 11 - 1);
 	}
 
 	@Test
@@ -203,11 +215,12 @@ public class AvanceDinamicoTest {
 		}
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
+		Posicion indiceFinal = jugador.getPosicion();
 
-		Assert.assertEquals(indiceActual + (11 - 20), indiceFinal);
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, Posicion.cantidadPosiciones() + (11 - 20));
 	}
 
 	@Test
@@ -219,11 +232,12 @@ public class AvanceDinamicoTest {
 		}
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
+		Posicion indiceFinal = jugador.getPosicion();
 
-		Assert.assertEquals(indiceActual + (12 - 0), indiceFinal);
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, 12 - 0);
 	}
 
 	@Test
@@ -236,11 +250,12 @@ public class AvanceDinamicoTest {
 		}
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
+		Posicion indiceFinal = jugador.getPosicion();
 
-		Assert.assertEquals(indiceActual + (12 - 1), indiceFinal);
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, 12 - 1);
 	}
 
 	@Test
@@ -255,9 +270,11 @@ public class AvanceDinamicoTest {
 
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		int indiceActual = jugador.getPosicion();
+		Posicion indiceActual = jugador.getPosicion();
 		avanceDinamico.recibirJugador(jugador);
-		int indiceFinal = jugador.getPosicion();
-		Assert.assertEquals(indiceActual + (12 - 20), indiceFinal);
+		Posicion indiceFinal = jugador.getPosicion();
+		
+		int diferencia = Posicion.cantidadCasillerosEntre(indiceActual, indiceFinal);
+		Assert.assertEquals(diferencia, Posicion.cantidadPosiciones() + (12 - 20));
 	}
 }

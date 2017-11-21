@@ -25,6 +25,6 @@ public class SinPropietario implements EstadoPropiedad {
 	}
 
 	@Override
-	public void contruirHotel() {
+	public void construirHotel() {
 	}
 }

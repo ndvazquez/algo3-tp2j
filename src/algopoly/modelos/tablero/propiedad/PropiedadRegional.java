@@ -16,10 +16,6 @@ public class PropiedadRegional implements Casillero, Propiedad {
 	private Integer cantidadEdificios;
 
 	private Provincia provincia;
-	
-    public PropiedadRegional(Integer precio, Region region, Integer precioCasa, Integer precioHotel){
-        this.estado = new SinPropietario(this);
-    }
 
     public PropiedadRegional(Provincia provincia, Provincia provinciaComplemento){
     	this.provincia = provincia;
@@ -75,6 +71,7 @@ public class PropiedadRegional implements Casillero, Propiedad {
     public boolean estaCompleta() {
     	return this.propietario.getPropiedad(this.provinciaComplemento) != null;
     }
+
 	public void construirCasa() {
 		
 		if ( this.estaCompleta() && this.cantidadEdificios < 2) {
@@ -88,7 +85,7 @@ public class PropiedadRegional implements Casillero, Propiedad {
 		Propiedad propiedadComplemento = this.propietario.getPropiedad(provinciaComplemento);
 		
 		if ( this.estaCompleta() && this.cantidadEdificios == 2 && propiedadComplemento.cantidadEdificios() == 2 )
-			this.estado.contruirHotel();
+			this.estado.construirHotel();
 	}
 
 	@Override

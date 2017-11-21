@@ -6,6 +6,7 @@ public class Vacio implements Edificio {
 	private Integer precio;
 	
 	public Vacio(Integer precio, Integer alquiler) {
+		this.precio = precio;
 		this.alquiler = alquiler;
 	}
 	

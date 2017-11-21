@@ -6,8 +6,8 @@ public class PropiedadFactory {
         return new PropiedadSimple(provincia);
     }
 
-    public PropiedadRegional crearPropiedadRegional(Integer precio, Region region, Integer precioCasa, Integer precioHotel){
-        return new PropiedadRegional(precio, region, precioCasa, precioHotel);
+    public PropiedadRegional crearPropiedadRegional(Provincia provincia, Provincia provinciaComplemento){
+        return new PropiedadRegional(provincia, provinciaComplemento);
     }
 
 }

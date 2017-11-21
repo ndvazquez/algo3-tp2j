@@ -10,5 +10,5 @@ public interface EstadoPropiedad {
 
 	void construirCasa();
 	
-	void contruirHotel();
+	void construirHotel();
 }

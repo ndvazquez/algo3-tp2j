@@ -26,6 +26,6 @@ public class ConPropietario implements EstadoPropiedad {
 	}
 
 	@Override
-	public void contruirHotel() {
+	public void construirHotel() {
 	}
 }

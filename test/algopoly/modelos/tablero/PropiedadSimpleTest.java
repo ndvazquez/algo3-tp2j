@@ -1,6 +1,7 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.tablero.propiedad.PropiedadFactory;
 import algopoly.modelos.tablero.propiedad.PropiedadSimple;
 import algopoly.modelos.tablero.propiedad.Provincia;
 
@@ -12,37 +13,26 @@ public class PropiedadSimpleTest {
 	
 	
 	@Test
-	public void test01jugadorCaeEnUnaPropiedadSimpleYSeConvierteEnPropietario() {
-
+	public void test01JugadorCaeEnUnaPropiedadSimpleYSeConvierteEnPropietario() {
+		PropiedadFactory propiedadFactory = new PropiedadFactory();
 		Jugador jugadorPrueba = new Jugador();
-		PropiedadSimple propiedad = new PropiedadSimple(Provincia.NEUQUEN);
+		PropiedadSimple propiedad = propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN);
 
 		propiedad.recibirJugador(jugadorPrueba);
 
 		int cantidadPropiedades = jugadorPrueba.getCantidadPropiedades();
+        int capital = jugadorPrueba.getCapital();
 
 		Assert.assertEquals(cantidadPropiedades, 1);
 		Assert.assertEquals(propiedad.getPropietario(), jugadorPrueba);
+        Assert.assertEquals(83000, capital);
 	}
 	
 	@Test
-	public void test02jugadorCaeEnNeuquenYCompra() {
-
+	public void test02JugadorConstruyeCasaEnNeuquen() {
+		PropiedadFactory propiedadFactory = new PropiedadFactory();
 		Jugador jugadorPrueba = new Jugador();
-		PropiedadSimple propiedad = new PropiedadSimple(Provincia.NEUQUEN);
-
-		propiedad.recibirJugador(jugadorPrueba);
-		
-		int capital = jugadorPrueba.getCapital();
-
-		Assert.assertEquals(83000, capital);
-	}
-	
-	@Test
-	public void test03jugadorConstruyeCasaEnNeuquen() {
-		
-		Jugador jugadorPrueba = new Jugador();
-		PropiedadSimple propiedad = new PropiedadSimple(Provincia.NEUQUEN);
+		PropiedadSimple propiedad = propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN);
 
 		propiedad.recibirJugador(jugadorPrueba);
 
@@ -54,10 +44,10 @@ public class PropiedadSimpleTest {
 	}
 	
 	@Test
-	public void test04jugadorCaeEnNeuquenDeOtroJugadorYPagaAlquieler() {
-		
+	public void test03JugadorCaeEnNeuquenDeOtroJugadorYPagaAlquiler() {
+		PropiedadFactory propiedadFactory = new PropiedadFactory();
 		Jugador jugador1 = new Jugador();
-		PropiedadSimple propiedad = new PropiedadSimple(Provincia.NEUQUEN);
+		PropiedadSimple propiedad = propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN);
 
 		propiedad.recibirJugador(jugador1);
 
@@ -72,9 +62,10 @@ public class PropiedadSimpleTest {
 	}
 	
 	@Test
-	public void test05jugadorCaeEnNeuquenDeOtroJugadorConCasaYPagaAlquieler() {
+	public void test04JugadorCaeEnNeuquenDeOtroJugadorConCasaYPagaAlquiler() {
+		PropiedadFactory propiedadFactory = new PropiedadFactory();
 		Jugador jugador1 = new Jugador();
-		PropiedadSimple propiedad = new PropiedadSimple(Provincia.NEUQUEN);
+		PropiedadSimple propiedad = propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN);
 
 		propiedad.recibirJugador(jugador1);
 		propiedad.construirCasa();
@@ -90,10 +81,10 @@ public class PropiedadSimpleTest {
 	}
 
 	@Test
-	public void test06jugadorNoPuedeComprarMasDeUnaConstruccionEnNeuquen() {
-		
+	public void test05JugadorNoPuedeComprarMasDeUnaConstruccionEnNeuquen() {
+		PropiedadFactory propiedadFactory = new PropiedadFactory();
 		Jugador jugadorPrueba = new Jugador();
-		PropiedadSimple propiedad = new PropiedadSimple(Provincia.NEUQUEN);
+		PropiedadSimple propiedad = propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN);
 
 		propiedad.recibirJugador(jugadorPrueba);
 		propiedad.construirCasa();

@@ -32,7 +32,7 @@ public class RegionCompleta implements EstadoPropiedad {
 
 
 	@Override
-	public void contruirHotel() {
+	public void construirHotel() {
 		Edificio edificio = this.propiedad.getProvincia().hotel();
 		if ( this.propiedad.getPropietario().getCapital() - edificio.getPrecio() >= 0 ) {
 			this.propiedad.getPropietario().incrementarCapital( -edificio.getPrecio() );

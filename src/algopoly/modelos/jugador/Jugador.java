@@ -1,7 +1,6 @@
 package algopoly.modelos.jugador;
 
 import algopoly.modelos.tablero.Casillero;
-import algopoly.modelos.tablero.Compania;
 import algopoly.modelos.tablero.Propiedad;
 
 import java.util.ArrayList;
@@ -22,8 +21,6 @@ public class Jugador {
 
 	private Estado estado;
 
-	private ArrayList<Compania> companias;
-
 	public Jugador() {
 		this.capital = 100000;
 		this.posicion = Posicion.SALIDA;
@@ -31,7 +28,6 @@ public class Jugador {
 		this.dado2 = new Dado();
 		this.estado = new Habilitado();
 		this.propiedades = new ArrayList<Propiedad>();
-		this.companias = new ArrayList<Compania>();
 	}
 
 	public void incrementarCapital(Integer aumento) {
@@ -110,10 +106,6 @@ public class Jugador {
 		Integer valor1 = this.dado1.tirar();
 		Integer valor2 = this.dado2.tirar();
 		return valor1 + valor2;
-	}
-
-	public void comprarCompania(Compania compania) {
-		this.companias.add(compania);
 	}
 
 }

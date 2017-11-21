@@ -1,6 +1,8 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.tablero.servicios.Compania;
+import algopoly.modelos.tablero.servicios.Servicios;
 
 import org.junit.Assert;
 import org.junit.Test;

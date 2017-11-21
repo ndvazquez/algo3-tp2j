@@ -37,6 +37,20 @@ public class Jugador {
 		this.companias = new ArrayList<>();
 	}
 
+	public void iniciarTurno() {
+		this.estado.iniciarTurno();
+	}
+
+	public Integer tirar() {
+		Integer valor1 = this.dado1.tirar();
+		Integer valor2 = this.dado2.tirar();
+		return valor1 + valor2;
+	}
+	
+	public Integer getUltimaTirada() {
+		return this.dado1.getUltimaTirada() + this.dado2.getUltimaTirada();
+	}
+	
 	public void cobrar(Integer monto) {
 		this.capital += monto;
 	}
@@ -48,8 +62,8 @@ public class Jugador {
 		}
 	}
 
-	public Integer getUltimaTirada() {
-		return this.dado1.getUltimaTirada() + this.dado2.getUltimaTirada();
+	public Integer getCapital() {
+		return this.capital;
 	}
 
 	public void mover(Integer casilleros) {
@@ -70,10 +84,6 @@ public class Jugador {
 		return this.posicion;
 	}
 
-	public Integer getCapital() {
-		return this.capital;
-	}
-
 	public Integer getCantidadPropiedades() {
 		return this.propiedades.size();
 	}
@@ -81,39 +91,6 @@ public class Jugador {
 	public void comprarPropiedad(Propiedad propiedad) {
 		this.pagar(propiedad.getPrecio());
 		this.propiedades.add(propiedad);
-	}
-
-	public boolean puedeEjecutarAcciones() {
-		return this.estado.puedeEjecutarAcciones();
-	}
-
-	public boolean puedeMoverse() {
-		return this.estado.puedeMoverse();
-	}
-
-	public void iniciarTurno() {
-		this.estado.iniciarTurno();
-	}
-
-	public void encarcelar() {
-		this.estado = new Encarcelado(this);
-	}
-
-	public void habilitar() {
-		this.estado = new Habilitado();
-	}
-
-	public void pagarFianza() {
-		if (this.puedeEjecutarAcciones()) {
-			this.pagar(Carcel.FIANZA);
-			this.estado = new Habilitado();
-		}
-	}
-	
-	public Integer tirar() {
-		Integer valor1 = this.dado1.tirar();
-		Integer valor2 = this.dado2.tirar();
-		return valor1 + valor2;
 	}
 
 	public Propiedad getPropiedad(Provincia provincia) {
@@ -133,4 +110,27 @@ public class Jugador {
 		this.companias.add(compania);
 	}
 	
+	public boolean puedeEjecutarAcciones() {
+		return this.estado.puedeEjecutarAcciones();
+	}
+
+	public boolean puedeMoverse() {
+		return this.estado.puedeMoverse();
+	}
+
+	public void encarcelar() {
+		this.estado = new Encarcelado(this);
+	}
+
+	public void habilitar() {
+		this.estado = new Habilitado();
+	}
+
+	public void pagarFianza() {
+		if (this.puedeEjecutarAcciones()) {
+			this.pagar(Carcel.FIANZA);
+			this.estado = new Habilitado();
+		}
+	}
+
 }

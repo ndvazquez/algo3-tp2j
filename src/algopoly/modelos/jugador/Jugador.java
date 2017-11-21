@@ -2,7 +2,6 @@ package algopoly.modelos.jugador;
 
 import algopoly.modelos.excepciones.JugadorSinPlataException;
 import algopoly.modelos.tablero.Carcel;
-import algopoly.modelos.tablero.Casillero;
 import algopoly.modelos.tablero.propiedad.Propiedad;
 import algopoly.modelos.tablero.propiedad.Provincia;
 import algopoly.modelos.tablero.servicios.Compania;

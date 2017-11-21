@@ -115,14 +115,6 @@ public class Jugador {
 		return valor1 + valor2;
 	}
 
-	public void comprarCasa(Propiedad propiedad) {
-		propiedad.construirCasa();
-	}
-	
-	public void comprarHotel(Propiedad propiedad) {
-		propiedad.construirHotel();
-	}
-	
 	public Propiedad getPropiedad(Provincia provincia) {
 	
 		int len = this.propiedades.size();

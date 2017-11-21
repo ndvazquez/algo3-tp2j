@@ -5,6 +5,7 @@ import algopoly.modelos.tablero.Carcel;
 import algopoly.modelos.tablero.Casillero;
 import algopoly.modelos.tablero.propiedad.Propiedad;
 import algopoly.modelos.tablero.propiedad.Provincia;
+import algopoly.modelos.tablero.servicios.Compania;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,8 @@ public class Jugador {
 	private Posicion posicion;
 
 	private ArrayList<Propiedad> propiedades;
+	
+	private ArrayList<Compania> companias;
 
 	private Integer capital;
 
@@ -31,6 +34,7 @@ public class Jugador {
 		this.dado2 = new Dado();
 		this.estado = new Habilitado();
 		this.propiedades = new ArrayList<>();
+		this.companias = new ArrayList<>();
 	}
 
 	public void cobrar(Integer monto) {
@@ -79,10 +83,6 @@ public class Jugador {
 		this.propiedades.add(propiedad);
 	}
 
-	public void caerEnCasillero(Casillero casillero) {
-		casillero.recibirJugador(this);
-	}
-
 	public boolean puedeEjecutarAcciones() {
 		return this.estado.puedeEjecutarAcciones();
 	}
@@ -117,7 +117,6 @@ public class Jugador {
 	}
 
 	public Propiedad getPropiedad(Provincia provincia) {
-	
 		int len = this.propiedades.size();
 		
 		for ( int i = 0; i < len; i++) {
@@ -128,8 +127,10 @@ public class Jugador {
 		}
 		return null;
 	}
-	
-	public boolean esEsteJugador(Jugador jugador) {
-		return this.equals(jugador);
+
+	public void comprarCompania(Compania compania) {
+		this.pagar(compania.getPrecio());
+		this.companias.add(compania);
 	}
+	
 }

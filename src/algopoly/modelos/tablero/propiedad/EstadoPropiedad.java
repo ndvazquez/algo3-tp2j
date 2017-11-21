@@ -2,13 +2,23 @@ package algopoly.modelos.tablero.propiedad;
 
 import algopoly.modelos.jugador.Jugador;
 
-public interface EstadoPropiedad {
+public abstract class EstadoPropiedad {
 
-	void comprarPropiedad(Jugador jugador);
+	abstract void comprarPropiedad(Jugador jugador, Propiedad propiedad);
 
-	void pagarAlquiler(Jugador jugador);
+	void pagarAlquiler(Jugador jugador, Propiedad propiedad) {
+		if (!propiedad.getPropietario().esEsteJugador(jugador)) {
+			int monto = propiedad.getPrecioAlquiler();
+			if (jugador.getCapital() - monto >= 0) {
+				jugador.incrementarCapital(-monto);
+				propiedad.getPropietario().incrementarCapital(monto);
+			}
+		}
+	}
 
-	void construirCasa();
+
+	abstract void construirCasa(Propiedad propiedad);
 	
-	void construirHotel();
+	abstract void construirHotel(Propiedad propiedad);
+
 }

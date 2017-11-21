@@ -2,29 +2,23 @@ package algopoly.modelos.tablero.propiedad;
 
 import algopoly.modelos.jugador.Jugador;
 
-public class SinPropietario implements EstadoPropiedad {
+public class SinPropietario extends EstadoPropiedad {
 
-	private Propiedad propiedad;
-
-	public SinPropietario(Propiedad propiedad) {
-		this.propiedad = propiedad;
+	@Override
+	public void comprarPropiedad(Jugador jugador, Propiedad propiedad) {
+		jugador.comprarPropiedad(propiedad);
+		propiedad.setPropietario(jugador);
 	}
 
 	@Override
-	public void comprarPropiedad(Jugador jugador) {
-		jugador.comprarPropiedad(this.propiedad);
-		this.propiedad.setPropietario(jugador);
+	public void pagarAlquiler(Jugador jugador, Propiedad propiedad) {
 	}
 
 	@Override
-	public void pagarAlquiler(Jugador jugador) {
+	public void construirCasa(Propiedad propiedad) {
 	}
 
 	@Override
-	public void construirCasa() {
-	}
-
-	@Override
-	public void construirHotel() {
+	public void construirHotel(Propiedad propiedad) {
 	}
 }

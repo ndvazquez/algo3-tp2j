@@ -20,16 +20,16 @@ public class PropiedadRegional implements Casillero, Propiedad {
     public PropiedadRegional(Provincia provincia, Provincia provinciaComplemento){
     	this.provincia = provincia;
     	this.provinciaComplemento = provinciaComplemento;
-        this.estado = new SinPropietario(this);
+        this.estado = new SinPropietario();
         this.cantidadEdificios = 0;
     }
 
     @Override
     public void recibirJugador(Jugador jugador) {
 
-    	this.estado.comprarPropiedad(jugador);
+    	this.estado.comprarPropiedad(jugador, this);
 		
-		this.estado.pagarAlquiler(jugador);
+		this.estado.pagarAlquiler(jugador, this);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class PropiedadRegional implements Casillero, Propiedad {
     
     @Override
 	public void setPropietario(Jugador jugador) {
-		this.estado = new ConPropietario(this);
+		this.estado = new ConPropietario();
 		this.edificio = this.provincia.vacio();
 		this.propietario = jugador;
 	}
@@ -75,8 +75,8 @@ public class PropiedadRegional implements Casillero, Propiedad {
 	public void construirCasa() {
 		
 		if ( this.estaCompleta() && this.cantidadEdificios < 2) {
-			this.estado = new RegionCompleta(this);
-			this.estado.construirCasa();
+			this.estado = new RegionCompleta();
+			this.estado.construirCasa(this);
 		}
 	}
 	
@@ -85,7 +85,7 @@ public class PropiedadRegional implements Casillero, Propiedad {
 		Propiedad propiedadComplemento = this.propietario.getPropiedad(provinciaComplemento);
 		
 		if ( this.estaCompleta() && this.cantidadEdificios == 2 && propiedadComplemento.cantidadEdificios() == 2 )
-			this.estado.construirHotel();
+			this.estado.construirHotel(this);
 	}
 
 	@Override

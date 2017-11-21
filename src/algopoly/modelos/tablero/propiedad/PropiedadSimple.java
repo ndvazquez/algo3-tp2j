@@ -17,16 +17,16 @@ public class PropiedadSimple implements Casillero, Propiedad {
 
 	public PropiedadSimple(Provincia provincia) {
 		this.provincia = provincia;
-		this.estado = new SinPropietario(this);
+		this.estado = new SinPropietario();
 		this.cantidadEdificios = 0;
 	}
 
 	@Override
 	public void recibirJugador(Jugador jugador) {
 
-		this.estado.comprarPropiedad(jugador);
+		this.estado.comprarPropiedad(jugador, this);
 
-		this.estado.pagarAlquiler(jugador);
+		this.estado.pagarAlquiler(jugador, this);
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	@Override
 	public void setPropietario(Jugador jugador) {
 		this.propietario = jugador;
-		this.estado = new RegionCompleta(this);
+		this.estado = new RegionCompleta();
 		this.edificio = this.provincia.vacio();
 	}
 	
@@ -59,7 +59,7 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	
 	public void construirCasa() {
 		if (this.cantidadEdificios < 1) {
-			this.estado.construirCasa();
+			this.estado.construirCasa(this);
 		}
 	}
 

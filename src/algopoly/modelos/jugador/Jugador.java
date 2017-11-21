@@ -109,12 +109,6 @@ public class Jugador {
 		return valor1 + valor2;
 	}
 
-	public void pagarAlquiler(Jugador jugadorQueCobra, Propiedad propiedad) {
-		Integer precioAlquiler = propiedad.getPrecioAlquiler();
-		this.capital -= precioAlquiler;
-		jugadorQueCobra.incrementarCapital(precioAlquiler);
-	}
-
 	public void comprarCasa(Propiedad propiedad) {
 		propiedad.construirCasa();
 	}

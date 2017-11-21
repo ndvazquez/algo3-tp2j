@@ -1,13 +1,13 @@
 package algopoly.modelos.jugador;
 
+import algopoly.modelos.excepciones.JugadorSinPlataException;
+import algopoly.modelos.tablero.Carcel;
 import algopoly.modelos.tablero.Casillero;
 import algopoly.modelos.tablero.Propiedad;
 
 import java.util.ArrayList;
 
 public class Jugador {
-
-	private static final Integer FIANZA = 45000;
 
 	private Dado dado1;
 
@@ -30,8 +30,14 @@ public class Jugador {
 		this.propiedades = new ArrayList<Propiedad>();
 	}
 
-	public void incrementarCapital(Integer aumento) {
-		this.capital += aumento;
+	public void cobrar(Integer monto) {
+		this.capital += monto;
+	}
+
+	public void pagar(Integer monto) {
+		this.capital -= monto;
+		if (this.capital < 0)
+			throw new JugadorSinPlataException();
 	}
 
 	public Integer getUltimaTirada() {
@@ -42,7 +48,7 @@ public class Jugador {
 		for (int i = 0; i < casilleros; i++) { // si avanza entra aca
 			this.posicion = Posicion.getPosicionSiguiente(this.posicion);
 		}
-		
+
 		for (int i = casilleros; i < 0; i++) { // si retrocede entra aca
 			this.posicion = Posicion.getPosicionAnterior(this.posicion);
 		}
@@ -65,10 +71,8 @@ public class Jugador {
 	}
 
 	public void comprarPropiedad(Propiedad propiedad) {
-		if (this.capital - propiedad.getPrecio() > 0) {
-			this.capital -= propiedad.getPrecio();
-			this.propiedades.add(propiedad);
-		}
+		this.pagar(propiedad.getPrecio());
+		this.propiedades.add(propiedad);
 	}
 
 	public void caerEnCasillero(Casillero casillero) {
@@ -96,8 +100,8 @@ public class Jugador {
 	}
 
 	public void pagarFianza() {
-		if (this.puedeEjecutarAcciones() && this.capital >= 45000) {
-			this.capital -= FIANZA;
+		if (this.puedeEjecutarAcciones()) {
+			this.pagar(Carcel.FIANZA);
 			this.estado = new Habilitado();
 		}
 	}

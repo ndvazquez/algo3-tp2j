@@ -36,7 +36,7 @@ public class Quini6 implements Casillero {
 
         premios.get(jugador).add(ticketNoPremio);
 
-        jugador.incrementarCapital(premio);
+        jugador.cobrar(premio);
     }
 
 }

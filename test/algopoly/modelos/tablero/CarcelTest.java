@@ -48,7 +48,7 @@ public class CarcelTest {
 		jugador.iniciarTurno();
 		jugador.iniciarTurno();
 		
-		jugador.incrementarCapital(-60000);
+		jugador.pagar(60000);
 		jugador.pagarFianza();
 		
 		Assert.assertFalse(jugador.puedeMoverse());
@@ -93,7 +93,7 @@ public class CarcelTest {
 		
 		jugador.caerEnCasillero(carcel);
 		
-		jugador.incrementarCapital(-60000);
+		jugador.pagar(60000);
 		jugador.pagarFianza();
 		
 		Assert.assertEquals(capitalFinal.intValue(), jugador.getCapital().intValue());

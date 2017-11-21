@@ -9,7 +9,7 @@ public class ConPropietario implements Estado {
 
 		impuesto = jugador.equals(compania.getPropietario()) ? 0 : impuesto;
 		
-		jugador.incrementarCapital((-jugador.getUltimaTirada() * impuesto));
-		compania.getPropietario().incrementarCapital(jugador.getUltimaTirada() * impuesto);
+		jugador.pagar((jugador.getUltimaTirada() * impuesto));
+		compania.getPropietario().cobrar(jugador.getUltimaTirada() * impuesto);
 	}
 }

@@ -33,14 +33,10 @@ public class Posicion {
 		this.y = posY;
 	}
 
-	public int getX() {
-		return x;
-	}
+	public int getX() { return x; }
 
-	public int getY() {
-		return y;
-	}
-	
+	public int getY() { return y; }
+
 	public static Integer cantidadPosiciones() {
 		return posiciones.size();
 	}

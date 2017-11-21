@@ -4,6 +4,7 @@ import algopoly.modelos.jugador.Jugador;
 
 public class ConPropietario implements Estado {
 
+	@Override
 	public void recibirJugador(Jugador jugador, Compania compania) {
 		Integer impuesto = compania.getServicios().obtenerImpuesto(compania, jugador);
 

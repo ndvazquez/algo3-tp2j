@@ -40,7 +40,7 @@ public enum Provincia {
 	}
 
 	public Integer precio() {
-		return precio;
+		return this.precio;
 	}
 
 	public Edificio vacio() {

@@ -10,7 +10,7 @@ public class Servicios {
 	private Collection<Compania> companias;
 
 	public Servicios() {
-		companias = new ArrayList<Compania>();
+		this.companias = new ArrayList<>();
 	}
 
 	public void agregarCompania(Compania compania) {

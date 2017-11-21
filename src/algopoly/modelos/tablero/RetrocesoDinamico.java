@@ -11,15 +11,15 @@ public class RetrocesoDinamico implements Casillero {
 	private Map<Integer, Function<Jugador, Integer>> funciones;
 	
 	public RetrocesoDinamico() {
-		funciones = new HashMap<Integer, Function<Jugador, Integer>>();
+		this.funciones = new HashMap<>();
 		for (int i = 1; i <= 6; i++) {
-			funciones.put(i, j -> j.getUltimaTirada() - j.getCantidadPropiedades());
+			this.funciones.put(i, j -> j.getUltimaTirada() - j.getCantidadPropiedades());
 		}
 		for (int i = 7; i <= 10; i++) {
-			funciones.put(i, j -> j.getCapital() % j.getUltimaTirada());
+			this.funciones.put(i, j -> j.getCapital() % j.getUltimaTirada());
 		}
 		for (int i = 11; i <= 12; i++) {
-			funciones.put(i, j -> j.getUltimaTirada() - 2);
+			this.funciones.put(i, j -> j.getUltimaTirada() - 2);
 		}
 	}
 	

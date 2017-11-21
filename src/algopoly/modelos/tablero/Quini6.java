@@ -26,21 +26,21 @@ public class Quini6 implements Casillero {
             tickets.add(ticketPrimerPremio);
             tickets.add(ticketSegundoPremio);
 
-            premios.put(jugador, tickets);
+            this.premios.put(jugador, tickets);
         }
     }
 
     private void premiarJugador(Jugador jugador){
-        Ticket ticket = premios.get(jugador).remove();
+        Ticket ticket = this.premios.get(jugador).remove();
 
         ticket.darPremioAJugador(jugador);
 
-        premios.get(jugador).add(ticketNoPremio);
+        this.premios.get(jugador).add(this.ticketNoPremio);
     }
 
     @Override
     public void recibirJugador(Jugador jugador){
-        premiarJugador(jugador);
+        this.premiarJugador(jugador);
     }
 
 }

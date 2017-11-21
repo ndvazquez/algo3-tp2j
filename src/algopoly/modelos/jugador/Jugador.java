@@ -30,7 +30,7 @@ public class Jugador {
 		this.dado1 = new Dado();
 		this.dado2 = new Dado();
 		this.estado = new Habilitado();
-		this.propiedades = new ArrayList<Propiedad>();
+		this.propiedades = new ArrayList<>();
 	}
 
 	public void cobrar(Integer monto) {
@@ -39,8 +39,9 @@ public class Jugador {
 
 	public void pagar(Integer monto) {
 		this.capital -= monto;
-		if (this.capital < 0)
+		if (this.capital < 0) {
 			throw new JugadorSinPlataException();
+		}
 	}
 
 	public Integer getUltimaTirada() {
@@ -83,11 +84,11 @@ public class Jugador {
 	}
 
 	public boolean puedeEjecutarAcciones() {
-		return estado.puedeEjecutarAcciones();
+		return this.estado.puedeEjecutarAcciones();
 	}
 
 	public boolean puedeMoverse() {
-		return estado.puedeMoverse();
+		return this.estado.puedeMoverse();
 	}
 
 	public void iniciarTurno() {
@@ -121,8 +122,9 @@ public class Jugador {
 		
 		for ( int i = 0; i < len; i++) {
 			Propiedad propiedad = this.propiedades.get(i);
-			if ( propiedad.esEstaProvincia(provincia) )
+			if ( propiedad.esEstaProvincia(provincia) ) {
 				return propiedad;
+			}
 		}
 		return null;
 	}

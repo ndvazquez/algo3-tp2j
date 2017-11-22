@@ -2,9 +2,9 @@ package algopoly.modelos.jugador;
 
 import algopoly.modelos.excepciones.JugadorSinPlataException;
 import algopoly.modelos.tablero.Carcel;
-import algopoly.modelos.tablero.Casillero;
 import algopoly.modelos.tablero.propiedad.Propiedad;
 import algopoly.modelos.tablero.propiedad.Provincia;
+import algopoly.modelos.tablero.servicios.Compania;
 
 import java.util.ArrayList;
 
@@ -19,6 +19,8 @@ public class Jugador {
 	private Posicion posicion;
 
 	private ArrayList<Propiedad> propiedades;
+	
+	private ArrayList<Compania> companias;
 
 	private Integer capital;
 
@@ -30,21 +32,37 @@ public class Jugador {
 		this.dado1 = new Dado();
 		this.dado2 = new Dado();
 		this.estado = new Habilitado();
-		this.propiedades = new ArrayList<Propiedad>();
+		this.propiedades = new ArrayList<>();
+		this.companias = new ArrayList<>();
 	}
 
+	public void iniciarTurno() {
+		this.estado.iniciarTurno();
+	}
+
+	public Integer tirar() {
+		Integer valor1 = this.dado1.tirar();
+		Integer valor2 = this.dado2.tirar();
+		return valor1 + valor2;
+	}
+	
+	public Integer getUltimaTirada() {
+		return this.dado1.getUltimaTirada() + this.dado2.getUltimaTirada();
+	}
+	
 	public void cobrar(Integer monto) {
 		this.capital += monto;
 	}
 
 	public void pagar(Integer monto) {
 		this.capital -= monto;
-		if (this.capital < 0)
+		if (this.capital < 0) {
 			throw new JugadorSinPlataException();
+		}
 	}
 
-	public Integer getUltimaTirada() {
-		return this.dado1.getUltimaTirada() + this.dado2.getUltimaTirada();
+	public Integer getCapital() {
+		return this.capital;
 	}
 
 	public void mover(Integer casilleros) {
@@ -65,10 +83,6 @@ public class Jugador {
 		return this.posicion;
 	}
 
-	public Integer getCapital() {
-		return this.capital;
-	}
-
 	public Integer getCantidadPropiedades() {
 		return this.propiedades.size();
 	}
@@ -78,20 +92,29 @@ public class Jugador {
 		this.propiedades.add(propiedad);
 	}
 
-	public void caerEnCasillero(Casillero casillero) {
-		casillero.recibirJugador(this);
+	public Propiedad getPropiedad(Provincia provincia) {
+		int len = this.propiedades.size();
+		
+		for ( int i = 0; i < len; i++) {
+			Propiedad propiedad = this.propiedades.get(i);
+			if ( propiedad.esEstaProvincia(provincia) ) {
+				return propiedad;
+			}
+		}
+		return null;
 	}
 
+	public void comprarCompania(Compania compania) {
+		this.pagar(compania.getPrecio());
+		this.companias.add(compania);
+	}
+	
 	public boolean puedeEjecutarAcciones() {
-		return estado.puedeEjecutarAcciones();
+		return this.estado.puedeEjecutarAcciones();
 	}
 
 	public boolean puedeMoverse() {
-		return estado.puedeMoverse();
-	}
-
-	public void iniciarTurno() {
-		this.estado.iniciarTurno();
+		return this.estado.puedeMoverse();
 	}
 
 	public void encarcelar() {
@@ -108,26 +131,5 @@ public class Jugador {
 			this.estado = new Habilitado();
 		}
 	}
-	
-	public Integer tirar() {
-		Integer valor1 = this.dado1.tirar();
-		Integer valor2 = this.dado2.tirar();
-		return valor1 + valor2;
-	}
 
-	public Propiedad getPropiedad(Provincia provincia) {
-	
-		int len = this.propiedades.size();
-		
-		for ( int i = 0; i < len; i++) {
-			Propiedad propiedad = this.propiedades.get(i);
-			if ( propiedad.esEstaProvincia(provincia) )
-				return propiedad;
-		}
-		return null;
-	}
-	
-	public boolean esEsteJugador(Jugador jugador) {
-		return this.equals(jugador);
-	}
 }

@@ -59,11 +59,13 @@ public class PropiedadRegional implements Casillero, Propiedad {
     	return this.provincia;
     }
 
-    public boolean esEstaProvincia(Provincia estaProvincia) {
+    @Override
+	public boolean esEstaProvincia(Provincia estaProvincia) {
     	return this.provincia.name().equals(estaProvincia.name());
     }
     
-    public void construir(Edificio edificio) {
+    @Override
+	public void construir(Edificio edificio) {
     	this.edificio = edificio;
 		this.cantidadEdificios += 1;
     }
@@ -72,6 +74,7 @@ public class PropiedadRegional implements Casillero, Propiedad {
     	return this.propietario.getPropiedad(this.provinciaComplemento) != null;
     }
 
+	@Override
 	public void construirCasa() {
 		
 		if ( this.estaCompleta() && this.cantidadEdificios < 2) {
@@ -80,12 +83,14 @@ public class PropiedadRegional implements Casillero, Propiedad {
 		}
 	}
 	
+	@Override
 	public void construirHotel() {
 		
-		Propiedad propiedadComplemento = this.propietario.getPropiedad(provinciaComplemento);
+		Propiedad propiedadComplemento = this.propietario.getPropiedad(this.provinciaComplemento);
 		
-		if ( this.estaCompleta() && this.cantidadEdificios == 2 && propiedadComplemento.cantidadEdificios() == 2 )
+		if ( this.estaCompleta() && this.cantidadEdificios == 2 && propiedadComplemento.cantidadEdificios() == 2 ) {
 			this.estado.construirHotel(this);
+		}
 	}
 
 	@Override

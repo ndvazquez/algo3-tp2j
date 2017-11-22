@@ -7,7 +7,7 @@ public abstract class EstadoPropiedad {
 	abstract void comprarPropiedad(Jugador jugador, Propiedad propiedad);
 
 	void pagarAlquiler(Jugador jugador, Propiedad propiedad) {
-		if (!propiedad.getPropietario().esEsteJugador(jugador)) {
+		if (!propiedad.getPropietario().equals(jugador)) {
 			int monto = propiedad.getPrecioAlquiler();
 			jugador.pagar(monto);
 			propiedad.getPropietario().cobrar(monto);

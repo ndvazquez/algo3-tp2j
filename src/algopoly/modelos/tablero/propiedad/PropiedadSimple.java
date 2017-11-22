@@ -48,7 +48,7 @@ public class PropiedadSimple implements Casillero, Propiedad {
 
 	@Override
 	public Integer getPrecioAlquiler() {
-		return edificio.getAlquiler();
+		return this.edificio.getAlquiler();
 	}
 	
 	@Override
@@ -57,6 +57,7 @@ public class PropiedadSimple implements Casillero, Propiedad {
 		this.cantidadEdificios += 1;
     }
 	
+	@Override
 	public void construirCasa() {
 		if (this.cantidadEdificios < 1) {
 			this.estado.construirCasa(this);

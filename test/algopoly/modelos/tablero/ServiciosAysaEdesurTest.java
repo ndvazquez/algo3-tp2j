@@ -94,7 +94,7 @@ public class ServiciosAysaEdesurTest {
 
 		int plataInicial = jugador.getCapital();
 		jugador.tirar();
-		jugador.caerEnCasillero(edesur);
+		edesur.recibirJugador(jugador);
 		int plataFinal = jugador.getCapital();
 
 		Assert.assertEquals(plataInicial, plataFinal);

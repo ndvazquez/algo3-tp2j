@@ -94,7 +94,6 @@ public class Jugador {
 		return this.posicion;
 	}
 
-
 	public Integer getCantidadPropiedades() {
 		return this.propiedades.size();
 	}
@@ -130,7 +129,7 @@ public class Jugador {
 	}
 
 	public boolean puedeMoverse() {
-		return estado.puedeMoverse();
+		return this.estado.puedeMoverse();
 	}
 
 	public void encarcelar() {

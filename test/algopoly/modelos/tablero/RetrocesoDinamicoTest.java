@@ -13,8 +13,9 @@ public class RetrocesoDinamicoTest {
     public void test01JugadorCaeEnRetrocesoDinamicoTirando2Retrocede2MenosSuCantidaddDePropiedades() {
         Jugador jugadorPrueba = new Jugador(); // propiedades = 0
         Integer valor = jugadorPrueba.tirar();
-		while (!valor.equals(2))
+		while (!valor.equals(2)) {
 			valor = jugadorPrueba.tirar();
+		}
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
         Posicion indiceActual = jugadorPrueba.getPosicion();
@@ -29,8 +30,9 @@ public class RetrocesoDinamicoTest {
     public void test02JugadorCaeEnRetrocesoDinamicoTirando3Retrocede3MenosSuCantidaddDePropiedades() {
         Jugador jugadorPrueba = new Jugador(); // propiedades = 0
         Integer valor = jugadorPrueba.tirar();
-		while (!valor.equals(3))
+		while (!valor.equals(3)) {
 			valor = jugadorPrueba.tirar();
+		}
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
         Posicion indiceActual = jugadorPrueba.getPosicion();
@@ -45,8 +47,9 @@ public class RetrocesoDinamicoTest {
     public void test03JugadorCaeEnRetrocesoDinamicoTirando4Retrocede4MenosSuCantidaddDePropiedades() {
         Jugador jugadorPrueba = new Jugador(); // propiedades = 0
         Integer valor = jugadorPrueba.tirar();
-		while (!valor.equals(4))
+		while (!valor.equals(4)) {
 			valor = jugadorPrueba.tirar();
+		}
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
         Posicion indiceActual = jugadorPrueba.getPosicion();
@@ -61,8 +64,9 @@ public class RetrocesoDinamicoTest {
     public void test04JugadorCaeEnRetrocesoDinamicoTirando5Retrocede5MenosSuCantidaddDePropiedades() {
         Jugador jugadorPrueba = new Jugador(); // propiedades = 0
         Integer valor = jugadorPrueba.tirar();
-		while (!valor.equals(5))
+		while (!valor.equals(5)) {
 			valor = jugadorPrueba.tirar();
+		}
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
         Posicion indiceActual = jugadorPrueba.getPosicion();
@@ -77,8 +81,9 @@ public class RetrocesoDinamicoTest {
     public void test05JugadorCaeEnRetrocesoDinamicoTirando6Retrocede6MenosSuCantidaddDePropiedades() {
         Jugador jugadorPrueba = new Jugador(); // propiedades = 0
         Integer valor = jugadorPrueba.tirar();
-		while (!valor.equals(6))
+		while (!valor.equals(6)) {
 			valor = jugadorPrueba.tirar();
+		}
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
         Posicion indiceActual = jugadorPrueba.getPosicion();
@@ -94,8 +99,9 @@ public class RetrocesoDinamicoTest {
     public void test06JugadorCaeEnRetrocesoTirando7RetrocedeSuCantidadDeEfectivoModuloLaTirada(){
         Jugador jugadorPrueba = new Jugador();
         Integer valor = jugadorPrueba.tirar();
-		while (!valor.equals(7))
+		while (!valor.equals(7)) {
 			valor = jugadorPrueba.tirar();
+		}
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
         Posicion indiceActual = jugadorPrueba.getPosicion();
@@ -110,8 +116,9 @@ public class RetrocesoDinamicoTest {
     public void test07JugadorCaeEnRetrocesoTirando8RetrocedeSuCantidadDeEfectivoModuloLaTirada(){
         Jugador jugadorPrueba = new Jugador();
         Integer valor = jugadorPrueba.tirar();
-		while (!valor.equals(8))
+		while (!valor.equals(8)) {
 			valor = jugadorPrueba.tirar();
+		}
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
         Posicion indiceActual = jugadorPrueba.getPosicion();
@@ -127,8 +134,9 @@ public class RetrocesoDinamicoTest {
     public void test08JugadorCaeEnRetrocesoTirando9RetrocedeSuCantidadDeEfectivoModuloLaTirada(){
         Jugador jugadorPrueba = new Jugador();
         Integer valor = jugadorPrueba.tirar();
-		while (!valor.equals(9))
+		while (!valor.equals(9)) {
 			valor = jugadorPrueba.tirar();
+		}
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
         Posicion indiceActual = jugadorPrueba.getPosicion();
@@ -143,8 +151,9 @@ public class RetrocesoDinamicoTest {
     public void test09JugadorCaeEnRetrocesoTirando10RetrocedeSuCantidadDeEfectivoModuloLaTirada(){
         Jugador jugadorPrueba = new Jugador();
         Integer valor = jugadorPrueba.tirar();
-		while (!valor.equals(10))
+		while (!valor.equals(10)) {
 			valor = jugadorPrueba.tirar();
+		}
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
         Posicion indiceActual = jugadorPrueba.getPosicion();
@@ -160,8 +169,9 @@ public class RetrocesoDinamicoTest {
     public void test010JugadorCaeEnRetrocesoTirando11RetrocedeLaTiradaMenos2(){
         Jugador jugadorPrueba = new Jugador();
         Integer valor = jugadorPrueba.tirar();
-		while (!valor.equals(11))
+		while (!valor.equals(11)) {
 			valor = jugadorPrueba.tirar();
+		}
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
         Posicion indiceActual = jugadorPrueba.getPosicion();
@@ -176,8 +186,9 @@ public class RetrocesoDinamicoTest {
     public void test011JugadorCaeEnRetrocesoTirando12RetrocedeLaTiradaMenos2(){
         Jugador jugadorPrueba = new Jugador();
         Integer valor = jugadorPrueba.tirar();
-		while (!valor.equals(12))
+		while (!valor.equals(12)) {
 			valor = jugadorPrueba.tirar();
+		}
         RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
         Posicion indiceActual = jugadorPrueba.getPosicion();

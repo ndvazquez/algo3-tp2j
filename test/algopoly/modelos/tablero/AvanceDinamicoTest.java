@@ -2,6 +2,7 @@ package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.jugador.Posicion;
+import algopoly.modelos.tablero.propiedad.PropiedadSimple;
 
 import org.mockito.Mockito;
 
@@ -16,8 +17,9 @@ public class AvanceDinamicoTest {
 		Jugador jugador = new Jugador();
 		
 		Integer valor = jugador.tirar();
-		while (!valor.equals(2))
+		while (!valor.equals(2)) {
 			valor = jugador.tirar();
+		}
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
@@ -33,8 +35,9 @@ public class AvanceDinamicoTest {
 	public void test02JugadorCaeEnAvanceDinamicoSacando3SuPosicionSeIncrementa2MenosQueLaTirada() {
 		Jugador jugador = new Jugador();
 		Integer valor = jugador.tirar();
-		while (!valor.equals(3))
+		while (!valor.equals(3)) {
 			valor = jugador.tirar();
+		}
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
 		Posicion indiceActual = jugador.getPosicion();
@@ -49,8 +52,9 @@ public class AvanceDinamicoTest {
 	public void test03JugadorCaeEnAvanceDinamicoSacando4SuPosicionSeIncrementa2MenosQueLaTirada() {
 		Jugador jugador = new Jugador();
 		Integer valor = jugador.tirar();
-		while (!valor.equals(4))
+		while (!valor.equals(4)) {
 			valor = jugador.tirar();
+		}
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
@@ -66,8 +70,9 @@ public class AvanceDinamicoTest {
 	public void test04JugadorCaeEnAvanceDinamicoSacando5SuPosicionSeIncrementa2MenosQueLaTirada() {
 		Jugador jugador = new Jugador();
 		Integer valor = jugador.tirar();
-		while (!valor.equals(5))
-			valor = jugador.tirar();		
+		while (!valor.equals(5)) {
+			valor = jugador.tirar();
+		}		
 
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
@@ -83,8 +88,9 @@ public class AvanceDinamicoTest {
 	public void test05JugadorCaeEnAvanceDinamicoSacando6SuPosicionSeIncrementa2MenosQueLaTirada() {
 		Jugador jugador = new Jugador();
 		Integer valor = jugador.tirar();
-		while (!valor.equals(6))
+		while (!valor.equals(6)) {
 			valor = jugador.tirar();
+		}
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
@@ -101,8 +107,9 @@ public class AvanceDinamicoTest {
 	public void test06JugadorCaeEnAvanceDinamicoTirando7AvanzaSuCantidadDeEfectivoModuloLaTirada() {
 		Jugador jugador = new Jugador(); // plata inicial 100000
 		Integer valor = jugador.tirar();
-		while (!valor.equals(7))
+		while (!valor.equals(7)) {
 			valor = jugador.tirar();
+		}
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
@@ -118,8 +125,9 @@ public class AvanceDinamicoTest {
 	public void test07JugadorCaeEnAvanceDinamicoTirando8AvanzaSuCantidadDeEfectivoModuloLaTirada() {
 		Jugador jugador = new Jugador(); // plata inicial 100000
 		Integer valor = jugador.tirar();
-		while (!valor.equals(8))
+		while (!valor.equals(8)) {
 			valor = jugador.tirar();
+		}
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
@@ -135,8 +143,9 @@ public class AvanceDinamicoTest {
 	public void test08JugadorCaeEnAvanceDinamicoTirando9AvanzaSuCantidadDeEfectivoModuloLaTirada() {
 		Jugador jugador = new Jugador(); // plata inicial 100000
 		Integer valor = jugador.tirar();
-		while (!valor.equals(9))
+		while (!valor.equals(9)) {
 			valor = jugador.tirar();
+		}
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
@@ -152,8 +161,9 @@ public class AvanceDinamicoTest {
 	public void test09JugadorCaeEnAvanceDinamicoTirando10AvanzaSuCantidadDeEfectivoModuloLaTirada() {
 		Jugador jugador = new Jugador(); // plata inicial 100000
 		Integer valor = jugador.tirar();
-		while (!valor.equals(10))
+		while (!valor.equals(10)) {
 			valor = jugador.tirar();
+		}
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
@@ -170,8 +180,9 @@ public class AvanceDinamicoTest {
 	public void test10JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedadesSinPropiedades() {
 		Jugador jugador = new Jugador(); // propiedades = 0
 		Integer valor = jugador.tirar();
-		while (!valor.equals(11))
+		while (!valor.equals(11)) {
 			valor = jugador.tirar();
+		}
 		
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
@@ -264,8 +275,9 @@ public class AvanceDinamicoTest {
 			jugador.comprarPropiedad(Mockito.mock(PropiedadSimple.class));
 		}
 		Integer valor = jugador.tirar();
-		while (!valor.equals(12))
+		while (!valor.equals(12)) {
 			valor = jugador.tirar();
+		}
 
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 

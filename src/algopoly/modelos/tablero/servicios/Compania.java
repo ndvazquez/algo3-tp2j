@@ -1,6 +1,7 @@
-package algopoly.modelos.tablero;
+package algopoly.modelos.tablero.servicios;
 
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.tablero.Casillero;
 
 public class Compania implements Casillero {
 
@@ -9,6 +10,7 @@ public class Compania implements Casillero {
 	private Integer impuesto;
 	private Integer impuestoDoble;
 	private Servicios servicios;
+	private Estado estado;
 
 	public Compania(Integer precio, Integer impuesto, Integer impuestoDoble, Servicios servicios) {
 		this.precio = precio;
@@ -16,17 +18,12 @@ public class Compania implements Casillero {
 		this.impuestoDoble = impuestoDoble;
 		this.servicios = servicios;
 		this.servicios.agregarCompania(this);
+		this.estado = new SinPropietario();
 	}
 
 	@Override
 	public void recibirJugador(Jugador jugador) {
-		if (this.propietario == null) {
-			jugador.comprarCompania(this);
-			jugador.incrementarCapital(-precio);
-			this.propietario = jugador;
-		} else {
-			this.servicios.cobrarImpuesto(this, jugador);
-		}
+		this.estado.recibirJugador(jugador, this);
 	}
 
 	public boolean soyTuDueño(Jugador jugador) {
@@ -43,6 +40,19 @@ public class Compania implements Casillero {
 
 	public Integer getImpuestoDoble() {
 		return this.impuestoDoble;
+	}
+
+	public Servicios getServicios() {
+		return this.servicios;
+	}
+
+	public void setPropietario(Jugador jugador) {
+		this.propietario = jugador;
+		this.estado = new ConPropietario();
+	}
+
+	public Integer getPrecio() {
+		return this.precio;
 	}
 
 }

@@ -5,7 +5,7 @@ Este repositorio corresponde al TP2 grupal de la materia Algoritmos y Programaci
 
 Link a la [consigna](https://docs.google.com/document/d/1RyvpADWb5YdPkJh7CrAvl50YPDFybpk-A0Vhe_ewsRg/edit).
 
-## Integrantes
+## Grupo 2 - Integrantes
 
 | Padrón | Nombre y Apellido      |
 |--------|------------------------|

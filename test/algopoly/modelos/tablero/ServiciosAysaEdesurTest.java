@@ -1,6 +1,8 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.tablero.servicios.Compania;
+import algopoly.modelos.tablero.servicios.Servicios;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -92,7 +94,7 @@ public class ServiciosAysaEdesurTest {
 
 		int plataInicial = jugador.getCapital();
 		jugador.tirar();
-		jugador.caerEnCasillero(edesur);
+		edesur.recibirJugador(jugador);
 		int plataFinal = jugador.getCapital();
 
 		Assert.assertEquals(plataInicial, plataFinal);

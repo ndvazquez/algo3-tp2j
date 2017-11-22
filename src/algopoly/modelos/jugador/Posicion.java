@@ -33,14 +33,10 @@ public class Posicion {
 		this.y = posY;
 	}
 
-	public int getX() {
-		return x;
-	}
+	public int getX() { return this.x; }
 
-	public int getY() {
-		return y;
-	}
-	
+	public int getY() { return this.y; }
+
 	public static Integer cantidadPosiciones() {
 		return posiciones.size();
 	}
@@ -57,38 +53,44 @@ public class Posicion {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + x;
-		result = prime * result + y;
+		result = prime * result + this.x;
+		result = prime * result + this.y;
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (this.getClass() != obj.getClass()) {
 			return false;
+		}
 		Posicion other = (Posicion) obj;
-		if (x != other.x)
+		if (this.x != other.x) {
 			return false;
-		if (y != other.y)
+		}
+		if (this.y != other.y) {
 			return false;
+		}
 		return true;
 	}
 
 	public static Integer cantidadCasillerosEntre(Posicion pos1, Posicion pos2) {
 		int position1 = posiciones.lastIndexOf(pos1);
 		int position2 = posiciones.lastIndexOf(pos2);
-		if (position1 <= position2)
+		if (position1 <= position2) {
 			return position2 - position1;
+		}
 		return posiciones.size() - (position2 - position1);
 	}
 
 	private static ArrayList<Posicion> posiciones;
 	static {
-		posiciones = new ArrayList<Posicion>();
+		posiciones = new ArrayList<>();
 		posiciones.add(SALIDA);
 		posiciones.add(QUINI6);
 		posiciones.add(BSAS_SUR);

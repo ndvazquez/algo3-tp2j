@@ -1,5 +1,6 @@
 package algopoly.modelos.tablero;
 
+import algopoly.modelos.excepciones.JugadorSinPlataException;
 import algopoly.modelos.jugador.Jugador;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,7 +15,7 @@ public class CarcelTest {
 		Jugador jugador = new Jugador();
 		Carcel carcel = new Carcel();
 		
-		jugador.caerEnCasillero(carcel);
+		carcel.recibirJugador(jugador);
 		jugador.iniciarTurno();
 		
 		Assert.assertFalse(jugador.puedeEjecutarAcciones());
@@ -27,7 +28,7 @@ public class CarcelTest {
 		Jugador jugador = new Jugador();
 		Carcel carcel = new Carcel();
 		
-		jugador.caerEnCasillero(carcel);
+		carcel.recibirJugador(jugador);
 		
 		jugador.iniciarTurno();
 		jugador.iniciarTurno();
@@ -37,21 +38,19 @@ public class CarcelTest {
 		Assert.assertTrue(jugador.puedeMoverse());
 	}
 
-	@Test
+	@Test(expected = JugadorSinPlataException.class)
 	public void test03JugadorCaeEnCarcelYNoPuedePagarFianzaPorFaltaDeFondosLuegoNoPuedeMoverse() {
 		
 		Jugador jugador = new Jugador();
 		Carcel carcel = new Carcel();
 		
-		jugador.caerEnCasillero(carcel);
+		carcel.recibirJugador(jugador);
 		
 		jugador.iniciarTurno();
 		jugador.iniciarTurno();
 		
-		jugador.incrementarCapital(-60000);
+		jugador.pagar(60000);
 		jugador.pagarFianza();
-		
-		Assert.assertFalse(jugador.puedeMoverse());
 	}
 	
 	/* Tests Complementarios */
@@ -62,7 +61,7 @@ public class CarcelTest {
 		Jugador jugador = new Jugador();
 		Carcel carcel = new Carcel();
 		
-		jugador.caerEnCasillero(carcel);
+		carcel.recibirJugador(jugador);
 		
 		for(int i = 0; i < 4; i++) {
 			
@@ -91,9 +90,9 @@ public class CarcelTest {
 		Jugador jugador = new Jugador();
 		Integer capitalFinal = new Integer(40000);
 		
-		jugador.caerEnCasillero(carcel);
+		carcel.recibirJugador(jugador);
 		
-		jugador.incrementarCapital(-60000);
+		jugador.pagar(60000);
 		jugador.pagarFianza();
 		
 		Assert.assertEquals(capitalFinal.intValue(), jugador.getCapital().intValue());
@@ -107,7 +106,7 @@ public class CarcelTest {
 		Jugador jugador = new Jugador();
 		Integer capitalFinal = new Integer(100000);
 		
-		jugador.caerEnCasillero(carcel);
+		carcel.recibirJugador(jugador);
 		jugador.pagarFianza();
 		
 		Assert.assertEquals(capitalFinal.intValue(), jugador.getCapital().intValue());
@@ -120,7 +119,7 @@ public class CarcelTest {
 		Jugador jugador = new Jugador();
 		Carcel carcel = new Carcel();
 		
-		jugador.caerEnCasillero(carcel);
+		carcel.recibirJugador(jugador);
 		
 		
 		for(int i = 0; i < 4; i++) {
@@ -128,7 +127,7 @@ public class CarcelTest {
 			jugador.iniciarTurno();
 		}
 		
-		jugador.caerEnCasillero(carcel);
+		carcel.recibirJugador(jugador);
 		
 		jugador.iniciarTurno();
 		jugador.iniciarTurno();
@@ -146,12 +145,12 @@ public class CarcelTest {
 		Jugador jugador = new Jugador();
 		Carcel carcel = new Carcel();
 		
-		jugador.caerEnCasillero(carcel);
+		carcel.recibirJugador(jugador);
 		jugador.iniciarTurno();
 		jugador.iniciarTurno();
 		
 		jugador.pagarFianza();
-		jugador.caerEnCasillero(carcel);
+		carcel.recibirJugador(jugador);
 		
 		for(int i = 0; i < 4; i++) {
 			

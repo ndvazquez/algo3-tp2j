@@ -1,5 +1,7 @@
 package algopoly.modelos.tablero;
 
+import algopoly.modelos.jugador.Jugador;
+
 public class Ticket {
 
     private Integer premio;
@@ -7,7 +9,8 @@ public class Ticket {
     public Ticket(Integer valor){
         this.premio = valor;
     }
-    public Integer getPremio(){
-        return this.premio;
+
+    public void darPremioAJugador(Jugador jugador){
+        jugador.cobrar(this.premio);
     }
 }

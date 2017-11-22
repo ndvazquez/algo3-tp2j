@@ -5,11 +5,11 @@ jdk:
   - openjdk8
   
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install -y libopenjfx-java
+  - sudo apt-get -qq update
   
 install: 
   - ant
+  - openjfx
 
 script:
   - ant test

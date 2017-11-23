@@ -30,7 +30,7 @@ public class ServiciosTrenSubteTest {
 		int plataFinal = jugador.getCapital();
 
 		Assert.assertEquals((100000 - PRECIO_SUBTE), plataFinal);
-		Assert.assertTrue(subte.soyTuDueño(jugador));
+		Assert.assertTrue(subte.soyTuDuenio(jugador));
 	}
 
 	@Test
@@ -45,11 +45,11 @@ public class ServiciosTrenSubteTest {
 		int plataFinal = jugador.getCapital();
 
 		Assert.assertEquals((100000 - PRECIO_TREN), plataFinal);
-		Assert.assertTrue(tren.soyTuDueño(jugador));
+		Assert.assertTrue(tren.soyTuDuenio(jugador));
 	}
 
 	@Test
-	public void test03JugadorCaeEnTrenAdquiridaPorOtroJugadorQueNoEsDueñoDeSubteSuDineroSeReduce450PorLosDados() {
+	public void test03JugadorCaeEnTrenAdquiridaPorOtroJugadorQueNoEsDuenioDeSubteSuDineroSeReduce450PorLosDados() {
 		Servicios servicios = new Servicios();
 		Compania tren = new Compania(PRECIO_TREN, IMP_TREN, IMP_TREN_DOBLE, servicios);
 
@@ -65,7 +65,7 @@ public class ServiciosTrenSubteTest {
 	}
 
 	@Test
-	public void test04JugadorCaeEnTrenAdquiridaPorOtroJugadorQueEsDueñoDeSubteSuDineroSeReduce800PorLosDados() {
+	public void test04JugadorCaeEnTrenAdquiridaPorOtroJugadorQueEsDuenioDeSubteSuDineroSeReduce800PorLosDados() {
 		Servicios servicios = new Servicios();
 		Compania tren = new Compania(PRECIO_TREN, IMP_TREN, IMP_TREN_DOBLE, servicios);
 		Compania subte = new Compania(PRECIO_SUBTE, IMP_SUBTE, IMP_SUBTE_DOBLE, servicios);
@@ -119,7 +119,7 @@ public class ServiciosTrenSubteTest {
 	}
 
 	@Test
-	public void test07JugadorCaeEnSubteAdquiridaPorOtroJugadorQueNoEsDueñoDeTrenSuDineroSeReduce600PorDados() {
+	public void test07JugadorCaeEnSubteAdquiridaPorOtroJugadorQueNoEsDuenioDeTrenSuDineroSeReduce600PorDados() {
 		Servicios servicios = new Servicios();
 		Compania subte = new Compania(PRECIO_SUBTE, IMP_SUBTE, IMP_SUBTE_DOBLE, servicios);
 
@@ -135,7 +135,7 @@ public class ServiciosTrenSubteTest {
 	}
 
 	@Test
-	public void test08JugadorCaeEnSubteAdquiridaPorOtroJugadorQueEsDueñoDeTrenSuDineroSeReduce1100PorDados() {
+	public void test08JugadorCaeEnSubteAdquiridaPorOtroJugadorQueEsDuenioDeTrenSuDineroSeReduce1100PorDados() {
 		Servicios servicios = new Servicios();
 		Compania tren = new Compania(PRECIO_TREN, IMP_TREN, IMP_TREN_DOBLE, servicios);
 		Compania subte = new Compania(PRECIO_SUBTE, IMP_SUBTE, IMP_SUBTE_DOBLE, servicios);

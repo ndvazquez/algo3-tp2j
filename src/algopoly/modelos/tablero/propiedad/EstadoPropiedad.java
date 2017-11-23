@@ -19,4 +19,6 @@ public abstract class EstadoPropiedad {
 	
 	abstract void construirHotel(Propiedad propiedad);
 
+	abstract void vender(Propiedad propiedad);
+
 }

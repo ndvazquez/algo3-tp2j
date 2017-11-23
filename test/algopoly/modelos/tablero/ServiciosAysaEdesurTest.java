@@ -1,6 +1,9 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.tablero.propiedad.PropiedadFactory;
+import algopoly.modelos.tablero.propiedad.PropiedadSimple;
+import algopoly.modelos.tablero.propiedad.Provincia;
 import algopoly.modelos.tablero.servicios.Compania;
 import algopoly.modelos.tablero.servicios.Servicios;
 
@@ -30,7 +33,7 @@ public class ServiciosAysaEdesurTest {
 		int plataFinal = jugador.getCapital();
 
 		Assert.assertEquals((100000 - PRECIO_AYSA), plataFinal);
-		Assert.assertTrue(aysa.soyTuDueño(jugador));
+		Assert.assertTrue(aysa.soyTuDuenio(jugador));
 	}
 
 	@Test
@@ -45,11 +48,11 @@ public class ServiciosAysaEdesurTest {
 		int plataFinal = jugador.getCapital();
 
 		Assert.assertEquals((100000 - PRECIO_EDESUR), plataFinal);
-		Assert.assertTrue(edesur.soyTuDueño(jugador));
+		Assert.assertTrue(edesur.soyTuDuenio(jugador));
 	}
 
 	@Test
-	public void test03JugadorCaeEnEdesurAdquiridaPorOtroJugadorQueNoEsDueñoDeAysaSuDineroSeReduce500PorLosDados() {
+	public void test03JugadorCaeEnEdesurAdquiridaPorOtroJugadorQueNoEsDuenioDeAysaSuDineroSeReduce500PorLosDados() {
 		Servicios servicios = new Servicios();
 		Compania edesur = new Compania(PRECIO_EDESUR, IMP_EDESUR, IMP_EDESUR_DOBLE, servicios);
 
@@ -65,7 +68,7 @@ public class ServiciosAysaEdesurTest {
 	}
 
 	@Test
-	public void test04JugadorCaeEnEdesurAdquiridaPorOtroJugadorQueEsDueñoDeAysaSuDineroSeReduce1000PorLosDados() {
+	public void test04JugadorCaeEnEdesurAdquiridaPorOtroJugadorQueEsDuenioDeAysaSuDineroSeReduce1000PorLosDados() {
 		Servicios servicios = new Servicios();
 		Compania edesur = new Compania(PRECIO_EDESUR, IMP_EDESUR, IMP_EDESUR_DOBLE, servicios);
 		Compania aysa = new Compania(PRECIO_AYSA, IMP_AYSA, IMP_AYSA_DOBLE, servicios);
@@ -119,7 +122,7 @@ public class ServiciosAysaEdesurTest {
 	}
 
 	@Test
-	public void test07JugadorCaeEnAysaAdquiridaPorOtroJugadorQueNoEsDueñoDeEdesurSuDineroSeReduce300PorDados() {
+	public void test07JugadorCaeEnAysaAdquiridaPorOtroJugadorQueNoEsDuenioDeEdesurSuDineroSeReduce300PorDados() {
 		Servicios servicios = new Servicios();
 		Compania aysa = new Compania(PRECIO_AYSA, IMP_AYSA, IMP_AYSA_DOBLE, servicios);
 
@@ -135,7 +138,7 @@ public class ServiciosAysaEdesurTest {
 	}
 
 	@Test
-	public void test08JugadorCaeEnAysaAdquiridaPorOtroJugadorQueEsDueñoDeEdesurSuDineroSeReduce500PorDados() {
+	public void test08JugadorCaeEnAysaAdquiridaPorOtroJugadorQueEsDuenioDeEdesurSuDineroSeReduce500PorDados() {
 		Servicios servicios = new Servicios();
 		Compania edesur = new Compania(PRECIO_EDESUR, IMP_EDESUR, IMP_EDESUR_DOBLE, servicios);
 		Compania aysa = new Compania(PRECIO_AYSA, IMP_AYSA, IMP_AYSA_DOBLE, servicios);
@@ -151,5 +154,4 @@ public class ServiciosAysaEdesurTest {
 
 		Assert.assertEquals(100000 - (IMP_AYSA_DOBLE * otroJugador.getUltimaTirada()), plataFinal);
 	}
-
 }

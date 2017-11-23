@@ -23,4 +23,8 @@ public interface Propiedad {
 	void construirCasa();
 
 	void construirHotel();
+
+	void vender();
+
+	void reset();
 }

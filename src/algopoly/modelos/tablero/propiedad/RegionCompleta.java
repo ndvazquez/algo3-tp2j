@@ -23,4 +23,12 @@ public class RegionCompleta extends EstadoPropiedad {
 		propiedad.construir(edificio);
 	}
 
+	@Override
+	void vender(Propiedad propiedad) {
+		Jugador propietario = propiedad.getPropietario();
+		propietario.quitarPropiedad(propiedad);
+		
+		propiedad.reset();
+	}
+
 }

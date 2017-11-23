@@ -2,15 +2,19 @@ package algopoly.modelos.tablero;
 
 import algopoly.modelos.excepciones.JugadorSinPlataException;
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.jugador.Posicion;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 public class CarcelTest {
 	
+	private static final Integer FIANZA = 45000;
+
 	/* Tests correspondientes a la entrega del 16/11 */
 	
 	@Test
-	public void test01JugadorCaeEnCarcelYNoPuedeEjecutarAccionesNiMoverseDuranteElPrimerTurno() {
+	public void test01JugadorCaeEnCarcelYNoPuedeMoverseDuranteElPrimerTurno() {
 		
 		Jugador jugador = new Jugador();
 		Carcel carcel = new Carcel();
@@ -18,12 +22,18 @@ public class CarcelTest {
 		carcel.recibirJugador(jugador);
 		jugador.iniciarTurno();
 		
-		Assert.assertFalse(jugador.puedeEjecutarAcciones());
-		Assert.assertFalse(jugador.puedeMoverse());
-	}
+		Posicion posicionActual = jugador.getPosicion();
+		
+		jugador.mover(1);
+		
+		Posicion posicionNueva = jugador.getPosicion();
+		
+		Assert.assertEquals(posicionNueva, posicionActual);
+}
+
 	
 	@Test
-	public void test02JugadorCaeEnCarcelYAPartirDelSegundoTurnoPuedePagarFianzaYMoverse() {
+	public void test02JugadorCaeEnCarcelYAPartirDelSegundoTurnoPuedePagarUnaFianzaYLuegoPuedeMoverse() {
 		
 		Jugador jugador = new Jugador();
 		Carcel carcel = new Carcel();
@@ -35,7 +45,13 @@ public class CarcelTest {
 		
 		jugador.pagarFianza();
 		
-		Assert.assertTrue(jugador.puedeMoverse());
+		Posicion posicionActual = jugador.getPosicion();
+		
+		jugador.mover(1);
+	
+		Posicion posicionNueva = Posicion.getPosicionSiguiente(posicionActual);
+		
+		Assert.assertEquals(posicionNueva, jugador.getPosicion());
 	}
 
 	@Test(expected = JugadorSinPlataException.class)
@@ -49,14 +65,14 @@ public class CarcelTest {
 		jugador.iniciarTurno();
 		jugador.iniciarTurno();
 		
-		jugador.pagar(60000);
+		jugador.pagar(99999);
 		jugador.pagarFianza();
 	}
 	
 	/* Tests Complementarios */
 	
 	@Test
-	public void test04JugadorEncarceladoQuedaHabilitadoLuegoDeCuatroTurnos() {
+	public void test04JugadorEncarceladoQuedaHabilitadoLuegoDeCuatroTurnosLuegoPuedeMoverse() {
 		
 		Jugador jugador = new Jugador();
 		Carcel carcel = new Carcel();
@@ -68,53 +84,52 @@ public class CarcelTest {
 			jugador.iniciarTurno();
 		}
 		
-		Assert.assertTrue(jugador.puedeEjecutarAcciones());
-		Assert.assertTrue(jugador.puedeMoverse());
+		Posicion posicionInicial = jugador.getPosicion();
+		
+		jugador.mover(1);
+		
+		Posicion posicionFinal = Posicion.getPosicionSiguiente(posicionInicial);
+		Assert.assertEquals(posicionFinal, jugador.getPosicion());
 	}
 	
 	@Test
 	public void test05PagarFianzaResta45000PesosAlCapitalDelJugador() {
 		
 		Jugador jugador = new Jugador();
-		Integer capitalFinal = new Integer(55000);
-		
-		jugador.pagarFianza();
-		
-		Assert.assertEquals(0, capitalFinal.compareTo(jugador.getCapital()));
-	}
-	
-	@Test
-	public void test06PagarFianzaNoHaceNadaSiElCapitalDelJugadorEsMenorA45000Pesos() {
-		
 		Carcel carcel = new Carcel();
-		Jugador jugador = new Jugador();
-		Integer capitalFinal = new Integer(40000);
 		
 		carcel.recibirJugador(jugador);
+		jugador.iniciarTurno();
+		jugador.iniciarTurno();
 		
-		jugador.pagar(60000);
+		
+		Integer capitalInicial = jugador.getCapital();
+		
 		jugador.pagarFianza();
 		
-		Assert.assertEquals(capitalFinal.intValue(), jugador.getCapital().intValue());
-		Assert.assertFalse(jugador.puedeMoverse());
+		Integer capitalFinal = jugador.getCapital();
+		
+		Assert.assertEquals(capitalFinal.intValue(), capitalInicial - FIANZA);
 	}
-	
+		
 	@Test
-	public void test07PagarFianzaNoHaceNadaSiElJugadorNoEsperoNingunTurnoEnLaCarcel() {
+	public void test06PagarFianzaNoHaceNadaSiElJugadorNoEsperoNingunTurnoEnLaCarcel() {
 		
 		Carcel carcel = new Carcel();
 		Jugador jugador = new Jugador();
-		Integer capitalFinal = new Integer(100000);
+		
+		Integer capitalInicial = jugador.getCapital();
 		
 		carcel.recibirJugador(jugador);
 		jugador.pagarFianza();
 		
-		Assert.assertEquals(capitalFinal.intValue(), jugador.getCapital().intValue());
-		Assert.assertFalse(jugador.puedeMoverse());
+		Integer capitalFinal = jugador.getCapital();
+		
+		Assert.assertEquals(capitalFinal, capitalInicial);
 	}
 	
 	@Test
-	public void test08PagarFianzaLiberaAlJugadorQueSalioDeLaCarcelEsperandoCuatroTurnos() {
+	public void test07PagarFianzaLiberaAlJugadorQueSalioDeLaCarcelEsperandoCuatroTurnos() {
 		
 		Jugador jugador = new Jugador();
 		Carcel carcel = new Carcel();
@@ -134,13 +149,18 @@ public class CarcelTest {
 		
 		jugador.pagarFianza();
 		
-		Assert.assertTrue(jugador.puedeEjecutarAcciones());
-		Assert.assertTrue(jugador.puedeMoverse());
+		Posicion posicionInicial = jugador.getPosicion();
+		
+		jugador.mover(1);
+		
+		Posicion posicionFinal = Posicion.getPosicionSiguiente(posicionInicial);
+		
+		Assert.assertEquals(posicionFinal, jugador.getPosicion());
 		
 	}
 	
 	@Test
-	public void test09EsperarCuatroTurnosLiberaJugadorQueSalioDeLaCarcelPagandoFianza() {
+	public void test08EsperarCuatroTurnosLiberaJugadorQueSalioDeLaCarcelPagandoFianza() {
 		
 		Jugador jugador = new Jugador();
 		Carcel carcel = new Carcel();
@@ -157,7 +177,12 @@ public class CarcelTest {
 			jugador.iniciarTurno();
 		}
 		
-		Assert.assertTrue(jugador.puedeEjecutarAcciones());
-		Assert.assertTrue(jugador.puedeMoverse());
+		Posicion posicionInicial = jugador.getPosicion();
+		
+		jugador.mover(1);
+		
+		Posicion posicionFinal = Posicion.getPosicionSiguiente(posicionInicial);
+		
+		Assert.assertEquals(posicionFinal, jugador.getPosicion());
 	}
 }

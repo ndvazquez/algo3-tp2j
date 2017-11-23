@@ -6,30 +6,16 @@ import org.junit.Test;
 public class HabilitadoTest {
 
 	@Test
-	public void test01PuedeMoverseEsTrueEnEstadoHabilitado() {
+	public void test01JugadorHabilitadoTiraLosDadosYLaTiradaEsUnValorEntre1Y12() {
 		
-		Habilitado habilitado = new Habilitado();
+		Habilitado habilitado = new Habilitado(new Jugador());
 		
-		Assert.assertTrue(habilitado.puedeMoverse());
-	}
-	
-	@Test
-	public void test02PuedeEjecutarAccionesEsTrueEnEstadoHabilitado() {
+		Dado dado1 = new Dado();
+		Dado dado2 = new Dado();
 		
-		Habilitado habilitado = new Habilitado();
+		Integer resultado = habilitado.tirar(dado1, dado2);
 		
-		Assert.assertTrue(habilitado.puedeEjecutarAcciones());
-	}
-
-	@Test
-	public void test03IniciarTurnoNoTieneEfectoEnEstadoHabilitado() {
-
-		Habilitado habilitado = new Habilitado();
-
-		habilitado.iniciarTurno();
-
-		Assert.assertTrue(habilitado.puedeEjecutarAcciones());
-		Assert.assertTrue(habilitado.puedeMoverse());
+		Assert.assertTrue(resultado > 0 && resultado < 13);
 	}
 
 }

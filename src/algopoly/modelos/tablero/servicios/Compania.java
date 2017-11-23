@@ -26,7 +26,7 @@ public class Compania implements Casillero {
 		this.estado.recibirJugador(jugador, this);
 	}
 
-	public boolean soyTuDueño(Jugador jugador) {
+	public boolean soyTuDuenio(Jugador jugador) {
 		return jugador.equals(this.propietario);
 	}
 

@@ -7,15 +7,20 @@ import org.junit.Test;
 public class JugadorTest {
 
 	@Test
-	public void test01JugadorEsEncarceladoYHabilitadoLuegoPuedeMoverseYEjecutarAcciones() {
+	public void test01JugadorEsEncarceladoYHabilitadoLuegoPuedeMoverse() {
 		
 		Jugador jugador = new Jugador();
 		
 		jugador.encarcelar();
 		jugador.habilitar();
 		
-		Assert.assertTrue(jugador.puedeMoverse());
-		Assert.assertTrue(jugador.puedeEjecutarAcciones());
+		Posicion posicionActual = jugador.getPosicion();
+		
+		jugador.mover(1);
+		
+		Posicion posicionNueva = Posicion.getPosicionSiguiente(posicionActual);
+		
+		Assert.assertEquals(posicionNueva, jugador.getPosicion());
 	}
 
 }

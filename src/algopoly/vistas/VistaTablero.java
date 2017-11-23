@@ -27,9 +27,9 @@ public class VistaTablero {
 	private void dibujarFormas() {
 		this.clean();
 		List<Jugador> jugadores = this.tablero.getJugadores();
-		dibujarRobot(jugadores.get(0), Color.ORANGERED, 260, 220, 220, 260);
-		dibujarRobot(jugadores.get(1), Color.GREEN, 240, 240, 240, 240);
-		dibujarRobot(jugadores.get(2), Color.BLUEVIOLET, 220, 260, 260, 220);
+		dibujarRobot(jugadores.get(0), Color.GREEN, 260, 220, 220, 260);
+		dibujarRobot(jugadores.get(1), Color.BLUE, 240, 240, 240, 240);
+		dibujarRobot(jugadores.get(2), Color.FUCHSIA, 220, 260, 260, 220);
 
 	}
 

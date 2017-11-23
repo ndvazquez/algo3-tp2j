@@ -1,10 +1,12 @@
 package algopoly.vistas;
 
 import algopoly.modelos.tablero.Tablero;
+import algopoly.vistas.eventos.BotonMoverHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -15,8 +17,9 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import algopoly.vistas.eventos.BotonMoverHandler;
 
 public class ContenedorPrincipal extends BorderPane {
 
@@ -32,6 +35,7 @@ public class ContenedorPrincipal extends BorderPane {
 		this.setCentro(tablero);
 		this.setInformacionJugadores(tablero);
 		this.setBotonera(tablero);
+		this.setConsola(tablero);
 	}
 
 	private void setBotonera(Tablero tablero) {
@@ -110,10 +114,25 @@ public class ContenedorPrincipal extends BorderPane {
 		
 		contenedorVertical.setSpacing(10);
 		contenedorVertical.setPadding(new Insets(30));
-		contenedorVertical.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, null, null)));
+		contenedorVertical.setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, null, null)));
 		
 		this.setRight(contenedorVertical);
 
+	}
+	
+	private void setConsola(Tablero tablero) {
+
+		Label etiqueta = new Label();
+		etiqueta.setText("consola...");
+		etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
+		etiqueta.setTextFill(Color.WHITE);
+
+		VBox contenedorConsola = new VBox(etiqueta);
+		contenedorConsola.setSpacing(10);
+		contenedorConsola.setPadding(new Insets(15));
+		contenedorConsola.setStyle("-fx-background-color: black;");
+
+		this.setBottom(contenedorConsola);
 	}
 
 	public BarraDeMenu getBarraDeMenu() {

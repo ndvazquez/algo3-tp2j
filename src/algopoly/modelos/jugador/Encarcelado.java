@@ -1,8 +1,9 @@
 package algopoly.modelos.jugador;
 
+import algopoly.modelos.tablero.Carcel;
+
 public class Encarcelado implements Estado {
 	
-	private static final Integer FIANZA = 45000;
 	private static final Integer TIRADA_NULA = 0;
 	private Integer turnosEnCarcel;
 	private Jugador jugador;
@@ -28,7 +29,7 @@ public class Encarcelado implements Estado {
 	@Override
 	public void pagarFianza() {
 		if(turnosEnCarcel > 1) {
-			jugador.pagar(FIANZA);
+			jugador.pagar(Carcel.FIANZA);
 			jugador.habilitar();
 		}
 	}

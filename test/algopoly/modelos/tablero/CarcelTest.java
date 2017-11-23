@@ -9,7 +9,6 @@ import org.junit.Test;
 
 public class CarcelTest {
 	
-	private static final Integer FIANZA = 45000;
 
 	/* Tests correspondientes a la entrega del 16/11 */
 	
@@ -109,7 +108,7 @@ public class CarcelTest {
 		
 		Integer capitalFinal = jugador.getCapital();
 		
-		Assert.assertEquals(capitalFinal.intValue(), capitalInicial - FIANZA);
+		Assert.assertEquals(capitalFinal.intValue(), capitalInicial - Carcel.FIANZA);
 	}
 		
 	@Test

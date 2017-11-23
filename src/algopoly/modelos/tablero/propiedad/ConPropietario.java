@@ -16,12 +16,4 @@ public class ConPropietario extends EstadoPropiedad {
 	public void construirHotel(Propiedad propiedad) {
 	}
 
-	@Override
-	void vender(Propiedad propiedad) {
-		Jugador propietario = propiedad.getPropietario();
-		propietario.quitarPropiedad(propiedad);
-		
-		propiedad.reset();
-		
-	}
 }

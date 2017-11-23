@@ -84,14 +84,7 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	}
 
 	@Override
-	public void vender() {
-		this.estado.vender(this);
-		
-	}
-
-	@Override
-	public void reset() {
-		this.estado = new SinPropietario();
+	public void resetPropiedades() {
 		this.cantidadEdificios = 0;
 		this.edificio = this.provincia.vacio();
 	}

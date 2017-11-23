@@ -1,9 +1,7 @@
 package algopoly.modelos.jugador;
 
 import algopoly.modelos.excepciones.JugadorSinPlataException;
-import algopoly.modelos.tablero.Carcel;
 import algopoly.modelos.tablero.propiedad.Propiedad;
-import algopoly.modelos.tablero.propiedad.PropiedadSimple;
 import algopoly.modelos.tablero.propiedad.Provincia;
 import algopoly.modelos.tablero.servicios.Compania;
 
@@ -121,23 +119,21 @@ public class Jugador {
 		propiedadACeder.setPropietario(jugadorQueIntercambia);
 		propiedadARecibir.setPropietario(this);
 		
+		jugadorQueIntercambia.cobrar(propiedadACeder.getPrecio() - propiedadARecibir.getPrecio());
+		propiedadARecibir.getPropietario().cobrar(propiedadARecibir.getPrecio() - propiedadACeder.getPrecio());
+
 		this.agregarPropiedad(propiedadARecibir);
 		jugadorQueIntercambia.agregarPropiedad(propiedadACeder);
 		
 	}
 
 	public void agregarPropiedad(Propiedad propiedad) {
-		this.propiedades.remove(propiedad);
+		this.propiedades.add(propiedad);
 		
 	}
 
 	public void quitarPropiedad(Propiedad propiedad) {
 		this.propiedades.remove(propiedad);
-	}
-
-	public void venderPropiedad(Propiedad propiedad) {
-		propiedad.vender();
-		
 	}
 
 }

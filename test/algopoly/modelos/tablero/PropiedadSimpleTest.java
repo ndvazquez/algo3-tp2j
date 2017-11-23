@@ -109,36 +109,16 @@ public class PropiedadSimpleTest {
 		neuquen.recibirJugador(jugador1);
 		santaFe.recibirJugador(jugador2);
 		
-		Integer capitalInicialJugador1 = jugador1.getCapital();
-		
 		jugador1.intercambiarPropiedad(neuquen, santaFe, jugador2);
 		
+		Integer capitalInicialJugador1 = jugador1.getCapital();
+
 		santaFe.recibirJugador(jugador3);
 		
 		Integer capitalFinalJugador1 = jugador1.getCapital();
 		Integer alquilerSantaFe = santaFe.getPrecioAlquiler();
 		
 		Assert.assertEquals(capitalFinalJugador1.intValue(), capitalInicialJugador1 + alquilerSantaFe);
-	}
-	
-	@Test
-	public void test07JugadorVendePropiedadSimpleLuegoOtroJugadorPuedeComprarla() {
-		
-		PropiedadFactory propiedadFactory = new PropiedadFactory();
-		PropiedadSimple neuquen = propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN);
-		
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
-		
-		neuquen.recibirJugador(jugador1);
-		
-		jugador1.venderPropiedad(neuquen);
-		
-		neuquen.recibirJugador(jugador2);
-		
-		Jugador propietarioDeNeuquen = neuquen.getPropietario();
-		
-		Assert.assertEquals(propietarioDeNeuquen, jugador2);
 	}
 }
 

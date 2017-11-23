@@ -3,7 +3,6 @@ package algopoly.modelos.tablero;
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.propiedad.PropiedadFactory;
 import algopoly.modelos.tablero.propiedad.PropiedadRegional;
-import algopoly.modelos.tablero.propiedad.PropiedadSimple;
 import algopoly.modelos.tablero.propiedad.Provincia;
 
 import org.junit.Assert;
@@ -259,10 +258,10 @@ public class PropiedadRegionalTest {
 		buenosAiresNorte.recibirJugador(jugador1);
 		cordobaNorte.recibirJugador(jugador2);
 		
-		Integer capitalInicialJugador1 = jugador1.getCapital();
-		
 		jugador1.intercambiarPropiedad(buenosAiresNorte, cordobaNorte, jugador2);
 		
+		Integer capitalInicialJugador1 = jugador1.getCapital();
+
 		cordobaNorte.recibirJugador(jugador3);
 		
 		Integer capitalFinalJugador1 = jugador1.getCapital();
@@ -271,24 +270,4 @@ public class PropiedadRegionalTest {
 		Assert.assertEquals(capitalFinalJugador1.intValue(), capitalInicialJugador1 + alquilerSantaFe);
 	}
     
-    @Test
-	public void test13JugadorVendePropiedadSimpleLuegoOtroJugadorPuedeComprarla() {
-		
-		PropiedadFactory propiedadFactory = new PropiedadFactory();
-		PropiedadRegional buenosAiresNorte = propiedadFactory.crearPropiedadRegional(Provincia.BSAS_NORTE, Provincia.BSAS_SUR);
-		
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
-		
-		buenosAiresNorte.recibirJugador(jugador1);
-		
-		jugador1.venderPropiedad(buenosAiresNorte);
-		
-		buenosAiresNorte.recibirJugador(jugador2);
-		
-		Jugador propietarioDeBuenosAiresNorte = buenosAiresNorte.getPropietario();
-		
-		Assert.assertEquals(propietarioDeBuenosAiresNorte, jugador2);
-	}
-
 }

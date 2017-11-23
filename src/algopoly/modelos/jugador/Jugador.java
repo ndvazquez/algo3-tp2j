@@ -1,7 +1,6 @@
 package algopoly.modelos.jugador;
 
 import algopoly.modelos.excepciones.JugadorSinPlataException;
-import algopoly.modelos.tablero.Carcel;
 import algopoly.modelos.tablero.propiedad.Propiedad;
 import algopoly.modelos.tablero.propiedad.Provincia;
 import algopoly.modelos.tablero.servicios.Compania;
@@ -31,7 +30,7 @@ public class Jugador {
 		this.posicion = Posicion.SALIDA;
 		this.dado1 = new Dado();
 		this.dado2 = new Dado();
-		this.estado = new Habilitado();
+		this.estado = new Habilitado(this);
 		this.propiedades = new ArrayList<>();
 		this.companias = new ArrayList<>();
 	}
@@ -41,9 +40,7 @@ public class Jugador {
 	}
 
 	public Integer tirar() {
-		Integer valor1 = this.dado1.tirar();
-		Integer valor2 = this.dado2.tirar();
-		return valor1 + valor2;
+		return this.estado.tirar(this.dado1, this.dado2);
 	}
 	
 	public Integer getUltimaTirada() {
@@ -66,13 +63,7 @@ public class Jugador {
 	}
 
 	public void mover(Integer casilleros) {
-		for (int i = 0; i < casilleros; i++) { // si avanza entra aca
-			this.posicion = Posicion.getPosicionSiguiente(this.posicion);
-		}
-
-		for (int i = casilleros; i < 0; i++) { // si retrocede entra aca
-			this.posicion = Posicion.getPosicionAnterior(this.posicion);
-		}
+		this.estado.mover(this, casilleros);
 	}
 
 	public void setPosicion(Posicion nuevaPosicion) {
@@ -108,28 +99,45 @@ public class Jugador {
 		this.pagar(compania.getPrecio());
 		this.companias.add(compania);
 	}
-	
-	public boolean puedeEjecutarAcciones() {
-		return this.estado.puedeEjecutarAcciones();
-	}
-
-	public boolean puedeMoverse() {
-		return this.estado.puedeMoverse();
-	}
 
 	public void encarcelar() {
 		this.estado = new Encarcelado(this);
 	}
 
 	public void habilitar() {
-		this.estado = new Habilitado();
+		this.estado = new Habilitado(this);
 	}
 
 	public void pagarFianza() {
-		if (this.puedeEjecutarAcciones()) {
-			this.pagar(Carcel.FIANZA);
-			this.estado = new Habilitado();
-		}
+		this.estado.pagarFianza();
+	}
+
+	public void intercambiarPropiedad(Propiedad propiedadACeder, Propiedad propiedadARecibir, Jugador jugadorQueIntercambia) {
+		this.quitarPropiedad(propiedadACeder);
+		jugadorQueIntercambia.quitarPropiedad(propiedadARecibir);
+		
+		
+		jugadorQueIntercambia.cobrar(propiedadACeder.getPrecio() - propiedadARecibir.getPrecio());
+		propiedadARecibir.getPropietario().cobrar(propiedadARecibir.getPrecio() - propiedadACeder.getPrecio());
+
+		propiedadACeder.setPropietario(jugadorQueIntercambia);
+		propiedadARecibir.setPropietario(this);
+
+		propiedadACeder.resetPropiedades();
+		propiedadARecibir.resetPropiedades();
+		
+		this.agregarPropiedad(propiedadARecibir);
+		jugadorQueIntercambia.agregarPropiedad(propiedadACeder);
+		
+	}
+
+	public void agregarPropiedad(Propiedad propiedad) {
+		this.propiedades.add(propiedad);
+		
+	}
+
+	public void quitarPropiedad(Propiedad propiedad) {
+		this.propiedades.remove(propiedad);
 	}
 
 }

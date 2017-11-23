@@ -5,62 +5,53 @@ import org.junit.Test;
 
 public class EncarceladoTest {
 	
+	private static final Integer FIANZA = 45000;
 	
 	@Test
-	public void test01PuedeMoverseEsFalseEnEstadoEncarcelado() {
+	public void test01TirarEnEstadoEncarceladoDevuelve0() {
 		
-		Jugador jugador = new Jugador();
+		Encarcelado encarcelado = new Encarcelado(new Jugador());
 		
-		Encarcelado encarcelado = new Encarcelado(jugador);
+		Dado dado1 = new Dado();
+		Dado dado2 = new Dado();
 		
-		Assert.assertFalse(encarcelado.puedeMoverse());
+		Integer resultado = encarcelado.tirar(dado1, dado2);
+		
+		Assert.assertEquals(0, resultado.intValue());
 	}
 	
 	@Test
-	public void test02PuedeEjecutarAccionesEsFalseEnEstadoEncarceladoSiNoPasoNingunTurno() {
+	public void test02PagarFianzaNoTieneEfectoSobreElCapitalDelJugadorDuranteElPrimerTurno() {
 		
 		Jugador jugador = new Jugador();
-		
 		Encarcelado encarcelado = new Encarcelado(jugador);
 		
-		Assert.assertFalse(encarcelado.puedeEjecutarAcciones());
-	}
-	
-	@Test
-	public void test03PuedeEjecutarAccionesEsFalseEnEstadoEncarceladoSiPasoUnTurno() {
-		
-		Jugador jugador = new Jugador();
-		
-		Encarcelado encarcelado = new Encarcelado(jugador);
+		Integer capitalInicial = jugador.getCapital();
 		
 		encarcelado.iniciarTurno();
+		encarcelado.pagarFianza();
 		
-		Assert.assertFalse(encarcelado.puedeEjecutarAcciones());
+		Integer capitalFinal = jugador.getCapital();
 		
+		Assert.assertEquals(capitalFinal, capitalInicial);
 	}
 	
 	@Test
-	public void test04PuedeEjecutarAccionesEsTrueEnEstadoEncarceladoSiPasoMasDeUnTurno() {
+	public void test03TestPagarFianzaModificaElCapitalDelJugadorAPartirDelSegundoTurno() {
 		
 		Jugador jugador = new Jugador();
-		
 		Encarcelado encarcelado = new Encarcelado(jugador);
+		
+		Integer capitalInicial = jugador.getCapital();
 		
 		encarcelado.iniciarTurno();
 		encarcelado.iniciarTurno();
 		
-		Assert.assertTrue(encarcelado.puedeEjecutarAcciones());
-	}
-	
-	@Test
-	public void test05IniciarTurnoAumentaEnUnoElContadorDeTurnosEnCarcel() {
+		encarcelado.pagarFianza();
 		
-		Jugador jugador = new Jugador();
+		Integer capitalFinal = jugador.getCapital();
 		
-		Encarcelado encarcelado = new Encarcelado(jugador);
+		Assert.assertEquals(capitalFinal.intValue(), capitalInicial - FIANZA);
 		
-		encarcelado.iniciarTurno();
-		
-		Assert.assertEquals(1, encarcelado.getTurnosEnCarcel().intValue());
 	}
 }

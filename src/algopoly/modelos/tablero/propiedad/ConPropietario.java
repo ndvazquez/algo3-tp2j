@@ -8,7 +8,6 @@ public class ConPropietario extends EstadoPropiedad {
 	public void comprarPropiedad(Jugador jugador, Propiedad propiedad) {
 	}
 
-
 	@Override
 	public void construirCasa(Propiedad propiedad) {
 	}
@@ -16,4 +15,5 @@ public class ConPropietario extends EstadoPropiedad {
 	@Override
 	public void construirHotel(Propiedad propiedad) {
 	}
+
 }

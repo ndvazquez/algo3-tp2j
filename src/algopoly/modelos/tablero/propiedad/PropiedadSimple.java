@@ -82,4 +82,10 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	@Override
 	public void construirHotel() {
 	}
+
+	@Override
+	public void resetPropiedades() {
+		this.cantidadEdificios = 0;
+		this.edificio = this.provincia.vacio();
+	}
 }

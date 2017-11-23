@@ -21,4 +21,5 @@ public class SinPropietario extends EstadoPropiedad {
 	@Override
 	public void construirHotel(Propiedad propiedad) {
 	}
+
 }

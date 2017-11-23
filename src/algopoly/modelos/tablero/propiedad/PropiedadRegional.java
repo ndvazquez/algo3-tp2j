@@ -97,4 +97,10 @@ public class PropiedadRegional implements Casillero, Propiedad {
 	public Integer cantidadEdificios() {
 		return this.cantidadEdificios;
 	}
+
+	@Override
+	public void resetPropiedades() {
+		this.cantidadEdificios = 0;
+		this.edificio = this.provincia.vacio();
+	}
 }

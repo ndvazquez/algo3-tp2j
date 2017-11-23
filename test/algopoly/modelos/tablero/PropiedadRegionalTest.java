@@ -243,4 +243,31 @@ public class PropiedadRegionalTest {
 
         Assert.assertEquals(26000, capital);
     }
+    
+    @Test
+	public void test12JugadorIntercambiaPropiedadRegionalConOtroLuegoUnTercerJugadorCaeEnDichaPropiedadYElAlquilerVaAlNuevoPropietario() {
+		
+		PropiedadFactory propiedadFactory = new PropiedadFactory();
+		PropiedadRegional buenosAiresNorte = propiedadFactory.crearPropiedadRegional(Provincia.BSAS_NORTE, Provincia.BSAS_SUR);
+		PropiedadRegional cordobaNorte = propiedadFactory.crearPropiedadRegional(Provincia.CORDOBA_NORTE, Provincia.CORDOBA_SUR);
+		
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		Jugador jugador3 = new Jugador();
+		
+		buenosAiresNorte.recibirJugador(jugador1);
+		cordobaNorte.recibirJugador(jugador2);
+		
+		jugador1.intercambiarPropiedad(buenosAiresNorte, cordobaNorte, jugador2);
+		
+		Integer capitalInicialJugador1 = jugador1.getCapital();
+
+		cordobaNorte.recibirJugador(jugador3);
+		
+		Integer capitalFinalJugador1 = jugador1.getCapital();
+		Integer alquilerSantaFe = cordobaNorte.getPrecioAlquiler();
+		
+		Assert.assertEquals(capitalFinalJugador1.intValue(), capitalInicialJugador1 + alquilerSantaFe);
+	}
+    
 }

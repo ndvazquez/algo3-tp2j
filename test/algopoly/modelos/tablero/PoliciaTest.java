@@ -17,7 +17,6 @@ public class PoliciaTest {
 		policia.recibirJugador(jugadorPrueba);
 
 		Assert.assertEquals(jugadorPrueba.getPosicion(), Posicion.CARCEL);
-		Assert.assertFalse(jugadorPrueba.puedeMoverse());
 	}
 
 	@Test
@@ -27,8 +26,15 @@ public class PoliciaTest {
 		Jugador jugadorPrueba = new Jugador();
 
 		policia.recibirJugador(jugadorPrueba);
-
-		Assert.assertFalse(jugadorPrueba.puedeMoverse());
+		
+	
+		Posicion posicionInicial = jugadorPrueba.getPosicion();
+		
+		jugadorPrueba.mover(1);
+		
+		Posicion posicionFinal = jugadorPrueba.getPosicion();
+		
+		Assert.assertEquals(posicionFinal, posicionInicial);
 	}
 
 }

@@ -116,12 +116,16 @@ public class Jugador {
 		this.quitarPropiedad(propiedadACeder);
 		jugadorQueIntercambia.quitarPropiedad(propiedadARecibir);
 		
-		propiedadACeder.setPropietario(jugadorQueIntercambia);
-		propiedadARecibir.setPropietario(this);
 		
 		jugadorQueIntercambia.cobrar(propiedadACeder.getPrecio() - propiedadARecibir.getPrecio());
 		propiedadARecibir.getPropietario().cobrar(propiedadARecibir.getPrecio() - propiedadACeder.getPrecio());
 
+		propiedadACeder.setPropietario(jugadorQueIntercambia);
+		propiedadARecibir.setPropietario(this);
+
+		propiedadACeder.resetPropiedades();
+		propiedadARecibir.resetPropiedades();
+		
 		this.agregarPropiedad(propiedadARecibir);
 		jugadorQueIntercambia.agregarPropiedad(propiedadACeder);
 		

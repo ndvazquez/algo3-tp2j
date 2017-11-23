@@ -99,10 +99,6 @@ public class Jugador {
 	}
 
 	public void comprarPropiedad(Propiedad propiedad) {
-		if (this.capital - propiedad.getPrecio() > 0) {
-			this.capital -= propiedad.getPrecio();
-			this.propiedades.add(propiedad);
-		}
 		this.pagar(propiedad.getPrecio());
 		this.propiedades.add(propiedad);
 	}

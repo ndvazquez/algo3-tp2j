@@ -62,10 +62,6 @@ public class Tablero {
 		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // tucuman1
 	}
 
-	public void ganador() {
-
-	}
-
 	public Jugador jugadorAcutal() {
 		return this.jugadores.get(this.turnoActual);
 	}

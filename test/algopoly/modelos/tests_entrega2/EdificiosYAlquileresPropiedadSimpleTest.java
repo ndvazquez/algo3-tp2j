@@ -10,7 +10,23 @@ import org.junit.Test;
 public class EdificiosYAlquileresPropiedadSimpleTest {
 
     @Test
-    public void test01JugadorConstruyeCasaEnNeuquen() {
+    public void test01JugadorCaeEnUnaPropiedadSimpleYSeConvierteEnPropietario() {
+        PropiedadFactory propiedadFactory = new PropiedadFactory();
+        Jugador jugadorPrueba = new Jugador();
+        PropiedadSimple propiedad = propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN);
+
+        propiedad.recibirJugador(jugadorPrueba);
+
+        int cantidadPropiedades = jugadorPrueba.getCantidadPropiedades();
+        int capital = jugadorPrueba.getCapital();
+
+        Assert.assertEquals(cantidadPropiedades, 1);
+        Assert.assertEquals(propiedad.getPropietario(), jugadorPrueba);
+        Assert.assertEquals(83000, capital);
+    }
+
+    @Test
+    public void test02JugadorConstruyeCasaEnNeuquen() {
         PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugadorPrueba = new Jugador();
         PropiedadSimple propiedad = propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN);
@@ -25,7 +41,7 @@ public class EdificiosYAlquileresPropiedadSimpleTest {
     }
 
     @Test
-    public void test02JugadorCaeEnPropiedadSimpleDeOtroJugadorYPagaAlquiler() {
+    public void test03JugadorCaeEnPropiedadSimpleDeOtroJugadorYPagaAlquiler() {
         PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugador1 = new Jugador();
         PropiedadSimple propiedad = propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN);
@@ -43,7 +59,7 @@ public class EdificiosYAlquileresPropiedadSimpleTest {
     }
 
     @Test
-    public void test03JugadorCaeEnPropiedadSimpleDeOtroJugadorConCasaYPagaAlquiler() {
+    public void test04JugadorCaeEnPropiedadSimpleDeOtroJugadorConCasaYPagaAlquiler() {
         PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugador1 = new Jugador();
         PropiedadSimple propiedad = propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN);
@@ -62,7 +78,7 @@ public class EdificiosYAlquileresPropiedadSimpleTest {
     }
 
     @Test
-    public void test04JugadorNoPuedeComprarMasDeUnaConstruccionEnPropiedadSimple() {
+    public void test05JugadorNoPuedeComprarMasDeUnaConstruccionEnPropiedadSimple() {
         PropiedadFactory propiedadFactory = new PropiedadFactory();
         Jugador jugadorPrueba = new Jugador();
         PropiedadSimple propiedad = propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN);
@@ -77,7 +93,7 @@ public class EdificiosYAlquileresPropiedadSimpleTest {
     }
 
     @Test
-    public void test05JugadorIntercambiaPropiedadSimpleConOtroLuegoUnTercerJugadorCaeEnDichaPropiedadYElAlquilerVaAlNuevoPropietario() {
+    public void test06JugadorIntercambiaPropiedadSimpleConOtroLuegoUnTercerJugadorCaeEnDichaPropiedadYElAlquilerVaAlNuevoPropietario() {
 
         PropiedadFactory propiedadFactory = new PropiedadFactory();
         PropiedadSimple neuquen = propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN);

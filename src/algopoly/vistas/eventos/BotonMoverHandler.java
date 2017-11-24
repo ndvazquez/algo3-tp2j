@@ -1,5 +1,7 @@
 package algopoly.vistas.eventos;
 
+import algopoly.modelos.excepciones.JugadorSinPlataException;
+import algopoly.modelos.jugador.Jugador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import algopoly.modelos.tablero.Tablero;
@@ -23,7 +25,15 @@ public class BotonMoverHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-    	this.tablero.proximoTurno();
+        Jugador perdedor = tablero.jugadorActual();
+        try {
+            this.tablero.proximoTurno();
+        } catch(JugadorSinPlataException e){
+            this.tablero.eliminarJugador(perdedor);
+            if(this.tablero.terminoLaPartida()){
+                System.exit(0);
+            }
+        }
     	this.vista.update();
     	this.vistaDados.update();
     	this.vistaInformacion.update();

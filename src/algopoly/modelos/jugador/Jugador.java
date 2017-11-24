@@ -98,6 +98,8 @@ public class Jugador {
 		return this.propiedades.size();
 	}
 
+	public Integer getCantidadServicios() { return this.companias.size(); }
+
 	public void comprarPropiedad(Propiedad propiedad) {
 		this.pagar(propiedad.getPrecio());
 		this.propiedades.add(propiedad);

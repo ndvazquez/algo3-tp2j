@@ -42,26 +42,26 @@ public class Tablero {
 		Compania aysa = new Compania(30000, 300, 500, serviciosEdesurAysa);
 		PropiedadFactory propiedadFactory = new PropiedadFactory();
 		casilleros = new ArrayList<Casillero>();
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // salida
+		casilleros.add(new Salida()); // salida
 		casilleros.add(new Quini6(this.jugadores));
 		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE));// bsassur
 		casilleros.add(edesur);
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE));// bsasnorte
+		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_NORTE, Provincia.BSAS_SUR));// bsasnorte
 		casilleros.add(carcel);
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // cordoba
+		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.CORDOBA_SUR, Provincia.CORDOBA_NORTE)); // cordoba
 		casilleros.add(new AvanceDinamico());
 		casilleros.add(subte);
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // cordoba
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // impuesto
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // santafe
+		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.CORDOBA_NORTE, Provincia.CORDOBA_SUR)); // cordoba
+		casilleros.add(new ImpuestoDeLujo()); // impuesto
+		casilleros.add(propiedadFactory.crearPropiedadSimple(Provincia.SANTA_FE)); // santafe
 		casilleros.add(aysa);
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // salta
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE));// salta
+		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.SALTA_SUR, Provincia.SALTA_NORTE)); // salta
+		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.SALTA_NORTE, Provincia.SALTA_SUR));// salta
 		casilleros.add(new Policia(carcel));
 		casilleros.add(tren);
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE));// neuquen
+		casilleros.add(propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN));// neuquen
 		casilleros.add(new RetrocesoDinamico());
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // tucuman1
+		casilleros.add(propiedadFactory.crearPropiedadSimple(Provincia.TUCUMAN)); // tucuman1
 	}
 
 	public Jugador jugadorActual() {
@@ -75,7 +75,10 @@ public class Tablero {
 		jugador.iniciarTurno();
 
 		Casillero casilleroActual = casilleros.get(Posicion.getIndice(jugador.getPosicion()));
-		casilleroActual.recibirJugador(jugador);
+		// esto por ahi es mejor que vaya en otro lado
+		if(!casilleroActual.getClass().equals(Carcel.class)){
+			casilleroActual.recibirJugador(jugador);
+		}
 
 		// esto por ahi es mejor que vaya en otro lado
 		if (casilleroActual.getClass().equals(AvanceDinamico.class)
@@ -85,7 +88,7 @@ public class Tablero {
 		}
 
 		if (!jugador.sacoDoble() || this.turnosJugados.equals(2)){
-			this.turnoActual = (this.turnoActual + 1) % 3;
+			this.turnoActual = (this.turnoActual + 1) % this.jugadores.size();
 			this.turnosJugados = 0;
 		}
 	}
@@ -94,4 +97,13 @@ public class Tablero {
 		return this.jugadores;
 	}
 
+	public void eliminarJugador(Jugador jugador){
+		this.jugadores.remove(jugador);
+        this.turnoActual = (this.turnoActual + 1) % 3;
+        this.turnosJugados = 0;
+	}
+
+	public boolean terminoLaPartida(){
+		return this.jugadores.size() == 1;
+	}
 }

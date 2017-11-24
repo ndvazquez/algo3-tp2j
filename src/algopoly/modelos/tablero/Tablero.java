@@ -16,6 +16,7 @@ public class Tablero {
 	private ArrayList<Jugador> jugadores;
 	private ArrayList<Casillero> casilleros;
 	private Integer turnoActual;
+	private Integer turnosJugados;
 
 	public Tablero() {
 		jugadores = new ArrayList<Jugador>();
@@ -23,6 +24,7 @@ public class Tablero {
 		jugadores.add(new Jugador());
 		jugadores.add(new Jugador());
 
+		turnosJugados = 0;
 		turnoActual = (new Random().nextInt(3));
 
 		this.armarCasilleros();
@@ -62,13 +64,14 @@ public class Tablero {
 		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // tucuman1
 	}
 
-	public Jugador jugadorAcutal() {
+	public Jugador jugadorActual() {
 		return this.jugadores.get(this.turnoActual);
 	}
 
 	public void proximoTurno() {
-		this.turnoActual = (this.turnoActual + 1) % 3;
-		Jugador jugador = this.jugadorAcutal();
+
+		this.turnosJugados++;
+		Jugador jugador = this.jugadorActual();
 		jugador.iniciarTurno();
 
 		Casillero casilleroActual = casilleros.get(Posicion.getIndice(jugador.getPosicion()));
@@ -79,6 +82,11 @@ public class Tablero {
 				|| casilleroActual.getClass().equals(RetrocesoDinamico.class)) {
 			casilleroActual = casilleros.get(Posicion.getIndice(jugador.getPosicion()));
 			casilleroActual.recibirJugador(jugador);
+		}
+
+		if (!jugador.sacoDoble() || this.turnosJugados.equals(2)){
+			this.turnoActual = (this.turnoActual + 1) % 3;
+			this.turnosJugados = 0;
 		}
 	}
 

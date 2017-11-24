@@ -53,7 +53,12 @@ public class PropiedadRegional implements Casillero, Propiedad {
     public Integer getPrecioAlquiler() {
     	return this.edificio.getAlquiler();
     }
-    
+
+    @Override
+	public Integer getPrecioDeVenta(){
+		return (this.edificio.getPrecio() + this.getPrecio());
+	}
+
     @Override
     public Provincia getProvincia() {
     	return this.provincia;

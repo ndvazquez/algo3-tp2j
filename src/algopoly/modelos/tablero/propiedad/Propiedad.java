@@ -10,6 +10,8 @@ public interface Propiedad {
 
 	Integer getPrecioAlquiler();
 
+	Integer getPrecioDeVenta();
+
 	void setPropietario(Jugador jugador);
 
 	boolean esEstaProvincia(Provincia provincia);

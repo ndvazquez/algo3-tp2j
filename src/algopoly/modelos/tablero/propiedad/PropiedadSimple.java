@@ -50,7 +50,11 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	public Integer getPrecioAlquiler() {
 		return this.edificio.getAlquiler();
 	}
-	
+
+	@Override
+	public Integer getPrecioDeVenta(){
+		return (this.edificio.getPrecio() + this.getPrecio());
+	}
 	@Override
 	public void construir(Edificio edificio) {
     	this.edificio = edificio;

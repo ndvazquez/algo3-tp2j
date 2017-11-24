@@ -21,6 +21,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+
 public class ContenedorPrincipal extends BorderPane {
 
 	BarraDeMenu menuBar;
@@ -29,7 +30,7 @@ public class ContenedorPrincipal extends BorderPane {
 	VBox contenedorCentral;
 	VistaDados vistaDados;
 	VistaInformacion vistaInformacion;
-	
+
 	public ContenedorPrincipal(Stage stage, Tablero tablero) {
 		this.setMenu(stage);
 		this.setCentro(tablero);

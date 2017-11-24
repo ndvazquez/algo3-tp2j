@@ -6,8 +6,11 @@ import algopoly.modelos.tablero.propiedad.Provincia;
 import algopoly.modelos.tablero.servicios.Compania;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Jugador {
+
+	public static final double RADIO = 20;
 	
 	private static final Integer CAPITAL_INICIAL = 100000;
 
@@ -24,7 +27,7 @@ public class Jugador {
 	private Integer capital;
 
 	private Estado estado;
-
+	
 	public Jugador() {
 		this.capital = CAPITAL_INICIAL;
 		this.posicion = Posicion.SALIDA;
@@ -37,6 +40,7 @@ public class Jugador {
 
 	public void iniciarTurno() {
 		this.estado.iniciarTurno();
+		this.mover(this.tirar());
 	}
 
 	public Integer tirar() {
@@ -45,6 +49,13 @@ public class Jugador {
 	
 	public Integer getUltimaTirada() {
 		return this.dado1.getUltimaTirada() + this.dado2.getUltimaTirada();
+	}
+	
+	public Collection<Dado> getUltimaTiradaEnDados() {
+		Collection<Dado> dados = new ArrayList<Dado>();
+		dados.add(dado1);
+		dados.add(dado2);
+		return dados;
 	}
 	
 	public void cobrar(Integer monto) {
@@ -139,5 +150,4 @@ public class Jugador {
 	public void quitarPropiedad(Propiedad propiedad) {
 		this.propiedades.remove(propiedad);
 	}
-
 }

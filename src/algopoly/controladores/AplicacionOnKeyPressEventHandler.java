@@ -1,4 +1,4 @@
-package algopoly.vistas.eventos;
+package algopoly.controladores;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;

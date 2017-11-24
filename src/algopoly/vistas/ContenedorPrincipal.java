@@ -1,7 +1,7 @@
 package algopoly.vistas;
 
+import algopoly.controladores.BotonMoverHandler;
 import algopoly.modelos.tablero.Tablero;
-import algopoly.vistas.eventos.BotonMoverHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;

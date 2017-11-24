@@ -1,4 +1,4 @@
-package algopoly.vistas.eventos;
+package algopoly.controladores;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

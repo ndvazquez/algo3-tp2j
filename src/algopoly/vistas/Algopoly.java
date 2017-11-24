@@ -1,10 +1,10 @@
 package algopoly.vistas;
 
+import algopoly.controladores.AplicacionOnKeyPressEventHandler;
 import algopoly.modelos.tablero.Tablero;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import algopoly.vistas.eventos.AplicacionOnKeyPressEventHandler;
 
 public class Algopoly extends Application {
 

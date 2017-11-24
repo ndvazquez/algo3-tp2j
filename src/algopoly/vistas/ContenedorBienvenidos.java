@@ -1,5 +1,6 @@
 package algopoly.vistas;
 
+import algopoly.controladores.BotonEntrarEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,7 +18,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import algopoly.vistas.eventos.BotonEntrarEventHandler;
 
 public class ContenedorBienvenidos extends VBox {
 

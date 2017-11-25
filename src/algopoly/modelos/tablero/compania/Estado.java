@@ -1,4 +1,4 @@
-package algopoly.modelos.tablero.servicios;
+package algopoly.modelos.tablero.compania;
 
 import algopoly.modelos.jugador.Jugador;
 

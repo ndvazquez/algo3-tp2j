@@ -6,8 +6,11 @@ import java.util.Random;
 
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.jugador.Posicion;
-import algopoly.modelos.tablero.servicios.Compania;
-import algopoly.modelos.tablero.servicios.Servicios;
+import algopoly.modelos.tablero.compania.Aysa;
+import algopoly.modelos.tablero.compania.Compania;
+import algopoly.modelos.tablero.compania.Edesur;
+import algopoly.modelos.tablero.compania.Subte;
+import algopoly.modelos.tablero.compania.Tren;
 import algopoly.modelos.tablero.propiedad.PropiedadFactory;
 import algopoly.modelos.tablero.propiedad.Provincia;
 
@@ -20,18 +23,18 @@ public class Tablero {
 	private Integer turnosJugados;
 
 	public Tablero() {
-		
+
 		jugadores = new ArrayList<Jugador>();
-		
+
 		Jugador jugador1 = new Jugador();
 		jugador1.setNombre("Alan");
 
 		Jugador jugador2 = new Jugador();
 		jugador2.setNombre("Barbara");
-		
+
 		Jugador jugador3 = new Jugador();
 		jugador3.setNombre("Linus");
-				
+
 		jugadores.add(jugador1);
 		jugadores.add(jugador2);
 		jugadores.add(jugador3);
@@ -48,13 +51,16 @@ public class Tablero {
 	private void armarCasilleros() {
 		Carcel carcel = new Carcel();
 
-		Servicios serviciosTrenSubte = new Servicios();
-		Compania tren = new Compania(38000, 450, 800, serviciosTrenSubte);
-		Compania subte = new Compania(40000, 600, 1100, serviciosTrenSubte);
+		Compania tren = new Tren();
+		Compania subte = new Subte();
+		tren.setCompaniaPar(subte);
+		subte.setCompaniaPar(tren);
 
-		Servicios serviciosEdesurAysa = new Servicios();
-		Compania edesur = new Compania(35000, 500, 1000, serviciosEdesurAysa);
-		Compania aysa = new Compania(30000, 300, 500, serviciosEdesurAysa);
+		Compania edesur = new Edesur();
+		Compania aysa = new Aysa();
+		edesur.setCompaniaPar(aysa);
+		aysa.setCompaniaPar(edesur);
+
 		PropiedadFactory propiedadFactory = new PropiedadFactory();
 		casilleros = new ArrayList<Casillero>();
 		casilleros.add(new Salida()); // salida
@@ -84,18 +90,19 @@ public class Tablero {
 	}
 
 	public void proximoTurno() {
-		Jugador jugador = this.jugadorProximo();
+		Jugador jugador = this.jugadorActual();
 		jugador.iniciarTurno();
 		this.turnosJugados++;
-	}
-	
-	public Jugador jugadorProximo() {
-		Jugador jugador = this.jugadorActual();
-		if (jugador.getUltimaTirada() != 0 || !jugador.sacoDoble() || this.turnosJugados.equals(2)) {
+
+		if (jugador.getUltimaTirada().equals(0) || !jugador.sacoDoble() || this.turnosJugados.equals(2)) {
 			this.turnoActual = (this.turnoActual + 1) % this.jugadores.size();
 			this.turnosJugados = 0;
 		}
-		return this.jugadorActual();
+	}
+
+	public Jugador jugadorAnterior() {
+		int posicion = !this.turnoActual.equals(0) ? ((this.turnoActual - 1) % this.jugadores.size()) : this.jugadores.size()-1;
+		return this.jugadores.get(posicion);
 	}
 
 	public List<Jugador> getJugadores() {
@@ -177,6 +184,7 @@ public class Tablero {
 		posiciones.add(RETROCESO_DINAMICO);
 		posiciones.add(TUCUMAN);
 	}
+
 	public Integer getNumeroDeCasillero(Casillero casilleroActual) {
 		return casilleros.indexOf(casilleroActual);
 	}

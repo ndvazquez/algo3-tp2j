@@ -17,7 +17,7 @@ public class TableroTest {
 
         Jugador jugadorFinal = tablero.jugadorActual();
 
-        if (jugadorInicio.sacoDoble()){
+        if (jugadorInicio.sacoDoble()) {
             Assert.assertEquals(jugadorInicio, jugadorFinal);
         } else {
             Assert.assertNotEquals(jugadorInicio, jugadorFinal);
@@ -36,8 +36,8 @@ public class TableroTest {
         boolean continuar = true;
         try{
             while(continuar){
-                jugadorInicial = tablero.jugadorActual();
                 tablero.proximoTurno();
+                jugadorInicial = tablero.jugadorActual();
                 jugadorFinal = tablero.jugadorActual();
                 continuar = !jugadorInicial.sacoDoble();
             }

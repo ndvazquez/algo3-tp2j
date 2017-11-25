@@ -4,6 +4,7 @@ import java.util.List;
 
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Tablero;
+import algopoly.modelos.tablero.casilleros.Carcel;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -30,20 +31,21 @@ public class VistaInformacion {
 			
 			int y = 100;
 			imprimirInformacion(jugadores.get(0), Color.GREEN, y);
-			
-			if(jugadores.size() >= 2) {
-				imprimirInformacion(jugadores.get(1), Color.BLUE, y += 100);
-			}
-			
-			if(jugadores.size() == 3) {
-				imprimirInformacion(jugadores.get(2), Color.FUCHSIA, y += 100);
-			}
+			imprimirInformacion(jugadores.get(1), Color.BLUE, y += 110);
+			imprimirInformacion(jugadores.get(2), Color.FUCHSIA, y += 110);
 	}
 
 
 	private void imprimirInformacion(Jugador j, Color color, Integer y) {
 		canvas.getGraphicsContext2D().setFill(color);
 		canvas.getGraphicsContext2D().fillText(j.getNombre() , 0, y += 20);
+		canvas.getGraphicsContext2D().setFill(Color.RED);
+		if (!j.sigoEnJuego()) {
+			canvas.getGraphicsContext2D().fillText("FUERA DE JUEGO", 0, y += 20);
+		} else if (j.getCasilleroActual().getClass().equals(Carcel.class)) {
+			canvas.getGraphicsContext2D().fillText("ENCARCELADO", 0, y += 20);
+		}
+		canvas.getGraphicsContext2D().setFill(color);
 		canvas.getGraphicsContext2D().fillText("Plata: " + j.getCapital(), 0, y += 20); 
 		canvas.getGraphicsContext2D().fillText("Barrios: " + j.getCantidadBarrios().toString(), 0, y += 20);
 		canvas.getGraphicsContext2D().fillText("Compañías: " + j.getCantidadCompanias().toString(), 0, y += 20);

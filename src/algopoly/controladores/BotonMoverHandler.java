@@ -25,13 +25,13 @@ public class BotonMoverHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        Jugador perdedor = tablero.jugadorActual();
+        Jugador jugador = tablero.jugadorActual();
         try {
             this.tablero.proximoTurno();
-        } catch(JugadorSinPlataException e){
-            this.tablero.eliminarJugador(perdedor);
-            if(this.tablero.terminoLaPartida()){
-                System.exit(0);
+        } catch(JugadorSinPlataException e) {
+            this.tablero.eliminarJugador(jugador);
+            if (this.tablero.terminoLaPartida()) {
+                System.exit(0); 
             }
         }
     	this.vista.update();

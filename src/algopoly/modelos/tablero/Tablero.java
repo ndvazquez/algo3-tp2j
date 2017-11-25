@@ -31,7 +31,6 @@ public class Tablero {
 	private Integer turnosJugados;
 
 	public Tablero() {
-
 		jugadores = new ArrayList<>();
 
 		Jugador jugador1 = new Jugador();
@@ -95,46 +94,52 @@ public class Tablero {
 		casilleros.add(barrioFactory.crearBarrioSimple(Provincia.TUCUMAN)); // tucuman1
 	}
 
+	
+	
 	public Jugador jugadorActual() {
 		return this.jugadores.get(this.turnoActual);
 	}
 
+	public Jugador jugadorAnterior() {
+		int posicion = 0;
+		if (!this.turnoActual.equals(0)) { 
+			posicion = ((this.turnoActual - 1) % this.jugadores.size());
+		} else {
+			posicion = this.jugadores.size()-1;
+		}
+		return this.jugadores.get(posicion);
+	}
+
 	public void proximoTurno() {
 		Jugador jugador = this.jugadorActual();
-		jugador.iniciarTurno();
-		this.turnosJugados++;
-
-		if (jugador.getUltimaTirada().equals(0) || !jugador.sacoDoble() || this.turnosJugados.equals(2)) {
+		if (jugador.sigoEnJuego()) {
+			jugador.iniciarTurno();
+			this.turnosJugados++;
+		}
+		if (jugador.getUltimaTirada().equals(0) || !jugador.sacoDoble() || this.turnosJugados.equals(2) ||!jugador.sigoEnJuego()) {
 			this.turnoActual = (this.turnoActual + 1) % this.jugadores.size();
 			this.turnosJugados = 0;
 		}
-	}
-
-	public Jugador jugadorAnterior() {
-		int posicion = !this.turnoActual.equals(0) ? ((this.turnoActual - 1) % this.jugadores.size()) : this.jugadores.size()-1;
-		return this.jugadores.get(posicion);
 	}
 
 	public List<Jugador> getJugadores() {
 		return this.jugadores;
 	}
 
+	public void eliminarJugador(Jugador jugador) {
+		jugador.fueraDeJuego();
+	}
+
+	public boolean terminoLaPartida() {
+		return this.jugadores.size() == 1;
+	}
+	
 	public Casillero obtenerCasilleroSiguiente(Casillero casilleroActual) {
 		return casilleros.get((casilleros.indexOf(casilleroActual) + 1) % casilleros.size());
 	}
 
 	public Casillero obtenerCasilleroAnterior(Casillero casilleroActual) {
 		return casilleros.get(Math.floorMod((casilleros.indexOf(casilleroActual) - 1), casilleros.size()));
-	}
-
-	public void eliminarJugador(Jugador jugador) {
-		this.jugadores.remove(jugador);
-		this.turnoActual = (this.turnoActual + 1) % 3;
-		this.turnosJugados = 0;
-	}
-
-	public boolean terminoLaPartida() {
-		return this.jugadores.size() == 1;
 	}
 
 	public Posicion getPosicionCasillero(Casillero casilleroActual) {

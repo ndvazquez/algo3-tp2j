@@ -9,6 +9,7 @@ import java.util.Collection;
 import algopoly.modelos.jugador.Dado;
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Tablero;
+import algopoly.modelos.tablero.casilleros.Carcel;
 
 public class VistaDados {
 
@@ -31,7 +32,7 @@ public class VistaDados {
         int y = 5;
         Collection<Dado> dados = jugador.getUltimaTiradaEnDados();
         for (Dado dado : dados) {
-        	if (dado.getUltimaTirada() > 0) {
+        	if (!jugador.getCasilleroActual().getClass().equals(Carcel.class) && jugador.sigoEnJuego()) {
 	        	String imgPath = "file:src/algopoly/vistas/imagenes/dado" + dado.getUltimaTirada().toString() + ".jpg";
 	        	canvas.getGraphicsContext2D().drawImage(new Image(imgPath,90,90,true,true), 5, y);
 	        	y = y + 100;
@@ -42,7 +43,7 @@ public class VistaDados {
     }
 
 	public void clean() {
-		canvas.getGraphicsContext2D().setFill(Color.TRANSPARENT);
+		canvas.getGraphicsContext2D().setFill(Color.WHITE);
 		canvas.getGraphicsContext2D().fillRoundRect(0, 0, 100, 200, 10, 10);
 	}
 

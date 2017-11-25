@@ -183,4 +183,15 @@ public class Jugador {
 		return this.companias;
 	}
 
+	public void fueraDeJuego() {
+		this.estado = new FueraDeJuego();
+		this.capital = 0;
+		this.companias = new ArrayList<>();
+		this.barrios = new ArrayList<>();
+	}
+
+	public Boolean sigoEnJuego() {
+		return !(this.estado.getClass().equals(FueraDeJuego.class));
+	}
+
 }

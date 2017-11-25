@@ -6,23 +6,34 @@ import java.util.Random;
 
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.jugador.Posicion;
+import algopoly.modelos.tablero.barrios.BarrioFactory;
+import algopoly.modelos.tablero.barrios.Provincia;
 import algopoly.modelos.tablero.servicios.Compania;
 import algopoly.modelos.tablero.servicios.Servicios;
-import algopoly.modelos.tablero.propiedad.BarrioFactory;
-import algopoly.modelos.tablero.propiedad.Provincia;
 
 public class Tablero {
 
 	private ArrayList<Jugador> jugadores;
 	private ArrayList<Casillero> casilleros;
 	private Integer turnoActual;
+	private Integer turnosJugados;
 
 	public Tablero() {
 		jugadores = new ArrayList<Jugador>();
-		jugadores.add(new Jugador());
-		jugadores.add(new Jugador());
-		jugadores.add(new Jugador());
+		Jugador jugador1 = new Jugador();
+		jugador1.setNombre("Alan");
 
+		Jugador jugador2 = new Jugador();
+		jugador2.setNombre("Barbara");
+
+		Jugador jugador3 = new Jugador();
+		jugador3.setNombre("Linus");
+
+		jugadores.add(jugador1);
+		jugadores.add(jugador2);
+		jugadores.add(jugador3);
+
+		turnosJugados = 0;
 		turnoActual = (new Random().nextInt(3));
 
 		this.armarCasilleros();
@@ -40,39 +51,44 @@ public class Tablero {
 		Compania aysa = new Compania(30000, 300, 500, serviciosEdesurAysa);
 		BarrioFactory barrioFactory = new BarrioFactory();
 		casilleros = new ArrayList<Casillero>();
-		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // salida
+
+		casilleros.add(new Salida()); // salida
 		casilleros.add(new Quini6(this.jugadores));
 		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE));// bsassur
 		casilleros.add(edesur);
-		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE));// bsasnorte
+		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_NORTE, Provincia.BSAS_SUR));// bsasnorte
 		casilleros.add(carcel);
-		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // cordoba
+		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.CORDOBA_SUR, Provincia.CORDOBA_NORTE)); // cordoba
 		casilleros.add(new AvanceDinamico());
 		casilleros.add(subte);
-		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // cordoba
-		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // impuesto
-		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // santafe
+		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.CORDOBA_NORTE, Provincia.CORDOBA_SUR)); // cordoba
+		casilleros.add(new ImpuestoDeLujo()); // impuesto
+		casilleros.add(barrioFactory.crearBarrioSimple(Provincia.SANTA_FE)); // santafe
 		casilleros.add(aysa);
-		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // salta
-		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE));// salta
+		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.SALTA_SUR, Provincia.SALTA_NORTE)); // salta
+		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.SALTA_NORTE, Provincia.SALTA_SUR));// salta
 		casilleros.add(new Policia(carcel));
 		casilleros.add(tren);
-		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE));// neuquen
+		casilleros.add(barrioFactory.crearBarrioSimple(Provincia.NEUQUEN));// neuquen
 		casilleros.add(new RetrocesoDinamico());
-		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE)); // tucuman1
+		casilleros.add(barrioFactory.crearBarrioSimple(Provincia.TUCUMAN)); // tucuman1
 	}
 
-	public Jugador jugadorAcutal() {
+	public Jugador jugadorActual() {
 		return this.jugadores.get(this.turnoActual);
 	}
 
 	public void proximoTurno() {
-		this.turnoActual = (this.turnoActual + 1) % 3;
-		Jugador jugador = this.jugadorAcutal();
+
+		this.turnosJugados++;
+		Jugador jugador = this.jugadorActual();
 		jugador.iniciarTurno();
 
 		Casillero casilleroActual = casilleros.get(Posicion.getIndice(jugador.getPosicion()));
-		casilleroActual.recibirJugador(jugador);
+		// esto por ahi es mejor que vaya en otro lado
+		if(!casilleroActual.getClass().equals(Carcel.class)){
+			casilleroActual.recibirJugador(jugador);
+		}
 
 		// esto por ahi es mejor que vaya en otro lado
 		if (casilleroActual.getClass().equals(AvanceDinamico.class)
@@ -80,10 +96,24 @@ public class Tablero {
 			casilleroActual = casilleros.get(Posicion.getIndice(jugador.getPosicion()));
 			casilleroActual.recibirJugador(jugador);
 		}
+
+		if (!jugador.sacoDoble() || this.turnosJugados.equals(2)){
+			this.turnoActual = (this.turnoActual + 1) % this.jugadores.size();
+			this.turnosJugados = 0;
+		}
 	}
 
 	public List<Jugador> getJugadores() {
 		return this.jugadores;
 	}
 
+	public void eliminarJugador(Jugador jugador){
+		this.jugadores.remove(jugador);
+        this.turnoActual = (this.turnoActual + 1) % 3;
+        this.turnosJugados = 0;
+	}
+
+	public boolean terminoLaPartida(){
+		return this.jugadores.size() == 1;
+	}
 }

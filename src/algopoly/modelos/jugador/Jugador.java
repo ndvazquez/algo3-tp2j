@@ -1,8 +1,8 @@
 package algopoly.modelos.jugador;
 
 import algopoly.modelos.excepciones.JugadorSinPlataException;
-import algopoly.modelos.tablero.propiedad.Barrio;
-import algopoly.modelos.tablero.propiedad.Provincia;
+import algopoly.modelos.tablero.barrios.Barrio;
+import algopoly.modelos.tablero.barrios.Provincia;
 import algopoly.modelos.tablero.servicios.Compania;
 
 import java.util.ArrayList;
@@ -13,6 +13,8 @@ public class Jugador {
 	public static final double RADIO = 20;
 	
 	private static final Integer CAPITAL_INICIAL = 100000;
+
+	private String nombre;
 
 	private Dado dado1;
 
@@ -29,6 +31,7 @@ public class Jugador {
 	private Estado estado;
 	
 	public Jugador() {
+		this.nombre = "Jon Doe";
 		this.capital = CAPITAL_INICIAL;
 		this.posicion = Posicion.SALIDA;
 		this.dado1 = new Dado();
@@ -36,6 +39,13 @@ public class Jugador {
 		this.estado = new Habilitado(this);
 		this.barrios = new ArrayList<>();
 		this.companias = new ArrayList<>();
+	}
+
+	public void setNombre(String nombre){
+	    this.nombre = nombre;
+    }
+	public String getNombre(){
+		return this.nombre;
 	}
 
 	public void iniciarTurno() {
@@ -50,7 +60,11 @@ public class Jugador {
 	public Integer getUltimaTirada() {
 		return this.dado1.getUltimaTirada() + this.dado2.getUltimaTirada();
 	}
-	
+
+	public boolean sacoDoble(){
+		return this.dado1.getUltimaTirada().equals(this.dado2.getUltimaTirada());
+	}
+
 	public Collection<Dado> getUltimaTiradaEnDados() {
 		Collection<Dado> dados = new ArrayList<Dado>();
 		dados.add(dado1);
@@ -63,10 +77,15 @@ public class Jugador {
 	}
 
 	public void pagar(Integer monto) {
+		while(this.capital - monto < 0 && this.barrios.size() > 0){
+			Barrio propiedadAVender = this.barrios.stream().findFirst().get();
+			this.venderBarrio(propiedadAVender);
+		}
 		this.capital -= monto;
 		if (this.capital < 0) {
 			throw new JugadorSinPlataException();
 		}
+
 	}
 
 	public Integer getCapital() {
@@ -89,9 +108,12 @@ public class Jugador {
 		return this.barrios.size();
 	}
 
+	public Integer getCantidadServicios() { return this.companias.size(); }
+
 	public void comprarBarrio(Barrio barrio) {
 		this.pagar(barrio.getPrecio());
 		this.barrios.add(barrio);
+
 	}
 
 	public Barrio getBarrio(Provincia provincia) {
@@ -150,4 +172,11 @@ public class Jugador {
 	public void quitarBarrio(Barrio barrio) {
 		this.barrios.remove(barrio);
 	}
+
+	public void venderBarrio(Barrio barrio){
+		this.quitarBarrio(barrio);
+        barrio.setSinPropietario();
+		this.cobrar(barrio.getPrecioDeVenta() -  barrio.getPrecioDeVenta() / 100 * 15);
+	}
+
 }

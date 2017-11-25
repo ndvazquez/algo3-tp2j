@@ -1,9 +1,9 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
-import algopoly.modelos.tablero.barrios.BarrioDoble;
-import algopoly.modelos.tablero.barrios.BarrioFactory;
-import algopoly.modelos.tablero.barrios.Provincia;
+import algopoly.modelos.tablero.casilleros.barrios.BarrioDoble;
+import algopoly.modelos.tablero.casilleros.barrios.BarrioFactory;
+import algopoly.modelos.tablero.casilleros.barrios.Provincia;
 
 import org.junit.Assert;
 import org.junit.Test;

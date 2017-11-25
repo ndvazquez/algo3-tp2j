@@ -2,6 +2,8 @@ package algopoly.modelos.tablero;
 
 import algopoly.modelos.excepciones.JugadorSinPlataException;
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.tablero.casilleros.Carcel;
+import algopoly.modelos.tablero.casilleros.Casillero;
 
 import org.junit.Assert;
 import org.junit.Test;

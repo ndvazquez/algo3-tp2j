@@ -2,7 +2,8 @@ package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.jugador.Posicion;
-import algopoly.modelos.tablero.barrios.BarrioSimple;
+import algopoly.modelos.tablero.casilleros.Casillero;
+import algopoly.modelos.tablero.casilleros.barrios.BarrioSimple;
 
 import org.mockito.Mockito;
 

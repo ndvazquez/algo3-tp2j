@@ -1,9 +1,9 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
-import algopoly.modelos.tablero.compania.Compania;
-import algopoly.modelos.tablero.compania.Subte;
-import algopoly.modelos.tablero.compania.Tren;
+import algopoly.modelos.tablero.casilleros.compania.Compania;
+import algopoly.modelos.tablero.casilleros.compania.Subte;
+import algopoly.modelos.tablero.casilleros.compania.Tren;
 
 import org.junit.Assert;
 import org.junit.Test;

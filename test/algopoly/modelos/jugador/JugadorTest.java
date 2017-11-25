@@ -3,9 +3,9 @@ package algopoly.modelos.jugador;
 import org.junit.Assert;
 import org.junit.Test;
 
-import algopoly.modelos.tablero.barrios.BarrioFactory;
-import algopoly.modelos.tablero.barrios.BarrioSimple;
-import algopoly.modelos.tablero.barrios.Provincia;
+import algopoly.modelos.tablero.casilleros.barrios.BarrioFactory;
+import algopoly.modelos.tablero.casilleros.barrios.BarrioSimple;
+import algopoly.modelos.tablero.casilleros.barrios.Provincia;
 
 
 public class JugadorTest {

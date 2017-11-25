@@ -1,10 +1,10 @@
 package algopoly.modelos.jugador;
 
 import algopoly.modelos.excepciones.JugadorSinPlataException;
-import algopoly.modelos.tablero.Casillero;
-import algopoly.modelos.tablero.compania.Compania;
-import algopoly.modelos.tablero.barrios.Barrio;
-import algopoly.modelos.tablero.barrios.Provincia;
+import algopoly.modelos.tablero.casilleros.Casillero;
+import algopoly.modelos.tablero.casilleros.barrios.Barrio;
+import algopoly.modelos.tablero.casilleros.barrios.Provincia;
+import algopoly.modelos.tablero.casilleros.compania.Compania;
 
 import java.util.ArrayList;
 import java.util.Collection;

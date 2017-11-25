@@ -1,6 +1,8 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.tablero.casilleros.Carcel;
+import algopoly.modelos.tablero.casilleros.Policia;
 
 import org.junit.Assert;
 import org.junit.Test;

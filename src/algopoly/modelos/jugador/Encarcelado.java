@@ -1,6 +1,6 @@
 package algopoly.modelos.jugador;
 
-import algopoly.modelos.tablero.Carcel;
+import algopoly.modelos.tablero.casilleros.Carcel;
 
 public class Encarcelado implements Estado {
 	

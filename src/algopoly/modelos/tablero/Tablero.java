@@ -6,13 +6,21 @@ import java.util.Random;
 
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.jugador.Posicion;
-import algopoly.modelos.tablero.compania.Aysa;
-import algopoly.modelos.tablero.compania.Compania;
-import algopoly.modelos.tablero.compania.Edesur;
-import algopoly.modelos.tablero.compania.Subte;
-import algopoly.modelos.tablero.compania.Tren;
-import algopoly.modelos.tablero.barrios.BarrioFactory;
-import algopoly.modelos.tablero.barrios.Provincia;
+import algopoly.modelos.tablero.casilleros.AvanceDinamico;
+import algopoly.modelos.tablero.casilleros.Carcel;
+import algopoly.modelos.tablero.casilleros.Casillero;
+import algopoly.modelos.tablero.casilleros.ImpuestoDeLujo;
+import algopoly.modelos.tablero.casilleros.Policia;
+import algopoly.modelos.tablero.casilleros.Quini6;
+import algopoly.modelos.tablero.casilleros.RetrocesoDinamico;
+import algopoly.modelos.tablero.casilleros.Salida;
+import algopoly.modelos.tablero.casilleros.barrios.BarrioFactory;
+import algopoly.modelos.tablero.casilleros.barrios.Provincia;
+import algopoly.modelos.tablero.casilleros.compania.Aysa;
+import algopoly.modelos.tablero.casilleros.compania.Compania;
+import algopoly.modelos.tablero.casilleros.compania.Edesur;
+import algopoly.modelos.tablero.casilleros.compania.Subte;
+import algopoly.modelos.tablero.casilleros.compania.Tren;
 
 public class Tablero {
 

@@ -2,6 +2,7 @@ package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.jugador.Posicion;
+import algopoly.modelos.tablero.casilleros.Casillero;
 
 import org.junit.Assert;
 import org.junit.Test;

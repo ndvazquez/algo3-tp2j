@@ -36,6 +36,10 @@ public class BotonVenderTerrenoHandler implements EventHandler<ActionEvent> {
             choices.add(barrio.getProvincia().name());
         }
 
+        ArrayList<Barrio> barriosAux = new ArrayList<>();
+        for (Barrio barrio: barrios) {
+            barriosAux.add(barrio);
+        }
         ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
         dialog.setTitle("Venta de un barrio");
         dialog.setHeaderText("Elija que barrio quiere vender.");
@@ -43,7 +47,7 @@ public class BotonVenderTerrenoHandler implements EventHandler<ActionEvent> {
 
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
-            for (Barrio barrio : barrios) {
+            for (Barrio barrio : barriosAux) {
                 if (barrio.getProvincia().name().equals(result.get())) { // compara para ver que barrio eligió
                     jugador.venderBarrio(barrio);
                 }

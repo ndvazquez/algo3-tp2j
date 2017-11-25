@@ -53,7 +53,7 @@ public class VistaInformacion {
 	}
 
 	public void clean() {
-		canvas.getGraphicsContext2D().setFill(Color.LIGHTPINK);
+		canvas.getGraphicsContext2D().setFill(Color.WHITE);
 		canvas.getGraphicsContext2D().fillRect(0, 0, 150, 500);
 	}
 

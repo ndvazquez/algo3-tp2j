@@ -35,7 +35,11 @@ public class BotonVenderCompaniaHandler implements EventHandler<ActionEvent> {
         for (Compania compania : companias) {
             choices.add(compania.getNombre());
         }
-
+        ArrayList<Compania> companiasAux = new ArrayList<>();
+        for (Compania compania: companias
+             ) {
+            companiasAux.add(compania);
+        }
         ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
         dialog.setTitle("Venta de una compania");
         dialog.setHeaderText("Elija que compania quiere vender.");
@@ -43,7 +47,7 @@ public class BotonVenderCompaniaHandler implements EventHandler<ActionEvent> {
 
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
-            for (Compania compania : companias) {
+            for (Compania compania : companiasAux) {
                 if (compania.getNombre().equals(result.get())) { // compara para ver que compania eligió
                     jugador.venderCompania(compania);
                 }

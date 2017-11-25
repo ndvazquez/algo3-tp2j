@@ -141,7 +141,7 @@ public class ContenedorPrincipal extends BorderPane {
 		
 		contenedorVertical.setSpacing(10);
 		contenedorVertical.setPadding(new Insets(30));
-		contenedorVertical.setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, null, null)));
+		contenedorVertical.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 		
 		this.setRight(contenedorVertical);
 

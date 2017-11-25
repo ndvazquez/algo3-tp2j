@@ -35,6 +35,14 @@ public class PropiedadSimple implements Casillero, Propiedad {
 	}
 
 	@Override
+	public void setSinPropietario(){
+		this.propietario = null;
+		this.estado = new SinPropietario();
+		this.edificio = this.provincia.vacio();
+		this.cantidadEdificios = 0;
+	}
+
+	@Override
 	public void setPropietario(Jugador jugador) {
 		this.propietario = jugador;
 		this.estado = new RegionCompleta();

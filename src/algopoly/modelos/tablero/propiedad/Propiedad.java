@@ -12,6 +12,8 @@ public interface Propiedad {
 
 	Integer getPrecioDeVenta();
 
+	void setSinPropietario();
+
 	void setPropietario(Jugador jugador);
 
 	boolean esEstaProvincia(Provincia provincia);

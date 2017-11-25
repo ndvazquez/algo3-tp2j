@@ -174,7 +174,7 @@ public class Jugador {
 
 	public void venderPropiedad(Propiedad propiedad){
 		this.quitarPropiedad(propiedad);
-
+        propiedad.setSinPropietario();
 		this.cobrar(propiedad.getPrecioDeVenta() -  propiedad.getPrecioDeVenta() / 100 * 15);
 	}
 

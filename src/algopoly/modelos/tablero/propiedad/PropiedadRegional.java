@@ -36,7 +36,15 @@ public class PropiedadRegional implements Casillero, Propiedad {
     public Jugador getPropietario() {
         return this.propietario;
     }
-    
+
+	@Override
+	public void setSinPropietario(){
+		this.propietario = null;
+		this.estado = new SinPropietario();
+		this.edificio = this.provincia.vacio();
+		this.cantidadEdificios = 0;
+	}
+
     @Override
 	public void setPropietario(Jugador jugador) {
 		this.estado = new ConPropietario();
@@ -108,4 +116,6 @@ public class PropiedadRegional implements Casillero, Propiedad {
 		this.cantidadEdificios = 0;
 		this.edificio = this.provincia.vacio();
 	}
+
+
 }

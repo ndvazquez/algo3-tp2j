@@ -1,6 +1,7 @@
 package algopoly.modelos.jugador;
 
 import algopoly.modelos.excepciones.JugadorSinPlataException;
+import algopoly.modelos.tablero.Casillero;
 import algopoly.modelos.tablero.propiedad.Propiedad;
 import algopoly.modelos.tablero.propiedad.Provincia;
 import algopoly.modelos.tablero.servicios.Compania;
@@ -20,7 +21,7 @@ public class Jugador {
 
 	private Dado dado2;
 
-	private Posicion posicion;
+	private Casillero casilleroActual;
 
 	private ArrayList<Propiedad> propiedades;
 	
@@ -33,7 +34,6 @@ public class Jugador {
 	public Jugador() {
 		this.nombre = "Jon Doe";
 		this.capital = CAPITAL_INICIAL;
-		this.posicion = Posicion.SALIDA;
 		this.dado1 = new Dado();
 		this.dado2 = new Dado();
 		this.estado = new Habilitado(this);
@@ -50,7 +50,6 @@ public class Jugador {
 
 	public void iniciarTurno() {
 		this.estado.iniciarTurno();
-		this.mover(this.tirar());
 	}
 
 	public Integer tirar() {
@@ -92,16 +91,12 @@ public class Jugador {
 		return this.capital;
 	}
 
-	public void mover(Integer casilleros) {
-		this.estado.mover(this, casilleros);
+	public void setCasilleroActual(Casillero casillero) {
+		this.casilleroActual = casillero;
 	}
-
-	public void setPosicion(Posicion nuevaPosicion) {
-		this.posicion = nuevaPosicion;
-	}
-
-	public Posicion getPosicion() {
-		return this.posicion;
+	
+	public Casillero getCasilleroActual() {
+		return this.casilleroActual;
 	}
 
 	public Integer getCantidadPropiedades() {

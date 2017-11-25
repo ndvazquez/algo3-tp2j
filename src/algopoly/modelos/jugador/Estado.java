@@ -8,6 +8,4 @@ public interface Estado {
 
 	Integer tirar(Dado dado1, Dado dado2);
 
-	void mover(Jugador jugador, Integer casilleros);
-
 }

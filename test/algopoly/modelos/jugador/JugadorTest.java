@@ -17,13 +17,9 @@ public class JugadorTest {
 		jugador.encarcelar();
 		jugador.habilitar();
 		
-		Posicion posicionActual = jugador.getPosicion();
+		int tirada = jugador.tirar();
 		
-		jugador.mover(1);
-		
-		Posicion posicionNueva = Posicion.getPosicionSiguiente(posicionActual);
-		
-		Assert.assertEquals(posicionNueva, jugador.getPosicion());
+		Assert.assertNotEquals(tirada, 0);
 	}
 
 	@Test

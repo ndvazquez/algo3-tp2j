@@ -39,8 +39,8 @@ public class VistaTablero {
 	private void dibujarRobot(Jugador jugador, Color color, int oeste, int sur, int este, int norte) {
 		int offset;
 
-		Posicion posicion = jugador.getPosicion();
-		Direccion direccion = Direccion.getDireccion(Posicion.getIndice(posicion));
+		Posicion posicion = Tablero.obtenerTablero().getPosicionCasillero(jugador.getCasilleroActual());
+		Direccion direccion = Direccion.getDireccion(Tablero.obtenerTablero().getNumeroDeCasillero(jugador.getCasilleroActual()));
 
 		if (direccion.equals(Direccion.norte()) || direccion.equals(Direccion.sur())) {
 			if (direccion.equals(Direccion.norte()))

@@ -49,7 +49,7 @@ public class ContenedorPrincipal extends BorderPane {
 		this.setBotonera(tablero);
 		this.setConsola(tablero);
 		this.mediaPlayer = new MediaPlayer(new Media(new File("music.wav").toURI().toString()));
-		mediaPlayer.setCycleCount(mediaPlayer.INDEFINITE);
+		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		mediaPlayer.setAutoPlay(true);
 
 	}

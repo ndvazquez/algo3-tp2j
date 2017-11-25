@@ -4,11 +4,7 @@ import algopoly.controladores.AplicacionOnKeyPressEventHandler;
 import algopoly.modelos.tablero.Tablero;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-
-import java.io.File;
 
 public class Algopoly extends Application {
 

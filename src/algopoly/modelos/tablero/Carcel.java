@@ -2,7 +2,6 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
-import algopoly.modelos.jugador.Posicion;
 
 public class Carcel implements Casillero {
 
@@ -10,7 +9,7 @@ public class Carcel implements Casillero {
 	
 	@Override
 	public void recibirJugador(Jugador jugador) {
-		jugador.setPosicion(Posicion.CARCEL);
+		jugador.setCasilleroActual(this);
 		jugador.encarcelar();
 	}
 

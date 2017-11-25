@@ -39,9 +39,4 @@ public class Encarcelado implements Estado {
 		return TIRADA_NULA;
 	}
 
-	@Override
-	public void mover(Jugador jugador, Integer casilleros) {
-		
-	}
-
 }

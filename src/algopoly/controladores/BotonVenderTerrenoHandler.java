@@ -1,10 +1,18 @@
 package algopoly.controladores;
 
+import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Tablero;
+import algopoly.modelos.tablero.casilleros.barrios.Barrio;
 import algopoly.vistas.VistaInformacion;
 import algopoly.vistas.VistaTablero;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.ChoiceDialog;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 public class BotonVenderTerrenoHandler implements EventHandler<ActionEvent> {
 
@@ -20,7 +28,30 @@ public class BotonVenderTerrenoHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-    	// accion + update vista
+        Jugador jugador = tablero.jugadorActual();
+        Collection<Barrio> barrios = jugador.getBarrios();
+
+        List<String> choices = new ArrayList<>();
+        for (Barrio barrio : barrios) {
+            choices.add(barrio.getProvincia().name());
+        }
+
+        ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
+        dialog.setTitle("Venta de un barrio");
+        dialog.setHeaderText("Elija que barrio quiere vender.");
+        dialog.setContentText("Barrios disponibles:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            for (Barrio barrio : barrios) {
+                if (barrio.getProvincia().name().equals(result.get())) { // compara para ver que barrio eligió
+                    jugador.venderBarrio(barrio);
+                }
+            }
+        }
+
+        vista.update();
+        vistaInformacion.update();
     }
 
 }

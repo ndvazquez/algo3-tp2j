@@ -20,9 +20,18 @@ public class Tablero {
 
 	public Tablero() {
 		jugadores = new ArrayList<Jugador>();
-		jugadores.add(new Jugador());
-		jugadores.add(new Jugador());
-		jugadores.add(new Jugador());
+		Jugador jugador1 = new Jugador();
+		jugador1.setNombre("Alan");
+
+		Jugador jugador2 = new Jugador();
+		jugador2.setNombre("Barbara");
+
+		Jugador jugador3 = new Jugador();
+		jugador3.setNombre("Linus");
+
+		jugadores.add(jugador1);
+		jugadores.add(jugador2);
+		jugadores.add(jugador3);
 
 		turnosJugados = 0;
 		turnoActual = (new Random().nextInt(3));

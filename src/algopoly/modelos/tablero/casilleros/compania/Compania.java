@@ -41,4 +41,6 @@ public abstract class Compania implements Casillero {
 		return compania1.propietario.equals(compania1.propietario);
 	}
 
+	public abstract String getNombre();
+
 }

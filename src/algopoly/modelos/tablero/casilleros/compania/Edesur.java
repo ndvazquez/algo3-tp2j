@@ -14,4 +14,9 @@ public class Edesur extends Compania implements Casillero {
 		this.impuestoDoble = IMP_EDESUR_DOBLE;
 		this.estado = new SinPropietario();
 	}
+
+	@Override
+	public String getNombre() {
+		return "EDESUR";
+	}
 }

@@ -15,5 +15,10 @@ public class Aysa extends Compania implements Casillero {
 		this.estado = new SinPropietario();
 	}
 
+	@Override
+	public String getNombre() {
+		return "AYSA";
+	}
+
 
 }

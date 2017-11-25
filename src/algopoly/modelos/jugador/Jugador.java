@@ -103,7 +103,9 @@ public class Jugador {
 		return this.barrios.size();
 	}
 
-	public Integer getCantidadServicios() { return this.companias.size(); }
+	public Integer getCantidadCompanias() { 
+		return this.companias.size(); 
+	}
 
 	public void comprarBarrio(Barrio barrio) {
 		this.pagar(barrio.getPrecio());
@@ -161,7 +163,6 @@ public class Jugador {
 
 	public void agregarBarrio(Barrio barrio) {
 		this.barrios.add(barrio);
-		
 	}
 
 	public void quitarBarrio(Barrio barrio) {
@@ -172,6 +173,14 @@ public class Jugador {
 		this.quitarBarrio(barrio);
         barrio.setSinPropietario();
 		this.cobrar(barrio.getPrecioDeVenta() -  barrio.getPrecioDeVenta() / 100 * 15);
+	}
+
+	public Collection<Barrio> getBarrios() {
+		return this.barrios;
+	}
+
+	public Collection<Compania> getCompanias() {
+		return this.companias;
 	}
 
 }

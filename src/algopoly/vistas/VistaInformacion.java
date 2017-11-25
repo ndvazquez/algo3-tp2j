@@ -24,25 +24,31 @@ public class VistaInformacion {
 			canvas.getGraphicsContext2D().setFont(Font.font("verdana", FontWeight.BOLD, 15));
 			List<Jugador> jugadores = this.tablero.getJugadores();
 			Jugador actual = this.tablero.jugadorActual();
+			
 			canvas.getGraphicsContext2D().setFill(Color.PURPLE);
 			canvas.getGraphicsContext2D().fillText("Turno: " + actual.getNombre() , 0, 50);
-			Jugador j = jugadores.get(0);
-			canvas.getGraphicsContext2D().setFill(Color.GREEN);
-			canvas.getGraphicsContext2D().fillText(j.getNombre() , 0, 100);
-			canvas.getGraphicsContext2D().fillText("Plata: " + j.getCapital(), 0, 120);
-			canvas.getGraphicsContext2D().fillText("Propiedades: " + j.getCantidadBarrios(), 0, 140);
-			j = jugadores.get(1);
-			canvas.getGraphicsContext2D().setFill(Color.BLUE);
-			canvas.getGraphicsContext2D().fillText(j.getNombre(), 0, 200);
-			canvas.getGraphicsContext2D().fillText("Plata: " + j.getCapital(), 0, 220);
-			canvas.getGraphicsContext2D().fillText("Propiedades: " + j.getCantidadBarrios(), 0, 240);
-			j = jugadores.get(2);
-			canvas.getGraphicsContext2D().setFill(Color.FUCHSIA);
-			canvas.getGraphicsContext2D().fillText(j.getNombre(), 0, 300);
-			canvas.getGraphicsContext2D().fillText("Plata: " + j.getCapital(), 0, 320);
-			canvas.getGraphicsContext2D().fillText("Propiedades: " + j.getCantidadBarrios(), 0, 340);
+			
+			int y = 100;
+			imprimirInformacion(jugadores.get(0), Color.GREEN, y);
+			
+			if(jugadores.size() >= 2) {
+				imprimirInformacion(jugadores.get(1), Color.BLUE, y += 100);
+			}
+			
+			if(jugadores.size() == 3) {
+				imprimirInformacion(jugadores.get(2), Color.FUCHSIA, y += 100);
+			}
 	}
 
+
+	private void imprimirInformacion(Jugador j, Color color, Integer y) {
+		canvas.getGraphicsContext2D().setFill(color);
+		canvas.getGraphicsContext2D().fillText(j.getNombre() , 0, y += 20);
+		canvas.getGraphicsContext2D().fillText("Plata: " + j.getCapital(), 0, y += 20); 
+		canvas.getGraphicsContext2D().fillText("Barrios: " + j.getCantidadBarrios().toString(), 0, y += 20);
+		canvas.getGraphicsContext2D().fillText("Compañías: " + j.getCantidadCompanias().toString(), 0, y += 20);
+		
+	}
 
 	public void clean() {
 		canvas.getGraphicsContext2D().setFill(Color.LIGHTPINK);

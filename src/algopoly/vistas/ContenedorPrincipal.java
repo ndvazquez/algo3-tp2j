@@ -27,6 +27,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import algopoly.controladores.BotonComprarCasaHandler;
 import algopoly.controladores.BotonComprarHotelHandler;
+import algopoly.controladores.BotonInformacionHandler;
 import algopoly.controladores.BotonIntercambiarHandler;
 
 import java.io.File;
@@ -64,6 +65,11 @@ public class ContenedorPrincipal extends BorderPane {
 		BotonMoverHandler moveButtonHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados, vistaInformacion);
 		botonMover.setOnAction(moveButtonHandler);
 		
+		Button botonInformacion = new Button();
+		botonInformacion.setText("Información jugador Actual");
+		BotonInformacionHandler informacionHandler = new BotonInformacionHandler(tablero);
+		botonInformacion.setOnAction(informacionHandler);
+		
 		Button botonVenderTerreno = new Button();
 		botonVenderTerreno.setText("Vender terreno");
 		BotonVenderTerrenoHandler venderTerrenoHandler = new BotonVenderTerrenoHandler(vistaTablero, tablero, vistaInformacion);
@@ -94,7 +100,7 @@ public class ContenedorPrincipal extends BorderPane {
 		BotonPagarFianzaHandler botonPagarFianzaHandler = new BotonPagarFianzaHandler(vistaTablero, tablero, vistaInformacion);
 		botonPagarFianza.setOnAction(botonPagarFianzaHandler);
 		
-		VBox contenedorVertical = new VBox(botonMover, botonVenderTerreno, botonVenderCompania, botonIntercambiar, botonComprarCasa, botonComprarHotel, botonPagarFianza, canvasDados);
+		VBox contenedorVertical = new VBox(botonMover,botonInformacion, botonVenderTerreno, botonVenderCompania, botonIntercambiar, botonComprarCasa, botonComprarHotel, botonPagarFianza, canvasDados);
 		contenedorVertical.setPadding(new Insets(30));
 		contenedorVertical.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 		contenedorVertical.setSpacing(10);

@@ -14,4 +14,9 @@ public class Subte extends Compania implements Casillero {
 		this.impuestoDoble = IMP_SUBTE_DOBLE;
 		this.estado = new SinPropietario();
 	}
+
+	@Override
+	public String getNombre() {
+		return "SUBTE";
+	}
 }

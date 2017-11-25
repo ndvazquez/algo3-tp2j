@@ -14,4 +14,9 @@ public class Tren extends Compania implements Casillero {
 		this.impuestoDoble = IMP_TREN_DOBLE;
 		this.estado = new SinPropietario();
 	}
+
+	@Override
+	public String getNombre() {
+		return "TREN";
+	}
 }

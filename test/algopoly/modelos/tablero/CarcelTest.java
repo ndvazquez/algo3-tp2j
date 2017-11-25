@@ -15,8 +15,8 @@ public class CarcelTest {
 	
 	@Test
 	public void test01JugadorCaeEnCarcelYNoPuedeMoverseDuranteElPrimerTurno() {
-		
-		Jugador jugador = new Jugador();
+		Tablero tablero = new Tablero();
+		Jugador jugador = tablero.jugadorActual();
 		Carcel carcel = new Carcel();
 		
 		carcel.recibirJugador(jugador);
@@ -34,8 +34,8 @@ public class CarcelTest {
 	
 	@Test
 	public void test02JugadorCaeEnCarcelYAPartirDelSegundoTurnoPuedePagarUnaFianzaYLuegoPuedeMoverse() {
-		
-		Jugador jugador = new Jugador();
+		Tablero tablero = new Tablero();
+		Jugador jugador = tablero.jugadorActual();
 		Carcel carcel = new Carcel();
 		
 		carcel.recibirJugador(jugador);
@@ -56,8 +56,8 @@ public class CarcelTest {
 
 	@Test(expected = JugadorSinPlataException.class)
 	public void test03JugadorCaeEnCarcelYNoPuedePagarFianzaPorFaltaDeFondosLuegoNoPuedeMoverse() {
-		
-		Jugador jugador = new Jugador();
+		Tablero tablero = new Tablero();
+		Jugador jugador = tablero.jugadorActual();
 		Carcel carcel = new Carcel();
 		
 		carcel.recibirJugador(jugador);
@@ -73,8 +73,8 @@ public class CarcelTest {
 	
 	@Test
 	public void test04JugadorEncarceladoQuedaHabilitadoLuegoDeCuatroTurnosLuegoPuedeMoverse() {
-		
-		Jugador jugador = new Jugador();
+		Tablero tablero = new Tablero();
+		Jugador jugador = tablero.jugadorActual();
 		Carcel carcel = new Carcel();
 		
 		carcel.recibirJugador(jugador);
@@ -93,8 +93,8 @@ public class CarcelTest {
 	
 	@Test
 	public void test05PagarFianzaResta45000PesosAlCapitalDelJugador() {
-		
-		Jugador jugador = new Jugador();
+		Tablero tablero = new Tablero();
+		Jugador jugador = tablero.jugadorActual();
 		Carcel carcel = new Carcel();
 		
 		carcel.recibirJugador(jugador);
@@ -113,10 +113,10 @@ public class CarcelTest {
 		
 	@Test
 	public void test06PagarFianzaNoHaceNadaSiElJugadorNoEsperoNingunTurnoEnLaCarcel() {
-		
+		Tablero tablero = new Tablero();
+		Jugador jugador = tablero.jugadorActual();
 		Carcel carcel = new Carcel();
-		Jugador jugador = new Jugador();
-		
+
 		Integer capitalInicial = jugador.getCapital();
 		
 		carcel.recibirJugador(jugador);
@@ -129,8 +129,9 @@ public class CarcelTest {
 	
 	@Test
 	public void test07PagarFianzaLiberaAlJugadorQueSalioDeLaCarcelEsperandoCuatroTurnos() {
-		
-		Jugador jugador = new Jugador();
+
+		Tablero tablero = new Tablero();
+		Jugador jugador = tablero.jugadorActual();
 		Carcel carcel = new Carcel();
 		
 		carcel.recibirJugador(jugador);
@@ -158,9 +159,9 @@ public class CarcelTest {
 	
 	@Test
 	public void test08EsperarCuatroTurnosLiberaJugadorQueSalioDeLaCarcelPagandoFianza() {
-		
-		Jugador jugador = new Jugador();
-		Carcel carcel = new Carcel();
+
+		Tablero tablero = new Tablero();
+		Jugador jugador = tablero.jugadorActual();		Carcel carcel = new Carcel();
 		
 		carcel.recibirJugador(jugador);
 		jugador.iniciarTurno();

@@ -7,10 +7,12 @@ public class Direccion {
 	@Override
 	public boolean equals(Object obj) {
 		Direccion other = (Direccion) obj;
-		if (valueX != other.valueX)
+		if (valueX != other.valueX) {
 			return false;
-		if (valueY != other.valueY)
+		}
+		if (valueY != other.valueY) {
 			return false;
+		}
 		return true;
 	}
 
@@ -52,7 +54,7 @@ public class Direccion {
 	
 	private static ArrayList<Direccion> direcciones;
 	static {
-		direcciones = new ArrayList<Direccion>();
+		direcciones = new ArrayList<>();
 		direcciones.add(Direccion.oeste());
 		direcciones.add(Direccion.oeste());
 		direcciones.add(Direccion.oeste());

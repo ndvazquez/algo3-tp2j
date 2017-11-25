@@ -2,7 +2,8 @@ package algopoly.modelos.tablero;
 
 import algopoly.modelos.excepciones.JugadorSinPlataException;
 import algopoly.modelos.jugador.Jugador;
-import algopoly.modelos.jugador.Posicion;
+import algopoly.modelos.tablero.casilleros.Carcel;
+import algopoly.modelos.tablero.casilleros.Casillero;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,11 +22,11 @@ public class CarcelTest {
 		carcel.recibirJugador(jugador);
 		jugador.iniciarTurno();
 		
-		Posicion posicionActual = jugador.getPosicion();
+		Casillero posicionActual = jugador.getCasilleroActual();
 		
-		jugador.mover(1);
+		jugador.iniciarTurno();
 		
-		Posicion posicionNueva = jugador.getPosicion();
+		Casillero posicionNueva = jugador.getCasilleroActual();
 		
 		Assert.assertEquals(posicionNueva, posicionActual);
 }
@@ -44,13 +45,13 @@ public class CarcelTest {
 		
 		jugador.pagarFianza();
 		
-		Posicion posicionActual = jugador.getPosicion();
+		Casillero posicionActual = jugador.getCasilleroActual();
 		
-		jugador.mover(1);
-	
-		Posicion posicionNueva = Posicion.getPosicionSiguiente(posicionActual);
+		jugador.iniciarTurno();
 		
-		Assert.assertEquals(posicionNueva, jugador.getPosicion());
+		Casillero posicionNueva = jugador.getCasilleroActual();
+		
+		Assert.assertNotEquals(posicionActual, posicionNueva);
 	}
 
 	@Test(expected = JugadorSinPlataException.class)
@@ -83,12 +84,11 @@ public class CarcelTest {
 			jugador.iniciarTurno();
 		}
 		
-		Posicion posicionInicial = jugador.getPosicion();
+		Casillero posicionActual = jugador.getCasilleroActual();
+		jugador.iniciarTurno();
+		Casillero posicionNueva = jugador.getCasilleroActual();
 		
-		jugador.mover(1);
-		
-		Posicion posicionFinal = Posicion.getPosicionSiguiente(posicionInicial);
-		Assert.assertEquals(posicionFinal, jugador.getPosicion());
+		Assert.assertNotEquals(posicionActual, posicionNueva);
 	}
 	
 	@Test
@@ -148,13 +148,11 @@ public class CarcelTest {
 		
 		jugador.pagarFianza();
 		
-		Posicion posicionInicial = jugador.getPosicion();
+		Casillero posicionActual = jugador.getCasilleroActual();
+		jugador.iniciarTurno();
+		Casillero posicionNueva = jugador.getCasilleroActual();
 		
-		jugador.mover(1);
-		
-		Posicion posicionFinal = Posicion.getPosicionSiguiente(posicionInicial);
-		
-		Assert.assertEquals(posicionFinal, jugador.getPosicion());
+		Assert.assertNotEquals(posicionActual, posicionNueva);
 		
 	}
 	
@@ -176,12 +174,10 @@ public class CarcelTest {
 			jugador.iniciarTurno();
 		}
 		
-		Posicion posicionInicial = jugador.getPosicion();
+		Casillero posicionActual = jugador.getCasilleroActual();
+		jugador.iniciarTurno();
+		Casillero posicionNueva = jugador.getCasilleroActual();
 		
-		jugador.mover(1);
-		
-		Posicion posicionFinal = Posicion.getPosicionSiguiente(posicionInicial);
-		
-		Assert.assertEquals(posicionFinal, jugador.getPosicion());
+		Assert.assertNotEquals(posicionActual, posicionNueva);
 	}
 }

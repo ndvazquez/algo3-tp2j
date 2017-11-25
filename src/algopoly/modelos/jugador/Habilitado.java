@@ -1,5 +1,7 @@
 package algopoly.modelos.jugador;
 
+import algopoly.modelos.tablero.Tablero;
+
 public class Habilitado implements Estado {
 
 	Jugador jugador;
@@ -11,7 +13,11 @@ public class Habilitado implements Estado {
 	
 	@Override
 	public void iniciarTurno() {
-
+		int tirada = jugador.tirar();
+		for (int i = 0; i < tirada; i++) {
+			jugador.setCasilleroActual(Tablero.obtenerTablero().obtenerCasilleroSiguiente(jugador.getCasilleroActual()));
+		}
+		jugador.getCasilleroActual().recibirJugador(jugador);
 	}
 
 	@Override
@@ -27,21 +33,4 @@ public class Habilitado implements Estado {
 		
 	}
 
-	@Override
-	public void mover(Jugador jugador, Integer casilleros) {
-		for (int i = 0; i < casilleros; i++) { // si avanza entra aca
-			Posicion posicionActual = jugador.getPosicion();
-			Posicion nuevaPosicion = Posicion.getPosicionSiguiente(posicionActual);
-			jugador.setPosicion(nuevaPosicion);
-		}
-
-		
-		
-		for (int i = casilleros; i < 0; i++) { // si retrocede entra aca
-			Posicion posicionActual = jugador.getPosicion();
-			Posicion nuevaPosicion = Posicion.getPosicionAnterior(posicionActual);
-			jugador.setPosicion(nuevaPosicion);
-		}
-		
-	}
 }

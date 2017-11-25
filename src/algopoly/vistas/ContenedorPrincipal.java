@@ -1,7 +1,10 @@
 package algopoly.vistas;
 
+import algopoly.controladores.BotonMoverHandler;
+import algopoly.controladores.BotonPagarFianzaHandler;
+import algopoly.controladores.BotonVenderCompaniaHandler;
+import algopoly.controladores.BotonVenderTerrenoHandler;
 import algopoly.modelos.tablero.Tablero;
-import algopoly.vistas.eventos.BotonMoverHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
@@ -22,6 +25,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import algopoly.controladores.BotonComprarCasaHandler;
+import algopoly.controladores.BotonComprarHotelHandler;
+import algopoly.controladores.BotonInformacionHandler;
+import algopoly.controladores.BotonIntercambiarHandler;
 
 import java.io.File;
 
@@ -43,7 +50,7 @@ public class ContenedorPrincipal extends BorderPane {
 		this.setBotonera(tablero);
 		this.setConsola(tablero);
 		this.mediaPlayer = new MediaPlayer(new Media(new File("music.wav").toURI().toString()));
-		mediaPlayer.setCycleCount(mediaPlayer.INDEFINITE);
+		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		mediaPlayer.setAutoPlay(true);
 
 	}
@@ -58,32 +65,42 @@ public class ContenedorPrincipal extends BorderPane {
 		BotonMoverHandler moveButtonHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados, vistaInformacion);
 		botonMover.setOnAction(moveButtonHandler);
 		
+		Button botonInformacion = new Button();
+		botonInformacion.setText("Información jugador Actual");
+		BotonInformacionHandler informacionHandler = new BotonInformacionHandler(tablero);
+		botonInformacion.setOnAction(informacionHandler);
+		
 		Button botonVenderTerreno = new Button();
 		botonVenderTerreno.setText("Vender terreno");
-		BotonMoverHandler venderTerrenoHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados, vistaInformacion);
+		BotonVenderTerrenoHandler venderTerrenoHandler = new BotonVenderTerrenoHandler(vistaTablero, tablero, vistaInformacion);
 		botonVenderTerreno.setOnAction(venderTerrenoHandler);
 		
 		Button botonVenderCompania = new Button();
 		botonVenderCompania.setText("Vender compañia");
-		BotonMoverHandler venderCompaniaHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados, vistaInformacion);
+		BotonVenderCompaniaHandler venderCompaniaHandler = new BotonVenderCompaniaHandler(vistaTablero, tablero, vistaInformacion);
 		botonVenderCompania.setOnAction(venderCompaniaHandler);
 		
 		Button botonIntercambiar = new Button();
 		botonIntercambiar.setText("Intercambiar propiedad");
-		BotonMoverHandler intercambiarHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados, vistaInformacion);
+		BotonIntercambiarHandler intercambiarHandler = new BotonIntercambiarHandler(vistaTablero, tablero, vistaInformacion);
 		botonIntercambiar.setOnAction(intercambiarHandler);
 		
 		Button botonComprarCasa = new Button();
 		botonComprarCasa.setText("Comprar casa");
-		BotonMoverHandler comprarCasaHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados, vistaInformacion);
+		BotonComprarCasaHandler comprarCasaHandler = new BotonComprarCasaHandler(vistaTablero, tablero, vistaInformacion);
 		botonComprarCasa.setOnAction(comprarCasaHandler);
 		
 		Button botonComprarHotel = new Button();
 		botonComprarHotel.setText("Comprar hotel");
-		BotonMoverHandler comprarHotelHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados, vistaInformacion);
+		BotonComprarHotelHandler comprarHotelHandler = new BotonComprarHotelHandler(vistaTablero, tablero, vistaInformacion);
 		botonComprarHotel.setOnAction(comprarHotelHandler);
 		
-		VBox contenedorVertical = new VBox(botonMover, botonVenderTerreno, botonVenderCompania, botonIntercambiar, botonComprarCasa, botonComprarHotel, canvasDados);
+		Button botonPagarFianza = new Button();
+		botonPagarFianza.setText("Pagar fianza");
+		BotonPagarFianzaHandler botonPagarFianzaHandler = new BotonPagarFianzaHandler(vistaTablero, tablero, vistaInformacion);
+		botonPagarFianza.setOnAction(botonPagarFianzaHandler);
+		
+		VBox contenedorVertical = new VBox(botonMover,botonInformacion, botonVenderTerreno, botonVenderCompania, botonIntercambiar, botonComprarCasa, botonComprarHotel, botonPagarFianza, canvasDados);
 		contenedorVertical.setPadding(new Insets(30));
 		contenedorVertical.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 		contenedorVertical.setSpacing(10);

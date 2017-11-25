@@ -1,29 +1,29 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
-import algopoly.modelos.tablero.servicios.Compania;
-import algopoly.modelos.tablero.servicios.Servicios;
+import algopoly.modelos.tablero.casilleros.compania.Aysa;
+import algopoly.modelos.tablero.casilleros.compania.Compania;
+import algopoly.modelos.tablero.casilleros.compania.Edesur;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 public class ServiciosAysaEdesurTest {
 
-	private static final Integer PRECIO_AYSA = 30000;
-	private static final Integer IMP_AYSA = 300;
-	private static final Integer IMP_AYSA_DOBLE = 500;
-
 	private static final Integer PRECIO_EDESUR = 35000;
 	private static final Integer IMP_EDESUR = 500;
 	private static final Integer IMP_EDESUR_DOBLE = 1000;
+
+	private static final Integer PRECIO_AYSA = 30000;
+	private static final Integer IMP_AYSA = 300;
+	private static final Integer IMP_AYSA_DOBLE = 500;
 
 	/** Tests 16 - 17 segunda entrega **/
 	@Test
 	public void test01JugadorCaeEnAysaYAhoraTiene30000PesosMenos() {
 		Jugador jugador = new Jugador();
 
-		Servicios servicios = new Servicios();
-		Compania aysa = new Compania(PRECIO_AYSA, IMP_AYSA, IMP_AYSA_DOBLE, servicios);
+		Compania aysa = new Aysa();
 
 		aysa.recibirJugador(jugador);
 
@@ -37,8 +37,7 @@ public class ServiciosAysaEdesurTest {
 	public void test02JugadorCaeEnEdesurYAhoraTiene35000PesosMenos() {
 		Jugador jugador = new Jugador();
 
-		Servicios servicios = new Servicios();
-		Compania edesur = new Compania(PRECIO_EDESUR, IMP_EDESUR, IMP_EDESUR_DOBLE, servicios);
+		Compania edesur = new Edesur();
 
 		edesur.recibirJugador(jugador);
 
@@ -50,8 +49,7 @@ public class ServiciosAysaEdesurTest {
 
 	@Test
 	public void test03JugadorCaeEnEdesurAdquiridaPorOtroJugadorQueNoEsDuenioDeAysaSuDineroSeReduce500PorLosDados() {
-		Servicios servicios = new Servicios();
-		Compania edesur = new Compania(PRECIO_EDESUR, IMP_EDESUR, IMP_EDESUR_DOBLE, servicios);
+		Compania edesur = new Edesur();
 
 		Jugador jugador = new Jugador();
 		edesur.recibirJugador(jugador); // jugador compra edesur
@@ -66,10 +64,11 @@ public class ServiciosAysaEdesurTest {
 
 	@Test
 	public void test04JugadorCaeEnEdesurAdquiridaPorOtroJugadorQueEsDuenioDeAysaSuDineroSeReduce1000PorLosDados() {
-		Servicios servicios = new Servicios();
-		Compania edesur = new Compania(PRECIO_EDESUR, IMP_EDESUR, IMP_EDESUR_DOBLE, servicios);
-		Compania aysa = new Compania(PRECIO_AYSA, IMP_AYSA, IMP_AYSA_DOBLE, servicios);
-
+		Compania edesur = new Edesur();
+		Compania aysa = new Aysa();
+		edesur.setCompaniaPar(aysa);
+		aysa.setCompaniaPar(edesur);
+		
 		Jugador jugador = new Jugador();
 		edesur.recibirJugador(jugador); // jugador compra edesur
 		aysa.recibirJugador(jugador); // jugador compra aysa
@@ -84,10 +83,11 @@ public class ServiciosAysaEdesurTest {
 
 	@Test
 	public void test05JugadorCaeEnEdesurAdquiridaPorSiMismoSuDineroNoSeReduce() {
-		Servicios servicios = new Servicios();
-		Compania edesur = new Compania(PRECIO_EDESUR, IMP_EDESUR, IMP_EDESUR_DOBLE, servicios);
-		Compania aysa = new Compania(PRECIO_AYSA, IMP_AYSA, IMP_AYSA_DOBLE, servicios);
-
+		Compania edesur = new Edesur();
+		Compania aysa = new Aysa();
+		edesur.setCompaniaPar(aysa);
+		aysa.setCompaniaPar(edesur);
+		
 		Jugador jugador = new Jugador();
 		edesur.recibirJugador(jugador); // jugador compra edesur
 		aysa.recibirJugador(jugador); // jugador compra aysa
@@ -102,10 +102,11 @@ public class ServiciosAysaEdesurTest {
 
 	@Test
 	public void test06JugadorCaeEnAysaAdquiridaPorSiMismoSuDineroNoSeReduce() {
-		Servicios servicios = new Servicios();
-		Compania edesur = new Compania(PRECIO_EDESUR, IMP_EDESUR, IMP_EDESUR_DOBLE, servicios);
-		Compania aysa = new Compania(PRECIO_AYSA, IMP_AYSA, IMP_AYSA_DOBLE, servicios);
-
+		Compania edesur = new Edesur();
+		Compania aysa = new Aysa();
+		edesur.setCompaniaPar(aysa);
+		aysa.setCompaniaPar(edesur);
+		
 		Jugador jugador = new Jugador();
 		edesur.recibirJugador(jugador); // jugador compra edesur
 		aysa.recibirJugador(jugador); // jugador compra aysa
@@ -120,8 +121,7 @@ public class ServiciosAysaEdesurTest {
 
 	@Test
 	public void test07JugadorCaeEnAysaAdquiridaPorOtroJugadorQueNoEsDuenioDeEdesurSuDineroSeReduce300PorDados() {
-		Servicios servicios = new Servicios();
-		Compania aysa = new Compania(PRECIO_AYSA, IMP_AYSA, IMP_AYSA_DOBLE, servicios);
+		Compania aysa = new Aysa();
 
 		Jugador jugador = new Jugador();
 		aysa.recibirJugador(jugador); // jugador compra aysa
@@ -136,10 +136,11 @@ public class ServiciosAysaEdesurTest {
 
 	@Test
 	public void test08JugadorCaeEnAysaAdquiridaPorOtroJugadorQueEsDuenioDeEdesurSuDineroSeReduce500PorDados() {
-		Servicios servicios = new Servicios();
-		Compania edesur = new Compania(PRECIO_EDESUR, IMP_EDESUR, IMP_EDESUR_DOBLE, servicios);
-		Compania aysa = new Compania(PRECIO_AYSA, IMP_AYSA, IMP_AYSA_DOBLE, servicios);
-
+		Compania edesur = new Edesur();
+		Compania aysa = new Aysa();
+		edesur.setCompaniaPar(aysa);
+		aysa.setCompaniaPar(edesur);
+		
 		Jugador jugador = new Jugador();
 		edesur.recibirJugador(jugador); // jugador compra edesur
 		aysa.recibirJugador(jugador); // jugador compra aysa

@@ -1,29 +1,29 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
-import algopoly.modelos.tablero.servicios.Compania;
-import algopoly.modelos.tablero.servicios.Servicios;
+import algopoly.modelos.tablero.casilleros.compania.Compania;
+import algopoly.modelos.tablero.casilleros.compania.Subte;
+import algopoly.modelos.tablero.casilleros.compania.Tren;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 public class ServiciosTrenSubteTest {
 
-	private static final Integer PRECIO_SUBTE = 40000;
-	private static final Integer IMP_SUBTE = 600;
-	private static final Integer IMP_SUBTE_DOBLE = 1100;
-
 	private static final Integer PRECIO_TREN = 38000;
 	private static final Integer IMP_TREN = 450;
 	private static final Integer IMP_TREN_DOBLE = 800;
-
+	
+	private static final Integer PRECIO_SUBTE = 40000;
+	private static final Integer IMP_SUBTE = 600;
+	private static final Integer IMP_SUBTE_DOBLE = 1100;
+	
 	/** Tests 11 - 12 segunda entrega **/
 	@Test
 	public void test01JugadorCaeEnSubteYAhoraTiene40000PesosMenos() {
 		Jugador jugador = new Jugador();
-
-		Servicios servicios = new Servicios();
-		Compania subte = new Compania(PRECIO_SUBTE, IMP_SUBTE, IMP_SUBTE_DOBLE, servicios);
+		
+		Compania subte = new Subte();
 
 		subte.recibirJugador(jugador);
 
@@ -37,8 +37,7 @@ public class ServiciosTrenSubteTest {
 	public void test02JugadorCaeEnTrenYAhoraTiene38000PesosMenos() {
 		Jugador jugador = new Jugador();
 
-		Servicios servicios = new Servicios();
-		Compania tren = new Compania(PRECIO_TREN, IMP_TREN, IMP_TREN_DOBLE, servicios);
+		Compania tren = new Tren();
 
 		tren.recibirJugador(jugador);
 
@@ -50,8 +49,7 @@ public class ServiciosTrenSubteTest {
 
 	@Test
 	public void test03JugadorCaeEnTrenAdquiridaPorOtroJugadorQueNoEsDuenioDeSubteSuDineroSeReduce450PorLosDados() {
-		Servicios servicios = new Servicios();
-		Compania tren = new Compania(PRECIO_TREN, IMP_TREN, IMP_TREN_DOBLE, servicios);
+		Compania tren = new Tren();
 
 		Jugador jugador = new Jugador();
 		tren.recibirJugador(jugador); // jugador compra tren
@@ -66,9 +64,11 @@ public class ServiciosTrenSubteTest {
 
 	@Test
 	public void test04JugadorCaeEnTrenAdquiridaPorOtroJugadorQueEsDuenioDeSubteSuDineroSeReduce800PorLosDados() {
-		Servicios servicios = new Servicios();
-		Compania tren = new Compania(PRECIO_TREN, IMP_TREN, IMP_TREN_DOBLE, servicios);
-		Compania subte = new Compania(PRECIO_SUBTE, IMP_SUBTE, IMP_SUBTE_DOBLE, servicios);
+		Compania tren = new Tren();
+		Compania subte = new Subte();
+		tren.setCompaniaPar(subte);
+		subte.setCompaniaPar(tren);
+		
 
 		Jugador jugador = new Jugador();
 		tren.recibirJugador(jugador); // jugador compra tren
@@ -84,9 +84,11 @@ public class ServiciosTrenSubteTest {
 
 	@Test
 	public void test05JugadorCaeEnTrenAdquiridaPorSiMismoSuDineroNoSeReduce() {
-		Servicios servicios = new Servicios();
-		Compania tren = new Compania(PRECIO_TREN, IMP_TREN, IMP_TREN_DOBLE, servicios);
-		Compania subte = new Compania(PRECIO_SUBTE, IMP_SUBTE, IMP_SUBTE_DOBLE, servicios);
+		Compania tren = new Tren();
+		Compania subte = new Subte();
+		tren.setCompaniaPar(subte);
+		subte.setCompaniaPar(tren);
+		
 
 		Jugador jugador = new Jugador();
 		tren.recibirJugador(jugador); // jugador compra tren
@@ -102,9 +104,11 @@ public class ServiciosTrenSubteTest {
 
 	@Test
 	public void test06JugadorCaeEnSubteAdquiridaPorSiMismoSuDineroNoSeReduce() {
-		Servicios servicios = new Servicios();
-		Compania tren = new Compania(PRECIO_TREN, IMP_TREN, IMP_TREN_DOBLE, servicios);
-		Compania subte = new Compania(PRECIO_SUBTE, IMP_SUBTE, IMP_SUBTE_DOBLE, servicios);
+		Compania tren = new Tren();
+		Compania subte = new Subte();
+		tren.setCompaniaPar(subte);
+		subte.setCompaniaPar(tren);
+		
 
 		Jugador jugador = new Jugador();
 		tren.recibirJugador(jugador); // jugador compra tren
@@ -120,8 +124,7 @@ public class ServiciosTrenSubteTest {
 
 	@Test
 	public void test07JugadorCaeEnSubteAdquiridaPorOtroJugadorQueNoEsDuenioDeTrenSuDineroSeReduce600PorDados() {
-		Servicios servicios = new Servicios();
-		Compania subte = new Compania(PRECIO_SUBTE, IMP_SUBTE, IMP_SUBTE_DOBLE, servicios);
+		Compania subte = new Subte();
 
 		Jugador jugador = new Jugador();
 		subte.recibirJugador(jugador); // jugador compra subte
@@ -136,10 +139,11 @@ public class ServiciosTrenSubteTest {
 
 	@Test
 	public void test08JugadorCaeEnSubteAdquiridaPorOtroJugadorQueEsDuenioDeTrenSuDineroSeReduce1100PorDados() {
-		Servicios servicios = new Servicios();
-		Compania tren = new Compania(PRECIO_TREN, IMP_TREN, IMP_TREN_DOBLE, servicios);
-		Compania subte = new Compania(PRECIO_SUBTE, IMP_SUBTE, IMP_SUBTE_DOBLE, servicios);
-
+		Compania tren = new Tren();
+		Compania subte = new Subte();
+		tren.setCompaniaPar(subte);
+		subte.setCompaniaPar(tren);
+		
 		Jugador jugador = new Jugador();
 		tren.recibirJugador(jugador); // jugador compra tren
 		subte.recibirJugador(jugador); // jugador compra subte

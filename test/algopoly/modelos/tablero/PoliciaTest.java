@@ -1,7 +1,8 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
-import algopoly.modelos.jugador.Posicion;
+import algopoly.modelos.tablero.casilleros.Carcel;
+import algopoly.modelos.tablero.casilleros.Policia;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,7 +17,7 @@ public class PoliciaTest {
 
 		policia.recibirJugador(jugadorPrueba);
 
-		Assert.assertEquals(jugadorPrueba.getPosicion(), Posicion.CARCEL);
+		Assert.assertEquals(jugadorPrueba.getCasilleroActual(), carcel);
 	}
 
 	@Test
@@ -27,14 +28,9 @@ public class PoliciaTest {
 
 		policia.recibirJugador(jugadorPrueba);
 		
-	
-		Posicion posicionInicial = jugadorPrueba.getPosicion();
+		int tirada = jugadorPrueba.tirar();
 		
-		jugadorPrueba.mover(1);
-		
-		Posicion posicionFinal = jugadorPrueba.getPosicion();
-		
-		Assert.assertEquals(posicionFinal, posicionInicial);
+		Assert.assertEquals(tirada, 0);
 	}
 
 }

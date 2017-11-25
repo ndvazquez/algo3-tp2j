@@ -1,6 +1,6 @@
 package algopoly.modelos.jugador;
 
-import algopoly.modelos.tablero.Carcel;
+import algopoly.modelos.tablero.casilleros.Carcel;
 
 public class Encarcelado implements Estado {
 	
@@ -37,11 +37,6 @@ public class Encarcelado implements Estado {
 	@Override
 	public Integer tirar(Dado dado1, Dado dado2) {
 		return TIRADA_NULA;
-	}
-
-	@Override
-	public void mover(Jugador jugador, Integer casilleros) {
-		
 	}
 
 }

@@ -1,12 +1,12 @@
 package algopoly.vistas;
 
+import algopoly.controladores.OpcionAcercaDeEventHandler;
+import algopoly.controladores.OpcionPantallaCompletaEventHandler;
+import algopoly.controladores.OpcionSalirEventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
-import algopoly.vistas.eventos.OpcionAcercaDeEventHandler;
-import algopoly.vistas.eventos.OpcionPantallaCompletaEventHandler;
-import algopoly.vistas.eventos.OpcionSalirEventHandler;
 
 public class BarraDeMenu extends MenuBar {
 

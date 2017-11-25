@@ -3,9 +3,9 @@ package algopoly.modelos.jugador;
 import org.junit.Assert;
 import org.junit.Test;
 
-import algopoly.modelos.tablero.barrios.BarrioFactory;
-import algopoly.modelos.tablero.barrios.BarrioSimple;
-import algopoly.modelos.tablero.barrios.Provincia;
+import algopoly.modelos.tablero.casilleros.barrios.BarrioFactory;
+import algopoly.modelos.tablero.casilleros.barrios.BarrioSimple;
+import algopoly.modelos.tablero.casilleros.barrios.Provincia;
 
 
 public class JugadorTest {
@@ -18,13 +18,9 @@ public class JugadorTest {
 		jugador.encarcelar();
 		jugador.habilitar();
 		
-		Posicion posicionActual = jugador.getPosicion();
+		int tirada = jugador.tirar();
 		
-		jugador.mover(1);
-		
-		Posicion posicionNueva = Posicion.getPosicionSiguiente(posicionActual);
-		
-		Assert.assertEquals(posicionNueva, jugador.getPosicion());
+		Assert.assertNotEquals(tirada, 0);
 	}
 
 	@Test

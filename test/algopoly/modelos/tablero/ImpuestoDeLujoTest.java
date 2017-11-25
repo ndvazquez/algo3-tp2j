@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.tablero.casilleros.ImpuestoDeLujo;
 
 public class ImpuestoDeLujoTest {
 

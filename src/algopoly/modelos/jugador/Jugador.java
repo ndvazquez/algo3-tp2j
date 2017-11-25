@@ -3,8 +3,8 @@ package algopoly.modelos.jugador;
 import algopoly.modelos.excepciones.JugadorSinPlataException;
 import algopoly.modelos.tablero.Casillero;
 import algopoly.modelos.tablero.compania.Compania;
-import algopoly.modelos.tablero.propiedad.Propiedad;
-import algopoly.modelos.tablero.propiedad.Provincia;
+import algopoly.modelos.tablero.barrios.Barrio;
+import algopoly.modelos.tablero.barrios.Provincia;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,7 +23,7 @@ public class Jugador {
 
 	private Casillero casilleroActual;
 
-	private ArrayList<Propiedad> propiedades;
+	private ArrayList<Barrio> barrios;
 	
 	private ArrayList<Compania> companias;
 
@@ -37,7 +37,7 @@ public class Jugador {
 		this.dado1 = new Dado();
 		this.dado2 = new Dado();
 		this.estado = new Habilitado(this);
-		this.propiedades = new ArrayList<>();
+		this.barrios = new ArrayList<>();
 		this.companias = new ArrayList<>();
 	}
 
@@ -76,9 +76,9 @@ public class Jugador {
 	}
 
 	public void pagar(Integer monto) {
-		while(this.capital - monto < 0 && this.propiedades.size() > 0){
-			Propiedad propiedadAVender = this.propiedades.stream().findFirst().get();
-			this.venderPropiedad(propiedadAVender);
+		while(this.capital - monto < 0 && this.barrios.size() > 0){
+			Barrio propiedadAVender = this.barrios.stream().findFirst().get();
+			this.venderBarrio(propiedadAVender);
 		}
 		this.capital -= monto;
 		if (this.capital < 0) {
@@ -99,24 +99,25 @@ public class Jugador {
 		return this.casilleroActual;
 	}
 
-	public Integer getCantidadPropiedades() {
-		return this.propiedades.size();
+	public Integer getCantidadBarrios() {
+		return this.barrios.size();
 	}
 
 	public Integer getCantidadServicios() { return this.companias.size(); }
 
-	public void comprarPropiedad(Propiedad propiedad) {
-		this.pagar(propiedad.getPrecio());
-		this.propiedades.add(propiedad);
+	public void comprarBarrio(Barrio barrio) {
+		this.pagar(barrio.getPrecio());
+		this.barrios.add(barrio);
+
 	}
 
-	public Propiedad getPropiedad(Provincia provincia) {
-		int len = this.propiedades.size();
+	public Barrio getBarrio(Provincia provincia) {
+		int len = this.barrios.size();
 		
 		for ( int i = 0; i < len; i++) {
-			Propiedad propiedad = this.propiedades.get(i);
-			if ( propiedad.esEstaProvincia(provincia) ) {
-				return propiedad;
+			Barrio barrio = this.barrios.get(i);
+			if ( barrio.esEstaProvincia(provincia) ) {
+				return barrio;
 			}
 		}
 		return null;
@@ -139,38 +140,38 @@ public class Jugador {
 		this.estado.pagarFianza();
 	}
 
-	public void intercambiarPropiedad(Propiedad propiedadACeder, Propiedad propiedadARecibir, Jugador jugadorQueIntercambia) {
-		this.quitarPropiedad(propiedadACeder);
-		jugadorQueIntercambia.quitarPropiedad(propiedadARecibir);
+	public void intercambiarPropiedad(Barrio barrioACeder, Barrio barrioARecibir, Jugador jugadorQueIntercambia) {
+		this.quitarBarrio(barrioACeder);
+		jugadorQueIntercambia.quitarBarrio(barrioARecibir);
 		
 		
-		jugadorQueIntercambia.cobrar(propiedadACeder.getPrecio() - propiedadARecibir.getPrecio());
-		propiedadARecibir.getPropietario().cobrar(propiedadARecibir.getPrecio() - propiedadACeder.getPrecio());
+		jugadorQueIntercambia.cobrar(barrioACeder.getPrecio() - barrioARecibir.getPrecio());
+		barrioARecibir.getPropietario().cobrar(barrioARecibir.getPrecio() - barrioACeder.getPrecio());
 
-		propiedadACeder.setPropietario(jugadorQueIntercambia);
-		propiedadARecibir.setPropietario(this);
+		barrioACeder.setPropietario(jugadorQueIntercambia);
+		barrioARecibir.setPropietario(this);
 
-		propiedadACeder.resetPropiedades();
-		propiedadARecibir.resetPropiedades();
+		barrioACeder.resetBarrio();
+		barrioARecibir.resetBarrio();
 		
-		this.agregarPropiedad(propiedadARecibir);
-		jugadorQueIntercambia.agregarPropiedad(propiedadACeder);
-		
-	}
-
-	public void agregarPropiedad(Propiedad propiedad) {
-		this.propiedades.add(propiedad);
+		this.agregarBarrio(barrioARecibir);
+		jugadorQueIntercambia.agregarBarrio(barrioACeder);
 		
 	}
 
-	public void quitarPropiedad(Propiedad propiedad) {
-		this.propiedades.remove(propiedad);
+	public void agregarBarrio(Barrio barrio) {
+		this.barrios.add(barrio);
+		
 	}
 
-	public void venderPropiedad(Propiedad propiedad){
-		this.quitarPropiedad(propiedad);
-        propiedad.setSinPropietario();
-		this.cobrar(propiedad.getPrecioDeVenta() -  propiedad.getPrecioDeVenta() / 100 * 15);
+	public void quitarBarrio(Barrio barrio) {
+		this.barrios.remove(barrio);
+	}
+
+	public void venderBarrio(Barrio barrio){
+		this.quitarBarrio(barrio);
+        barrio.setSinPropietario();
+		this.cobrar(barrio.getPrecioDeVenta() -  barrio.getPrecioDeVenta() / 100 * 15);
 	}
 
 }

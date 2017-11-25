@@ -1,10 +1,11 @@
 package algopoly.modelos.jugador;
 
-import algopoly.modelos.tablero.propiedad.PropiedadFactory;
-import algopoly.modelos.tablero.propiedad.PropiedadSimple;
-import algopoly.modelos.tablero.propiedad.Provincia;
 import org.junit.Assert;
 import org.junit.Test;
+
+import algopoly.modelos.tablero.barrios.BarrioFactory;
+import algopoly.modelos.tablero.barrios.BarrioSimple;
+import algopoly.modelos.tablero.barrios.Provincia;
 
 
 public class JugadorTest {
@@ -24,13 +25,13 @@ public class JugadorTest {
 
 	@Test
 	public void test02JugadorSeQuedaSinDineroYVendePropiedad(){
-		PropiedadFactory propiedadFactory = new PropiedadFactory();
+		BarrioFactory barrioFactory = new BarrioFactory();
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 
-		PropiedadSimple propiedadCobrar = propiedadFactory.crearPropiedadSimple(Provincia.BSAS_NORTE);
+		BarrioSimple propiedadCobrar = barrioFactory.crearBarrioSimple(Provincia.BSAS_NORTE);
 
-		PropiedadSimple propiedadVender = propiedadFactory.crearPropiedadSimple(Provincia.BSAS_SUR);
+		BarrioSimple propiedadVender = barrioFactory.crearBarrioSimple(Provincia.BSAS_SUR);
 
 		propiedadCobrar.recibirJugador(jugador2);
 		propiedadVender.recibirJugador(jugador1);
@@ -40,38 +41,38 @@ public class JugadorTest {
 		}
 
 		int capitalFinal = jugador1.getCapital();
-		int cantidadPropiedades = jugador1.getCantidadPropiedades();
+		int cantidadBarrios = jugador1.getCantidadBarrios();
 
 		Assert.assertEquals(14500, capitalFinal);
-		Assert.assertEquals(0, cantidadPropiedades);
+		Assert.assertEquals(0, cantidadBarrios);
 
 	}
 
 	@Test
 	public void test03JugadorSeQuedaSinDineroYVendePropiedadUnSegundoJugadorLaCompraYUnTerceroPagaAlSegundo(){
-		PropiedadFactory propiedadFactory = new PropiedadFactory();
+		BarrioFactory barrioFactory = new BarrioFactory();
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		Jugador jugador3 = new Jugador();
 
-		PropiedadSimple propiedadCobrar = propiedadFactory.crearPropiedadSimple(Provincia.BSAS_NORTE);
+		BarrioSimple barrioCobrar = barrioFactory.crearBarrioSimple(Provincia.BSAS_NORTE);
 
-		PropiedadSimple propiedadVender = propiedadFactory.crearPropiedadSimple(Provincia.BSAS_SUR);
+		BarrioSimple barrioVender = barrioFactory.crearBarrioSimple(Provincia.BSAS_SUR);
 
-		propiedadCobrar.recibirJugador(jugador2); //capital jugador2 == 75000
-		propiedadVender.recibirJugador(jugador1);
+		barrioCobrar.recibirJugador(jugador2); //capital jugador2 == 75000
+		barrioVender.recibirJugador(jugador1);
 
 		for(int i = 0; i < 33; i++){
-			propiedadCobrar.recibirJugador(jugador1);
+			barrioCobrar.recibirJugador(jugador1);
 		}
 		// capital jugador2 == 75000 + 82500 = 157500
-		propiedadVender.recibirJugador(jugador2); // capital jugador2 == 137500
-		propiedadVender.recibirJugador(jugador3); // capital jugador2 == 139500
+		barrioVender.recibirJugador(jugador2); // capital jugador2 == 137500
+		barrioVender.recibirJugador(jugador3); // capital jugador2 == 139500
 
 		int capitalFinaljugador2 = jugador2.getCapital();
 		int capitalFinaljugador3 = jugador3.getCapital();
 
-		Assert.assertEquals(propiedadVender.getPropietario(), jugador2);
+		Assert.assertEquals(barrioVender.getPropietario(), jugador2);
 		Assert.assertEquals(139500, capitalFinaljugador2);
 		Assert.assertEquals(98000, capitalFinaljugador3);
 

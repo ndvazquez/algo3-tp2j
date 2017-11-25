@@ -1,8 +1,8 @@
-package algopoly.modelos.tablero.propiedad;
+package algopoly.modelos.tablero.barrios;
 
 import algopoly.modelos.jugador.Jugador;
 
-public interface Propiedad {
+public interface Barrio {
 	
 	Jugador getPropietario();
 	
@@ -22,11 +22,11 @@ public interface Propiedad {
 
 	Provincia getProvincia();
 
-	void construir(Edificio edificio);
+	void construir(Inmueble inmueble);
 
 	void construirCasa();
 
 	void construirHotel();
 
-	void resetPropiedades();
+	void resetBarrio();
 }

@@ -1,13 +1,13 @@
-package algopoly.modelos.tablero.propiedad;
+package algopoly.modelos.tablero.barrios;
 
-public class Vacio implements Edificio {
+public class Casa implements Inmueble {
 	
 	private Integer alquiler;
 	private Integer precio;
 	
-	public Vacio(Integer precio, Integer alquiler) {
-		this.precio = precio;
+	public Casa(Integer precio, Integer alquiler) {
 		this.alquiler = alquiler;
+		this.precio = precio;
 	}
 	
 	@Override

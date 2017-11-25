@@ -2,7 +2,7 @@ package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.jugador.Posicion;
-import algopoly.modelos.tablero.propiedad.PropiedadSimple;
+import algopoly.modelos.tablero.barrios.BarrioSimple;
 
 import org.mockito.Mockito;
 
@@ -177,7 +177,7 @@ public class AvanceDinamicoTest {
 	@Test
 	public void test10JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedadesSinPropiedades() {
 		Tablero tablero = Tablero.obtenerTablero();
-		Jugador jugador = new Jugador(); // propiedades = 0
+		Jugador jugador = new Jugador(); // barrios = 0
 		Integer valor = jugador.tirar();
 		while (!valor.equals(11)) {
 			valor = jugador.tirar();
@@ -193,10 +193,10 @@ public class AvanceDinamicoTest {
 	}
 
 	@Test
-	public void test11JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedadesConPropiedades() {
+	public void test11JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDeBarriosConBarrios() {
 		Tablero tablero = Tablero.obtenerTablero();
 		Jugador jugador = new Jugador();
-		jugador.comprarPropiedad(Mockito.mock(PropiedadSimple.class));
+		jugador.comprarBarrio(Mockito.mock(BarrioSimple.class));
 		Integer valor = jugador.tirar();
 		while (!valor.equals(11)) {
 			valor = jugador.tirar();
@@ -211,11 +211,11 @@ public class AvanceDinamicoTest {
 	}
 
 	@Test
-	public void test12JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDePropiedadesConPropiedadesMayorA11() {
+	public void test12JugadorCaeEnAvanceDinamicoTirando11Avanza11MenosSuCantidadDeBarriosConBarriosMayorA11() {
 		Tablero tablero = Tablero.obtenerTablero();
 		Jugador jugador = new Jugador();
 		for (int i=0; i<20; i++) {
-			jugador.comprarPropiedad(Mockito.mock(PropiedadSimple.class));
+			jugador.comprarBarrio(Mockito.mock(BarrioSimple.class));
 		}
 		Integer valor = jugador.tirar();
 		while (!valor.equals(11)) {
@@ -231,9 +231,9 @@ public class AvanceDinamicoTest {
 	}
 
 	@Test
-	public void test13JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedadesSinPropiedades() {
+	public void test13JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDeBarriosSinBarrios() {
 		Tablero tablero = Tablero.obtenerTablero();
-		Jugador jugador = new Jugador(); // propiedades = 0
+		Jugador jugador = new Jugador(); // barrios = 0
 		Integer valor = jugador.tirar();
 		while (!valor.equals(12)) {
 			valor = jugador.tirar();
@@ -248,10 +248,10 @@ public class AvanceDinamicoTest {
 	}
 
 	@Test
-	public void test14JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedadesConPropiedades() {
+	public void test14JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDeBarriosConPropiedades() {
 		Tablero tablero = Tablero.obtenerTablero();
 		Jugador jugador = new Jugador();
-		jugador.comprarPropiedad(Mockito.mock(PropiedadSimple.class));
+		jugador.comprarBarrio(Mockito.mock(BarrioSimple.class));
 		Integer valor = jugador.tirar();
 		while (!valor.equals(12)) {
 			valor = jugador.tirar();
@@ -267,11 +267,11 @@ public class AvanceDinamicoTest {
 	}
 
 	@Test
-	public void test15JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDePropiedadesConPropiedadesMayorA12() {
+	public void test15JugadorCaeEnAvanceDinamicoTirando12Avanza12MenosSuCantidadDeBarriosConPropiedadesMayorA12() {
 		Tablero tablero = Tablero.obtenerTablero();
 		Jugador jugador = new Jugador();
 		for (int i=0; i<20; i++){
-			jugador.comprarPropiedad(Mockito.mock(PropiedadSimple.class));
+			jugador.comprarBarrio(Mockito.mock(BarrioSimple.class));
 		}
 		Integer valor = jugador.tirar();
 		while (!valor.equals(12)) {

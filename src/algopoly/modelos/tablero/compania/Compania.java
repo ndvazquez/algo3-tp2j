@@ -35,7 +35,9 @@ public abstract class Compania implements Casillero {
 	}
 
 	public static boolean tienenMismoDueño(Compania compania1, Compania compania2) {
-		if (compania1 == null || compania2 == null) return false;
+		if (compania1 == null || compania2 == null) {
+			return false;
+		}
 		return compania1.propietario.equals(compania1.propietario);
 	}
 

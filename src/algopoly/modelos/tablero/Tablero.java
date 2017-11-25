@@ -24,7 +24,7 @@ public class Tablero {
 
 	public Tablero() {
 
-		jugadores = new ArrayList<Jugador>();
+		jugadores = new ArrayList<>();
 
 		Jugador jugador1 = new Jugador();
 		jugador1.setNombre("Alan");
@@ -63,7 +63,7 @@ public class Tablero {
 
 		BarrioFactory barrioFactory = new BarrioFactory();
 
-		casilleros = new ArrayList<Casillero>();
+		casilleros = new ArrayList<>();
 
 		casilleros.add(new Salida()); // salida
 		casilleros.add(new Quini6(this.jugadores));

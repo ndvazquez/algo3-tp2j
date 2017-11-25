@@ -65,7 +65,7 @@ public class Jugador {
 	}
 
 	public Collection<Dado> getUltimaTiradaEnDados() {
-		Collection<Dado> dados = new ArrayList<Dado>();
+		Collection<Dado> dados = new ArrayList<>();
 		dados.add(dado1);
 		dados.add(dado2);
 		return dados;

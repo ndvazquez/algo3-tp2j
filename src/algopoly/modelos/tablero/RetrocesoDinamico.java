@@ -26,7 +26,9 @@ public class RetrocesoDinamico implements Casillero {
 	@Override
     public void recibirJugador(Jugador jugador) {
 		Integer cantidadDeMovimientos = this.funciones.get(jugador.getUltimaTirada()).apply(jugador);
-		if (cantidadDeMovimientos <= 0) return;
+		if (cantidadDeMovimientos <= 0) {
+			return;
+		}
 		Casillero proximoCasillero = this;
 		for (int i = 0; i < cantidadDeMovimientos; i++) {
 			proximoCasillero = Tablero.obtenerTablero().obtenerCasilleroAnterior(proximoCasillero);

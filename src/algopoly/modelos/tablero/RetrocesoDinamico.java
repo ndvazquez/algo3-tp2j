@@ -13,7 +13,7 @@ public class RetrocesoDinamico implements Casillero {
 	public RetrocesoDinamico() {
 		this.funciones = new HashMap<>();
 		for (int i = 1; i <= 6; i++) {
-			this.funciones.put(i, j -> j.getUltimaTirada() - j.getCantidadPropiedades());
+			this.funciones.put(i, j -> j.getUltimaTirada() - j.getCantidadBarrios());
 		}
 		for (int i = 7; i <= 10; i++) {
 			this.funciones.put(i, j -> j.getCapital() % j.getUltimaTirada());

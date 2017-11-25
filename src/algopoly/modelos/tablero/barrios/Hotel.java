@@ -1,6 +1,6 @@
-package algopoly.modelos.tablero.propiedad;
+package algopoly.modelos.tablero.barrios;
 
-public class Hotel implements Edificio {
+public class Hotel implements Inmueble {
 	
 	private Integer alquiler;
 	private Integer precio;

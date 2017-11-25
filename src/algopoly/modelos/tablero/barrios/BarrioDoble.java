@@ -1,23 +1,23 @@
-package algopoly.modelos.tablero.propiedad;
+package algopoly.modelos.tablero.barrios;
 
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Casillero;
 
-public class PropiedadRegional implements Casillero, Propiedad {
+public class BarrioDoble implements Casillero, Barrio {
 
     private Jugador propietario;
     
     private Provincia provinciaComplemento;
     
-    private EstadoPropiedad estado;
+    private EstadoBarrio estado;
 
-    private Edificio edificio;
+    private Inmueble edificio;
 	
 	private Integer cantidadEdificios;
 
 	private Provincia provincia;
 
-    public PropiedadRegional(Provincia provincia, Provincia provinciaComplemento){
+    public BarrioDoble(Provincia provincia, Provincia provinciaComplemento){
     	this.provincia = provincia;
     	this.provinciaComplemento = provinciaComplemento;
         this.estado = new SinPropietario();
@@ -27,7 +27,7 @@ public class PropiedadRegional implements Casillero, Propiedad {
     @Override
     public void recibirJugador(Jugador jugador) {
 
-    	this.estado.comprarPropiedad(jugador, this);
+    	this.estado.comprarBarrio(jugador, this);
 		
 		this.estado.pagarAlquiler(jugador, this);
     }
@@ -78,20 +78,20 @@ public class PropiedadRegional implements Casillero, Propiedad {
     }
     
     @Override
-	public void construir(Edificio edificio) {
+	public void construir(Inmueble edificio) {
     	this.edificio = edificio;
 		this.cantidadEdificios += 1;
     }
     
     public boolean estaCompleta() {
-    	return this.propietario.getPropiedad(this.provinciaComplemento) != null;
+    	return this.propietario.getBarrio(this.provinciaComplemento) != null;
     }
 
 	@Override
 	public void construirCasa() {
 		
 		if ( this.estaCompleta() && this.cantidadEdificios < 2) {
-			this.estado = new RegionCompleta();
+			this.estado = new BarrioCompleto();
 			this.estado.construirCasa(this);
 		}
 	}
@@ -99,9 +99,9 @@ public class PropiedadRegional implements Casillero, Propiedad {
 	@Override
 	public void construirHotel() {
 		
-		Propiedad propiedadComplemento = this.propietario.getPropiedad(this.provinciaComplemento);
+		Barrio barrioComplemento = this.propietario.getBarrio(this.provinciaComplemento);
 		
-		if ( this.estaCompleta() && this.cantidadEdificios == 2 && propiedadComplemento.cantidadEdificios() == 2 ) {
+		if ( this.cantidadEdificios == 2 && barrioComplemento.cantidadEdificios() == 2 ) {
 			this.estado.construirHotel(this);
 		}
 	}
@@ -112,7 +112,7 @@ public class PropiedadRegional implements Casillero, Propiedad {
 	}
 
 	@Override
-	public void resetPropiedades() {
+	public void resetBarrio() {
 		this.cantidadEdificios = 0;
 		this.edificio = this.provincia.vacio();
 	}

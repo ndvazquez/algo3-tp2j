@@ -6,10 +6,10 @@ import java.util.Random;
 
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.jugador.Posicion;
+import algopoly.modelos.tablero.barrios.BarrioFactory;
+import algopoly.modelos.tablero.barrios.Provincia;
 import algopoly.modelos.tablero.servicios.Compania;
 import algopoly.modelos.tablero.servicios.Servicios;
-import algopoly.modelos.tablero.propiedad.PropiedadFactory;
-import algopoly.modelos.tablero.propiedad.Provincia;
 
 public class Tablero {
 
@@ -49,28 +49,29 @@ public class Tablero {
 		Servicios serviciosEdesurAysa = new Servicios();
 		Compania edesur = new Compania(35000, 500, 1000, serviciosEdesurAysa);
 		Compania aysa = new Compania(30000, 300, 500, serviciosEdesurAysa);
-		PropiedadFactory propiedadFactory = new PropiedadFactory();
+		BarrioFactory barrioFactory = new BarrioFactory();
 		casilleros = new ArrayList<Casillero>();
+
 		casilleros.add(new Salida()); // salida
 		casilleros.add(new Quini6(this.jugadores));
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_SUR, Provincia.BSAS_NORTE));// bsassur
+		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE));// bsassur
 		casilleros.add(edesur);
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.BSAS_NORTE, Provincia.BSAS_SUR));// bsasnorte
+		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.BSAS_NORTE, Provincia.BSAS_SUR));// bsasnorte
 		casilleros.add(carcel);
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.CORDOBA_SUR, Provincia.CORDOBA_NORTE)); // cordoba
+		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.CORDOBA_SUR, Provincia.CORDOBA_NORTE)); // cordoba
 		casilleros.add(new AvanceDinamico());
 		casilleros.add(subte);
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.CORDOBA_NORTE, Provincia.CORDOBA_SUR)); // cordoba
+		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.CORDOBA_NORTE, Provincia.CORDOBA_SUR)); // cordoba
 		casilleros.add(new ImpuestoDeLujo()); // impuesto
-		casilleros.add(propiedadFactory.crearPropiedadSimple(Provincia.SANTA_FE)); // santafe
+		casilleros.add(barrioFactory.crearBarrioSimple(Provincia.SANTA_FE)); // santafe
 		casilleros.add(aysa);
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.SALTA_SUR, Provincia.SALTA_NORTE)); // salta
-		casilleros.add(propiedadFactory.crearPropiedadRegional(Provincia.SALTA_NORTE, Provincia.SALTA_SUR));// salta
+		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.SALTA_SUR, Provincia.SALTA_NORTE)); // salta
+		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.SALTA_NORTE, Provincia.SALTA_SUR));// salta
 		casilleros.add(new Policia(carcel));
 		casilleros.add(tren);
-		casilleros.add(propiedadFactory.crearPropiedadSimple(Provincia.NEUQUEN));// neuquen
+		casilleros.add(barrioFactory.crearBarrioSimple(Provincia.NEUQUEN));// neuquen
 		casilleros.add(new RetrocesoDinamico());
-		casilleros.add(propiedadFactory.crearPropiedadSimple(Provincia.TUCUMAN)); // tucuman1
+		casilleros.add(barrioFactory.crearBarrioSimple(Provincia.TUCUMAN)); // tucuman1
 	}
 
 	public Jugador jugadorActual() {

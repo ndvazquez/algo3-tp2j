@@ -20,7 +20,7 @@ public class AvanceDinamico implements Casillero {
 			this.funciones.put(i, j -> j.getCapital() % j.getUltimaTirada());
 		}
 		for (int i = 11; i <= 12; i++) {
-			this.funciones.put(i, j -> j.getUltimaTirada() - j.getCantidadPropiedades());
+			this.funciones.put(i, j -> j.getUltimaTirada() - j.getCantidadBarrios());
 		}
 	}
 	

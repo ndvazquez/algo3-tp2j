@@ -9,7 +9,7 @@ public class BarrioDoble implements Casillero, Barrio {
     
     private Provincia provinciaComplemento;
     
-    private EstadoPropiedad estado;
+    private EstadoBarrio estado;
 
     private Inmueble edificio;
 	

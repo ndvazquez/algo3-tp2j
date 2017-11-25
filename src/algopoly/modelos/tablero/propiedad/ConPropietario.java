@@ -2,7 +2,7 @@ package algopoly.modelos.tablero.propiedad;
 
 import algopoly.modelos.jugador.Jugador;
 
-public class ConPropietario extends EstadoPropiedad {
+public class ConPropietario extends EstadoBarrio {
 
 	@Override
 	public void comprarBarrio(Jugador jugador, Barrio barrio) {

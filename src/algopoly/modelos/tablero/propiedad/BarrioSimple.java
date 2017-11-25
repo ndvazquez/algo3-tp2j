@@ -7,7 +7,7 @@ public class BarrioSimple implements Casillero, Barrio {
 
 	private Jugador propietario;
 
-	private EstadoPropiedad estado;
+	private EstadoBarrio estado;
 
 	private Integer cantidadEdificios;
 

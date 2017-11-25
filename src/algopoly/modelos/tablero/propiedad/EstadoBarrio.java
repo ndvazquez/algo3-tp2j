@@ -2,7 +2,7 @@ package algopoly.modelos.tablero.propiedad;
 
 import algopoly.modelos.jugador.Jugador;
 
-public abstract class EstadoPropiedad {
+public abstract class EstadoBarrio {
 
 	abstract void comprarBarrio(Jugador jugador, Barrio barrio);
 

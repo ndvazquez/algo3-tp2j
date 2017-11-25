@@ -27,7 +27,7 @@ public class VistaDados {
 
     private void dibujarFormas() {
         this.clean();
-        Jugador jugador = this.tablero.jugadorAcutal();
+        Jugador jugador = this.tablero.jugadorActual();
         
         int y = 5;
         Collection<Dado> dados = jugador.getUltimaTiradaEnDados();

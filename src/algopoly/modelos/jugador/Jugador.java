@@ -14,6 +14,8 @@ public class Jugador {
 	
 	private static final Integer CAPITAL_INICIAL = 100000;
 
+	private String nombre;
+
 	private Dado dado1;
 
 	private Dado dado2;
@@ -29,6 +31,7 @@ public class Jugador {
 	private Estado estado;
 	
 	public Jugador() {
+		this.nombre = "Jon Doe";
 		this.capital = CAPITAL_INICIAL;
 		this.posicion = Posicion.SALIDA;
 		this.dado1 = new Dado();
@@ -36,6 +39,13 @@ public class Jugador {
 		this.estado = new Habilitado(this);
 		this.propiedades = new ArrayList<>();
 		this.companias = new ArrayList<>();
+	}
+
+	public void setNombre(String nombre){
+	    this.nombre = nombre;
+    }
+	public String getNombre(){
+		return this.nombre;
 	}
 
 	public void iniciarTurno() {
@@ -50,7 +60,11 @@ public class Jugador {
 	public Integer getUltimaTirada() {
 		return this.dado1.getUltimaTirada() + this.dado2.getUltimaTirada();
 	}
-	
+
+	public boolean sacoDoble(){
+		return this.dado1.getUltimaTirada().equals(this.dado2.getUltimaTirada());
+	}
+
 	public Collection<Dado> getUltimaTiradaEnDados() {
 		Collection<Dado> dados = new ArrayList<Dado>();
 		dados.add(dado1);
@@ -63,10 +77,15 @@ public class Jugador {
 	}
 
 	public void pagar(Integer monto) {
+		while(this.capital - monto < 0 && this.propiedades.size() > 0){
+			Propiedad propiedadAVender = this.propiedades.stream().findFirst().get();
+			this.venderPropiedad(propiedadAVender);
+		}
 		this.capital -= monto;
 		if (this.capital < 0) {
 			throw new JugadorSinPlataException();
 		}
+
 	}
 
 	public Integer getCapital() {
@@ -88,6 +107,8 @@ public class Jugador {
 	public Integer getCantidadPropiedades() {
 		return this.propiedades.size();
 	}
+
+	public Integer getCantidadServicios() { return this.companias.size(); }
 
 	public void comprarPropiedad(Propiedad propiedad) {
 		this.pagar(propiedad.getPrecio());
@@ -150,4 +171,11 @@ public class Jugador {
 	public void quitarPropiedad(Propiedad propiedad) {
 		this.propiedades.remove(propiedad);
 	}
+
+	public void venderPropiedad(Propiedad propiedad){
+		this.quitarPropiedad(propiedad);
+        propiedad.setSinPropietario();
+		this.cobrar(propiedad.getPrecioDeVenta() -  propiedad.getPrecioDeVenta() / 100 * 15);
+	}
+
 }

@@ -16,10 +16,14 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 
 public class ContenedorPrincipal extends BorderPane {
@@ -30,6 +34,7 @@ public class ContenedorPrincipal extends BorderPane {
 	VBox contenedorCentral;
 	VistaDados vistaDados;
 	VistaInformacion vistaInformacion;
+	MediaPlayer mediaPlayer;
 
 	public ContenedorPrincipal(Stage stage, Tablero tablero) {
 		this.setMenu(stage);
@@ -37,6 +42,10 @@ public class ContenedorPrincipal extends BorderPane {
 		this.setInformacionJugadores(tablero);
 		this.setBotonera(tablero);
 		this.setConsola(tablero);
+		this.mediaPlayer = new MediaPlayer(new Media(new File("music.wav").toURI().toString()));
+		mediaPlayer.setCycleCount(mediaPlayer.INDEFINITE);
+		mediaPlayer.setAutoPlay(true);
+
 	}
 
 	private void setBotonera(Tablero tablero) {

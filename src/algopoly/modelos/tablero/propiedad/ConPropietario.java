@@ -5,15 +5,15 @@ import algopoly.modelos.jugador.Jugador;
 public class ConPropietario extends EstadoPropiedad {
 
 	@Override
-	public void comprarPropiedad(Jugador jugador, Propiedad propiedad) {
+	public void comprarBarrio(Jugador jugador, Barrio barrio) {
 	}
 
 	@Override
-	public void construirCasa(Propiedad propiedad) {
+	public void construirCasa(Barrio barrio) {
 	}
 
 	@Override
-	public void construirHotel(Propiedad propiedad) {
+	public void construirHotel(Barrio barrio) {
 	}
 
 }

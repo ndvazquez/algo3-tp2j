@@ -27,17 +27,17 @@ public class VistaInformacion {
 			canvas.getGraphicsContext2D().setFill(Color.GREEN);
 			canvas.getGraphicsContext2D().fillText("Jugador" , 0, 100);
 			canvas.getGraphicsContext2D().fillText("Plata: " + j.getCapital(), 0, 120);
-			canvas.getGraphicsContext2D().fillText("Propiedades: " + j.getCantidadPropiedades(), 0, 140);
+			canvas.getGraphicsContext2D().fillText("Propiedades: " + j.getCantidadBarrios(), 0, 140);
 			j = jugadores.get(1);
 			canvas.getGraphicsContext2D().setFill(Color.BLUE);
 			canvas.getGraphicsContext2D().fillText("Jugador", 0, 200);
 			canvas.getGraphicsContext2D().fillText("Plata: " + j.getCapital(), 0, 220);
-			canvas.getGraphicsContext2D().fillText("Propiedades: " + j.getCantidadPropiedades(), 0, 240);
+			canvas.getGraphicsContext2D().fillText("Propiedades: " + j.getCantidadBarrios(), 0, 240);
 			j = jugadores.get(2);
 			canvas.getGraphicsContext2D().setFill(Color.FUCHSIA);
 			canvas.getGraphicsContext2D().fillText("Jugador", 0, 300);
 			canvas.getGraphicsContext2D().fillText("Plata: " + j.getCapital(), 0, 320);
-			canvas.getGraphicsContext2D().fillText("Propiedades: " + j.getCantidadPropiedades(), 0, 340);
+			canvas.getGraphicsContext2D().fillText("Propiedades: " + j.getCantidadBarrios(), 0, 340);
 	}
 
 

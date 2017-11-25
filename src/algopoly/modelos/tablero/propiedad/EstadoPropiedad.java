@@ -4,19 +4,19 @@ import algopoly.modelos.jugador.Jugador;
 
 public abstract class EstadoPropiedad {
 
-	abstract void comprarPropiedad(Jugador jugador, Propiedad propiedad);
+	abstract void comprarBarrio(Jugador jugador, Barrio barrio);
 
-	void pagarAlquiler(Jugador jugador, Propiedad propiedad) {
-		if (!propiedad.getPropietario().equals(jugador)) {
-			int monto = propiedad.getPrecioAlquiler();
+	void pagarAlquiler(Jugador jugador, Barrio barrio) {
+		if (! barrio.getPropietario().equals(jugador)) {
+			int monto = barrio.getPrecioAlquiler();
 			jugador.pagar(monto);
-			propiedad.getPropietario().cobrar(monto);
+			barrio.getPropietario().cobrar(monto);
 		}
 	}
 
 
-	abstract void construirCasa(Propiedad propiedad);
+	abstract void construirCasa(Barrio barrio);
 	
-	abstract void construirHotel(Propiedad propiedad);
+	abstract void construirHotel(Barrio barrio);
 
 }

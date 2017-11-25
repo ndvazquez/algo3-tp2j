@@ -1,9 +1,6 @@
 package algopoly.modelos.tablero;
 
 import algopoly.modelos.jugador.Jugador;
-import algopoly.modelos.tablero.propiedad.PropiedadFactory;
-import algopoly.modelos.tablero.propiedad.PropiedadSimple;
-import algopoly.modelos.tablero.propiedad.Provincia;
 import algopoly.modelos.tablero.servicios.Compania;
 import algopoly.modelos.tablero.servicios.Servicios;
 

@@ -1,6 +1,6 @@
 package algopoly.modelos.tablero.propiedad;
 
-public interface Edificio {
+public interface Inmueble {
 
 	Integer getPrecio();
 	

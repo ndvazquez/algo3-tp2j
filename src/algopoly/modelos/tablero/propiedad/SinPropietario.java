@@ -5,21 +5,21 @@ import algopoly.modelos.jugador.Jugador;
 public class SinPropietario extends EstadoPropiedad {
 
 	@Override
-	public void comprarPropiedad(Jugador jugador, Propiedad propiedad) {
-		jugador.comprarPropiedad(propiedad);
-		propiedad.setPropietario(jugador);
+	public void comprarBarrio(Jugador jugador, Barrio barrio) {
+		jugador.comprarBarrio(barrio);
+		barrio.setPropietario(jugador);
 	}
 
 	@Override
-	public void pagarAlquiler(Jugador jugador, Propiedad propiedad) {
+	public void pagarAlquiler(Jugador jugador, Barrio barrio) {
 	}
 
 	@Override
-	public void construirCasa(Propiedad propiedad) {
+	public void construirCasa(Barrio barrio) {
 	}
 
 	@Override
-	public void construirHotel(Propiedad propiedad) {
+	public void construirHotel(Barrio barrio) {
 	}
 
 }

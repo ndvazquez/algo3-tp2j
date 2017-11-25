@@ -1,6 +1,6 @@
 package algopoly.modelos.tablero.propiedad;
 
-public class Casa implements Edificio {
+public class Casa implements Inmueble {
 	
 	private Integer alquiler;
 	private Integer precio;

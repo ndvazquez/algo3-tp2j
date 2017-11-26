@@ -203,9 +203,15 @@ public class Jugador {
 
 	public void fueraDeJuego() {
 		this.estado = new FueraDeJuego();
+		for ( int i = 0; i < this.getCantidadBarrios(); i++) {
+			Barrio elBarrio = this.barrios.get(i);
+			this.venderBarrio(elBarrio);
+		}
+		for ( int i = 0; i < this.getCantidadCompanias(); i++) {
+			Compania laCompania = this.companias.get(i);
+			this.venderCompania(laCompania);
+		}
 		this.capital = 0;
-		this.companias = new ArrayList<>();
-		this.barrios = new ArrayList<>();
 	}
 
 	public Boolean sigoEnJuego() {

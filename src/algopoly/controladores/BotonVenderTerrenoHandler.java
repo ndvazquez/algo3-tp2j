@@ -37,9 +37,7 @@ public class BotonVenderTerrenoHandler implements EventHandler<ActionEvent> {
         }
 
         ArrayList<Barrio> barriosAux = new ArrayList<>();
-        for (Barrio barrio: barrios) {
-            barriosAux.add(barrio);
-        }
+        barriosAux.addAll(barrios);
         ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
         dialog.setTitle("Venta de un barrio");
         dialog.setHeaderText("Elija que barrio quiere vender.");

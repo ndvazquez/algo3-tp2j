@@ -36,10 +36,7 @@ public class BotonVenderCompaniaHandler implements EventHandler<ActionEvent> {
             choices.add(compania.getNombre());
         }
         ArrayList<Compania> companiasAux = new ArrayList<>();
-        for (Compania compania: companias
-             ) {
-            companiasAux.add(compania);
-        }
+        companiasAux.addAll(companias);
         ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
         dialog.setTitle("Venta de una compania");
         dialog.setHeaderText("Elija que compania quiere vender.");

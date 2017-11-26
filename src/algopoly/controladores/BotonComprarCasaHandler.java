@@ -8,6 +8,7 @@ import java.util.Optional;
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Tablero;
 import algopoly.modelos.tablero.casilleros.barrios.Barrio;
+import algopoly.vistas.VistaConsola;
 import algopoly.vistas.VistaInformacion;
 import algopoly.vistas.VistaTablero;
 import javafx.event.ActionEvent;
@@ -19,11 +20,14 @@ public class BotonComprarCasaHandler implements EventHandler<ActionEvent> {
 	private final VistaTablero vista;
 	private final Tablero tablero;
 	private final VistaInformacion vistaInformacion;
+	private final VistaConsola vistaConsola;
 
-	public BotonComprarCasaHandler(VistaTablero vista, Tablero tablero, VistaInformacion vistaInformacion) {
+	public BotonComprarCasaHandler(VistaTablero vista, Tablero tablero,
+								   VistaInformacion vistaInformacion, VistaConsola vistaConsola) {
 		this.vista = vista;
 		this.tablero = tablero;
 		this.vistaInformacion = vistaInformacion;
+		this.vistaConsola = vistaConsola;
 	}
 
 	@Override
@@ -45,10 +49,16 @@ public class BotonComprarCasaHandler implements EventHandler<ActionEvent> {
 		if (result.isPresent()) {
 			for (Barrio barrio : barrios) {
 				if (barrio.getProvincia().name().equals(result.get())) { // compara para ver que barrio eligió
-					barrio.construirCasa();
+					if(barrio.construirCasa()){
+						String nombreJugador = jugador.getNombre();
+						String nombreBarrio = result.get();
+						String mensaje = nombreJugador + " compro una casa en " + nombreBarrio;
+						vistaConsola.update(mensaje);
+					}
 				}
 			}
 		}
+
 
 		vista.update(); // update imagen casa
 		vistaInformacion.update(); // update plata

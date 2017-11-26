@@ -96,7 +96,8 @@ public class ContenedorPrincipal extends BorderPane {
 		
 		Button botonComprarCasa = new Button();
 		botonComprarCasa.setText("Comprar casa");
-		BotonComprarCasaHandler comprarCasaHandler = new BotonComprarCasaHandler(vistaTablero, tablero, vistaInformacion);
+		BotonComprarCasaHandler comprarCasaHandler = new BotonComprarCasaHandler(vistaTablero, tablero, vistaInformacion,
+				vistaConsola);
 		botonComprarCasa.setOnAction(comprarCasaHandler);
 		
 		Button botonComprarHotel = new Button();

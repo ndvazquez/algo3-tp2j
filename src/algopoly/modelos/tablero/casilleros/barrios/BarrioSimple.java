@@ -63,6 +63,7 @@ public class BarrioSimple implements Casillero, Barrio {
 	public Integer getPrecioDeVenta(){
 		return (this.edificio.getPrecio() + this.getPrecio());
 	}
+
 	@Override
 	public void construir(Inmueble edificio) {
     	this.edificio = edificio;
@@ -70,10 +71,12 @@ public class BarrioSimple implements Casillero, Barrio {
     }
 	
 	@Override
-	public void construirCasa() {
+	public boolean construirCasa() {
 		if (this.cantidadEdificios < 1) {
 			this.estado.construirCasa(this);
+			return true;
 		}
+		return false;
 	}
 
 	@Override
@@ -92,7 +95,8 @@ public class BarrioSimple implements Casillero, Barrio {
 	}
 
 	@Override
-	public void construirHotel() {
+	public boolean construirHotel() {
+	    return false;
 	}
 
 	@Override

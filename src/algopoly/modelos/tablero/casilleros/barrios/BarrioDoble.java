@@ -88,22 +88,26 @@ public class BarrioDoble implements Casillero, Barrio {
     }
 
 	@Override
-	public void construirCasa() {
+	public boolean construirCasa() {
 		
 		if ( this.estaCompleta() && this.cantidadEdificios < 2) {
 			this.estado = new BarrioCompleto();
 			this.estado.construirCasa(this);
+			return true;
 		}
+		return false;
 	}
 	
 	@Override
-	public void construirHotel() {
+	public boolean construirHotel() {
 		
 		Barrio barrioComplemento = this.propietario.getBarrio(this.provinciaComplemento);
 		
 		if ( this.cantidadEdificios == 2 && barrioComplemento.cantidadEdificios() == 2 ) {
 			this.estado.construirHotel(this);
+			return true;
 		}
+		return false;
 	}
 
 	@Override

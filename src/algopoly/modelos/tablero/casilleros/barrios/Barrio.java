@@ -24,9 +24,9 @@ public interface Barrio {
 
 	void construir(Inmueble inmueble);
 
-	void construirCasa();
+	boolean construirCasa();
 
-	void construirHotel();
+	boolean construirHotel();
 
 	void resetBarrio();
 }

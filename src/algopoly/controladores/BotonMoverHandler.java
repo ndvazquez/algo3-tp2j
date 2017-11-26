@@ -38,8 +38,10 @@ public class BotonMoverHandler implements EventHandler<ActionEvent> {
                 System.exit(0); 
             }
         }
+        String valorTirada = jugador.getUltimaTirada().toString();
         String nombreJugador = jugador.getNombre();
-        this.vistaConsola.update("Ha jugado: " + nombreJugador);
+        String mensaje = nombreJugador + " tiró " + valorTirada;
+        this.vistaConsola.update(mensaje);
     	this.vista.update();
     	this.vistaDados.update();
     	this.vistaInformacion.update();

@@ -5,12 +5,15 @@ import algopoly.controladores.BotonPagarFianzaHandler;
 import algopoly.controladores.BotonVenderCompaniaHandler;
 import algopoly.controladores.BotonVenderTerrenoHandler;
 import algopoly.modelos.tablero.Tablero;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
@@ -31,6 +34,8 @@ import algopoly.controladores.BotonInformacionHandler;
 import algopoly.controladores.BotonIntercambiarHandler;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ContenedorPrincipal extends BorderPane {
@@ -41,14 +46,17 @@ public class ContenedorPrincipal extends BorderPane {
 	VBox contenedorCentral;
 	VistaDados vistaDados;
 	VistaInformacion vistaInformacion;
+	VistaConsola vistaConsola;
 	MediaPlayer mediaPlayer;
 
 	public ContenedorPrincipal(Stage stage, Tablero tablero) {
+        Label etiqueta = new Label();
+        this.setConsola(etiqueta);
 		this.setMenu(stage);
 		this.setCentro(tablero);
 		this.setInformacionJugadores(tablero);
 		this.setBotonera(tablero);
-		this.setConsola(tablero);
+
 		this.mediaPlayer = new MediaPlayer(new Media(new File("music.wav").toURI().toString()));
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		mediaPlayer.setAutoPlay(true);
@@ -62,7 +70,8 @@ public class ContenedorPrincipal extends BorderPane {
 		
 		Button botonMover = new Button();
 		botonMover.setText("Proximo turno");
-		BotonMoverHandler moveButtonHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados, vistaInformacion);
+		BotonMoverHandler moveButtonHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados,
+                vistaInformacion, vistaConsola);
 		botonMover.setOnAction(moveButtonHandler);
 		
 		Button botonInformacion = new Button();
@@ -147,19 +156,28 @@ public class ContenedorPrincipal extends BorderPane {
 
 	}
 	
-	private void setConsola(Tablero tablero) {
+	private void setConsola(Label etiqueta) {
 
-		Label etiqueta = new Label();
-		etiqueta.setText("consola...");
+		etiqueta.setPrefWidth(500);
+		etiqueta.setText("Consola...");
 		etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
-		etiqueta.setTextFill(Color.WHITE);
+		etiqueta.setTextFill(Color.GREEN);
 
-		VBox contenedorConsola = new VBox(etiqueta);
-		contenedorConsola.setSpacing(10);
-		contenedorConsola.setPadding(new Insets(15));
-		contenedorConsola.setStyle("-fx-background-color: black;");
+        ListView panel = new ListView();
+        panel.setStyle("-fx-background-color: black;");
+        panel.setMaxHeight(100);
+        panel.setPrefHeight(100);
+        panel.getItems().add(etiqueta);
+        panel.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                event.consume();
+            }
+        });
 
-		this.setBottom(contenedorConsola);
+        vistaConsola = new VistaConsola(etiqueta, panel);
+
+        this.setBottom(panel);
 	}
 
 	public BarraDeMenu getBarraDeMenu() {

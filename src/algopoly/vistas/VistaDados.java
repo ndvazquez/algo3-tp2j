@@ -38,8 +38,7 @@ public class VistaDados {
 	        	y = y + 100;
         	}
         }
-        
-        
+
     }
 
 	public void clean() {

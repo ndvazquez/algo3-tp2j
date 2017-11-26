@@ -41,7 +41,6 @@ public class BotonComprarCasaHandler implements EventHandler<ActionEvent> {
 		dialog.setHeaderText("Elija en que barrio desea comprar una casa");
 		dialog.setContentText("Barrios disponibles:");
 
-		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()) {
 			for (Barrio barrio : barrios) {

@@ -13,7 +13,7 @@ public class Jugador {
 
 	public static final double RADIO = 20;
 	
-	private static final Integer CAPITAL_INICIAL = 100000;
+	private static final Integer CAPITAL_INICIAL = 200;
 
 	private String nombre;
 

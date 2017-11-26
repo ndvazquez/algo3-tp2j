@@ -133,7 +133,14 @@ public class Tablero {
 	}
 
 	public boolean terminoLaPartida() {
-		return this.jugadores.size() == 1;
+		return this.jugadores.stream().filter(j -> j.sigoEnJuego()).count() == 1;
+	}
+	
+	public Jugador getGanador() {
+		if (this.terminoLaPartida()) {
+			return this.jugadores.stream().filter(j -> j.sigoEnJuego()).findFirst().get();
+		}
+		return null;
 	}
 	
 	public Casillero obtenerCasilleroSiguiente(Casillero casilleroActual) {

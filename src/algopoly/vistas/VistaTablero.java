@@ -108,7 +108,6 @@ public class VistaTablero {
 						Jugador.RADIO);
 			}
 		}
-		
 	}
 
 	public void clean() {

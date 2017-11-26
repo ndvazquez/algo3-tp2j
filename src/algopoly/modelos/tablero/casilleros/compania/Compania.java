@@ -21,6 +21,11 @@ public abstract class Compania implements Casillero {
 		return jugador.equals(this.propietario);
 	}
 
+	public void setSinPropietario(){
+		this.propietario = null;
+		this.estado = new SinPropietario();
+	}
+
 	public void setPropietario(Jugador jugador) {
 		this.propietario = jugador;
 		this.estado = new ConPropietario();

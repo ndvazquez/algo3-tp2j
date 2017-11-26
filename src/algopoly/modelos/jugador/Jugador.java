@@ -80,6 +80,10 @@ public class Jugador {
 			Barrio propiedadAVender = this.barrios.stream().findFirst().get();
 			this.venderBarrio(propiedadAVender);
 		}
+		while(this.capital - monto < 0 && this.companias.size() > 0){
+			Compania companiaAVender = this.companias.stream().findFirst().get();
+			this.venderCompania(companiaAVender);
+		}
 		this.capital -= monto;
 		if (this.capital < 0) {
 			throw new JugadorSinPlataException();
@@ -127,7 +131,7 @@ public class Jugador {
 
 	public void comprarCompania(Compania compania) {
 		this.pagar(compania.getPrecio());
-		this.companias.add(compania);
+		this.agregarCompania(compania);
 	}
 
 	public void encarcelar() {
@@ -161,11 +165,11 @@ public class Jugador {
 		
 	}
 
-	public void agregarBarrio(Barrio barrio) {
+	private void agregarBarrio(Barrio barrio) {
 		this.barrios.add(barrio);
 	}
 
-	public void quitarBarrio(Barrio barrio) {
+	private void quitarBarrio(Barrio barrio) {
 		this.barrios.remove(barrio);
 	}
 
@@ -173,6 +177,20 @@ public class Jugador {
 		this.quitarBarrio(barrio);
         barrio.setSinPropietario();
 		this.cobrar(barrio.getPrecioDeVenta() -  barrio.getPrecioDeVenta() / 100 * 15);
+	}
+
+	public void venderCompania(Compania compania){
+		this.quitarCompania(compania);
+		compania.setSinPropietario();
+		this.cobrar(compania.getPrecio() - compania.getPrecio() / 100 * 15);
+	}
+
+	private void agregarCompania(Compania compania){
+		this.companias.add(compania);
+	}
+
+	private void quitarCompania(Compania compania){
+		this.companias.remove(compania);
 	}
 
 	public Collection<Barrio> getBarrios() {

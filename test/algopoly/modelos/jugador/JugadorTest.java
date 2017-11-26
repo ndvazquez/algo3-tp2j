@@ -1,5 +1,7 @@
 package algopoly.modelos.jugador;
 
+import algopoly.modelos.tablero.casilleros.compania.Compania;
+import algopoly.modelos.tablero.casilleros.compania.Subte;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -76,8 +78,28 @@ public class JugadorTest {
 		Assert.assertEquals(139500, capitalFinaljugador2);
 		Assert.assertEquals(98000, capitalFinaljugador3);
 
+	}
 
+	@Test
+	public void test04JugadorSeQuedaSinDineroAlPagarAlquilerYVendeSuCompania(){
+		BarrioFactory barrioFactory = new BarrioFactory();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
 
+		BarrioSimple barrioCobrar = barrioFactory.crearBarrioSimple(Provincia.BSAS_NORTE);
+
+		Compania companiaAVender = new Subte();
+
+		barrioCobrar.recibirJugador(jugador2);
+		companiaAVender.recibirJugador(jugador1); // capital jugador1 == 60000;
+
+		for(int i = 0; i < 25; i++){
+			barrioCobrar.recibirJugador(jugador1);
+		}
+
+		int capitalFinalJugador1 = jugador1.getCapital(); //capital jugador1 == 31500
+
+		Assert.assertEquals(31500, capitalFinalJugador1);
 	}
 
 }

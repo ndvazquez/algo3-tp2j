@@ -5,6 +5,9 @@ import algopoly.modelos.jugador.Jugador;
 import algopoly.vistas.VistaConsola;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Alert.AlertType;
 import algopoly.modelos.tablero.Tablero;
 import algopoly.vistas.VistaDados;
 import algopoly.vistas.VistaInformacion;
@@ -34,17 +37,32 @@ public class BotonMoverHandler implements EventHandler<ActionEvent> {
             this.tablero.proximoTurno();
         } catch(JugadorSinPlataException e) {
             this.tablero.eliminarJugador(jugador);
-            if (this.tablero.terminoLaPartida()) {
-                System.exit(0); 
-            }
         }
+
         String valorTirada = jugador.getUltimaTirada().toString();
         String nombreJugador = jugador.getNombre();
         String mensaje = nombreJugador + " tiró " + valorTirada;
+
         this.vistaConsola.update(mensaje);
     	this.vista.update();
     	this.vistaDados.update();
     	this.vistaInformacion.update();
+    	if (this.tablero.terminoLaPartida()) {
+        	this.mostrarGanador();
+        	System.exit(0);
+        }
     }
+
+	private void mostrarGanador() {
+		Jugador j = this.tablero.getGanador();
+		
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Ganador");
+		alert.setHeaderText(j.getNombre() + " ha ganado la partida!!!");
+		
+		DialogPane dp = alert.getDialogPane();
+		dp.getStyleClass().remove("alert");
+		alert.showAndWait();
+	}
 }
 

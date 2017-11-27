@@ -114,6 +114,11 @@ public class BarrioDoble implements Casillero, Barrio {
 	public Integer cantidadEdificios() {
 		return this.cantidadEdificios;
 	}
+	
+	@Override
+	public Inmueble getInmuebleActual() {
+		return this.edificio;
+	}
 
 	@Override
 	public void resetBarrio() {

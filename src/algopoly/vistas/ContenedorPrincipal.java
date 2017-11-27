@@ -60,6 +60,7 @@ public class ContenedorPrincipal extends BorderPane {
 		this.mediaPlayer = new MediaPlayer(new Media(new File("music.wav").toURI().toString()));
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		mediaPlayer.setAutoPlay(true);
+		mediaPlayer.setVolume(0.6);
 
 	}
 

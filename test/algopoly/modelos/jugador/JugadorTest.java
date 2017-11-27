@@ -31,15 +31,15 @@ public class JugadorTest {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 
-		BarrioSimple propiedadCobrar = barrioFactory.crearBarrioSimple(Provincia.BSAS_NORTE);
+		BarrioSimple barrioCobrar = barrioFactory.crearBarrioSimple(Provincia.BSAS_NORTE);
 
-		BarrioSimple propiedadVender = barrioFactory.crearBarrioSimple(Provincia.BSAS_SUR);
+		BarrioSimple barrioVender = barrioFactory.crearBarrioSimple(Provincia.BSAS_SUR);
 
-		propiedadCobrar.recibirJugador(jugador2);
-		propiedadVender.recibirJugador(jugador1);
+		barrioCobrar.recibirJugador(jugador2);
+		barrioVender.recibirJugador(jugador1);
 
 		for(int i = 0; i < 33; i++){
-			propiedadCobrar.recibirJugador(jugador1);
+			barrioCobrar.recibirJugador(jugador1);
 		}
 
 		int capitalFinal = jugador1.getCapital();
@@ -100,6 +100,37 @@ public class JugadorTest {
 		int capitalFinalJugador1 = jugador1.getCapital(); //capital jugador1 == 31500
 
 		Assert.assertEquals(31500, capitalFinalJugador1);
+	}
+	
+	@Test
+	public void test05JugadorSeQuedaFueraDeJuegoSinBarriosSinCompaniasYSinCapital() {
+		BarrioFactory barrioFactory = new BarrioFactory();
+		Jugador jugador1 = new Jugador();
+
+		BarrioSimple barrio1 = barrioFactory.crearBarrioSimple(Provincia.SANTA_FE);
+		barrio1.recibirJugador(jugador1);
+		
+		Compania compania = new Subte();
+		compania.recibirJugador(jugador1);
+		
+		int cantidadBarriosInicial = jugador1.getCantidadBarrios();
+		int cantidadCompaniasInicial = jugador1.getCantidadCompanias();
+		
+		jugador1.fueraDeJuego();
+		
+		int cantidadBarrioFinal = jugador1.getCantidadBarrios();
+		int cantidadCompaniasFinal = jugador1.getCantidadCompanias();
+		
+		int capitalFinal = jugador1.getCapital();
+		
+		Assert.assertEquals(1, cantidadBarriosInicial);
+		Assert.assertEquals(1, cantidadCompaniasInicial);
+		
+		Assert.assertEquals(0, cantidadBarrioFinal);
+		Assert.assertEquals(0, cantidadCompaniasFinal);
+		
+		Assert.assertEquals(0, capitalFinal);
+
 	}
 
 }

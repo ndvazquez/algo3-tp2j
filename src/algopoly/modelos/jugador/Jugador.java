@@ -131,7 +131,7 @@ public class Jugador {
 
 	public void comprarCompania(Compania compania) {
 		this.pagar(compania.getPrecio());
-		this.agregarCompania(compania);
+		this.companias.add(compania);
 	}
 
 	public void encarcelar() {
@@ -146,7 +146,7 @@ public class Jugador {
 		this.estado.pagarFianza();
 	}
 
-	public void intercambiarPropiedad(Barrio barrioACeder, Barrio barrioARecibir, Jugador jugadorQueIntercambia) {
+	public void intercambiarBarrio(Barrio barrioACeder, Barrio barrioARecibir, Jugador jugadorQueIntercambia) {
 		this.quitarBarrio(barrioACeder);
 		jugadorQueIntercambia.quitarBarrio(barrioARecibir);
 		
@@ -180,17 +180,9 @@ public class Jugador {
 	}
 
 	public void venderCompania(Compania compania){
-		this.quitarCompania(compania);
+		this.companias.remove(compania);
 		compania.setSinPropietario();
 		this.cobrar(compania.getPrecio() - compania.getPrecio() / 100 * 15);
-	}
-
-	private void agregarCompania(Compania compania){
-		this.companias.add(compania);
-	}
-
-	private void quitarCompania(Compania compania){
-		this.companias.remove(compania);
 	}
 
 	public Collection<Barrio> getBarrios() {
@@ -203,9 +195,15 @@ public class Jugador {
 
 	public void fueraDeJuego() {
 		this.estado = new FueraDeJuego();
+		for ( int i = 0; i < this.getCantidadBarrios(); i++) {
+			Barrio elBarrio = this.barrios.get(i);
+			this.venderBarrio(elBarrio);
+		}
+		for ( int i = 0; i < this.getCantidadCompanias(); i++) {
+			Compania laCompania = this.companias.get(i);
+			this.venderCompania(laCompania);
+		}
 		this.capital = 0;
-		this.companias = new ArrayList<>();
-		this.barrios = new ArrayList<>();
 	}
 
 	public Boolean sigoEnJuego() {

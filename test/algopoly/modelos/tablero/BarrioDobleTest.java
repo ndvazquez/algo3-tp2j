@@ -258,7 +258,7 @@ public class BarrioDobleTest {
 		buenosAiresNorte.recibirJugador(jugador1);
 		cordobaNorte.recibirJugador(jugador2);
 		
-		jugador1.intercambiarPropiedad(buenosAiresNorte, cordobaNorte, jugador2);
+		jugador1.intercambiarBarrio(buenosAiresNorte, cordobaNorte, jugador2);
 		
 		Integer capitalInicialJugador1 = jugador1.getCapital();
 

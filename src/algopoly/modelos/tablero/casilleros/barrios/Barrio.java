@@ -29,4 +29,6 @@ public interface Barrio {
 	void construirHotel();
 
 	void resetBarrio();
+
+	Inmueble getInmuebleActual();
 }

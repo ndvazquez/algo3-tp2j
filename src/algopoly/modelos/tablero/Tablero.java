@@ -3,6 +3,7 @@ package algopoly.modelos.tablero;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.jugador.Posicion;
@@ -14,6 +15,7 @@ import algopoly.modelos.tablero.casilleros.Policia;
 import algopoly.modelos.tablero.casilleros.Quini6;
 import algopoly.modelos.tablero.casilleros.RetrocesoDinamico;
 import algopoly.modelos.tablero.casilleros.Salida;
+import algopoly.modelos.tablero.casilleros.barrios.Barrio;
 import algopoly.modelos.tablero.casilleros.barrios.BarrioFactory;
 import algopoly.modelos.tablero.casilleros.barrios.Provincia;
 import algopoly.modelos.tablero.casilleros.compania.Aysa;
@@ -85,8 +87,8 @@ public class Tablero {
 		casilleros.add(new ImpuestoDeLujo()); // impuesto
 		casilleros.add(barrioFactory.crearBarrioSimple(Provincia.SANTA_FE)); // santafe
 		casilleros.add(aysa);
-		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.SALTA_SUR, Provincia.SALTA_NORTE)); // salta
 		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.SALTA_NORTE, Provincia.SALTA_SUR));// salta
+		casilleros.add(barrioFactory.crearBarrioDoble(Provincia.SALTA_SUR, Provincia.SALTA_NORTE)); // salta
 		casilleros.add(new Policia(carcel));
 		casilleros.add(tren);
 		casilleros.add(barrioFactory.crearBarrioSimple(Provincia.NEUQUEN));// neuquen
@@ -131,7 +133,14 @@ public class Tablero {
 	}
 
 	public boolean terminoLaPartida() {
-		return this.jugadores.size() == 1;
+		return this.jugadores.stream().filter(j -> j.sigoEnJuego()).count() == 1;
+	}
+	
+	public Jugador getGanador() {
+		if (this.terminoLaPartida()) {
+			return this.jugadores.stream().filter(j -> j.sigoEnJuego()).findFirst().get();
+		}
+		return null;
 	}
 	
 	public Casillero obtenerCasilleroSiguiente(Casillero casilleroActual) {
@@ -154,6 +163,10 @@ public class Tablero {
 		return tablero;
 	}
 
+	public List<Casillero> obtenerBarrios() {
+		return casilleros.stream().filter(c -> Barrio.class.isAssignableFrom(c.getClass())).collect(Collectors.toList());
+	}
+	
 	public static final Posicion SALIDA = new Posicion(200, 200);
 	public static final Posicion QUINI6 = new Posicion(100, 200);
 	public static final Posicion BSAS_SUR = new Posicion(30, 200);
@@ -203,4 +216,5 @@ public class Tablero {
 	public Integer getNumeroDeCasillero(Casillero casilleroActual) {
 		return casilleros.indexOf(casilleroActual);
 	}
+
 }

@@ -8,7 +8,9 @@ import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Tablero;
 
 public class RetrocesoDinamico implements Casillero {
-	
+
+	private static final String NOMBRE = "RETROCESO DINAMICO";
+
 	private Map<Integer, Function<Jugador, Integer>> funciones;
 	
 	public RetrocesoDinamico() {
@@ -23,7 +25,12 @@ public class RetrocesoDinamico implements Casillero {
 			this.funciones.put(i, j -> j.getUltimaTirada() - 2);
 		}
 	}
-	
+
+	@Override
+	public String getNombre(){
+		return NOMBRE;
+	}
+
 	@Override
     public void recibirJugador(Jugador jugador) {
 		Integer cantidadDeMovimientos = this.funciones.get(jugador.getUltimaTirada()).apply(jugador);

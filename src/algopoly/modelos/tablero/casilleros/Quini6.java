@@ -9,6 +9,8 @@ import java.util.Queue;
 
 public class Quini6 implements Casillero {
 
+    private static final String NOMBRE = "QUINI6";
+
     private HashMap<Jugador, Queue<Ticket>> premios;
     
     private Ticket ticketNoPremio;
@@ -28,6 +30,11 @@ public class Quini6 implements Casillero {
 
             this.premios.put(jugador, tickets);
         }
+    }
+
+    @Override
+    public String getNombre(){
+        return NOMBRE;
     }
 
     private void premiarJugador(Jugador jugador){

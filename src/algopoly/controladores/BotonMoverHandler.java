@@ -20,7 +20,7 @@ public class BotonMoverHandler implements EventHandler<ActionEvent> {
     private final VistaDados vistaDados;
     private final VistaInformacion vistaInformacion;
     private final VistaConsola vistaConsola;
-    
+
     public BotonMoverHandler(VistaTablero vista, Tablero tablero, VistaDados vistaDados,
                              VistaInformacion vistaInformacion, VistaConsola vistaConsola) {
         this.vista = vista;
@@ -28,6 +28,7 @@ public class BotonMoverHandler implements EventHandler<ActionEvent> {
         this.vistaDados = vistaDados;
         this.vistaInformacion = vistaInformacion;
         this.vistaConsola = vistaConsola;
+
     }
 
     @Override
@@ -41,7 +42,9 @@ public class BotonMoverHandler implements EventHandler<ActionEvent> {
 
         String valorTirada = jugador.getUltimaTirada().toString();
         String nombreJugador = jugador.getNombre();
-        String mensaje = nombreJugador + " tiró " + valorTirada;
+        String nombreCasillero = jugador.getCasilleroActual().getNombre();
+        String mensaje = String.format("%s tiró %s y cayó en el casillero %s.\n-----------", nombreJugador,
+                valorTirada, nombreCasillero);
 
         this.vistaConsola.update(mensaje);
     	this.vista.update();

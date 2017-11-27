@@ -10,6 +10,8 @@ import algopoly.modelos.tablero.Tablero;
 
 public class AvanceDinamico implements Casillero {
 
+	private static final String NOMBRE = "AVANCE DINAMICO";
+
 	private Map<Integer, Function<Jugador, Integer>> funciones;
 	
 	public AvanceDinamico() {
@@ -24,7 +26,12 @@ public class AvanceDinamico implements Casillero {
 			this.funciones.put(i, j -> j.getUltimaTirada() - j.getCantidadBarrios());
 		}
 	}
-	
+
+	@Override
+	public String getNombre(){
+		return NOMBRE;
+	}
+
 	@Override
     public void recibirJugador(Jugador jugador) {
 		Integer cantidadDeMovimientos = this.funciones.get(jugador.getUltimaTirada()).apply(jugador);

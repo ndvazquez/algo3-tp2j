@@ -22,6 +22,10 @@ public class BarrioSimple implements Casillero, Barrio {
 	}
 
 	@Override
+	public String getNombre(){
+		return this.provincia.name();
+	}
+	@Override
 	public void recibirJugador(Jugador jugador) {
 
 		this.estado.comprarBarrio(jugador, this);

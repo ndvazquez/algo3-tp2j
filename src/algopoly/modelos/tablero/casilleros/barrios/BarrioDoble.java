@@ -24,6 +24,11 @@ public class BarrioDoble implements Casillero, Barrio {
         this.cantidadEdificios = 0;
     }
 
+	@Override
+	public String getNombre(){
+		return this.provincia.name();
+	}
+
     @Override
     public void recibirJugador(Jugador jugador) {
 

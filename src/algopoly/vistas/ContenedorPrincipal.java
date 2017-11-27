@@ -1,9 +1,6 @@
 package algopoly.vistas;
 
-import algopoly.controladores.BotonMoverHandler;
-import algopoly.controladores.BotonPagarFianzaHandler;
-import algopoly.controladores.BotonVenderCompaniaHandler;
-import algopoly.controladores.BotonVenderTerrenoHandler;
+import algopoly.controladores.*;
 import algopoly.modelos.tablero.Tablero;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -28,14 +25,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import algopoly.controladores.BotonComprarCasaHandler;
-import algopoly.controladores.BotonComprarHotelHandler;
-import algopoly.controladores.BotonInformacionHandler;
-import algopoly.controladores.BotonIntercambiarHandler;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class ContenedorPrincipal extends BorderPane {
@@ -56,15 +47,22 @@ public class ContenedorPrincipal extends BorderPane {
 		this.setCentro(tablero);
 		this.setInformacionJugadores(tablero);
 		this.setBotonera(tablero);
-
-		this.mediaPlayer = new MediaPlayer(new Media(new File("music.wav").toURI().toString()));
-		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-		mediaPlayer.setAutoPlay(true);
-		mediaPlayer.setVolume(0.6);
+        this.setReproductor();
 
 	}
 
+	private void setReproductor(){
+        this.mediaPlayer = new MediaPlayer(new Media(new File("music.wav").toURI().toString()));
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.setAutoPlay(true);
+    }
 	private void setBotonera(Tablero tablero) {
+
+        Button botonMusica = new Button();
+        botonMusica.setText("Activar/Desactivar música");
+        BotonSilenciarMusicaHandler botonSilenciarMusicaHandler = new BotonSilenciarMusicaHandler(mediaPlayer);
+        botonMusica.setOnAction(botonSilenciarMusicaHandler);
 
 		Canvas canvasDados = new Canvas(100,200);
 		vistaDados = new VistaDados(tablero, canvasDados);
@@ -82,12 +80,14 @@ public class ContenedorPrincipal extends BorderPane {
 		
 		Button botonVenderTerreno = new Button();
 		botonVenderTerreno.setText("Vender terreno");
-		BotonVenderTerrenoHandler venderTerrenoHandler = new BotonVenderTerrenoHandler(vistaTablero, tablero, vistaInformacion);
+		BotonVenderTerrenoHandler venderTerrenoHandler = new BotonVenderTerrenoHandler(vistaTablero, tablero,
+                vistaInformacion, vistaConsola);
 		botonVenderTerreno.setOnAction(venderTerrenoHandler);
 		
 		Button botonVenderCompania = new Button();
 		botonVenderCompania.setText("Vender compañia");
-		BotonVenderCompaniaHandler venderCompaniaHandler = new BotonVenderCompaniaHandler(vistaTablero, tablero, vistaInformacion);
+		BotonVenderCompaniaHandler venderCompaniaHandler = new BotonVenderCompaniaHandler(vistaTablero, tablero,
+                vistaInformacion, vistaConsola);
 		botonVenderCompania.setOnAction(venderCompaniaHandler);
 		
 		Button botonIntercambiar = new Button();
@@ -110,8 +110,9 @@ public class ContenedorPrincipal extends BorderPane {
 		botonPagarFianza.setText("Pagar fianza");
 		BotonPagarFianzaHandler botonPagarFianzaHandler = new BotonPagarFianzaHandler(vistaTablero, tablero, vistaInformacion);
 		botonPagarFianza.setOnAction(botonPagarFianzaHandler);
-		
-		VBox contenedorVertical = new VBox(botonMover,botonInformacion, botonVenderTerreno, botonVenderCompania, botonIntercambiar, botonComprarCasa, botonComprarHotel, botonPagarFianza, canvasDados);
+
+		VBox contenedorVertical = new VBox(botonMover,botonInformacion, botonVenderTerreno, botonVenderCompania,
+                botonIntercambiar, botonComprarCasa, botonComprarHotel, botonPagarFianza, canvasDados, botonMusica);
 		contenedorVertical.setPadding(new Insets(30));
 		contenedorVertical.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 		contenedorVertical.setSpacing(10);

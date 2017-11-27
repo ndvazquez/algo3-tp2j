@@ -52,7 +52,7 @@ public class BotonComprarCasaHandler implements EventHandler<ActionEvent> {
 					if(barrio.construirCasa()){
 						String nombreJugador = jugador.getNombre();
 						String nombreBarrio = result.get();
-						String mensaje = nombreJugador + " compro una casa en " + nombreBarrio;
+						String mensaje = String.format("%s compró una casa en %s.", nombreJugador, nombreBarrio);
 						vistaConsola.update(mensaje);
 					}
 				}

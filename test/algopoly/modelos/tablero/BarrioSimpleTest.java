@@ -109,7 +109,7 @@ public class BarrioSimpleTest {
 		neuquen.recibirJugador(jugador1);
 		santaFe.recibirJugador(jugador2);
 		
-		jugador1.intercambiarPropiedad(neuquen, santaFe, jugador2);
+		jugador1.intercambiarBarrio(neuquen, santaFe, jugador2);
 		
 		Integer capitalInicialJugador1 = jugador1.getCapital();
 

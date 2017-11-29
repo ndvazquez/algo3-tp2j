@@ -13,6 +13,8 @@ public class BarrioCompleto extends EstadoBarrio {
 		Inmueble edificio = barrio.getProvincia().edificios().get(barrio.cantidadEdificios() + 1);
 		
 		barrio.getPropietario().pagar(edificio.getPrecio() );
+		barrio.getPropietario().setMensajes(String.format("\t%s compró una casa en %s.\n",
+				barrio.getPropietario().getNombre(), barrio.getNombre()));
 		barrio.construir(edificio);
 	}
     

@@ -78,6 +78,7 @@ public class BarrioSimple implements Casillero, Barrio {
 	@Override
 	public boolean construirCasa() {
 		if (this.cantidadEdificios < 1) {
+
 			this.estado.construirCasa(this);
 			return true;
 		}

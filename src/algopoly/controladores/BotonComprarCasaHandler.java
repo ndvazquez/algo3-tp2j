@@ -49,12 +49,7 @@ public class BotonComprarCasaHandler implements EventHandler<ActionEvent> {
 		if (result.isPresent()) {
 			for (Barrio barrio : barrios) {
 				if (barrio.getProvincia().name().equals(result.get())) { // compara para ver que barrio eligió
-					if(barrio.construirCasa()){
-						String nombreJugador = jugador.getNombre();
-						String nombreBarrio = result.get();
-						String mensaje = String.format("%s compró una casa en %s.", nombreJugador, nombreBarrio);
-						vistaConsola.update(mensaje);
-					}
+					barrio.construirCasa();
 				}
 			}
 		}

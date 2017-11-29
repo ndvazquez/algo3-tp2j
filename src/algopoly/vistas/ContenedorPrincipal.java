@@ -161,14 +161,13 @@ public class ContenedorPrincipal extends BorderPane {
 	private void setConsola(Label etiqueta) {
 
 		etiqueta.setPrefWidth(500);
-		etiqueta.setText("Consola...");
 		etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
 		etiqueta.setTextFill(Color.GREEN);
 
         ListView panel = new ListView();
-        panel.setStyle("-fx-background-color: black;");
         panel.setMaxHeight(150);
         panel.setPrefHeight(150);
+        panel.setStyle("-fx-control-inner-background: black;");
         panel.getItems().add(etiqueta);
         panel.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override

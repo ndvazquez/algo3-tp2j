@@ -17,6 +17,7 @@ public class Habilitado implements Estado {
 		for (int i = 0; i < tirada; i++) {
 			jugador.setCasilleroActual(Tablero.obtenerTablero().obtenerCasilleroSiguiente(jugador.getCasilleroActual()));
 		}
+		jugador.setMensajes(String.format("\t%s tiró %d.\n", jugador.getNombre(), tirada));
 		jugador.getCasilleroActual().recibirJugador(jugador);
 	}
 

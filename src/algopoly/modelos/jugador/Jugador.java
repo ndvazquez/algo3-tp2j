@@ -124,6 +124,7 @@ public class Jugador {
     public void setMensajes(String mensajeNuevo){
 	    this.mensajes += mensajeNuevo;
     }
+
 	public void comprarBarrio(Barrio barrio) {
 		this.pagar(barrio.getPrecio());
         this.setMensajes(String.format("\tCompró %s.\n", barrio.getNombre()));
@@ -192,12 +193,14 @@ public class Jugador {
 	}
 
 	public void venderBarrio(Barrio barrio){
+		this.setMensajes(String.format("\t%s vendió %s.\n", this.nombre, barrio.getNombre()));
         this.quitarBarrio(barrio);
         barrio.setSinPropietario();
 		this.cobrar(barrio.getPrecioDeVenta() -  barrio.getPrecioDeVenta() / 100 * 15);
 	}
 
 	public void venderCompania(Compania compania){
+		this.setMensajes(String.format("\t%s vendió %s.\n", this.nombre, compania.getNombre()));
         this.companias.remove(compania);
 		compania.setSinPropietario();
 		this.cobrar(compania.getPrecio() - compania.getPrecio() / 100 * 15);

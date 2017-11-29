@@ -2,6 +2,7 @@ package algopoly.controladores;
 
 import algopoly.modelos.excepciones.JugadorSinPlataException;
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.tablero.casilleros.Carcel;
 import algopoly.vistas.VistaConsola;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -40,11 +41,7 @@ public class BotonMoverHandler implements EventHandler<ActionEvent> {
             this.tablero.eliminarJugador(jugador);
         }
 
-        String valorTirada = jugador.getUltimaTirada().toString();
-        String nombreJugador = jugador.getNombre();
-        String mensajeAux = jugador.getMensajes();
-        String mensaje = String.format("%s tiró %s.\n%s", nombreJugador,
-                valorTirada, mensajeAux);
+        String mensaje = jugador.getMensajes();
 
         this.vistaConsola.update(mensaje);
     	this.vista.update();

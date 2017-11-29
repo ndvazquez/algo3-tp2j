@@ -53,10 +53,6 @@ public class BotonVenderTerrenoHandler implements EventHandler<ActionEvent> {
             for (Barrio barrio : barriosAux) {
                 if (barrio.getProvincia().name().equals(result.get())) { // compara para ver que barrio eligió
                     jugador.venderBarrio(barrio);
-                    String nombreJugador = jugador.getNombre();
-                    String nombreBarrio = barrio.getNombre();
-                    String mensaje = String.format("%s vendió el barrio %s.", nombreJugador, nombreBarrio);
-                    this.vistaConsola.update(mensaje);
                 }
             }
         }

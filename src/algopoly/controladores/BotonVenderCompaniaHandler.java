@@ -52,10 +52,6 @@ public class BotonVenderCompaniaHandler implements EventHandler<ActionEvent> {
             for (Compania compania : companiasAux) {
                 if (compania.getNombre().equals(result.get())) { // compara para ver que compania eligió
                     jugador.venderCompania(compania);
-                    String nombreJugador = jugador.getNombre();
-                    String nombreCompania = compania.getNombre();
-                    String mensaje = String.format("%s vendió la compañía %s.", nombreJugador, nombreCompania);
-                    this.vistaConsola.update(mensaje);
                 }
             }
         }

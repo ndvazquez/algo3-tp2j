@@ -208,4 +208,15 @@ public class Jugador {
 		return !(this.estado.getClass().equals(FueraDeJuego.class));
 	}
 
+	public Barrio getBarrioPorNombre(String nombreBarrio) {
+		
+		for (Barrio barrio : this.barrios) {
+  			if(nombreBarrio.equals(barrio.getProvincia().name())) {
+  				return barrio;
+  			}
+		}
+		
+		return null;
+	}
+
 }

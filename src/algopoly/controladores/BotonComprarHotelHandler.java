@@ -1,10 +1,18 @@
 package algopoly.controladores;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+
+import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Tablero;
+import algopoly.modelos.tablero.casilleros.barrios.Barrio;
 import algopoly.vistas.VistaInformacion;
 import algopoly.vistas.VistaTablero;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.ChoiceDialog;
 
 public class BotonComprarHotelHandler implements EventHandler<ActionEvent> {
 
@@ -20,7 +28,31 @@ public class BotonComprarHotelHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-    	// accion + update vista
+    	Jugador jugador = tablero.jugadorActual();
+		Collection<Barrio> barrios = jugador.getBarrios();
+
+		List<String> choices = new ArrayList<>();
+		for (Barrio barrio : barrios) {
+			choices.add(barrio.getProvincia().name());
+		}
+
+		ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
+		dialog.setTitle("Compra de Hotel");
+		dialog.setHeaderText("Elija en que barrio desea comprar un hotel");
+		dialog.setContentText("Barrios disponibles:");
+
+		// Traditional way to get the response value.
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()) {
+			for (Barrio barrio : barrios) {
+				if (barrio.getProvincia().name().equals(result.get())) { // compara para ver que barrio eligió
+					barrio.construirHotel();
+				}
+			}
+		}
+
+		vista.update(); // update imagen hotel
+		vistaInformacion.update(); // update plata
     }
 
 }

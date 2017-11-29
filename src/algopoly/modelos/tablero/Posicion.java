@@ -1,4 +1,4 @@
-package algopoly.modelos.jugador;
+package algopoly.modelos.tablero;
 
 public class Posicion {
 

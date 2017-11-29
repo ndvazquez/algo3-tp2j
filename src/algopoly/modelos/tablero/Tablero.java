@@ -6,7 +6,6 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import algopoly.modelos.jugador.Jugador;
-import algopoly.modelos.jugador.Posicion;
 import algopoly.modelos.tablero.casilleros.AvanceDinamico;
 import algopoly.modelos.tablero.casilleros.Carcel;
 import algopoly.modelos.tablero.casilleros.Casillero;

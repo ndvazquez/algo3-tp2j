@@ -265,9 +265,7 @@ public class BarrioDobleTest {
 		cordobaNorte.recibirJugador(jugador3);
 		
 		Integer capitalFinalJugador1 = jugador1.getCapital();
-		Integer alquilerSantaFe = cordobaNorte.getPrecioAlquiler();
 		
-		Assert.assertEquals(capitalFinalJugador1.intValue(), capitalInicialJugador1 + alquilerSantaFe);
-	}
-    
+		Assert.assertEquals(capitalFinalJugador1.intValue(), capitalInicialJugador1 + 1300);
+    }
 }

@@ -67,7 +67,7 @@ public class ContenedorPrincipal extends BorderPane {
 		vistaDados = new VistaDados(tablero, canvasDados);
 		
 		Button botonMover = new Button();
-		botonMover.setText("Proximo turno");
+		botonMover.setText("Próximo turno");
 		BotonMoverHandler moveButtonHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados,
                 vistaInformacion, vistaConsola);
 		botonMover.setOnAction(moveButtonHandler);
@@ -160,7 +160,7 @@ public class ContenedorPrincipal extends BorderPane {
 	
 	private void setConsola(Label etiqueta) {
 
-		etiqueta.setPrefWidth(500);
+		etiqueta.setPrefWidth(1000);
 		etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
 		etiqueta.setTextFill(Color.GREEN);
 

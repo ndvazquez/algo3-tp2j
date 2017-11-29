@@ -1,5 +1,7 @@
 package algopoly.modelos.tablero.casilleros.barrios;
 
+import algopoly.modelos.jugador.Jugador;
+
 public class Hotel implements Inmueble {
 	
 	private Integer alquiler;
@@ -9,14 +11,17 @@ public class Hotel implements Inmueble {
 		this.alquiler = alquiler;
 		this.precio = precio;
 	}
-	
-	@Override
-	public Integer getAlquiler() {
-		return this.alquiler;
-	}
-	
+
 	@Override
 	public Integer getPrecio() {
 		return this.precio;
+	}
+
+	@Override
+	public void cobrarAlquiler(Jugador propietario, Jugador jugador) {
+		jugador.pagar(this.alquiler);
+		propietario.cobrar(this.alquiler);
+		jugador.setMensajes(String.format("\t%s pagó %d a %s.\n", jugador.getNombre(), this.alquiler,
+				propietario.getNombre()));
 	}
 }

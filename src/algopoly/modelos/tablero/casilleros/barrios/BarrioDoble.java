@@ -64,11 +64,6 @@ public class BarrioDoble implements Casillero, Barrio {
         return this.provincia.precio();
     }
 
-    @Override 
-    public Integer getPrecioAlquiler() {
-    	return this.edificio.getAlquiler();
-    }
-
     @Override
 	public Integer getPrecioDeVenta(){
 		return (this.edificio.getPrecio() + this.getPrecio());

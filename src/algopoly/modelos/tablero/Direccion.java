@@ -1,4 +1,4 @@
-package algopoly.modelos.jugador;
+package algopoly.modelos.tablero;
 
 import java.util.ArrayList;
 

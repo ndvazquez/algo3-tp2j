@@ -34,6 +34,8 @@ public class RetrocesoDinamico implements Casillero {
 	@Override
     public void recibirJugador(Jugador jugador) {
 		Integer cantidadDeMovimientos = this.funciones.get(jugador.getUltimaTirada()).apply(jugador);
+        jugador.setMensajes(String.format("\tCayó en el casillero %s y retrocede %d posiciones.\n", NOMBRE,
+                cantidadDeMovimientos));
 		if (cantidadDeMovimientos <= 0) {
 			return;
 		}
@@ -42,8 +44,6 @@ public class RetrocesoDinamico implements Casillero {
 			proximoCasillero = Tablero.obtenerTablero().obtenerCasilleroAnterior(proximoCasillero);
 		}
 		jugador.setCasilleroActual(proximoCasillero);
-		jugador.setMensajes(String.format("\tCayó en el casillero %s y retrocede %d posiciones.\n", NOMBRE,
-				cantidadDeMovimientos));
 		proximoCasillero.recibirJugador(jugador);
     }
 	

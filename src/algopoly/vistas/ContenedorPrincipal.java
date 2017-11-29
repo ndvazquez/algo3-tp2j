@@ -81,7 +81,7 @@ public class ContenedorPrincipal extends BorderPane {
 		botonVenderCompania.setOnAction(venderCompaniaHandler);
 		
 		Button botonIntercambiar = new Button();
-		botonIntercambiar.setText("Intercambiar propiedad");
+		botonIntercambiar.setText("Intercambiar barrio");
 		BotonIntercambiarHandler intercambiarHandler = new BotonIntercambiarHandler(vistaTablero, tablero, vistaInformacion);
 		botonIntercambiar.setOnAction(intercambiarHandler);
 		

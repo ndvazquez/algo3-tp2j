@@ -46,11 +46,11 @@ public class BotonIntercambiarHandler implements EventHandler<ActionEvent> {
     	botonAceptar.setText("Aceptar");
     	botonAceptar.setDisable(true);
     	
-    	ChoiceBox<String> propiedadesDeEsteJugador = new ChoiceBox<>();
+    	ChoiceBox<String> barriosDeEsteJugador = new ChoiceBox<>();
     	ChoiceBox<String> oponentesDeEsteJugador = new ChoiceBox<>();
-    	ChoiceBox<String> propiedadesDelOponente = new ChoiceBox<>();
+    	ChoiceBox<String> barriosDelOponente = new ChoiceBox<>();
     	
-    	/** Seleccion de Propiedades del Jugador Actual **/
+    	/** Seleccion de Barrios del Jugador Actual **/
 		Collection<Barrio> barrios = jugador.getBarrios();
 		List<String> propsDeEsteJugador = new ArrayList<>();
 		
@@ -58,16 +58,16 @@ public class BotonIntercambiarHandler implements EventHandler<ActionEvent> {
 			propsDeEsteJugador.add(barrio.getProvincia().name());
 		}
 		
-		propiedadesDeEsteJugador.getItems().addAll(propsDeEsteJugador);
+		barriosDeEsteJugador.getItems().addAll(propsDeEsteJugador);
 		
 		
 		/** Si es el ultimo campo que completo, habilitar el boton Aceptar **/
 		
-		propiedadesDeEsteJugador.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+		barriosDeEsteJugador.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 		      @Override
 		      public void changed(ObservableValue<? extends String> observableValue, String nombrePorDefecto, String nombreSeleccionado) {
 		    	  
-		    	if(oponentesDeEsteJugador.getValue() != null && propiedadesDelOponente != null) {
+		    	if(oponentesDeEsteJugador.getValue() != null && barriosDelOponente != null) {
 		    		botonAceptar.setDisable(false);
 		    	}
 		      }
@@ -87,7 +87,7 @@ public class BotonIntercambiarHandler implements EventHandler<ActionEvent> {
 		oponentesDeEsteJugador.getItems().addAll(nombresDeOponentes);
 		
 		
-		/** Seleccion de propiedad del Oponente - si es el ultimo campo que completo, habilitar el boton Aceptar **/
+		/** Seleccion de barrio del Oponente - si es el ultimo campo que completo, habilitar el boton Aceptar **/
 		
 		oponentesDeEsteJugador.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 		      @Override
@@ -95,7 +95,7 @@ public class BotonIntercambiarHandler implements EventHandler<ActionEvent> {
 		    	  
 		    	Jugador oponente = tablero.getJugadorPorNombre(nombreSeleccionado);
 		    	
-		    	propiedadesDelOponente.getItems().removeAll(propiedadesDelOponente.getItems());
+		    	barriosDelOponente.getItems().removeAll(barriosDelOponente.getItems());
 		    	  
 		    	Collection<Barrio> barrios = oponente.getBarrios();
 		  		List<String> propsDelOponente = new ArrayList<>();
@@ -104,9 +104,9 @@ public class BotonIntercambiarHandler implements EventHandler<ActionEvent> {
 		  			propsDelOponente.add(barrio.getProvincia().name());
 		  		}
 		  		
-		  		propiedadesDelOponente.getItems().addAll(propsDelOponente);
+		  		barriosDelOponente.getItems().addAll(propsDelOponente);
 		  		
-		  		if(propiedadesDeEsteJugador.getValue() != null && propiedadesDelOponente.getValue() != null) {
+		  		if(barriosDeEsteJugador.getValue() != null && barriosDelOponente.getValue() != null) {
 		    		botonAceptar.setDisable(false);
 		  		}
 		      }
@@ -114,11 +114,11 @@ public class BotonIntercambiarHandler implements EventHandler<ActionEvent> {
 		
 		/** Si es el ultimo campo que completo, habilitar el boton Aceptar **/
 		
-		propiedadesDelOponente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+		barriosDelOponente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 		      @Override
 		      public void changed(ObservableValue<? extends String> observableValue, String nombrePorDefecto, String nombreSeleccionado) {
 		    	  
-		    	if(propiedadesDeEsteJugador.getValue() != null && oponentesDeEsteJugador != null) {
+		    	if(barriosDeEsteJugador.getValue() != null && oponentesDeEsteJugador != null) {
 		    		botonAceptar.setDisable(false);
 		    	}
 		      }
@@ -129,16 +129,16 @@ public class BotonIntercambiarHandler implements EventHandler<ActionEvent> {
 		/** Set up de la ventana **/
     	
     	Stage stage = new Stage();
-    	stage.setTitle("Intercambiar Propiedad");
+    	stage.setTitle("Intercambiar Barrio");
     	
     	GridPane grid = new GridPane();
     	grid.setPadding(new Insets(10, 10, 10, 10));
     	grid.setVgap(8);
     	grid.setHgap(10);
     	
-    	Label elegirPropEsteJugador = new Label("Elija una propidad a intercambiar:");
+    	Label elegirPropEsteJugador = new Label("Elija un barrio a intercambiar:");
     	Label elegirOtroJugador = new Label("Elija un jugador con quien hacer el intercambio:");
-    	Label elegirPropOtroJugador = new Label("Elija una propiedad a recibir en el intercambio:");
+    	Label elegirPropOtroJugador = new Label("Elija un barrio a recibir en el intercambio:");
     	
     	
     	
@@ -148,9 +148,9 @@ public class BotonIntercambiarHandler implements EventHandler<ActionEvent> {
     		@Override
     		public void handle(ActionEvent event) {
     			
-    			String nombreBarrioACeder = propiedadesDeEsteJugador.getValue();
+    			String nombreBarrioACeder = barriosDeEsteJugador.getValue();
     			String nombreJugadorQueIntercambia = oponentesDeEsteJugador.getValue();
-    			String nombreBarrioARecibir = propiedadesDelOponente.getValue();
+    			String nombreBarrioARecibir = barriosDelOponente.getValue();
     			
     			Barrio barrioACeder = jugador.getBarrioPorNombre(nombreBarrioACeder);
     			Jugador jugadorQueIntercambia = tablero.getJugadorPorNombre(nombreJugadorQueIntercambia);
@@ -178,26 +178,26 @@ public class BotonIntercambiarHandler implements EventHandler<ActionEvent> {
     	
     	/** Mas Setup **/
     	
-    	propiedadesDeEsteJugador.setMaxWidth(Double.MAX_VALUE);
+    	barriosDeEsteJugador.setMaxWidth(Double.MAX_VALUE);
     	oponentesDeEsteJugador.setMaxWidth(Double.MAX_VALUE);
-    	propiedadesDelOponente.setMaxWidth(Double.MAX_VALUE);
+    	barriosDelOponente.setMaxWidth(Double.MAX_VALUE);
     	botonAceptar.setMaxWidth(Double.MAX_VALUE);
     	
     	
     	GridPane.setConstraints(elegirPropEsteJugador, 0, 0);
-    	GridPane.setConstraints(propiedadesDeEsteJugador, 1, 0);
+    	GridPane.setConstraints(barriosDeEsteJugador, 1, 0);
     	GridPane.setConstraints(elegirOtroJugador, 0, 1);
     	GridPane.setConstraints(oponentesDeEsteJugador, 1, 1);
     	GridPane.setConstraints(elegirPropOtroJugador, 0, 2);
-    	GridPane.setConstraints(propiedadesDelOponente, 1, 2);
+    	GridPane.setConstraints(barriosDelOponente, 1, 2);
     	GridPane.setConstraints(botonAceptar, 0, 4, 1, 1, HPos.CENTER, VPos.BOTTOM);
     	
     	grid.getChildren().addAll(elegirPropEsteJugador, 
-    			propiedadesDeEsteJugador,
+    			barriosDeEsteJugador,
     			elegirOtroJugador,
     			oponentesDeEsteJugador,
     			elegirPropOtroJugador,
-    			propiedadesDelOponente,
+    			barriosDelOponente,
     			botonAceptar);
     	
     	Scene scene = new Scene(grid, 500, 150);

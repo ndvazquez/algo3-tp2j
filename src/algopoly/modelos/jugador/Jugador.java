@@ -181,6 +181,8 @@ public class Jugador {
 		
 		this.agregarBarrio(barrioARecibir);
 		jugadorQueIntercambia.agregarBarrio(barrioACeder);
+		this.setMensajes(String.format("\t%s intercambió %s por %s con %s.\n", this.nombre, barrioACeder.getNombre(),
+				barrioARecibir.getNombre(), jugadorQueIntercambia.getNombre()));
 		
 	}
 
@@ -229,6 +231,17 @@ public class Jugador {
 
 	public Boolean sigoEnJuego() {
 		return !(this.estado.getClass().equals(FueraDeJuego.class));
+	}
+
+	public Barrio getBarrioPorNombre(String nombreBarrio) {
+		
+		for (Barrio barrio : this.barrios) {
+  			if(nombreBarrio.equals(barrio.getProvincia().name())) {
+  				return barrio;
+  			}
+		}
+		
+		return null;
 	}
 
 }

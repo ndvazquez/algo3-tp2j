@@ -221,4 +221,15 @@ public class Tablero {
 		return casilleros.indexOf(casilleroActual);
 	}
 
+	public Jugador getJugadorPorNombre(String nombreSeleccionado) {
+		
+		for (Jugador jugador : this.jugadores) {
+  			if(nombreSeleccionado.equals(jugador.getNombre())) {
+  				return jugador;
+  			}
+		}
+		
+		return null;
+	}
+
 }

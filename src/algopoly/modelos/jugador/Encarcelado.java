@@ -17,8 +17,9 @@ public class Encarcelado implements Estado {
 	public void iniciarTurno() {
 		this.turnosEnCarcel++;
 		jugador.tirar();
-		if(this.turnosEnCarcel == 3) {
+		if(this.turnosEnCarcel == 4) {
 			this.jugador.habilitar();
+			this.jugador.iniciarTurno();
 		}
 	}
 

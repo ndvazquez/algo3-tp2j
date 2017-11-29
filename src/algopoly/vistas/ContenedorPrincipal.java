@@ -61,7 +61,7 @@ public class ContenedorPrincipal extends BorderPane {
 		vistaDados = new VistaDados(tablero, canvasDados);
 		
 		Button botonMover = new Button();
-		botonMover.setText("Proximo turno");
+		botonMover.setText("Próximo turno");
 		BotonMoverHandler moveButtonHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados, vistaInformacion);
 		botonMover.setOnAction(moveButtonHandler);
 		

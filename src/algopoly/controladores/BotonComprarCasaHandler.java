@@ -13,6 +13,7 @@ import algopoly.vistas.VistaInformacion;
 import algopoly.vistas.VistaTablero;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
 
 public class BotonComprarCasaHandler implements EventHandler<ActionEvent> {
@@ -40,6 +41,9 @@ public class BotonComprarCasaHandler implements EventHandler<ActionEvent> {
 			choices.add(barrio.getProvincia().name());
 		}
 
+		ArrayList<Barrio> barriosAux = new ArrayList<>();
+		barriosAux.addAll(barrios);
+
 		ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
 		dialog.setTitle("Compra de casa");
 		dialog.setHeaderText("Elija en que barrio desea comprar una casa");
@@ -47,9 +51,19 @@ public class BotonComprarCasaHandler implements EventHandler<ActionEvent> {
 
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()) {
-			for (Barrio barrio : barrios) {
+			for (Barrio barrio : barriosAux) {
 				if (barrio.getProvincia().name().equals(result.get())) { // compara para ver que barrio eligió
-					barrio.construirCasa();
+					String mensaje = barrio.construirCasa() ?
+							"La casa fue comprada exitosamente." : "No se puede edificar.";
+
+					Alert alert = new Alert(Alert.AlertType.INFORMATION);
+					alert.setTitle("CompraCasa");
+					alert.setHeaderText("Comprar Casa");
+					alert.setContentText(mensaje);
+
+					alert.showAndWait();
+
+
 				}
 			}
 		}

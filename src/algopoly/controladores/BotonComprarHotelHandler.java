@@ -38,7 +38,7 @@ public class BotonComprarHotelHandler implements EventHandler<ActionEvent> {
 
 		ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
 		dialog.setTitle("Compra de Hotel");
-		dialog.setHeaderText("Elija en qué barrio desea comprar un hotel");
+		dialog.setHeaderText("Elija en que barrio desea comprar un hotel");
 		dialog.setContentText("Barrios disponibles:");
 
 		// Traditional way to get the response value.

@@ -39,7 +39,7 @@ public abstract class Compania implements Casillero {
 		return this.precio;
 	}
 
-	public static boolean tienenMismoDueño(Compania compania1, Compania compania2) {
+	public static boolean tienenMismoDuenio(Compania compania1, Compania compania2) {
 		if (compania1 == null || compania2 == null) {
 			return false;
 		}

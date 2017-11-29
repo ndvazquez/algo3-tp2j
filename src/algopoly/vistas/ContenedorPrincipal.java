@@ -46,8 +46,8 @@ public class ContenedorPrincipal extends BorderPane {
 		this.setMenu(stage);
 		this.setCentro(tablero);
 		this.setInformacionJugadores(tablero);
+		this.setReproductor();
 		this.setBotonera(tablero);
-        this.setReproductor();
 
 	}
 

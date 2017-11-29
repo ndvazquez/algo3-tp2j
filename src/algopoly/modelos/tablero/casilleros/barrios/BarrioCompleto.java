@@ -22,6 +22,8 @@ public class BarrioCompleto extends EstadoBarrio {
 	public void construirHotel(Barrio barrio) {
 		Inmueble edificio = barrio.getProvincia().hotel();
 		barrio.getPropietario().pagar(edificio.getPrecio() );
+		barrio.getPropietario().setMensajes(String.format("\t%s compró un hotel en %s.\n",
+				barrio.getPropietario().getNombre(), barrio.getNombre()));
 		barrio.construir(edificio);
 	}
 

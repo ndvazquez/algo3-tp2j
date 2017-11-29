@@ -32,6 +32,7 @@ public class Encarcelado implements Estado {
 	public void pagarFianza() {
 		if(turnosEnCarcel > 1) {
 			jugador.pagar(Carcel.FIANZA);
+			jugador.setMensajes(String.format("\t%s pagó la fianza.\n", jugador.getNombre()));
 			jugador.habilitar();
 		}
 	}

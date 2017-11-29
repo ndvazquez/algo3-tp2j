@@ -24,15 +24,15 @@ public class BotonPagarFianzaHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-Jugador jugador = tablero.jugadorActual();
+		Jugador jugador = tablero.jugadorActual();
     	
     	Integer capital = jugador.getCapital();
     	
     	if(capital >= Carcel.FIANZA) {
     		jugador.pagarFianza();
-    		
+
     		Integer nuevoCapital = jugador.getCapital();
-    		
+
     		if(capital != nuevoCapital) {
     			Alert alert = new Alert(AlertType.INFORMATION);
         		alert.setTitle("Pagar Fianza");

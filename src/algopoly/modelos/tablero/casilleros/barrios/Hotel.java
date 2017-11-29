@@ -21,5 +21,7 @@ public class Hotel implements Inmueble {
 	public void cobrarAlquiler(Jugador propietario, Jugador jugador) {
 		jugador.pagar(this.alquiler);
 		propietario.cobrar(this.alquiler);
+		jugador.setMensajes(String.format("\t%s pagó %d a %s.\n", jugador.getNombre(), this.alquiler,
+				propietario.getNombre()));
 	}
 }

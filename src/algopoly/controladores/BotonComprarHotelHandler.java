@@ -12,6 +12,7 @@ import algopoly.vistas.VistaInformacion;
 import algopoly.vistas.VistaTablero;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
 
 public class BotonComprarHotelHandler implements EventHandler<ActionEvent> {
@@ -36,6 +37,9 @@ public class BotonComprarHotelHandler implements EventHandler<ActionEvent> {
 			choices.add(barrio.getProvincia().name());
 		}
 
+		ArrayList<Barrio> barriosAux = new ArrayList<>();
+		barriosAux.addAll(barrios);
+
 		ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
 		dialog.setTitle("Compra de Hotel");
 		dialog.setHeaderText("Elija en que barrio desea comprar un hotel");
@@ -44,9 +48,17 @@ public class BotonComprarHotelHandler implements EventHandler<ActionEvent> {
 		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()) {
-			for (Barrio barrio : barrios) {
+			for (Barrio barrio : barriosAux) {
 				if (barrio.getProvincia().name().equals(result.get())) { // compara para ver que barrio eligió
-					barrio.construirHotel();
+					String mensaje = barrio.construirHotel() ?
+							"El hotel fue comprado exitosamente." : "No se puede edificar.";
+
+					Alert alert = new Alert(Alert.AlertType.INFORMATION);
+					alert.setTitle("CompraHotel");
+					alert.setHeaderText("Comprar Hotel");
+					alert.setContentText(mensaje);
+
+					alert.showAndWait();
 				}
 			}
 		}

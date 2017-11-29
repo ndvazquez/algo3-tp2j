@@ -3,6 +3,7 @@ package algopoly.controladores;
 import algopoly.modelos.jugador.Jugador;
 import algopoly.modelos.tablero.Tablero;
 import algopoly.modelos.tablero.casilleros.compania.Compania;
+import algopoly.vistas.VistaConsola;
 import algopoly.vistas.VistaInformacion;
 import algopoly.vistas.VistaTablero;
 import javafx.event.ActionEvent;
@@ -19,11 +20,14 @@ public class BotonVenderCompaniaHandler implements EventHandler<ActionEvent> {
     private final VistaTablero vista;
     private final Tablero tablero;
     private final VistaInformacion vistaInformacion;
+    private final VistaConsola vistaConsola;
     
-    public BotonVenderCompaniaHandler(VistaTablero vista, Tablero tablero, VistaInformacion vistaInformacion) {
+    public BotonVenderCompaniaHandler(VistaTablero vista, Tablero tablero, VistaInformacion vistaInformacion,
+                                      VistaConsola vistaConsola) {
         this.vista = vista;
         this.tablero = tablero;
         this.vistaInformacion = vistaInformacion;
+        this.vistaConsola = vistaConsola;
     }
 
     @Override
@@ -37,6 +41,7 @@ public class BotonVenderCompaniaHandler implements EventHandler<ActionEvent> {
         }
         ArrayList<Compania> companiasAux = new ArrayList<>();
         companiasAux.addAll(companias);
+
         ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
         dialog.setTitle("Venta de una compania");
         dialog.setHeaderText("Elija que compania quiere vender.");

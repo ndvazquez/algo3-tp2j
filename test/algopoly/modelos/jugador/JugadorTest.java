@@ -130,6 +130,7 @@ public class JugadorTest {
 		Assert.assertEquals(0, cantidadCompaniasFinal);
 		
 		Assert.assertEquals(0, capitalFinal);
+
 	}
 
 }

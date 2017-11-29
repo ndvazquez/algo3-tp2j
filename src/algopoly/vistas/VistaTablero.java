@@ -37,6 +37,7 @@ public class VistaTablero {
 		dibujarRobot(jugadores.get(2), Color.FUCHSIA, 220, 260, 260, 220);
 		
 		dibujarCasas();
+
 	}
 
 	private void dibujarCasas() {

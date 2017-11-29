@@ -1,9 +1,11 @@
 package algopoly.modelos.tablero.casilleros.barrios;
 
+import algopoly.modelos.jugador.Jugador;
+
 public interface Inmueble {
 
 	Integer getPrecio();
-	
-	Integer getAlquiler();
+
+	void cobrarAlquiler(Jugador propietario, Jugador jugador);
 
 }

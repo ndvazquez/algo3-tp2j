@@ -8,8 +8,6 @@ public interface Barrio {
 	
 	Integer getPrecio();
 
-	Integer getPrecioAlquiler();
-
 	Integer getPrecioDeVenta();
 
 	void setSinPropietario();

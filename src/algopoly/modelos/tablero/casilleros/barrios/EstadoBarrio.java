@@ -8,9 +8,7 @@ public abstract class EstadoBarrio {
 
 	void pagarAlquiler(Jugador jugador, Barrio barrio) {
 		if (! barrio.getPropietario().equals(jugador)) {
-			int monto = barrio.getPrecioAlquiler();
-			jugador.pagar(monto);
-			barrio.getPropietario().cobrar(monto);
+			barrio.getInmuebleActual().cobrarAlquiler(barrio.getPropietario(), jugador);
 		}
 	}
 

@@ -33,7 +33,7 @@ public class CarcelTest {
 
 	
 	@Test
-	public void test02JugadorCaeEnCarcelYAPartirDelSegundoTurnoPuedePagarUnaFianzaYLuegoPuedeMoverse() {
+	public void test02JugadorCaeEnCarcelYAPartirDelSegundoTurnoPuedePagarUnaFianzaLuegoTiraLosDadosYLaTiradaNoEsNula() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = tablero.jugadorActual();
 		Carcel carcel = new Carcel();
@@ -45,13 +45,9 @@ public class CarcelTest {
 		
 		jugador.pagarFianza();
 		
-		Casillero posicionActual = jugador.getCasilleroActual();
+		Integer resultado = jugador.tirar();
 		
-		jugador.iniciarTurno();
-		
-		Casillero posicionNueva = jugador.getCasilleroActual();
-		
-		Assert.assertNotEquals(posicionActual, posicionNueva);
+		Assert.assertTrue(resultado > 0 && resultado < 13);
 	}
 
 	@Test(expected = JugadorSinPlataException.class)
@@ -72,7 +68,7 @@ public class CarcelTest {
 	/* Tests Complementarios */
 	
 	@Test
-	public void test04JugadorEncarceladoQuedaHabilitadoLuegoDeCuatroTurnosLuegoPuedeMoverse() {
+	public void test04JugadorEncarceladoQuedaHabilitadoLuegoDeCuatroTurnosLuegoTiraLosDadosYLaTiradaNoEsNula() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = tablero.jugadorActual();
 		Carcel carcel = new Carcel();
@@ -84,11 +80,9 @@ public class CarcelTest {
 			jugador.iniciarTurno();
 		}
 		
-		Casillero posicionActual = jugador.getCasilleroActual();
-		jugador.iniciarTurno();
-		Casillero posicionNueva = jugador.getCasilleroActual();
+		Integer resultado = jugador.tirar();
 		
-		Assert.assertNotEquals(posicionActual, posicionNueva);
+		Assert.assertTrue(resultado > 0 && resultado < 13);
 	}
 	
 	@Test
@@ -128,7 +122,7 @@ public class CarcelTest {
 	}
 	
 	@Test
-	public void test07PagarFianzaLiberaAlJugadorQueSalioDeLaCarcelEsperandoCuatroTurnos() {
+	public void test07PagarFianzaLiberaAlJugadorQueSalioDeLaCarcelEsperandoCuatroTurnosLuegoTiraLosDadosYLaTiradaNoEsNula() {
 
 		Tablero tablero = new Tablero();
 		Jugador jugador = tablero.jugadorActual();
@@ -149,16 +143,14 @@ public class CarcelTest {
 		
 		jugador.pagarFianza();
 		
-		Casillero posicionActual = jugador.getCasilleroActual();
-		jugador.iniciarTurno();
-		Casillero posicionNueva = jugador.getCasilleroActual();
+		Integer resultado = jugador.tirar();
 		
-		Assert.assertNotEquals(posicionActual, posicionNueva);
+		Assert.assertTrue(resultado > 0 && resultado < 13);
 		
 	}
 	
 	@Test
-	public void test08EsperarCuatroTurnosLiberaJugadorQueSalioDeLaCarcelPagandoFianza() {
+	public void test08EsperarCuatroTurnosLiberaJugadorQueSalioDeLaCarcelPagandoFianzaLuegoTiraLosDadosYLaTiradaNoEsNula() {
 
 		Tablero tablero = new Tablero();
 		Jugador jugador = tablero.jugadorActual();		Carcel carcel = new Carcel();
@@ -175,10 +167,8 @@ public class CarcelTest {
 			jugador.iniciarTurno();
 		}
 		
-		Casillero posicionActual = jugador.getCasilleroActual();
-		jugador.iniciarTurno();
-		Casillero posicionNueva = jugador.getCasilleroActual();
+		Integer resultado = jugador.tirar();
 		
-		Assert.assertNotEquals(posicionActual, posicionNueva);
+		Assert.assertTrue(resultado > 0 && resultado < 13);
 	}
 }

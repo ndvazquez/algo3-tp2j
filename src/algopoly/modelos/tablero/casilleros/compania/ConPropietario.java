@@ -8,7 +8,7 @@ public class ConPropietario implements Estado {
 	public void recibirJugador(Jugador jugador, Compania compania) {
 		Integer impuesto = compania.impuesto;
 		
-		impuesto = Compania.tienenMismoDueÃ±o(compania, compania.companiaPar) ? compania.impuestoDoble : impuesto;
+		impuesto = Compania.tienenMismoDueño(compania, compania.companiaPar) ? compania.impuestoDoble : impuesto;
 		impuesto = jugador.equals(compania.propietario) ? 0 : impuesto;
 		
 		jugador.pagar((jugador.getUltimaTirada() * impuesto));

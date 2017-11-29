@@ -6,7 +6,6 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import algopoly.modelos.jugador.Jugador;
-import algopoly.modelos.jugador.Posicion;
 import algopoly.modelos.tablero.casilleros.AvanceDinamico;
 import algopoly.modelos.tablero.casilleros.Carcel;
 import algopoly.modelos.tablero.casilleros.Casillero;
@@ -31,6 +30,7 @@ public class Tablero {
 	public static Tablero tablero = new Tablero();
 	private Integer turnoActual;
 	private Integer turnosJugados;
+	private Jugador ultimoJugador;
 
 	public Tablero() {
 		jugadores = new ArrayList<>();
@@ -103,22 +103,26 @@ public class Tablero {
 	}
 
 	public Jugador jugadorAnterior() {
-		int posicion = 0;
-		if (!this.turnoActual.equals(0)) { 
-			posicion = ((this.turnoActual - 1) % this.jugadores.size());
-		} else {
-			posicion = this.jugadores.size()-1;
-		}
-		return this.jugadores.get(posicion);
+		return this.ultimoJugador;
 	}
 
 	public void proximoTurno() {
 		Jugador jugador = this.jugadorActual();
+
+		this.ultimoJugador = jugador;
 		if (jugador.sigoEnJuego()) {
 			jugador.iniciarTurno();
 			this.turnosJugados++;
 		}
-		if (jugador.getUltimaTirada().equals(0) || !jugador.sacoDoble() || this.turnosJugados.equals(2) ||!jugador.sigoEnJuego()) {
+		
+		if (jugador.getUltimaTirada().equals(0) || !jugador.sacoDoble() || this.turnosJugados.equals(2) 
+				|| jugador.getCasilleroActual().equals(obtenerCasillero(CARCEL))) {
+			this.turnoActual = (this.turnoActual + 1) % this.jugadores.size();
+			this.turnosJugados = 0;
+		}
+		
+		// si el proximo jugador esta fuera de juego, se adelanta un turno más hasta encontrar uno no fuera de juego
+		while (!this.jugadorActual().sigoEnJuego()) {
 			this.turnoActual = (this.turnoActual + 1) % this.jugadores.size();
 			this.turnosJugados = 0;
 		}

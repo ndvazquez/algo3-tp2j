@@ -2,9 +2,9 @@ package algopoly.vistas;
 
 import java.util.List;
 
-import algopoly.modelos.jugador.Direccion;
 import algopoly.modelos.jugador.Jugador;
-import algopoly.modelos.jugador.Posicion;
+import algopoly.modelos.tablero.Direccion;
+import algopoly.modelos.tablero.Posicion;
 import algopoly.modelos.tablero.Tablero;
 import algopoly.modelos.tablero.casilleros.Casillero;
 import algopoly.modelos.tablero.casilleros.barrios.Barrio;

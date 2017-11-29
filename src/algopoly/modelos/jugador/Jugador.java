@@ -114,7 +114,6 @@ public class Jugador {
 	public void comprarBarrio(Barrio barrio) {
 		this.pagar(barrio.getPrecio());
 		this.barrios.add(barrio);
-
 	}
 
 	public Barrio getBarrio(Provincia provincia) {
@@ -162,7 +161,6 @@ public class Jugador {
 		
 		this.agregarBarrio(barrioARecibir);
 		jugadorQueIntercambia.agregarBarrio(barrioACeder);
-		
 	}
 
 	private void agregarBarrio(Barrio barrio) {

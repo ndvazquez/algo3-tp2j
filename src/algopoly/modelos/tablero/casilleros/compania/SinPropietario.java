@@ -8,5 +8,6 @@ public class SinPropietario implements Estado {
 	public void recibirJugador(Jugador jugador, Compania compania) {
 		jugador.comprarCompania(compania);
 		compania.setPropietario(jugador);
+
 	}
 }

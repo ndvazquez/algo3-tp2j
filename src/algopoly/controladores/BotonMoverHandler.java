@@ -42,9 +42,9 @@ public class BotonMoverHandler implements EventHandler<ActionEvent> {
 
         String valorTirada = jugador.getUltimaTirada().toString();
         String nombreJugador = jugador.getNombre();
-        String nombreCasillero = jugador.getCasilleroActual().getNombre();
-        String mensaje = String.format("%s tiró %s y cayó en el casillero %s.\n-----------", nombreJugador,
-                valorTirada, nombreCasillero);
+        String mensajeAux = jugador.getMensajes();
+        String mensaje = String.format("%s tiró %s.\n%s", nombreJugador,
+                valorTirada, mensajeAux);
 
         this.vistaConsola.update(mensaje);
     	this.vista.update();

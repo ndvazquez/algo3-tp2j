@@ -48,7 +48,6 @@ public class ContenedorPrincipal extends BorderPane {
 		this.setInformacionJugadores(tablero);
 		this.setReproductor();
 		this.setBotonera(tablero);
-
 	}
 
 	private void setReproductor(){
@@ -168,8 +167,8 @@ public class ContenedorPrincipal extends BorderPane {
 
         ListView panel = new ListView();
         panel.setStyle("-fx-background-color: black;");
-        panel.setMaxHeight(100);
-        panel.setPrefHeight(100);
+        panel.setMaxHeight(150);
+        panel.setPrefHeight(150);
         panel.getItems().add(etiqueta);
         panel.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override

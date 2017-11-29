@@ -16,9 +16,11 @@ public class Encarcelado implements Estado {
 	@Override
 	public void iniciarTurno() {
 		this.turnosEnCarcel++;
-		
 		if(this.turnosEnCarcel == 3) {
 			this.jugador.habilitar();
+		} else{
+			this.jugador.setMensajes(String.format("\t%s sigue encarcelado.\n", this.jugador.getNombre()));
+
 		}
 	}
 

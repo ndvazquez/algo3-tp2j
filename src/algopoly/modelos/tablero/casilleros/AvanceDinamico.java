@@ -43,7 +43,9 @@ public class AvanceDinamico implements Casillero {
 			proximoCasillero = Tablero.obtenerTablero().obtenerCasilleroSiguiente(proximoCasillero);
 		}
 		jugador.setCasilleroActual(proximoCasillero);
+		jugador.setMensajes(String.format("\tCayó en el casillero %s y avanza %d posiciones.\n", NOMBRE, cantidadDeMovimientos));
 		proximoCasillero.recibirJugador(jugador);
+
     }
 
 }

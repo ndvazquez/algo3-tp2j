@@ -16,8 +16,7 @@ public class ImpuestoDeLujo implements Casillero {
 		Integer diezPorCiento = jugador.getCapital() / 10;
 		
 		jugador.pagar(diezPorCiento);
-	}
-	
-	
 
+		jugador.setMensajes(String.format("\tCayó en el casillero %s y pagó %d.\n", NOMBRE, diezPorCiento));
+	}
 }

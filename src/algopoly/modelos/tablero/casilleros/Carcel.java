@@ -17,7 +17,8 @@ public class Carcel implements Casillero {
 	@Override
 	public void recibirJugador(Jugador jugador) {
 		jugador.setCasilleroActual(this);
-		jugador.encarcelar();
+        jugador.setMensajes(String.format("\tCayó en el casillero %s.\n", NOMBRE));
+        jugador.encarcelar();
 	}
 
 }

@@ -11,6 +11,8 @@ public abstract class EstadoBarrio {
 			int monto = barrio.getPrecioAlquiler();
 			jugador.pagar(monto);
 			barrio.getPropietario().cobrar(monto);
+			jugador.setMensajes(String.format("\t%s pagó %d a %s.\n", jugador.getNombre(), monto,
+					barrio.getPropietario().getNombre()));
 		}
 	}
 

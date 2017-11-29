@@ -47,6 +47,7 @@ public class Quini6 implements Casillero {
 
     @Override
     public void recibirJugador(Jugador jugador){
+        jugador.setMensajes(String.format("\tCayó en el casillero %s.\n", NOMBRE));
         this.premiarJugador(jugador);
     }
 

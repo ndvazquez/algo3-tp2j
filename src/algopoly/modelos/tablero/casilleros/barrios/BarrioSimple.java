@@ -27,6 +27,7 @@ public class BarrioSimple implements Casillero, Barrio {
 	}
 	@Override
 	public void recibirJugador(Jugador jugador) {
+		jugador.setMensajes(String.format("\tCayó en el casillero %s.\n", this.provincia.name()));
 
 		this.estado.comprarBarrio(jugador, this);
 

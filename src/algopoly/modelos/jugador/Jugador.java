@@ -30,7 +30,9 @@ public class Jugador {
 	private Integer capital;
 
 	private Estado estado;
-	
+
+	private String mensajes;
+
 	public Jugador() {
 		this.nombre = "Jon Doe";
 		this.capital = CAPITAL_INICIAL;
@@ -39,11 +41,13 @@ public class Jugador {
 		this.estado = new Habilitado(this);
 		this.barrios = new ArrayList<>();
 		this.companias = new ArrayList<>();
+		this.mensajes = "";
 	}
 
 	public void setNombre(String nombre){
 	    this.nombre = nombre;
     }
+
 	public String getNombre(){
 		return this.nombre;
 	}
@@ -111,9 +115,19 @@ public class Jugador {
 		return this.companias.size(); 
 	}
 
+	public String getMensajes(){
+	    String mensaje = this.mensajes;
+	    this.mensajes = "";
+	    return mensaje;
+    }
+
+    public void setMensajes(String mensajeNuevo){
+	    this.mensajes += mensajeNuevo;
+    }
 	public void comprarBarrio(Barrio barrio) {
 		this.pagar(barrio.getPrecio());
-		this.barrios.add(barrio);
+        this.setMensajes(String.format("\tCompró %s.\n", barrio.getNombre()));
+        this.barrios.add(barrio);
 
 	}
 
@@ -131,14 +145,18 @@ public class Jugador {
 
 	public void comprarCompania(Compania compania) {
 		this.pagar(compania.getPrecio());
-		this.companias.add(compania);
+        this.setMensajes(String.format("\tCompró %s.\n", compania.getNombre()));
+        this.companias.add(compania);
 	}
 
 	public void encarcelar() {
-		this.estado = new Encarcelado(this);
+        this.setMensajes(String.format("\t%s ha sido encarcelado.\n", this.nombre));
+
+        this.estado = new Encarcelado(this);
 	}
 
 	public void habilitar() {
+        this.setMensajes(String.format("\t%s ha sido liberado.\n", this.nombre));
 		this.estado = new Habilitado(this);
 	}
 
@@ -174,13 +192,13 @@ public class Jugador {
 	}
 
 	public void venderBarrio(Barrio barrio){
-		this.quitarBarrio(barrio);
+        this.quitarBarrio(barrio);
         barrio.setSinPropietario();
 		this.cobrar(barrio.getPrecioDeVenta() -  barrio.getPrecioDeVenta() / 100 * 15);
 	}
 
 	public void venderCompania(Compania compania){
-		this.companias.remove(compania);
+        this.companias.remove(compania);
 		compania.setSinPropietario();
 		this.cobrar(compania.getPrecio() - compania.getPrecio() / 100 * 15);
 	}

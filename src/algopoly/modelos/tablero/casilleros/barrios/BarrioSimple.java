@@ -55,11 +55,6 @@ public class BarrioSimple implements Casillero, Barrio {
 	}
 
 	@Override
-	public Integer getPrecioAlquiler() {
-		return this.edificio.getAlquiler();
-	}
-
-	@Override
 	public Integer getPrecioDeVenta(){
 		return (this.edificio.getPrecio() + this.getPrecio());
 	}

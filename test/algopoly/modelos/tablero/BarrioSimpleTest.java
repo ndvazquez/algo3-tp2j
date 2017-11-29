@@ -116,9 +116,8 @@ public class BarrioSimpleTest {
 		santaFe.recibirJugador(jugador3);
 		
 		Integer capitalFinalJugador1 = jugador1.getCapital();
-		Integer alquilerSantaFe = santaFe.getPrecioAlquiler();
 		
-		Assert.assertEquals(capitalFinalJugador1.intValue(), capitalInicialJugador1 + alquilerSantaFe);
+		Assert.assertEquals(capitalFinalJugador1.intValue(), capitalInicialJugador1 + 1500);
 	}
 }
 

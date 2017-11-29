@@ -30,9 +30,9 @@ public class BotonPagarFianzaHandler implements EventHandler<ActionEvent> {
     	
     	if(capital >= Carcel.FIANZA) {
     		jugador.pagarFianza();
-    		
+
     		Integer nuevoCapital = jugador.getCapital();
-    		
+
     		if(capital != nuevoCapital) {
     			Alert alert = new Alert(AlertType.INFORMATION);
         		alert.setTitle("Pagar Fianza");

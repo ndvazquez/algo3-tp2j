@@ -49,7 +49,6 @@ public class TableroTest {
         Assert.assertEquals(jugadorFinal, jugadorInicial);
 
     }
-    /*** Siendo que la probablidad de que esto pase es baja, es difícil de probar en un tiempo prudente
 
     @Test
     public void test03UnJugadorSacaDobleDosVecesYNoJuegaUnTercerTurno(){
@@ -74,7 +73,7 @@ public class TableroTest {
 
         Assert.assertNotEquals(jugadorFinal, jugadorInicial);
     }
-    ***/
+
 
 
 }

@@ -5,6 +5,8 @@ import algopoly.modelos.jugador.Jugador;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+
 public class TableroTest {
 
     @Test
@@ -74,6 +76,17 @@ public class TableroTest {
         Assert.assertNotEquals(jugadorFinal, jugadorInicial);
     }
 
+    @Test
+    public void test04LaPartidaTerminaCuandoSoloQuedaUnJugadorEnElTablero(){
+        Tablero tablero = new Tablero();
 
+        List<Jugador> jugadores = tablero.getJugadores();
+
+        tablero.eliminarJugador(jugadores.remove(0));
+
+        tablero.eliminarJugador(jugadores.remove(0));
+
+        Assert.assertTrue(tablero.terminoLaPartida());
+    }
 
 }

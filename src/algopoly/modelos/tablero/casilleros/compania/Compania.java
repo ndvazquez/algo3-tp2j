@@ -14,6 +14,8 @@ public abstract class Compania implements Casillero {
 
 	@Override
 	public void recibirJugador(Jugador jugador) {
+		jugador.setMensajes(String.format("\tCayó en el casillero %s.\n", this.getNombre()));
+
 		this.estado.recibirJugador(jugador, this);
 	}
 

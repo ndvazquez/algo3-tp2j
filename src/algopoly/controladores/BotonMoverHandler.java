@@ -2,6 +2,8 @@ package algopoly.controladores;
 
 import algopoly.modelos.excepciones.JugadorSinPlataException;
 import algopoly.modelos.jugador.Jugador;
+import algopoly.modelos.tablero.casilleros.Carcel;
+import algopoly.vistas.VistaConsola;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -20,12 +22,16 @@ public class BotonMoverHandler implements EventHandler<ActionEvent> {
     private final Tablero tablero;
     private final VistaDados vistaDados;
     private final VistaInformacion vistaInformacion;
-    
-    public BotonMoverHandler(VistaTablero vista, Tablero tablero, VistaDados vistaDados, VistaInformacion vistaInformacion) {
+    private final VistaConsola vistaConsola;
+
+    public BotonMoverHandler(VistaTablero vista, Tablero tablero, VistaDados vistaDados,
+                             VistaInformacion vistaInformacion, VistaConsola vistaConsola) {
         this.vista = vista;
         this.tablero = tablero;
         this.vistaDados = vistaDados;
         this.vistaInformacion = vistaInformacion;
+        this.vistaConsola = vistaConsola;
+
     }
 
     @Override
@@ -35,7 +41,11 @@ public class BotonMoverHandler implements EventHandler<ActionEvent> {
             this.tablero.proximoTurno();
         } catch(JugadorSinPlataException e) {
             this.tablero.eliminarJugador(jugador);
-        } 
+        }
+
+        String mensaje = jugador.getMensajes();
+
+        this.vistaConsola.update(mensaje);
     	this.vista.update();
     	this.vistaDados.update();
     	this.vistaInformacion.update();

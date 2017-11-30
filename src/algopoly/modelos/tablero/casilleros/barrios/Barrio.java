@@ -3,7 +3,8 @@ package algopoly.modelos.tablero.casilleros.barrios;
 import algopoly.modelos.jugador.Jugador;
 
 public interface Barrio {
-	
+	String getNombre();
+
 	Jugador getPropietario();
 	
 	Integer getPrecio();
@@ -22,9 +23,9 @@ public interface Barrio {
 
 	void construir(Inmueble inmueble);
 
-	void construirCasa();
+	boolean construirCasa();
 
-	void construirHotel();
+	boolean construirHotel();
 
 	void resetBarrio();
 

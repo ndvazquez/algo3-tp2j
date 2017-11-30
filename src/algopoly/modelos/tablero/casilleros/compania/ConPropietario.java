@@ -6,12 +6,17 @@ public class ConPropietario implements Estado {
 
 	@Override
 	public void recibirJugador(Jugador jugador, Compania compania) {
-		Integer impuesto = compania.impuesto;
-		
-		impuesto = Compania.tienenMismoDuenio(compania, compania.companiaPar) ? compania.impuestoDoble : impuesto;
-		impuesto = jugador.equals(compania.propietario) ? 0 : impuesto;
-		
-		jugador.pagar((jugador.getUltimaTirada() * impuesto));
-		compania.propietario.cobrar(jugador.getUltimaTirada() * impuesto);
+		if(!compania.propietario.equals(jugador)){
+			Integer impuesto = compania.impuesto;
+
+			impuesto = Compania.tienenMismoDuenio(compania, compania.companiaPar) ? compania.impuestoDoble : impuesto;
+			impuesto = jugador.equals(compania.propietario) ? 0 : impuesto;
+
+			Integer montoFinal = (jugador.getUltimaTirada() * impuesto);
+			jugador.pagar(montoFinal);
+			compania.propietario.cobrar(montoFinal);
+			jugador.setMensajes(String.format("\t%s pagó %d a %s.\n", jugador.getNombre(), montoFinal,
+					compania.propietario.getNombre()));
+		}
 	}
 }

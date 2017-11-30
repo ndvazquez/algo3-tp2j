@@ -1,16 +1,16 @@
 package algopoly.vistas;
 
-import algopoly.controladores.BotonMoverHandler;
-import algopoly.controladores.BotonPagarFianzaHandler;
-import algopoly.controladores.BotonVenderCompaniaHandler;
-import algopoly.controladores.BotonVenderTerrenoHandler;
+import algopoly.controladores.*;
 import algopoly.modelos.tablero.Tablero;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
@@ -25,10 +25,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import algopoly.controladores.BotonComprarCasaHandler;
-import algopoly.controladores.BotonComprarHotelHandler;
-import algopoly.controladores.BotonInformacionHandler;
-import algopoly.controladores.BotonIntercambiarHandler;
 
 import java.io.File;
 
@@ -41,28 +37,39 @@ public class ContenedorPrincipal extends BorderPane {
 	VBox contenedorCentral;
 	VistaDados vistaDados;
 	VistaInformacion vistaInformacion;
+	VistaConsola vistaConsola;
 	MediaPlayer mediaPlayer;
 
 	public ContenedorPrincipal(Stage stage, Tablero tablero) {
+        Label etiqueta = new Label();
+        this.setConsola(etiqueta);
 		this.setMenu(stage);
 		this.setCentro(tablero);
 		this.setInformacionJugadores(tablero);
+		this.setReproductor();
 		this.setBotonera(tablero);
-		this.setConsola(tablero);
-		this.mediaPlayer = new MediaPlayer(new Media(new File("music.wav").toURI().toString()));
-		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-		mediaPlayer.setAutoPlay(true);
-
 	}
 
+	private void setReproductor(){
+        this.mediaPlayer = new MediaPlayer(new Media(new File("music.wav").toURI().toString()));
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.setAutoPlay(true);
+    }
 	private void setBotonera(Tablero tablero) {
+
+        Button botonMusica = new Button();
+        botonMusica.setText("Activar/Desactivar música");
+        BotonSilenciarMusicaHandler botonSilenciarMusicaHandler = new BotonSilenciarMusicaHandler(mediaPlayer);
+        botonMusica.setOnAction(botonSilenciarMusicaHandler);
 
 		Canvas canvasDados = new Canvas(100,200);
 		vistaDados = new VistaDados(tablero, canvasDados);
 		
 		Button botonMover = new Button();
 		botonMover.setText("Próximo turno");
-		BotonMoverHandler moveButtonHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados, vistaInformacion);
+		BotonMoverHandler moveButtonHandler = new BotonMoverHandler(vistaTablero, tablero, vistaDados,
+                vistaInformacion, vistaConsola);
 		botonMover.setOnAction(moveButtonHandler);
 		
 		Button botonInformacion = new Button();
@@ -72,12 +79,14 @@ public class ContenedorPrincipal extends BorderPane {
 		
 		Button botonVenderTerreno = new Button();
 		botonVenderTerreno.setText("Vender terreno");
-		BotonVenderTerrenoHandler venderTerrenoHandler = new BotonVenderTerrenoHandler(vistaTablero, tablero, vistaInformacion);
+		BotonVenderTerrenoHandler venderTerrenoHandler = new BotonVenderTerrenoHandler(vistaTablero, tablero,
+                vistaInformacion, vistaConsola);
 		botonVenderTerreno.setOnAction(venderTerrenoHandler);
 		
 		Button botonVenderCompania = new Button();
 		botonVenderCompania.setText("Vender compañia");
-		BotonVenderCompaniaHandler venderCompaniaHandler = new BotonVenderCompaniaHandler(vistaTablero, tablero, vistaInformacion);
+		BotonVenderCompaniaHandler venderCompaniaHandler = new BotonVenderCompaniaHandler(vistaTablero, tablero,
+                vistaInformacion, vistaConsola);
 		botonVenderCompania.setOnAction(venderCompaniaHandler);
 		
 		Button botonIntercambiar = new Button();
@@ -87,7 +96,8 @@ public class ContenedorPrincipal extends BorderPane {
 		
 		Button botonComprarCasa = new Button();
 		botonComprarCasa.setText("Comprar casa");
-		BotonComprarCasaHandler comprarCasaHandler = new BotonComprarCasaHandler(vistaTablero, tablero, vistaInformacion);
+		BotonComprarCasaHandler comprarCasaHandler = new BotonComprarCasaHandler(vistaTablero, tablero, vistaInformacion,
+				vistaConsola);
 		botonComprarCasa.setOnAction(comprarCasaHandler);
 		
 		Button botonComprarHotel = new Button();
@@ -99,8 +109,9 @@ public class ContenedorPrincipal extends BorderPane {
 		botonPagarFianza.setText("Pagar fianza");
 		BotonPagarFianzaHandler botonPagarFianzaHandler = new BotonPagarFianzaHandler(vistaTablero, tablero, vistaInformacion);
 		botonPagarFianza.setOnAction(botonPagarFianzaHandler);
-		
-		VBox contenedorVertical = new VBox(botonMover,botonInformacion, botonVenderTerreno, botonVenderCompania, botonIntercambiar, botonComprarCasa, botonComprarHotel, botonPagarFianza, canvasDados);
+
+		VBox contenedorVertical = new VBox(botonMover,botonInformacion, botonVenderTerreno, botonVenderCompania,
+                botonIntercambiar, botonComprarCasa, botonComprarHotel, botonPagarFianza, canvasDados, botonMusica);
 		contenedorVertical.setPadding(new Insets(30));
 		contenedorVertical.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 		contenedorVertical.setSpacing(10);
@@ -147,19 +158,27 @@ public class ContenedorPrincipal extends BorderPane {
 
 	}
 	
-	private void setConsola(Tablero tablero) {
+	private void setConsola(Label etiqueta) {
 
-		Label etiqueta = new Label();
-		etiqueta.setText("consola...");
+		etiqueta.setPrefWidth(1000);
 		etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
-		etiqueta.setTextFill(Color.WHITE);
+		etiqueta.setTextFill(Color.GREEN);
 
-		VBox contenedorConsola = new VBox(etiqueta);
-		contenedorConsola.setSpacing(10);
-		contenedorConsola.setPadding(new Insets(15));
-		contenedorConsola.setStyle("-fx-background-color: black;");
+        ListView panel = new ListView();
+        panel.setMaxHeight(150);
+        panel.setPrefHeight(150);
+        panel.setStyle("-fx-control-inner-background: black;");
+        panel.getItems().add(etiqueta);
+        panel.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                event.consume();
+            }
+        });
 
-		this.setBottom(contenedorConsola);
+        vistaConsola = new VistaConsola(etiqueta, panel);
+
+        this.setBottom(panel);
 	}
 
 	public BarraDeMenu getBarraDeMenu() {

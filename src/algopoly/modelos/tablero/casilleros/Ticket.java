@@ -12,5 +12,6 @@ public class Ticket {
 
     public void darPremioAJugador(Jugador jugador){
         jugador.cobrar(this.premio);
+        jugador.setMensajes(String.format("cobró $%d.\n", this.premio));
     }
 }

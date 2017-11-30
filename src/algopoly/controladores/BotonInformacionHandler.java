@@ -51,10 +51,7 @@ public class BotonInformacionHandler implements EventHandler<ActionEvent> {
 		}
 		
 		
-
-		// Set expandable Exception into the dialog pane.
 		alert.getDialogPane().setExpandableContent(expContent);
-
 		alert.showAndWait();
 	}
 }

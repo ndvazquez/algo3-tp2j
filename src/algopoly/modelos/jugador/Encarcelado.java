@@ -20,6 +20,8 @@ public class Encarcelado implements Estado {
 		if(this.turnosEnCarcel == 4) {
 			this.jugador.habilitar();
 			this.jugador.iniciarTurno();
+		} else{
+			this.jugador.setMensajes(String.format("\t%s sigue encarcelado.\n", this.jugador.getNombre()));
 		}
 	}
 
@@ -31,6 +33,7 @@ public class Encarcelado implements Estado {
 	public void pagarFianza() {
 		if(turnosEnCarcel > 1) {
 			jugador.pagar(Carcel.FIANZA);
+			jugador.setMensajes(String.format("\t%s pagó la fianza.\n", jugador.getNombre()));
 			jugador.habilitar();
 		}
 	}

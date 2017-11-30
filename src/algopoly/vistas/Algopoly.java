@@ -34,8 +34,6 @@ public class Algopoly extends Application {
 		stage.setScene(escenaBienvenidos);
 		stage.setFullScreen(true);
 
-
-
 		stage.show();
 	}
 

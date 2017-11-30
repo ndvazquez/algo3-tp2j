@@ -47,7 +47,7 @@ public class CarcelTest {
 		
 		Integer resultado = jugador.tirar();
 		
-		Assert.assertTrue(resultado > 0 && resultado < 13);
+		Assert.assertTrue(resultado >= 0 && resultado < 13);
 	}
 
 	@Test(expected = JugadorSinPlataException.class)
@@ -82,7 +82,7 @@ public class CarcelTest {
 		
 		Integer resultado = jugador.tirar();
 		
-		Assert.assertTrue(resultado > 0 && resultado < 13);
+		Assert.assertTrue(resultado >= 0 && resultado < 13);
 	}
 	
 	@Test
@@ -145,7 +145,7 @@ public class CarcelTest {
 		
 		Integer resultado = jugador.tirar();
 		
-		Assert.assertTrue(resultado > 0 && resultado < 13);
+		Assert.assertTrue(resultado >= 0 && resultado < 13);
 		
 	}
 	
@@ -169,6 +169,6 @@ public class CarcelTest {
 		
 		Integer resultado = jugador.tirar();
 		
-		Assert.assertTrue(resultado > 0 && resultado < 13);
+		Assert.assertTrue(resultado >= 0 && resultado < 13);
 	}
 }

@@ -8,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import algopoly.modelos.tablero.Tablero;
 import algopoly.vistas.VistaDados;
@@ -50,7 +52,7 @@ public class BotonMoverHandler implements EventHandler<ActionEvent> {
     	if (this.tablero.terminoLaPartida()) {
         	this.mostrarGanador();
         	System.exit(0);
-        }
+    	}
     }
 
 	private void mostrarGanador() {
@@ -59,7 +61,8 @@ public class BotonMoverHandler implements EventHandler<ActionEvent> {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Ganador");
 		alert.setHeaderText(j.getNombre() + " ha ganado la partida!!!");
-		
+		ImageView iv = new ImageView(new Image("file:src/algopoly/vistas/imagenes/winner.gif"));
+		alert.setGraphic(iv);
 		DialogPane dp = alert.getDialogPane();
 		dp.getStyleClass().remove("alert");
 		alert.showAndWait();

@@ -20,4 +20,8 @@ public class Dado {
 		return this.ultimaTirada;
 	}
 
+	public void setTiradaNula() {
+		this.ultimaTirada = 0;		
+	}
+
 }

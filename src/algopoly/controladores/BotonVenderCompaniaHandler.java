@@ -43,9 +43,9 @@ public class BotonVenderCompaniaHandler implements EventHandler<ActionEvent> {
         companiasAux.addAll(companias);
 
         ChoiceDialog<String> dialog = new ChoiceDialog<>("", choices);
-        dialog.setTitle("Venta de una compania");
-        dialog.setHeaderText("Elija que compania quiere vender.");
-        dialog.setContentText("Companias disponibles:");
+        dialog.setTitle("Venta de una compañía");
+        dialog.setHeaderText("Elija que compañía quiere vender.");
+        dialog.setContentText("Compañías disponibles:");
 
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {

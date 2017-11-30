@@ -16,11 +16,12 @@ public class Encarcelado implements Estado {
 	@Override
 	public void iniciarTurno() {
 		this.turnosEnCarcel++;
-		if(this.turnosEnCarcel == 3) {
+		jugador.tirar();
+		if(this.turnosEnCarcel == 4) {
 			this.jugador.habilitar();
+			this.jugador.iniciarTurno();
 		} else{
 			this.jugador.setMensajes(String.format("\t%s sigue encarcelado.\n", this.jugador.getNombre()));
-
 		}
 	}
 
@@ -39,6 +40,8 @@ public class Encarcelado implements Estado {
 
 	@Override
 	public Integer tirar(Dado dado1, Dado dado2) {
+		dado1.setTiradaNula();
+		dado2.setTiradaNula();
 		return TIRADA_NULA;
 	}
 

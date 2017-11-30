@@ -12,7 +12,7 @@ public class OpcionAcercaDeEventHandler implements EventHandler<ActionEvent> {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Acerca de...");
         alert.setHeaderText("AlgoPoly");
-        String mensaje = "75.07 Algoritmos y  programacion III. \n\n Nicolas Vazquez \n Camila Serra \n Eliana Gamarra \n Javier Albarracin";
+        String mensaje = "75.07 Algoritmos y  programación III. \n\n Nicolas Vazquez \n Camila Serra \n Eliana Gamarra \n Javier Albarracin";
         alert.setContentText(mensaje);
         alert.show();
     }

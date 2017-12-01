@@ -36,13 +36,13 @@ public class Tablero {
 		jugadores = new ArrayList<>();
 
 		Jugador jugador1 = new Jugador();
-		jugador1.setNombre("Alan");
+		jugador1.setNombre("Jugador1");
 
 		Jugador jugador2 = new Jugador();
-		jugador2.setNombre("Barbara");
+		jugador2.setNombre("Jugador2");
 
 		Jugador jugador3 = new Jugador();
-		jugador3.setNombre("Linus");
+		jugador3.setNombre("Jugador3");
 
 		jugadores.add(jugador1);
 		jugadores.add(jugador2);

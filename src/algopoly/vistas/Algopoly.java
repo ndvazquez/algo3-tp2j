@@ -28,7 +28,7 @@ public class Algopoly extends Application {
 				contenedorPrincipal.getBarraDeMenu());
 		escenaJuego.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
 
-		ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
+		ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego, tablero, contenedorPrincipal.vistaInformacion);
 		Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
 
 		stage.setScene(escenaBienvenidos);

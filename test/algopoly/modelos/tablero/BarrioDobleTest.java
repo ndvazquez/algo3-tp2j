@@ -17,7 +17,8 @@ public class BarrioDobleTest {
         BarrioDoble barrio = barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE);
 
         barrio.recibirJugador(jugadorPrueba);
-
+        barrio.comprarBarrio(jugadorPrueba);
+        
         int cantidadPropiedades = jugadorPrueba.getCantidadBarrios();
 		int capital = jugadorPrueba.getCapital();
 
@@ -34,8 +35,10 @@ public class BarrioDobleTest {
 		BarrioDoble barrio2 = barrioFactory.crearBarrioDoble(Provincia.BSAS_NORTE, Provincia.BSAS_SUR);
 		
 		barrio1.recibirJugador(jugadorPrueba);
+		barrio1.comprarBarrio(jugadorPrueba);
 		barrio2.recibirJugador(jugadorPrueba);
-
+		barrio2.comprarBarrio(jugadorPrueba);
+		
 		barrio1.construirCasa();
 
 		int capital = jugadorPrueba.getCapital();
@@ -51,7 +54,9 @@ public class BarrioDobleTest {
 		BarrioDoble barrio2 = barrioFactory.crearBarrioDoble(Provincia.BSAS_NORTE, Provincia.BSAS_SUR);
 		
 		barrio1.recibirJugador(jugadorPrueba);
+		barrio1.comprarBarrio(jugadorPrueba);
 		barrio2.recibirJugador(jugadorPrueba);
+		barrio2.comprarBarrio(jugadorPrueba);
 
 		barrio1.construirCasa();
 		barrio1.construirCasa();
@@ -69,7 +74,9 @@ public class BarrioDobleTest {
 		BarrioDoble barrio2 = barrioFactory.crearBarrioDoble(Provincia.BSAS_NORTE, Provincia.BSAS_SUR);
 		
 		barrio1.recibirJugador(jugadorPrueba);
+		barrio1.comprarBarrio(jugadorPrueba);
 		barrio2.recibirJugador(jugadorPrueba);
+		barrio2.comprarBarrio(jugadorPrueba);
 
 		barrio1.construirCasa();
 		barrio1.construirCasa();
@@ -91,7 +98,8 @@ public class BarrioDobleTest {
 		BarrioDoble barrio1 = propiedadFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE);
 		
 		barrio1.recibirJugador(jugadorPrueba);
-
+		barrio1.comprarBarrio(jugadorPrueba);
+		
 		barrio1.construirCasa();
 
 		int capital = jugadorPrueba.getCapital();
@@ -109,6 +117,7 @@ public class BarrioDobleTest {
 		BarrioDoble barrio1 = barrioFactory.crearBarrioDoble(Provincia.BSAS_SUR, Provincia.BSAS_NORTE);
 		
 		barrio1.recibirJugador(jugador1);
+		barrio1.comprarBarrio(jugador1);
 		barrio1.recibirJugador(jugador2);
 
 		int capital1 = jugador1.getCapital();
@@ -127,8 +136,10 @@ public class BarrioDobleTest {
 		BarrioDoble barrio2 = barrioFactory.crearBarrioDoble(Provincia.BSAS_NORTE, Provincia.BSAS_SUR);
 		
 		barrio1.recibirJugador(jugador1);
+		barrio1.comprarBarrio(jugador1);
 		barrio2.recibirJugador(jugador1);
-
+		barrio2.comprarBarrio(jugador1);
+		
 		barrio1.construirCasa();
 		barrio1.recibirJugador(jugador2);
 
@@ -151,7 +162,9 @@ public class BarrioDobleTest {
 		BarrioDoble barrio2 = barrioFactory.crearBarrioDoble(Provincia.BSAS_NORTE, Provincia.BSAS_SUR);
 		
 		barrio1.recibirJugador(jugador1);
+		barrio1.comprarBarrio(jugador1);
 		barrio2.recibirJugador(jugador1);
+		barrio2.comprarBarrio(jugador1);
 
 		barrio1.construirCasa();
 		barrio1.construirCasa();
@@ -177,7 +190,9 @@ public class BarrioDobleTest {
 		BarrioDoble barrio2 = barrioFactory.crearBarrioDoble(Provincia.BSAS_NORTE, Provincia.BSAS_SUR);
 		
 		barrio1.recibirJugador(jugador1);
+		barrio1.comprarBarrio(jugador1);
 		barrio2.recibirJugador(jugador1);
+		barrio2.comprarBarrio(jugador1);
 
 		barrio1.construirCasa();
 		barrio1.construirCasa();
@@ -210,7 +225,9 @@ public class BarrioDobleTest {
 		BarrioDoble barrio2 = barrioFactory.crearBarrioDoble(Provincia.BSAS_NORTE, Provincia.BSAS_SUR);
 		
 		barrio1.recibirJugador(jugador1);
+		barrio1.comprarBarrio(jugador1);
 		barrio2.recibirJugador(jugador1);
+		barrio2.comprarBarrio(jugador1);
 
 		barrio1.construirCasa();
 		barrio1.construirHotel();
@@ -228,7 +245,9 @@ public class BarrioDobleTest {
 		BarrioDoble barrio2 = barrioFactory.crearBarrioDoble(Provincia.BSAS_NORTE, Provincia.BSAS_SUR);
 		
 		barrio1.recibirJugador(jugador1);
+		barrio1.comprarBarrio(jugador1);
 		barrio2.recibirJugador(jugador1);
+		barrio2.comprarBarrio(jugador1);
 
         barrio1.construirCasa();
         barrio1.construirCasa();
@@ -256,7 +275,9 @@ public class BarrioDobleTest {
 		Jugador jugador3 = new Jugador();
 		
 		buenosAiresNorte.recibirJugador(jugador1);
+		buenosAiresNorte.comprarBarrio(jugador1);
 		cordobaNorte.recibirJugador(jugador2);
+		cordobaNorte.comprarBarrio(jugador2);
 		
 		jugador1.intercambiarBarrio(buenosAiresNorte, cordobaNorte, jugador2);
 		

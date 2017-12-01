@@ -26,7 +26,8 @@ public class ServiciosTrenSubteTest {
 		Compania subte = new Subte();
 
 		subte.recibirJugador(jugador);
-
+		subte.comprarCompania(jugador);
+		
 		int plataFinal = jugador.getCapital();
 
 		Assert.assertEquals((100000 - PRECIO_SUBTE), plataFinal);
@@ -40,7 +41,8 @@ public class ServiciosTrenSubteTest {
 		Compania tren = new Tren();
 
 		tren.recibirJugador(jugador);
-
+		tren.comprarCompania(jugador);
+		
 		int plataFinal = jugador.getCapital();
 
 		Assert.assertEquals((100000 - PRECIO_TREN), plataFinal);
@@ -53,7 +55,8 @@ public class ServiciosTrenSubteTest {
 
 		Jugador jugador = new Jugador();
 		tren.recibirJugador(jugador); // jugador compra tren
-
+		tren.comprarCompania(jugador);
+		
 		Jugador otroJugador = new Jugador();
 		otroJugador.tirar();
 		tren.recibirJugador(otroJugador); // otro jugador cae en tren
@@ -72,8 +75,10 @@ public class ServiciosTrenSubteTest {
 
 		Jugador jugador = new Jugador();
 		tren.recibirJugador(jugador); // jugador compra tren
+		tren.comprarCompania(jugador);
 		subte.recibirJugador(jugador); // jugador compra subte
-
+		subte.comprarCompania(jugador);
+		
 		Jugador otroJugador = new Jugador();
 		otroJugador.tirar();
 		tren.recibirJugador(otroJugador); // otro jugador cae en tren
@@ -128,7 +133,8 @@ public class ServiciosTrenSubteTest {
 
 		Jugador jugador = new Jugador();
 		subte.recibirJugador(jugador); // jugador compra subte
-
+		subte.comprarCompania(jugador);
+		
 		Jugador otroJugador = new Jugador();
 		otroJugador.tirar();
 		subte.recibirJugador(otroJugador);
@@ -146,7 +152,9 @@ public class ServiciosTrenSubteTest {
 		
 		Jugador jugador = new Jugador();
 		tren.recibirJugador(jugador); // jugador compra tren
+		tren.comprarCompania(jugador);
 		subte.recibirJugador(jugador); // jugador compra subte
+		subte.comprarCompania(jugador);
 
 		Jugador otroJugador = new Jugador();
 		otroJugador.tirar();

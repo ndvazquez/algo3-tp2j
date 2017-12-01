@@ -26,7 +26,8 @@ public class ServiciosAysaEdesurTest {
 		Compania aysa = new Aysa();
 
 		aysa.recibirJugador(jugador);
-
+		aysa.comprarCompania(jugador);
+		
 		int plataFinal = jugador.getCapital();
 
 		Assert.assertEquals((100000 - PRECIO_AYSA), plataFinal);
@@ -40,7 +41,8 @@ public class ServiciosAysaEdesurTest {
 		Compania edesur = new Edesur();
 
 		edesur.recibirJugador(jugador);
-
+		edesur.comprarCompania(jugador);
+		
 		int plataFinal = jugador.getCapital();
 
 		Assert.assertEquals((100000 - PRECIO_EDESUR), plataFinal);
@@ -53,11 +55,12 @@ public class ServiciosAysaEdesurTest {
 
 		Jugador jugador = new Jugador();
 		edesur.recibirJugador(jugador); // jugador compra edesur
-
+		edesur.comprarCompania(jugador);
+		
 		Jugador otroJugador = new Jugador();
 		otroJugador.tirar();
 		edesur.recibirJugador(otroJugador); // otro jugador cae en edesur
-
+		
 		int plataFinal = otroJugador.getCapital();
 		Assert.assertEquals((100000 - (IMP_EDESUR * otroJugador.getUltimaTirada())), plataFinal);
 	}
@@ -71,7 +74,9 @@ public class ServiciosAysaEdesurTest {
 		
 		Jugador jugador = new Jugador();
 		edesur.recibirJugador(jugador); // jugador compra edesur
+		edesur.comprarCompania(jugador);
 		aysa.recibirJugador(jugador); // jugador compra aysa
+		aysa.comprarCompania(jugador);
 
 		Jugador otroJugador = new Jugador();
 		otroJugador.tirar();
@@ -125,7 +130,8 @@ public class ServiciosAysaEdesurTest {
 
 		Jugador jugador = new Jugador();
 		aysa.recibirJugador(jugador); // jugador compra aysa
-
+		aysa.comprarCompania(jugador);
+		
 		Jugador otroJugador = new Jugador();
 		otroJugador.tirar();
 		aysa.recibirJugador(otroJugador);
@@ -143,8 +149,10 @@ public class ServiciosAysaEdesurTest {
 		
 		Jugador jugador = new Jugador();
 		edesur.recibirJugador(jugador); // jugador compra edesur
+		edesur.comprarCompania(jugador);
 		aysa.recibirJugador(jugador); // jugador compra aysa
-
+		aysa.comprarCompania(jugador);
+		
 		Jugador otroJugador = new Jugador();
 		otroJugador.tirar();
 		aysa.recibirJugador(otroJugador);

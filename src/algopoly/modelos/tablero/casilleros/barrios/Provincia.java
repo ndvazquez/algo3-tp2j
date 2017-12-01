@@ -3,7 +3,6 @@ package algopoly.modelos.tablero.casilleros.barrios;
 import java.util.ArrayList;
 
 public enum Provincia {
-	// nombre (precio,[Casa,Hotel],[alqSim,alq1Casa,alq2Casa,Hotel])
 	
 	BSAS_SUR (20000, new Vacio(0,2000), new Casa(5000, 3000), new Casa(5000, 3500), new Hotel(8000,5000)),
 	

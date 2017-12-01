@@ -32,13 +32,14 @@ public class BarrioDoble implements Casillero, Barrio {
     @Override
     public void recibirJugador(Jugador jugador) {
 		jugador.setMensajes(String.format("\tCayó en el casillero %s.\n", this.provincia.name()));
-
-    	this.estado.comprarBarrio(jugador, this);
-		
 		this.estado.pagarAlquiler(jugador, this);
-
     }
 
+    @Override
+    public void comprarBarrio(Jugador jugador) {
+    	this.estado.comprarBarrio(jugador, this);
+    }
+    
     @Override
     public Jugador getPropietario() {
         return this.propietario;

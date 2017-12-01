@@ -36,7 +36,9 @@ public class JugadorTest {
 		BarrioSimple barrioVender = barrioFactory.crearBarrioSimple(Provincia.BSAS_SUR);
 
 		barrioCobrar.recibirJugador(jugador2);
+		barrioCobrar.comprarBarrio(jugador2);
 		barrioVender.recibirJugador(jugador1);
+		barrioVender.comprarBarrio(jugador1);
 
 		for(int i = 0; i < 33; i++){
 			barrioCobrar.recibirJugador(jugador1);
@@ -62,13 +64,16 @@ public class JugadorTest {
 		BarrioSimple barrioVender = barrioFactory.crearBarrioSimple(Provincia.BSAS_SUR);
 
 		barrioCobrar.recibirJugador(jugador2); //capital jugador2 == 75000
+		barrioCobrar.comprarBarrio(jugador2);
 		barrioVender.recibirJugador(jugador1);
+		barrioVender.comprarBarrio(jugador1);
 
 		for(int i = 0; i < 33; i++){
 			barrioCobrar.recibirJugador(jugador1);
 		}
 		// capital jugador2 == 75000 + 82500 = 157500
 		barrioVender.recibirJugador(jugador2); // capital jugador2 == 137500
+		barrioVender.comprarBarrio(jugador2);
 		barrioVender.recibirJugador(jugador3); // capital jugador2 == 139500
 
 		int capitalFinaljugador2 = jugador2.getCapital();
@@ -91,7 +96,9 @@ public class JugadorTest {
 		Compania companiaAVender = new Subte();
 
 		barrioCobrar.recibirJugador(jugador2);
+		barrioCobrar.comprarBarrio(jugador2);
 		companiaAVender.recibirJugador(jugador1); // capital jugador1 == 60000;
+		companiaAVender.comprarCompania(jugador1);
 
 		for(int i = 0; i < 25; i++){
 			barrioCobrar.recibirJugador(jugador1);
@@ -109,9 +116,11 @@ public class JugadorTest {
 
 		BarrioSimple barrio1 = barrioFactory.crearBarrioSimple(Provincia.SANTA_FE);
 		barrio1.recibirJugador(jugador1);
+		barrio1.comprarBarrio(jugador1);
 		
 		Compania compania = new Subte();
 		compania.recibirJugador(jugador1);
+		compania.comprarCompania(jugador1);
 		
 		int cantidadBarriosInicial = jugador1.getCantidadBarrios();
 		int cantidadCompaniasInicial = jugador1.getCantidadCompanias();

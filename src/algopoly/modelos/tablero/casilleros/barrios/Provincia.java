@@ -13,15 +13,15 @@ public enum Provincia {
 	
 	CORDOBA_NORTE (20000, new Vacio(0, 1300), new Casa(2200, 1800), new Casa(2200, 2900), new Hotel(3500,3500)),
 	
-	SANTA_FE (15000, new Vacio(0, 1500), new Casa(4000, 3500), null, null),
+	SANTA_FE (15000, new Vacio(0, 1500), new Casa(4000, 3500), new SinInmueble(), new SinInmueble()),
 	
 	SALTA_SUR (23000, new Vacio(0, 2000), new Casa(4500, 3250), new Casa(4500, 3850), new Hotel(7500,5500)),
 	
 	SALTA_NORTE (23000, new Vacio(0,  2000), new Casa(4500, 3250), new Casa(4500, 3850), new Hotel(7500,5500)),
 	
-	NEUQUEN (17000, new Vacio(0, 1800), new Casa(4800, 3800), null, null),
+	NEUQUEN (17000, new Vacio(0, 1800), new Casa(4800, 3800), new SinInmueble(), new SinInmueble()),
 	
-	TUCUMAN (25000, new Vacio(0, 2500), new Casa(7000, 4500), null, null);
+	TUCUMAN (25000, new Vacio(0, 2500), new Casa(7000, 4500), new SinInmueble(), new SinInmueble());
 	
 	private final Integer precio;
 	
@@ -33,10 +33,8 @@ public enum Provincia {
 	
 		this.edificios.add( vacio );
 		this.edificios.add( casa1 );
-		if ( casa2 != null ) {
-			this.edificios.add( casa2 );
-			this.edificios.add( hotel );
-		}
+		this.edificios.add( casa2 );
+		this.edificios.add( hotel );
 	}
 
 	public Integer precio() {

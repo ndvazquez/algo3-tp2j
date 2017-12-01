@@ -85,15 +85,12 @@ public class BarrioDoble implements Casillero, Barrio {
     	this.edificio = edificio;
 		this.cantidadEdificios += 1;
     }
-    
-    public boolean estaCompleta() {
-    	return this.propietario.getBarrio(this.provinciaComplemento) != null;
-    }
 
 	@Override
 	public boolean construirCasa() {
 		
-		if ( this.estaCompleta() && this.cantidadEdificios < 2) {
+		boolean estaCompleto = this.propietario.getBarrio(this.provinciaComplemento) != null;
+		if ( estaCompleto && this.cantidadEdificios < 2) {
 			this.estado = new BarrioCompleto();
 			this.estado.construirCasa(this);
 			return true;

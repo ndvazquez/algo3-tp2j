@@ -19,7 +19,8 @@ public class BarrioSimpleTest {
 		BarrioSimple propiedad = barrioFactory.crearBarrioSimple(Provincia.NEUQUEN);
 
 		propiedad.recibirJugador(jugadorPrueba);
-
+		propiedad.comprarBarrio(jugadorPrueba);
+		
 		int cantidadPropiedades = jugadorPrueba.getCantidadBarrios();
         int capital = jugadorPrueba.getCapital();
 
@@ -35,7 +36,8 @@ public class BarrioSimpleTest {
 		BarrioSimple propiedad = barrioFactory.crearBarrioSimple(Provincia.NEUQUEN);
 
 		propiedad.recibirJugador(jugadorPrueba);
-
+		propiedad.comprarBarrio(jugadorPrueba);
+		
 		propiedad.construirCasa();
 
 		int capital = jugadorPrueba.getCapital();
@@ -50,6 +52,7 @@ public class BarrioSimpleTest {
 		BarrioSimple propiedad = barrioFactory.crearBarrioSimple(Provincia.NEUQUEN);
 
 		propiedad.recibirJugador(jugador1);
+		propiedad.comprarBarrio(jugador1);
 
 		Jugador jugador2 = new Jugador();
 		propiedad.recibirJugador(jugador2);
@@ -68,6 +71,7 @@ public class BarrioSimpleTest {
 		BarrioSimple propiedad = barrioFactory.crearBarrioSimple(Provincia.NEUQUEN);
 
 		propiedad.recibirJugador(jugador1);
+		propiedad.comprarBarrio(jugador1);
 		propiedad.construirCasa();
 
 		Jugador jugador2 = new Jugador();
@@ -87,6 +91,7 @@ public class BarrioSimpleTest {
 		BarrioSimple propiedad = barrioFactory.crearBarrioSimple(Provincia.NEUQUEN);
 
 		propiedad.recibirJugador(jugadorPrueba);
+		propiedad.comprarBarrio(jugadorPrueba);
 		propiedad.construirCasa();
 		propiedad.construirCasa(); // -0
 		
@@ -107,7 +112,10 @@ public class BarrioSimpleTest {
 		Jugador jugador3 = new Jugador();
 		
 		neuquen.recibirJugador(jugador1);
+		neuquen.comprarBarrio(jugador1);
+		
 		santaFe.recibirJugador(jugador2);
+		santaFe.comprarBarrio(jugador2);
 		
 		jugador1.intercambiarBarrio(neuquen, santaFe, jugador2);
 		

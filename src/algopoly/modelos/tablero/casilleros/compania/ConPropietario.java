@@ -19,4 +19,9 @@ public class ConPropietario implements Estado {
 					compania.propietario.getNombre()));
 		}
 	}
+
+	@Override
+	public void comprarCompania(Jugador jugador, Compania compania) {
+		
+	}
 }

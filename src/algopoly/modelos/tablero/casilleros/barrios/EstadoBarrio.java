@@ -7,11 +7,10 @@ public abstract class EstadoBarrio {
 	abstract void comprarBarrio(Jugador jugador, Barrio barrio);
 
 	void pagarAlquiler(Jugador jugador, Barrio barrio) {
-		if (! barrio.getPropietario().equals(jugador)) {
+		if (!barrio.getPropietario().equals(jugador)) {
 			barrio.getInmuebleActual().cobrarAlquiler(barrio.getPropietario(), jugador);
 		}
 	}
-
 
 	abstract void construirCasa(Barrio barrio);
 	

@@ -50,4 +50,12 @@ public abstract class Compania implements Casillero {
 
 	public abstract String getNombre();
 
+	public Jugador getPropietario() {
+		return this.propietario;
+	}
+
+	public void comprarCompania(Jugador jugador) {
+		this.estado.comprarCompania(jugador, this);
+	}
+
 }

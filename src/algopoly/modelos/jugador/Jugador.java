@@ -133,6 +133,7 @@ public class Jugador {
 	}
 
 	public Barrio getBarrio(Provincia provincia) {
+		
 		int len = this.barrios.size();
 		
 		for ( int i = 0; i < len; i++) {

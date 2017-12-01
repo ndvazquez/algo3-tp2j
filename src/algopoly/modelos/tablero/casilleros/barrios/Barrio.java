@@ -30,4 +30,6 @@ public interface Barrio {
 	void resetBarrio();
 
 	Inmueble getInmuebleActual();
+
+	void comprarBarrio(Jugador jugador);
 }

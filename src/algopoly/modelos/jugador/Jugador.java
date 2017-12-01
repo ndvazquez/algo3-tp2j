@@ -134,10 +134,7 @@ public class Jugador {
 
 	public Barrio getBarrio(Provincia provincia) {
 		
-		int len = this.barrios.size();
-		
-		for ( int i = 0; i < len; i++) {
-			Barrio barrio = this.barrios.get(i);
+		for (Barrio barrio : this.barrios) {
 			if ( barrio.esEstaProvincia(provincia) ) {
 				return barrio;
 			}
@@ -241,7 +238,6 @@ public class Jugador {
   				return barrio;
   			}
 		}
-		
 		return null;
 	}
 

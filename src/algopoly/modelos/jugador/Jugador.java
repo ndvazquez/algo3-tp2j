@@ -133,7 +133,6 @@ public class Jugador {
 	}
 
 	public Barrio getBarrio(Provincia provincia) {
-		
 		for (Barrio barrio : this.barrios) {
 			if ( barrio.esEstaProvincia(provincia) ) {
 				return barrio;

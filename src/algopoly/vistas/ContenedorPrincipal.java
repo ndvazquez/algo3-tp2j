@@ -164,7 +164,7 @@ public class ContenedorPrincipal extends BorderPane {
 		etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
 		etiqueta.setTextFill(Color.GREEN);
 
-        ListView panel = new ListView();
+        ListView<Label> panel = new ListView<Label>();
         panel.setMaxHeight(150);
         panel.setPrefHeight(150);
         panel.setStyle("-fx-control-inner-background: black;");
